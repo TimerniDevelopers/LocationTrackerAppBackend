@@ -37,7 +37,6 @@ Route::group(['prefix' => 'location'], function () {
     Route::post('change/password', 'Api\AdminController@changePassword');
 
     Route::get('question/list', 'Api\QuestionController@questionList');
-    Route::post('question/info/submit', 'Api\QuestionController@questionInfoSubmit');
     Route::post('question/submit', 'Api\QuestionController@questionSubmit');
 
     Route::get('division/list', 'Api\AreaController@divisionList');

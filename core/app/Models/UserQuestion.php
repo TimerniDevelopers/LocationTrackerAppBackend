@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class UserQuestion extends Model
 {
     use HasFactory;
+    protected $guarded = [];
 
     public function userName(){
         return $this->belongsTo(User::class, 'user_id', 'id');

@@ -14,28 +14,25 @@ class QuestionController extends Controller
         $questions = Question::where('status', 1)->get();
         return response()->json($questions);
     }
-    public function questionInfoSubmit(Request $request){
-//        $user = Array();
-//        $user['user_id'] = $request->user_id;
-//        $user['stall_name'] = $request->stall_name;
-//        $user['latitude'] = $request->latitude;
-//        $user['longitude'] = $request->longitude;
-//        $data = DB::table('user_questions')->insert($user);
-        $user = new UserQuestion();
-        $user['user_id'] = $request->user_id;
-        $user['stall_name'] = $request->stall_name;
-        $user['stall_des'] = $request->stall_des;
-        $user['latitude'] = $request->latitude;
-        $user['longitude'] = $request->longitude;
-        $user->save();
-        return response()->json($user);
-    }
+    
     public function questionSubmit(Request $request){
-        $answer = Array();
-        $answer['user_question_id'] = $request->user_question_id;
-        $answer['question_id'] = $request->question_id;
-        $answer['question_ans'] = $request->question_ans;
-        DB::table('question_answer')->insert($answer);
-        return response()->json($answer);
+        $userQuestionID = UserQuestion::create([
+            'user_id' => $request->user_id,
+            'stall_name' => $request->stall_name,
+            'stall_des' => $request->stall_des,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+        ]);
+
+        foreach($request->question_ans as $index=>$data){
+            $answers = Array();
+            $answer_list = $request->question_ans[$index];
+            foreach($answer_list as $key=>$data1){
+                $answers[$key] = $answer_list[$key];
+            }
+            $answers['user_question_id'] = $userQuestionID->id;
+            DB::table('question_answer')->insert($answers);
+        }
+        return response()->json($userQuestionID);
     }
 }
