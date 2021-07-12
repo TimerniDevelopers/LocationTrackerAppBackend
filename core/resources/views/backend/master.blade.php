@@ -22,8 +22,27 @@
     <link rel="stylesheet" href="{{ asset('assets/admin/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/datatable.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/backend/css/toastr.css') }}">
+    <link href="{{ asset('assets/backend/css/select2.min.css') }}" rel="stylesheet" />
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
+
+    <style>
+        .tc-font {
+            font-family: Kalpurush
+        }
+    </style>
+    <style>
+        .select2-container .select2-selection--single {
+            height: 36px !important;
+
+        }
+
+        .select2-container--default .select2-selection--single {
+            border: 1px solid #ced4da;
+            padding: 5px !important;
+        }
+    </style>
+
 <div class="wrapper">
     <!-- Navbar -->
     @include('backend.partials.header')
@@ -103,7 +122,15 @@
     });
 </script>
 
+<script src="{{ asset('assets/backend/js/select2.full.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('.select2').select2();
+        });
+    </script>
+
 @include('backend.partials.notifications')
 @include('backend.partials.js')
+@yield('js')
 </body>
 </html>

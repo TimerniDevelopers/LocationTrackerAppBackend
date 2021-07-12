@@ -15,6 +15,7 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
+            $table->integer('category_id')->nullable();
             $table->integer('type')->default(1)->comment('1=input,2=file,3=mcq');
             $table->text('name')->nullable();
             $table->tinyInteger('status')->default(1)->comment('1=active, 0=inactive');

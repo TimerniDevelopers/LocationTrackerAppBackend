@@ -21,6 +21,32 @@
                      with font-awesome or any other icon font library -->
                 @if(Auth::guard('admin')->user()->user_role == 1)
                 <li class="nav-item has-treeview
+                        {{ ((Request::is('admin/add/question/category')) ? 'menu-open' : '') }}
+                        {{ ((Request::is('admin/manage/question/category')) ? 'menu-open' : '') }}
+                    ">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-question" style="color: green"></i>
+                        <p>
+                            Question Category
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('add.question.category') }}" class="nav-link active">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add Category</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('manage.question.category') }}" class="nav-link active">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Manage Category</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-treeview
                         {{ ((Request::is('admin/add/question')) ? 'menu-open' : '') }}
                         {{ ((Request::is('admin/manage/question')) ? 'menu-open' : '') }}
                     ">
@@ -81,6 +107,32 @@
                 @endif
 
                 @if(Auth::guard('admin')->user()->user_role == 2)
+                <li class="nav-item has-treeview
+                        {{ ((Request::is('admin/add/question/category')) ? 'menu-open' : '') }}
+                        {{ ((Request::is('admin/manage/question/category')) ? 'menu-open' : '') }}
+                    ">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-question" style="color: green"></i>
+                        <p>
+                            Question Category
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('add.question.category') }}" class="nav-link active">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add Category</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('manage.question.category') }}" class="nav-link active">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Manage Category</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-item has-treeview
                         {{ ((Request::is('admin/add/question')) ? 'menu-open' : '') }}
                         {{ ((Request::is('admin/manage/question')) ? 'menu-open' : '') }}

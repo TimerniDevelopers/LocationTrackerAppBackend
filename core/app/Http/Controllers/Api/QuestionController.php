@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\QuestionCollection;
 use App\Models\Question;
 use App\Models\UserQuestion;
 use Illuminate\Http\Request;
@@ -11,7 +12,7 @@ use DB;
 class QuestionController extends Controller
 {
     public function questionList(){
-        $questions = Question::where('status', 1)->get();
+        $questions = Question::where('status', 1)->with('options:question_id,option')->get();
         return response()->json($questions);
     }
     

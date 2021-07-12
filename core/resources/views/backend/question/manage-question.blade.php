@@ -34,6 +34,11 @@
                                         <i class="fas fa-list"></i> Manage Question
                                     </h3>
                                 </div>
+                                <div class="fa-pull-right">
+                                    <a href="{{ route('add.question') }}">
+                                        <button class="btn btn-info"><i class="fa fa-plus"></i><b> Add Question</b></button>
+                                    </a>
+                                </div>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
@@ -41,6 +46,7 @@
                                     <thead>
                                     <tr>
                                         <th style="font-family: Kalpurush">#</th>
+                                        <th style="font-family: Kalpurush">Question Category</th>
                                         <th style="font-family: Kalpurush">Type</th>
                                         <th style="font-family: Kalpurush">Question</th>
                                         <th style="font-family: Kalpurush">Status</th>
@@ -52,6 +58,7 @@
                                     @foreach($questions as $question)
                                         <tr>
                                             <td>{{ $i++ }}</td>
+                                            <td>{{ $question->categoryName->name ?? '' }}</td>
                                             <td>
                                                 @if($question->type == 1)
                                                     Input/Text

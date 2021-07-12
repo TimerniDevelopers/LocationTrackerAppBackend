@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'IndexController@index')->name('index');
+Route::get('/contact', 'IndexController@contact')->name('contact');
+Route::get('/about', 'IndexController@about')->name('about');
 
 Auth::routes();
 
@@ -29,6 +29,13 @@ Route::group(['prefix' => 'admin'], function (){
         Route::get('/get-district', 'ManagerController@getDistrict'); //ajax request
         Route::get('/get-upazila', 'ManagerController@getUpazila'); //ajax request
 
+        /*Question Category*/
+        Route::get('/add/question/category', 'QuestionController@addQuestionCategory')->name('add.question.category');
+        Route::post('/save/question/category', 'QuestionController@saveQuestionCategory')->name('save.question.category');
+        Route::get('/manage/question/category', 'QuestionController@manageQuestionCategory')->name('manage.question.category');
+        Route::get('/edit/question/category/{id}', 'QuestionController@editQuestionCategory')->name('edit.question.category');
+        Route::post('/update/question/category', 'QuestionController@updateQuestionCategory')->name('update.question.category');
+        Route::post('/delete/question/category', 'QuestionController@deleteQuestionCategory')->name('delete.question.category');
         /*Question*/
         Route::get('/add/question', 'QuestionController@addQuestion')->name('add.question');
         Route::post('/save/question', 'QuestionController@saveQuestion')->name('save.question');
