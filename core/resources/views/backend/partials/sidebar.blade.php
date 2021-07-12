@@ -48,7 +48,7 @@
                 </li>
                 <li class="nav-item has-treeview
                         {{ ((Request::is('admin/add/question')) ? 'menu-open' : '') }}
-                        {{ ((Request::is('admin/manage/question')) ? 'menu-open' : '') }}
+                        {{ ((Request::is('admin/question/category/list')) ? 'menu-open' : '') }}
                     ">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-question" style="color: green"></i>
@@ -65,7 +65,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('manage.question') }}" class="nav-link active">
+                            <a href="{{ route('question.category.list') }}" class="nav-link active">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Manage Question</p>
                             </a>
@@ -104,6 +104,16 @@
                         <i class="nav-icon fas fa-home icon-color" style="color: green"></i><p>Show Answer</p>
                     </a>
                 </li>
+                <li class="nav-item has-treeview">
+                    <a href="{{ route('subscriber.list') }}" class="nav-link @if(request()->path() == 'admin/subscriber/list') bg-info @endif">
+                        <i class="nav-icon fas fa-home icon-color" style="color: green"></i><p>Subscriber List</p>
+                    </a>
+                </li>
+                {{-- <li class="nav-item has-treeview">
+                    <a href="{{ route('contact.list') }}" class="nav-link @if(request()->path() == 'admin/contact/list') bg-info @endif">
+                        <i class="nav-icon fas fa-home icon-color" style="color: green"></i><p>Contact List</p>
+                    </a>
+                </li> --}}
                 @endif
 
                 @if(Auth::guard('admin')->user()->user_role == 2)
@@ -135,7 +145,7 @@
                 </li>
                 <li class="nav-item has-treeview
                         {{ ((Request::is('admin/add/question')) ? 'menu-open' : '') }}
-                        {{ ((Request::is('admin/manage/question')) ? 'menu-open' : '') }}
+                        {{ ((Request::is('admin/question/category/list')) ? 'menu-open' : '') }}
                     ">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-question" style="color: green"></i>
@@ -152,7 +162,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('manage.question') }}" class="nav-link active">
+                            <a href="{{ route('question.category.list') }}" class="nav-link active">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Manage Question</p>
                             </a>
@@ -165,6 +175,16 @@
                         <i class="nav-icon fas fa-home icon-color" style="color: green"></i><p>Show Answer</p>
                     </a>
                 </li>
+                <li class="nav-item has-treeview">
+                    <a href="{{ route('subscriber.list') }}" class="nav-link @if(request()->path() == 'admin/subscriber/list') bg-info @endif">
+                        <i class="nav-icon fas fa-home icon-color" style="color: green"></i><p>Subscriber List</p>
+                    </a>
+                </li>
+                {{-- <li class="nav-item has-treeview">
+                    <a href="{{ route('contact.list') }}" class="nav-link @if(request()->path() == 'admin/contact/list') bg-info @endif">
+                        <i class="nav-icon fas fa-home icon-color" style="color: green"></i><p>Contact List</p>
+                    </a>
+                </li> --}}
                 @endif
                 <li class="nav-item has-treeview
                         {{ ((Request::is('admin/add/user')) ? 'menu-open' : '') }}

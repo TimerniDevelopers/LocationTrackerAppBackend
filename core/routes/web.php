@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'IndexController@index')->name('index');
 Route::get('/contact', 'IndexController@contact')->name('contact');
 Route::get('/about', 'IndexController@about')->name('about');
+Route::post('/save/subscribe', 'IndexController@saveSubscribe')->name('save.subscribe');
+Route::post('/save/contact', 'IndexController@saveContact')->name('save.contact');
 
 Auth::routes();
 
@@ -39,7 +41,8 @@ Route::group(['prefix' => 'admin'], function (){
         /*Question*/
         Route::get('/add/question', 'QuestionController@addQuestion')->name('add.question');
         Route::post('/save/question', 'QuestionController@saveQuestion')->name('save.question');
-        Route::get('/manage/question', 'QuestionController@manageQuestion')->name('manage.question');
+        Route::get('/question/category/list', 'QuestionController@questionCategoryList')->name('question.category.list');
+        Route::get('/manage/question/{id}', 'QuestionController@manageQuestion')->name('manage.question');
         Route::get('/edit/question/{id}', 'QuestionController@editQuestion')->name('edit.question');
         Route::post('/update/question', 'QuestionController@updateQuestion')->name('update.question');
         Route::post('/delete/question', 'QuestionController@deleteQuestion')->name('delete.question');
@@ -60,5 +63,10 @@ Route::group(['prefix' => 'admin'], function (){
         Route::post('/delete/user', 'UserController@deleteUser')->name('delete.user');
 
         Route::get('/show/answer', 'QuestionController@showAnswer')->name('show.answer');
+        /* Subscriber List */
+        Route::get('/subscriber/list', 'AdminController@subscriberList')->name('subscriber.list');
+        Route::post('/delete/subscriber', 'AdminController@deleteSubscriber')->name('delete.subscriber');
+        /* Contact List */
+        Route::get('/contact/list', 'AdminController@contactList')->name('contact.list');
     });
 });

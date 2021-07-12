@@ -72,9 +72,14 @@ class QuestionController extends Controller
         Question::saveQuestionData($request);
         return back()->withSuccess('Save Successfully');
     }
-    public function manageQuestion()
+    public function questionCategoryList()
     {
-        $questions = Question::orderBy('id', 'desc')->get();
+        $categories = QuestionCategory::where('status', 1)->orderBy('id', 'desc')->get();
+        return view('backend.question.category-list', compact('categories'));
+    }
+    public function manageQuestion($id)
+    {
+        $questions = Question::where('category_id', $id)->orderBy('id', 'desc')->get();
         return view('backend.question.manage-question', compact('questions'));
     }
     public function editQuestion($id)

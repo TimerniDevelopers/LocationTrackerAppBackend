@@ -9,7 +9,7 @@
         <!-- Content Header (Page header) -->
         <div class="content-header">
             <div class="container-fluid">
-{{--                @include('admin.common.slider')--}}
+               @include('backend.partials.slider')
             </div>
             <!-- /.container-fluid -->
         </div>
@@ -19,10 +19,8 @@
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
-
                     <div class="col-lg-12 ">
-
-                        <div class="top-recharge">
+                        <div class="top-recharge mb-3">
                             <div class="d-flex-small">
                                 <div class="bord_icon">
                                     <a class="d-flex align-items-center" href="#">
@@ -41,6 +39,7 @@
                                 </div>
                             </div>
                         </div>
+
                         @if(Auth::guard('admin')->user()->user_role == 1)
                             <div class="piechartResponsive" id="piechart2" ></div>
                             @include('backend.questionAnswer.admin-analytics')

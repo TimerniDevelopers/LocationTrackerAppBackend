@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{ asset('assets/admin/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/admin/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/datatable.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/common/owl-carousel/css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/backend/css/toastr.css') }}">
     <link href="{{ asset('assets/backend/css/select2.min.css') }}" rel="stylesheet" />
 </head>

@@ -31,6 +31,7 @@
       <link rel="stylesheet" href="{{ asset('assets/frontend/css/footer.css') }}">
       <!--=== Responsive Css ===-->
       <link rel="stylesheet" href="{{ asset('assets/frontend/css/responsive.css') }}">
+      <link rel="stylesheet" href="{{ asset('assets/backend/css/toastr.css') }}">
 
    </head>
    <body>
@@ -39,19 +40,19 @@
       <!--====== Header Start ======-->
 
       <!--====== Hero Start ======-->
-      
+
         @yield('content')
         <div id="contact">
             @yield('contactPage')
         </div>
-      
+
       <!--====== Newsletter End ======-->
 
       <!--====== Footer Start ======-->
       @include('frontend.partials.footer')
 
       <!--====== Footer End ======-->
-      
+
       <!--=== All Plugin ===-->
       <!--============= Jquery-3.6.0 =============-->
       <script type="text/javascript" src="{{ asset('assets/frontend/js/jquery-3.6.0.min.js') }}"></script>
@@ -60,7 +61,7 @@
       <!-- Chart.js/3.2.0/ -->
       <script src="{{ asset('assets/frontend/js/chart.js') }}"></script>
 
-      
+
       <!--=== Bootstrap4 js ===-->
       <script type="text/javascript" src="{{ asset('assets/frontend/js/bootstrap.min.js') }}"></script>
 
@@ -73,13 +74,14 @@
       <script src="{{ asset('assets/frontend/js/wow.min.js') }}"></script>
 
       <!--=== Main js ===-->
-      <script type="text/javascript" src="{{ asset('assets/frontend/js/main.js') }}"></script> 
+      <script type="text/javascript" src="{{ asset('assets/frontend/js/main.js') }}"></script>
       <script>
         new WOW().init();
         AOS.init();
 
-      </script> 
-
+      </script>
+<script src="{{ asset('assets/backend/js/toastr.js') }}"></script>
+    @include('backend.partials.notifications')
 <script>
   function myContact(e) {
     let url = this.href;
@@ -92,6 +94,6 @@
     $("#home").hide(1000);
 });
   </script>
-  
+
    </body>
 </html>

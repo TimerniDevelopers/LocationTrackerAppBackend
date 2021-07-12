@@ -541,12 +541,13 @@
                                 <div class="py-3">
                                     <p>Contact with our professionals </p>
                                 </div>
-                                <form action="">
+
+                                <form action="{{ route('save.subscribe') }}" method="POST">
                                     <div class="input-group search-input">
-                                        <input class="form-control py-2 border-right-0 border" id="example-search-input"
-                                            placeholder=" Write your email ">
+                                        @csrf
+                                        <input name="email" type="email" required class="form-control py-2 border-right-0 border" id="example-search-input" placeholder=" Write your email ">
                                         <span class="input-group-append">
-                                            <button class="btn btn-append custom-btn" type="button">
+                                            <button type="submit" class="btn btn-append custom-btn">
                                                 <i class="fa fa-search"></i>
                                             </button>
                                         </span>

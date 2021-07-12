@@ -1,7 +1,7 @@
 @extends('backend.master')
 
 @section('title')
-    Manage Question
+    Subscriber List
 @endsection
 
 @section('content')
@@ -11,12 +11,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6" style="font-family: kalpurush">
-                        <h1 class="m-0 text-dark">Manage Question</h1>
+                        <h1 class="m-0 text-dark">Subscriber List</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
-                            <li class="breadcrumb-item active">Manage Question</li>
+                            <li class="breadcrumb-item active">Subscriber List</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -31,13 +31,8 @@
                             <div class="card-header">
                                 <div class="fa-pull-left">
                                     <h3 class="card-title">
-                                        <i class="fas fa-list"></i> Manage Question
+                                        <i class="fas fa-list"></i> Subscriber List
                                     </h3>
-                                </div>
-                                <div class="fa-pull-right">
-                                    <a href="{{ route('add.question') }}">
-                                        <button class="btn btn-info"><i class="fa fa-plus"></i><b> Add Question</b></button>
-                                    </a>
                                 </div>
                             </div>
                             <!-- /.card-header -->
@@ -46,62 +41,37 @@
                                     <thead>
                                     <tr>
                                         <th style="font-family: Kalpurush">#</th>
-                                        <th style="font-family: Kalpurush">Question Category</th>
-                                        <th style="font-family: Kalpurush">Type</th>
-                                        <th style="font-family: Kalpurush">Question</th>
-                                        <th style="font-family: Kalpurush">Status</th>
+                                        <th style="font-family: Kalpurush">Email</th>
                                         <th style="font-family: Kalpurush">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @php($i=1)
-                                    @foreach($questions as $question)
+                                    @foreach($subscribers as $subscriber)
                                         <tr>
                                             <td>{{ $i++ }}</td>
-                                            <td>{{ $question->categoryName->name ?? '' }}</td>
+                                            <td>{{ $subscriber->email }}</td>
                                             <td>
-                                                @if($question->type == 1)
-                                                    Input/Text
-                                                @elseif($question->type == 2)
-                                                    Dropdown
-                                                @elseif($question->type == 3)
-                                                    MCQ
-                                                @elseif($question->type == 4)
-                                                    Checkbox
-                                                @endif
-                                            </td>
-                                            <td>{{ $question->name }}</td>
-                                            <td>
-                                                @if($question->status == 1)
-                                                    <button class="btn btn-sm btn-success"><span class="fa fa-check"></span> Active</button>
-                                                @else
-                                                    <button class="btn btn-sm btn-danger"><span class="fa fa-ban"></span> Inactive</button>
-                                                @endif
-                                            </td>
-                                            <td>
-                                                <a href="{{ route('edit.question', ['id'=>$question->id]) }}" class="btn btn-primary text-white">
-                                                    <span class="fa fa-edit"></span> Edit
-                                                </a>
-                                                <a href="#deleteQuestion-{{ $question->id }}" data-toggle="modal" class="btn btn-danger text-white">
+                                                <a href="#deleteSubscriber-{{ $subscriber->id }}" data-toggle="modal" class="btn btn-danger text-white">
                                                     <span class="fa fa-trash"></span> Delete
                                                 </a>
                                             </td>
                                         </tr>
-                                        <div class="modal fade" id="deleteQuestion-{{ $question->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout"
+                                        <div class="modal fade" id="deleteSubscriber-{{ $subscriber->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout"
                                              aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
-                                                    <form action="{{ route('delete.question') }}" method="POST">
+                                                    <form action="{{ route('delete.subscriber') }}" method="POST">
                                                         @csrf
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabelLogout">Delete Question!</h5>
+                                                            <h5 class="modal-title" id="exampleModalLabelLogout">Delete Subscriber!</h5>
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
                                                             <p>Are you sure you want to delete this?</p>
-                                                            <input type="hidden" name="id" value="{{ $question->id }}">
+                                                            <input type="hidden" name="id" value="{{ $subscriber->id }}">
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>

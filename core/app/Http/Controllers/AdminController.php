@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin\Admin;
+use App\Models\Contact;
 use App\Models\Question;
+use App\Models\QuestionCategory;
+use App\Models\Subscribe;
+use App\Models\User;
 use App\Models\UserQuestion;
 use Illuminate\Http\Request;
 use Auth;
@@ -43,7 +47,29 @@ class AdminController extends Controller
     public function adminDashboard(){
         $title = 'Admin Dashboard';
         $questions = Question::where('status', 1)->get();
-        return view('backend.dashboard', compact('title', 'questions'));
+        $totalUser = User::count();
+        $totalCategory = QuestionCategory::where('status', 1)->count();
+        $totalSurvey = UserQuestion::count();
+        $totalQuestion = Question::count();
+        return view('backend.dashboard', compact('title', 'questions', 'totalUser', 'totalCategory', 'totalSurvey', 'totalQuestion'));
+    }
+
+    /* Subscriber List */
+    public function subscriberList(){
+        $subscribers = Subscribe::orderBy('id', 'desc')->get();
+        return view('backend.subscribe.subscribe-list', compact('subscribers'));
+    }
+    public function deleteSubscriber(Request $request){
+        $subsciber = Subscribe::findorFail($request->id);
+        if($subsciber != ''){
+            $subsciber->delete();
+        }
+        return back()->withSuccess('Delete Successful');
+    }
+    /* Contact List */
+    public function contactList(){
+        $contacts = Contact::orderBy('id', 'desc')->get();
+        return view('backend.contact.contact-list');
     }
 
     public function adminRegister(){
