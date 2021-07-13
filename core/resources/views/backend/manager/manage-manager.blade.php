@@ -34,6 +34,13 @@
                                         <i class="fas fa-list"></i> Manage Manager
                                     </h3>
                                 </div>
+
+                                <div class="fa-pull-right">
+                                    <a href="{{ route('add.manager') }}">
+                                        <button class="btn btn-info"><i class="fa fa-plus"></i><b> Add Manager</b></button>
+                                    </a>
+                                </div>
+
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
