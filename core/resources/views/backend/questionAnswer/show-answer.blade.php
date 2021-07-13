@@ -34,6 +34,13 @@
                                         <i class="fas fa-list"></i> Show Answer
                                     </h3>
                                 </div>
+
+                                <div class="fa-pull-right">
+                                    <a href="{{ route('show.maps.all') }}">
+                                        <button class="btn btn-light"><b>Data Collected Maps</b></button>
+                                    </a>
+                                </div>
+
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
@@ -45,8 +52,6 @@
                                         <th style="font-family: Kalpurush">Stall Name</th>
                                         <th style="font-family: Kalpurush">Date</th>
                                         <th style="font-family: Kalpurush">Time</th>
-                                        <th style="font-family: Kalpurush">Latitude</th>
-                                        <th style="font-family: Kalpurush">Longitude</th>
                                         <th style="font-family: Kalpurush">Action</th>
                                     </tr>
                                     </thead>
@@ -64,12 +69,13 @@
                                             
                                             <td>{{ date('h:i A', strtotime($temp[1])) }}</td>
                                             
-                                            <td>{{ $answer->latitude }}</td>
-                                            <td>{{ $answer->longitude }}</td>
-                                            
-                                            <td> <a href="{{ route('view_answer', ['id'=>$answer->id]) }}" class="btn btn-primary text-white">
+                                            <td> <a href="{{ route('show.maps', ['id'=>$answer->id]) }}" class="btn btn-primary text-white">
+                                                    <span class="fas fa-eye"></span> Show Map
+                                                </a>
+                                                <a href="{{ route('view_answer', ['id'=>$answer->id]) }}" class="btn btn-primary text-white">
                                                     <span class="fas fa-eye"></span> Show Data
-                                                </a></td>
+                                                </a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                     </tbody>

@@ -128,4 +128,17 @@ class QuestionController extends Controller
         
         return view('backend.questionAnswer.single-answer', compact('questions', 'answer'));
     }
+
+    public function showMaps($id)
+    {
+        $map = UserQuestion::findorFail($id);
+        return view('backend.questionAnswer.maps', compact('map'));
+    }
+
+    public function showMapsAll()
+    {
+        
+        $maps = UserQuestion::get();
+        return view('backend.questionAnswer.all_maps', compact('maps'));
+    }
 }
