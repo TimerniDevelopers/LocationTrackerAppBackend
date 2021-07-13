@@ -68,5 +68,10 @@ Route::group(['prefix' => 'admin'], function (){
         Route::post('/delete/subscriber', 'AdminController@deleteSubscriber')->name('delete.subscriber');
         /* Contact List */
         Route::get('/contact/list', 'AdminController@contactList')->name('contact.list');
+
+
+        // answer
+        Route::get('/show/answer', 'QuestionController@showAnswer')->name('show.answer');
+        Route::get('/view/answer/{id}', 'QuestionController@viewAnswer')->name('view_answer');
     });
 });
