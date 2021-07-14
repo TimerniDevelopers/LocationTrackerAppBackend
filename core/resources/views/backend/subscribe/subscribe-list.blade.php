@@ -53,7 +53,7 @@
                                             <td>{{ $subscriber->email }}</td>
                                             <td>
                                                 <a href="#deleteSubscriber-{{ $subscriber->id }}" data-toggle="modal" class="btn btn-danger text-white">
-                                                    <span class="fa fa-trash"></span> Delete
+                                                    <span class="fa fa-trash"></span> 
                                                 </a>
                                             </td>
                                         </tr>

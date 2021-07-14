@@ -15,7 +15,7 @@ class QuestionController extends Controller
         $questions = Question::where('status', 1)->with('options:question_id,option')->get();
         return response()->json($questions);
     }
-    
+
     public function questionSubmit(Request $request){
         $userQuestionID = UserQuestion::create([
             'user_id' => $request->user_id,

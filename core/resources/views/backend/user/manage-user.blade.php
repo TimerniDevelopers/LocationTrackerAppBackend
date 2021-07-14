@@ -67,10 +67,10 @@
                                             </td>
                                             <td>
                                                 <a href="{{ route('edit.user', ['id'=>$user->id]) }}" class="btn btn-primary text-white">
-                                                    <span class="fa fa-edit"></span> Edit
+                                                    <span class="fa fa-edit"></span>
                                                 </a>
                                                 <a href="#deleteUser-{{ $user->id }}" data-toggle="modal" class="btn btn-danger text-white">
-                                                    <span class="fa fa-trash"></span> Delete
+                                                    <span class="fa fa-trash"></span> 
                                                 </a>
                                             </td>
                                         </tr>

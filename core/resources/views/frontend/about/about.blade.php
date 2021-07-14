@@ -181,7 +181,7 @@ About | Dcotrack
             </div>
             <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
                 <div class="rcord-img">
-                    <img src="{{ asset('assets/frontend/img/Dectrack-illustration-01.png') }}" alt="recod" loading="lazy">
+                    <img src="{{ asset('assets/frontend/img/Record audiovisual.png') }}" alt="recod" loading="lazy">
                 </div>
             </div>
         </div>

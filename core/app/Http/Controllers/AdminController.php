@@ -6,6 +6,7 @@ use App\Models\Admin\Admin;
 use App\Models\Contact;
 use App\Models\Question;
 use App\Models\QuestionCategory;
+use App\Models\RequestDemo;
 use App\Models\Subscribe;
 use App\Models\User;
 use App\Models\UserQuestion;
@@ -69,7 +70,26 @@ class AdminController extends Controller
     /* Contact List */
     public function contactList(){
         $contacts = Contact::orderBy('id', 'desc')->get();
-        return view('backend.contact.contact-list');
+        return view('backend.contact.contact-list', compact('contacts'));
+    }
+    public function deleteContact(Request $request){
+        $contact = Contact::findorFail($request->id);
+        if($contact != ''){
+            $contact->delete();
+        }
+        return back()->withSuccess('Delete Successful');
+    }
+    /* Request Demo */
+    public function requestDemoList(){
+        $requestDemos = RequestDemo::orderBy('id', 'desc')->get();
+        return view('backend.contact.request-demo-list', compact('requestDemos'));
+    }
+    public function deleteRequestDemo(Request $request){
+        $requestDemo = RequestDemo::findorFail($request->id);
+        if($requestDemo != ''){
+            $requestDemo->delete();
+        }
+        return back()->withSuccess('Delete Successful');
     }
 
     public function adminRegister(){
@@ -102,7 +122,7 @@ class AdminController extends Controller
 
     public function adminLogout(){
         Auth::guard('admin')->logout();
-        return redirect()->route('admin.login');
+        return redirect()->route('index');
     }
 
     /*Profile*/

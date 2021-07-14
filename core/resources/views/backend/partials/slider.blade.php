@@ -18,7 +18,7 @@
         <div class="single_research_card first">
             <div class="avater1 bg-1">
                 <div class="circle-das text-center">
-                    <i class="fa fa-user fa-2x"></i>
+                    <i class="fa fa-list-alt fa-2x"></i>
                 </div>
             </div>
             <div class="services-single_research_card_info">
@@ -33,7 +33,7 @@
         <div class="single_research_card first">
             <div class="avater1 bg-1">
                 <div class="circle-das text-center">
-                    <i class="fa fa-user fa-2x"></i>
+                    <i class="fa fa-poll fa-2x"></i>
                 </div>
             </div>
             <div class="services-single_research_card_info">
@@ -48,7 +48,7 @@
         <div class="single_research_card first">
             <div class="avater1 bg-1">
                 <div class="circle-das text-center">
-                    <i class="fa fa-user fa-2x"></i>
+                    <i class="fa fa-question fa-2x"></i>
                 </div>
             </div>
             <div class="services-single_research_card_info">

@@ -109,11 +109,32 @@
                         <i class="nav-icon fas fa-home icon-color" style="color: green"></i><p>Subscriber List</p>
                     </a>
                 </li>
-                {{-- <li class="nav-item has-treeview">
-                    <a href="{{ route('contact.list') }}" class="nav-link @if(request()->path() == 'admin/contact/list') bg-info @endif">
-                        <i class="nav-icon fas fa-home icon-color" style="color: green"></i><p>Contact List</p>
+                <li class="nav-item has-treeview
+                        {{ ((Request::is('admin/contact/list')) ? 'menu-open' : '') }}
+                        {{ ((Request::is('admin/request/demo')) ? 'menu-open' : '') }}
+                    ">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-user" style="color: green"></i>
+                        <p>
+                            Contact
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
                     </a>
-                </li> --}}
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('contact.list') }}" class="nav-link active">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Contact List</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('request.demo') }}" class="nav-link active">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Request Demo</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 @endif
 
                 @if(Auth::guard('admin')->user()->user_role == 2)
@@ -180,11 +201,32 @@
                         <i class="nav-icon fas fa-home icon-color" style="color: green"></i><p>Subscriber List</p>
                     </a>
                 </li>
-                {{-- <li class="nav-item has-treeview">
-                    <a href="{{ route('contact.list') }}" class="nav-link @if(request()->path() == 'admin/contact/list') bg-info @endif">
-                        <i class="nav-icon fas fa-home icon-color" style="color: green"></i><p>Contact List</p>
+                <li class="nav-item has-treeview
+                        {{ ((Request::is('admin/contact/list')) ? 'menu-open' : '') }}
+                        {{ ((Request::is('admin/request/demo')) ? 'menu-open' : '') }}
+                    ">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-user" style="color: green"></i>
+                        <p>
+                            Contact
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
                     </a>
-                </li> --}}
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('contact.list') }}" class="nav-link active">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Contact List</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('request.demo') }}" class="nav-link active">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Request Demo</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 @endif
                 <li class="nav-item has-treeview
                         {{ ((Request::is('admin/add/user')) ? 'menu-open' : '') }}
