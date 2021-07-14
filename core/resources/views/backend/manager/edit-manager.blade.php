@@ -41,6 +41,17 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6">
+                                            @if($manager->image)
+                                                <a href="{{ asset($manager->image) }}" target="_blank">
+                                                    <img src="{{ asset($manager->image) }}" alt="{{ $manager->first_name }}" style="max-height: 50px;max-width: 50px">
+                                                </a>
+                                            @endif
+                                            <div class="form-group">
+                                                <label>Image <span class='required-star'></span></label>
+                                                <input type="file" name="image" class="form-control {{ $errors->has('image') ? ' is-invalid' : '' }}" value="{{ old('image') }}" accept="image/*" autofocus>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Profession <span class='required-star'></span></label>
                                                 <input type="text" name="profession" class="form-control {{ $errors->has('profession') ? ' is-invalid' : '' }}" value="{{ $manager->profession }}" autofocus>

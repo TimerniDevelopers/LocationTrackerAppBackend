@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Jun 22, 2021 at 04:23 AM
--- Server version: 5.6.41-84.1
--- PHP Version: 7.3.28
+-- Host: 127.0.0.1
+-- Generation Time: Jul 14, 2021 at 08:10 AM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 7.4.20
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `timetech_location`
+-- Database: `location`
 --
 
 -- --------------------------------------------------------
@@ -37,11 +36,11 @@ CREATE TABLE `admins` (
   `last_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `phone` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `profession` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `address` text COLLATE utf8mb4_unicode_ci,
+  `address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '0=inactive, 1=active',
+  `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=inactive, 1=active',
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -53,6 +52,286 @@ CREATE TABLE `admins` (
 
 INSERT INTO `admins` (`id`, `upazilla_id`, `union_id`, `user_role`, `first_name`, `last_name`, `phone`, `profession`, `address`, `email`, `email_verified_at`, `password`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, NULL, NULL, 1, 'Admin', NULL, NULL, NULL, NULL, '', NULL, '$2y$10$oxdZxPuLd0GRr7ZUsfci1OGMa3Prk4pYrV2w79JfxT2emf/Oz5hqK', 1, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contacts`
+--
+
+CREATE TABLE `contacts` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `message` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `countries`
+--
+
+CREATE TABLE `countries` (
+  `id` int(11) NOT NULL,
+  `country_code` varchar(2) NOT NULL DEFAULT '',
+  `country_name` varchar(100) NOT NULL DEFAULT ''
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `countries`
+--
+
+INSERT INTO `countries` (`id`, `country_code`, `country_name`) VALUES
+(1, 'AF', 'Afghanistan'),
+(2, 'AL', 'Albania'),
+(3, 'DZ', 'Algeria'),
+(4, 'DS', 'American Samoa'),
+(5, 'AD', 'Andorra'),
+(6, 'AO', 'Angola'),
+(7, 'AI', 'Anguilla'),
+(8, 'AQ', 'Antarctica'),
+(9, 'AG', 'Antigua and Barbuda'),
+(10, 'AR', 'Argentina'),
+(11, 'AM', 'Armenia'),
+(12, 'AW', 'Aruba'),
+(13, 'AU', 'Australia'),
+(14, 'AT', 'Austria'),
+(15, 'AZ', 'Azerbaijan'),
+(16, 'BS', 'Bahamas'),
+(17, 'BH', 'Bahrain'),
+(18, 'BD', 'Bangladesh'),
+(19, 'BB', 'Barbados'),
+(20, 'BY', 'Belarus'),
+(21, 'BE', 'Belgium'),
+(22, 'BZ', 'Belize'),
+(23, 'BJ', 'Benin'),
+(24, 'BM', 'Bermuda'),
+(25, 'BT', 'Bhutan'),
+(26, 'BO', 'Bolivia'),
+(27, 'BA', 'Bosnia and Herzegovina'),
+(28, 'BW', 'Botswana'),
+(29, 'BV', 'Bouvet Island'),
+(30, 'BR', 'Brazil'),
+(31, 'IO', 'British Indian Ocean Territory'),
+(32, 'BN', 'Brunei Darussalam'),
+(33, 'BG', 'Bulgaria'),
+(34, 'BF', 'Burkina Faso'),
+(35, 'BI', 'Burundi'),
+(36, 'KH', 'Cambodia'),
+(37, 'CM', 'Cameroon'),
+(38, 'CA', 'Canada'),
+(39, 'CV', 'Cape Verde'),
+(40, 'KY', 'Cayman Islands'),
+(41, 'CF', 'Central African Republic'),
+(42, 'TD', 'Chad'),
+(43, 'CL', 'Chile'),
+(44, 'CN', 'China'),
+(45, 'CX', 'Christmas Island'),
+(46, 'CC', 'Cocos (Keeling) Islands'),
+(47, 'CO', 'Colombia'),
+(48, 'KM', 'Comoros'),
+(49, 'CD', 'Democratic Republic of the Congo'),
+(50, 'CG', 'Republic of Congo'),
+(51, 'CK', 'Cook Islands'),
+(52, 'CR', 'Costa Rica'),
+(53, 'HR', 'Croatia (Hrvatska)'),
+(54, 'CU', 'Cuba'),
+(55, 'CY', 'Cyprus'),
+(56, 'CZ', 'Czech Republic'),
+(57, 'DK', 'Denmark'),
+(58, 'DJ', 'Djibouti'),
+(59, 'DM', 'Dominica'),
+(60, 'DO', 'Dominican Republic'),
+(61, 'TP', 'East Timor'),
+(62, 'EC', 'Ecuador'),
+(63, 'EG', 'Egypt'),
+(64, 'SV', 'El Salvador'),
+(65, 'GQ', 'Equatorial Guinea'),
+(66, 'ER', 'Eritrea'),
+(67, 'EE', 'Estonia'),
+(68, 'ET', 'Ethiopia'),
+(69, 'FK', 'Falkland Islands (Malvinas)'),
+(70, 'FO', 'Faroe Islands'),
+(71, 'FJ', 'Fiji'),
+(72, 'FI', 'Finland'),
+(73, 'FR', 'France'),
+(74, 'FX', 'France, Metropolitan'),
+(75, 'GF', 'French Guiana'),
+(76, 'PF', 'French Polynesia'),
+(77, 'TF', 'French Southern Territories'),
+(78, 'GA', 'Gabon'),
+(79, 'GM', 'Gambia'),
+(80, 'GE', 'Georgia'),
+(81, 'DE', 'Germany'),
+(82, 'GH', 'Ghana'),
+(83, 'GI', 'Gibraltar'),
+(84, 'GK', 'Guernsey'),
+(85, 'GR', 'Greece'),
+(86, 'GL', 'Greenland'),
+(87, 'GD', 'Grenada'),
+(88, 'GP', 'Guadeloupe'),
+(89, 'GU', 'Guam'),
+(90, 'GT', 'Guatemala'),
+(91, 'GN', 'Guinea'),
+(92, 'GW', 'Guinea-Bissau'),
+(93, 'GY', 'Guyana'),
+(94, 'HT', 'Haiti'),
+(95, 'HM', 'Heard and Mc Donald Islands'),
+(96, 'HN', 'Honduras'),
+(97, 'HK', 'Hong Kong'),
+(98, 'HU', 'Hungary'),
+(99, 'IS', 'Iceland'),
+(100, 'IN', 'India'),
+(101, 'IM', 'Isle of Man'),
+(102, 'ID', 'Indonesia'),
+(103, 'IR', 'Iran (Islamic Republic of)'),
+(104, 'IQ', 'Iraq'),
+(105, 'IE', 'Ireland'),
+(106, 'IL', 'Israel'),
+(107, 'IT', 'Italy'),
+(108, 'CI', 'Ivory Coast'),
+(109, 'JE', 'Jersey'),
+(110, 'JM', 'Jamaica'),
+(111, 'JP', 'Japan'),
+(112, 'JO', 'Jordan'),
+(113, 'KZ', 'Kazakhstan'),
+(114, 'KE', 'Kenya'),
+(115, 'KI', 'Kiribati'),
+(116, 'KP', 'Korea, Democratic People\'s Republic of'),
+(117, 'KR', 'Korea, Republic of'),
+(118, 'XK', 'Kosovo'),
+(119, 'KW', 'Kuwait'),
+(120, 'KG', 'Kyrgyzstan'),
+(121, 'LA', 'Lao People\'s Democratic Republic'),
+(122, 'LV', 'Latvia'),
+(123, 'LB', 'Lebanon'),
+(124, 'LS', 'Lesotho'),
+(125, 'LR', 'Liberia'),
+(126, 'LY', 'Libyan Arab Jamahiriya'),
+(127, 'LI', 'Liechtenstein'),
+(128, 'LT', 'Lithuania'),
+(129, 'LU', 'Luxembourg'),
+(130, 'MO', 'Macau'),
+(131, 'MK', 'North Macedonia'),
+(132, 'MG', 'Madagascar'),
+(133, 'MW', 'Malawi'),
+(134, 'MY', 'Malaysia'),
+(135, 'MV', 'Maldives'),
+(136, 'ML', 'Mali'),
+(137, 'MT', 'Malta'),
+(138, 'MH', 'Marshall Islands'),
+(139, 'MQ', 'Martinique'),
+(140, 'MR', 'Mauritania'),
+(141, 'MU', 'Mauritius'),
+(142, 'TY', 'Mayotte'),
+(143, 'MX', 'Mexico'),
+(144, 'FM', 'Micronesia, Federated States of'),
+(145, 'MD', 'Moldova, Republic of'),
+(146, 'MC', 'Monaco'),
+(147, 'MN', 'Mongolia'),
+(148, 'ME', 'Montenegro'),
+(149, 'MS', 'Montserrat'),
+(150, 'MA', 'Morocco'),
+(151, 'MZ', 'Mozambique'),
+(152, 'MM', 'Myanmar'),
+(153, 'NA', 'Namibia'),
+(154, 'NR', 'Nauru'),
+(155, 'NP', 'Nepal'),
+(156, 'NL', 'Netherlands'),
+(157, 'AN', 'Netherlands Antilles'),
+(158, 'NC', 'New Caledonia'),
+(159, 'NZ', 'New Zealand'),
+(160, 'NI', 'Nicaragua'),
+(161, 'NE', 'Niger'),
+(162, 'NG', 'Nigeria'),
+(163, 'NU', 'Niue'),
+(164, 'NF', 'Norfolk Island'),
+(165, 'MP', 'Northern Mariana Islands'),
+(166, 'NO', 'Norway'),
+(167, 'OM', 'Oman'),
+(168, 'PK', 'Pakistan'),
+(169, 'PW', 'Palau'),
+(170, 'PS', 'Palestine'),
+(171, 'PA', 'Panama'),
+(172, 'PG', 'Papua New Guinea'),
+(173, 'PY', 'Paraguay'),
+(174, 'PE', 'Peru'),
+(175, 'PH', 'Philippines'),
+(176, 'PN', 'Pitcairn'),
+(177, 'PL', 'Poland'),
+(178, 'PT', 'Portugal'),
+(179, 'PR', 'Puerto Rico'),
+(180, 'QA', 'Qatar'),
+(181, 'RE', 'Reunion'),
+(182, 'RO', 'Romania'),
+(183, 'RU', 'Russian Federation'),
+(184, 'RW', 'Rwanda'),
+(185, 'KN', 'Saint Kitts and Nevis'),
+(186, 'LC', 'Saint Lucia'),
+(187, 'VC', 'Saint Vincent and the Grenadines'),
+(188, 'WS', 'Samoa'),
+(189, 'SM', 'San Marino'),
+(190, 'ST', 'Sao Tome and Principe'),
+(191, 'SA', 'Saudi Arabia'),
+(192, 'SN', 'Senegal'),
+(193, 'RS', 'Serbia'),
+(194, 'SC', 'Seychelles'),
+(195, 'SL', 'Sierra Leone'),
+(196, 'SG', 'Singapore'),
+(197, 'SK', 'Slovakia'),
+(198, 'SI', 'Slovenia'),
+(199, 'SB', 'Solomon Islands'),
+(200, 'SO', 'Somalia'),
+(201, 'ZA', 'South Africa'),
+(202, 'GS', 'South Georgia South Sandwich Islands'),
+(203, 'SS', 'South Sudan'),
+(204, 'ES', 'Spain'),
+(205, 'LK', 'Sri Lanka'),
+(206, 'SH', 'St. Helena'),
+(207, 'PM', 'St. Pierre and Miquelon'),
+(208, 'SD', 'Sudan'),
+(209, 'SR', 'Suriname'),
+(210, 'SJ', 'Svalbard and Jan Mayen Islands'),
+(211, 'SZ', 'Swaziland'),
+(212, 'SE', 'Sweden'),
+(213, 'CH', 'Switzerland'),
+(214, 'SY', 'Syrian Arab Republic'),
+(215, 'TW', 'Taiwan'),
+(216, 'TJ', 'Tajikistan'),
+(217, 'TZ', 'Tanzania, United Republic of'),
+(218, 'TH', 'Thailand'),
+(219, 'TG', 'Togo'),
+(220, 'TK', 'Tokelau'),
+(221, 'TO', 'Tonga'),
+(222, 'TT', 'Trinidad and Tobago'),
+(223, 'TN', 'Tunisia'),
+(224, 'TR', 'Turkey'),
+(225, 'TM', 'Turkmenistan'),
+(226, 'TC', 'Turks and Caicos Islands'),
+(227, 'TV', 'Tuvalu'),
+(228, 'UG', 'Uganda'),
+(229, 'UA', 'Ukraine'),
+(230, 'AE', 'United Arab Emirates'),
+(231, 'GB', 'United Kingdom'),
+(232, 'US', 'United States'),
+(233, 'UM', 'United States minor outlying islands'),
+(234, 'UY', 'Uruguay'),
+(235, 'UZ', 'Uzbekistan'),
+(236, 'VU', 'Vanuatu'),
+(237, 'VA', 'Vatican City State'),
+(238, 'VE', 'Venezuela'),
+(239, 'VN', 'Vietnam'),
+(240, 'VG', 'Virgin Islands (British)'),
+(241, 'VI', 'Virgin Islands (U.S.)'),
+(242, 'WF', 'Wallis and Futuna Islands'),
+(243, 'EH', 'Western Sahara'),
+(244, 'YE', 'Yemen'),
+(245, 'ZM', 'Zambia'),
+(246, 'ZW', 'Zimbabwe');
 
 -- --------------------------------------------------------
 
@@ -180,7 +459,7 @@ CREATE TABLE `failed_jobs` (
   `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -204,7 +483,12 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (7, '2014_10_12_100000_create_password_resets_table', 1),
 (8, '2019_08_19_000000_create_failed_jobs_table', 1),
 (9, '2021_05_25_035510_create_admins_table', 1),
-(11, '2021_05_29_122540_create_questions_table', 2);
+(11, '2021_05_29_122540_create_questions_table', 2),
+(12, '2021_07_11_140121_create_question_options_table', 3),
+(13, '2021_07_12_121752_create_question_categories_table', 4),
+(14, '2021_07_12_171339_create_subscribes_table', 5),
+(19, '2021_07_12_171439_create_contacts_table', 6),
+(23, '2021_07_13_162041_create_request_demos_table', 7);
 
 -- --------------------------------------------------------
 
@@ -226,14 +510,10 @@ CREATE TABLE `password_resets` (
 
 CREATE TABLE `questions` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `type` int(11) NOT NULL DEFAULT '1' COMMENT '1=input,2=dropdown,3=mcq',
-  `name` text COLLATE utf8mb4_unicode_ci,
-  `option1` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `option2` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `option3` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `option4` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `details` text COLLATE utf8mb4_unicode_ci,
-  `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '1=active, 0=inactive',
+  `category_id` int(11) DEFAULT NULL,
+  `type` int(11) NOT NULL DEFAULT 1 COMMENT '1=input,2=dropdown,3=mcq,4=checkbox',
+  `name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=active, 0=inactive',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -242,13 +522,16 @@ CREATE TABLE `questions` (
 -- Dumping data for table `questions`
 --
 
-INSERT INTO `questions` (`id`, `type`, `name`, `option1`, `option2`, `option3`, `option4`, `details`, `status`, `created_at`, `updated_at`) VALUES
-(2, 1, 'What are the products required?', NULL, NULL, NULL, NULL, NULL, 1, '2021-05-29 10:58:00', '2021-05-29 10:58:00'),
-(5, 3, 'What is Computer?', 'Brain', 'Machine', 'Demo', 'Others', NULL, 1, '2021-06-15 12:53:42', '2021-06-15 13:04:16'),
-(7, 3, 'Connectionless protocol?', 'TCP', 'UDP', 'ICMP', 'SMTP', NULL, 1, '2021-06-17 20:03:27', '2021-06-17 20:03:46'),
-(8, 2, 'Next branch locations?', 'Khulna', 'Shatkhira', 'Pabna', 'Gopalganj', NULL, 1, '2021-06-17 20:04:50', '2021-06-21 15:38:14'),
-(9, 2, 'Products coming from', 'Rangpur', 'Chapainababganj', 'Kurigram', 'Bogra', NULL, 1, '2021-06-19 14:18:50', '2021-06-22 18:53:06'),
-(10, 2, 'Select desired item', 'Rice Cooker', 'Oven', 'Blender', 'Chopper', NULL, 1, '2021-06-22 16:00:42', '2021-06-22 18:52:53');
+INSERT INTO `questions` (`id`, `category_id`, `type`, `name`, `status`, `created_at`, `updated_at`) VALUES
+(2, 4, 3, 'What are the products required?', 1, '2021-05-29 10:58:00', '2021-05-29 10:58:00'),
+(5, 4, 3, 'What is Computer?', 1, '2021-06-15 12:53:42', '2021-06-15 13:04:16'),
+(7, 4, 3, 'Connectionless protocol?', 1, '2021-06-17 20:03:27', '2021-06-17 20:03:46'),
+(8, 4, 2, 'Next branch locations?', 1, '2021-06-17 20:04:50', '2021-06-21 15:38:14'),
+(9, 3, 2, 'Products coming from', 1, '2021-06-19 14:18:50', '2021-06-22 18:53:06'),
+(10, 3, 2, 'Select desired item', 1, '2021-06-22 16:00:42', '2021-06-22 18:52:53'),
+(11, 3, 1, 'Mention the name of the seller', 1, '2021-06-30 17:13:31', '2021-06-30 17:13:31'),
+(12, 3, 3, 'Most sold product', 1, '2021-06-30 17:15:09', '2021-06-30 17:15:09'),
+(15, 4, 2, 'hello', 1, '2021-07-11 08:09:03', '2021-07-11 08:09:03');
 
 -- --------------------------------------------------------
 
@@ -261,6 +544,7 @@ CREATE TABLE `question_answer` (
   `user_question_id` int(11) DEFAULT NULL,
   `question_id` int(11) DEFAULT NULL,
   `question_ans` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `others` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -268,42 +552,137 @@ CREATE TABLE `question_answer` (
 -- Dumping data for table `question_answer`
 --
 
-INSERT INTO `question_answer` (`id`, `user_question_id`, `question_id`, `question_ans`, `created_at`) VALUES
-(8, 11, 2, 'Notebook, Remote', NULL),
-(9, 11, 3, '123', NULL),
-(10, 11, 4, 'Japan tobacco', NULL),
-(11, 11, 2, 'jjj', NULL),
-(12, 11, 3, 'dgdeg', NULL),
-(13, 11, 4, 'wser', NULL),
-(23, 16, 2, 'Muri, Call, Daal', NULL),
-(24, 16, 3, '4 k muri, 2 k chal, 5 kg daal', NULL),
-(25, 16, 4, 'Tomar shop\'s Neel Mia', NULL),
-(26, 16, 2, 'etet', NULL),
-(27, 16, 3, 'adada', NULL),
-(28, 16, 2, 'rtet', NULL),
-(29, 11, 2, 'Call, Daal', NULL),
-(30, 11, 3, '12', NULL),
-(31, 11, 4, '55 host', NULL),
-(32, 11, 2, 'Gaming mouse, headphones, keyboards', NULL),
-(33, 11, 3, '12 in total', NULL),
-(34, 11, 4, 'Max Payne', NULL),
-(35, 21, 2, 'Gaming mouse, Keyboard, headphone', NULL),
-(36, 21, 3, '23', NULL),
-(37, 21, 4, 'McDonald\'s', NULL),
-(38, 22, 4, 'ক', NULL),
-(39, NULL, 2, 'abc', NULL),
-(40, NULL, 3, 'efg', NULL),
-(41, NULL, 4, 'hij', NULL),
-(42, 156, 103, '\"My Name\"', NULL),
-(43, 11, 5, 'Demo', NULL),
-(44, 11, 5, 'Brain', NULL),
-(45, 11, 4, 'uuuuuuuu', NULL),
-(46, 11, 5, 'Machine', NULL),
-(47, 11, 5, 'Brain', NULL),
-(48, 11, 5, 'Others', NULL),
-(49, 11, 2, 'test 1', NULL),
-(50, 11, 7, 'ICMP', NULL),
-(51, 11, 8, 'Pabna', NULL);
+INSERT INTO `question_answer` (`id`, `user_question_id`, `question_id`, `question_ans`, `others`, `created_at`) VALUES
+(8, 11, 2, 'Notebook, Remote', NULL, NULL),
+(9, 11, 3, '123', NULL, NULL),
+(10, 11, 4, 'Japan tobacco', NULL, NULL),
+(11, 11, 2, 'jjj', NULL, NULL),
+(12, 11, 3, 'dgdeg', NULL, NULL),
+(13, 11, 4, 'wser', NULL, NULL),
+(23, 16, 2, 'Muri, Call, Daal', NULL, NULL),
+(24, 16, 3, '4 k muri, 2 k chal, 5 kg daal', NULL, NULL),
+(25, 16, 4, 'Tomar shop\'s Neel Mia', NULL, NULL),
+(26, 16, 2, 'etet', NULL, NULL),
+(27, 16, 3, 'adada', NULL, NULL),
+(28, 16, 2, 'rtet', NULL, NULL),
+(29, 11, 2, 'Call, Daal', NULL, NULL),
+(30, 11, 3, '12', NULL, NULL),
+(31, 11, 4, '55 host', NULL, NULL),
+(32, 11, 2, 'Gaming mouse, headphones, keyboards', NULL, NULL),
+(33, 11, 3, '12 in total', NULL, NULL),
+(34, 11, 4, 'Max Payne', NULL, NULL),
+(35, 21, 2, 'Gaming mouse, Keyboard, headphone', NULL, NULL),
+(36, 21, 3, '23', NULL, NULL),
+(37, 21, 4, 'McDonald\'s', NULL, NULL),
+(38, 22, 4, 'ক', NULL, NULL),
+(39, NULL, 2, 'abc', NULL, NULL),
+(40, NULL, 3, 'efg', NULL, NULL),
+(41, NULL, 4, 'hij', NULL, NULL),
+(42, 156, 103, '\"My Name\"', NULL, NULL),
+(43, 11, 5, 'Demo', NULL, NULL),
+(44, 11, 5, 'Brain', NULL, NULL),
+(45, 11, 4, 'uuuuuuuu', NULL, NULL),
+(46, 11, 5, 'Machine', NULL, NULL),
+(47, 11, 5, 'Brain', NULL, NULL),
+(48, 11, 5, 'Others', NULL, NULL),
+(49, 11, 2, 'test 1', NULL, NULL),
+(50, 11, 7, 'ICMP', NULL, NULL),
+(51, 11, 8, 'Pabna', NULL, NULL),
+(52, 11, 2, 'abcd', NULL, NULL),
+(53, 11, 7, 'TCP', NULL, NULL),
+(54, 11, 2, 'wqe', NULL, NULL),
+(55, 11, 2, 'asdf', NULL, NULL),
+(56, 11, 5, 'Machine', NULL, NULL),
+(57, 11, 2, 'dsqwerterwt', NULL, NULL),
+(58, 11, 5, 'Machine', NULL, NULL),
+(59, 11, 7, 'UDP', NULL, NULL),
+(60, NULL, 2, 'trinath saha', NULL, NULL),
+(61, 42, 2, 'trinath saha', NULL, NULL),
+(62, 43, 1, 'trinath saha', NULL, NULL),
+(63, 44, 1, 'trinath saha', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `question_categories`
+--
+
+CREATE TABLE `question_categories` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=active, 0=inactive',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `question_categories`
+--
+
+INSERT INTO `question_categories` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
+(2, 'Medical Sector', 1, '2021-07-12 07:28:40', '2021-07-12 07:28:40'),
+(3, 'Food Sector', 1, '2021-07-12 07:28:43', '2021-07-12 07:28:43'),
+(4, 'General Sector', 1, '2021-07-12 07:29:02', '2021-07-12 07:29:02');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `question_options`
+--
+
+CREATE TABLE `question_options` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `question_id` bigint(20) DEFAULT NULL,
+  `option` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `question_options`
+--
+
+INSERT INTO `question_options` (`id`, `question_id`, `option`, `created_at`, `updated_at`) VALUES
+(6, 2, 'one', '2021-07-11 08:32:35', '2021-07-11 08:32:35'),
+(7, 2, 'two', '2021-07-11 08:32:35', '2021-07-11 08:32:35'),
+(8, 2, 'four', '2021-07-11 08:32:35', '2021-07-11 08:32:35'),
+(9, 2, 'five', '2021-07-11 08:32:35', '2021-07-11 08:32:35'),
+(10, 2, 'extra', '2021-07-11 08:32:35', '2021-07-11 08:32:35');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `request_demos`
+--
+
+CREATE TABLE `request_demos` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `company_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `employee` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `country_id` int(11) DEFAULT NULL,
+  `city_id` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `industry_type` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `message` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subscribes`
+--
+
+CREATE TABLE `subscribes` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `email` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -5398,12 +5777,12 @@ CREATE TABLE `users` (
   `district_id` int(11) DEFAULT NULL,
   `upazilla_id` int(11) DEFAULT NULL,
   `union_id` bigint(20) DEFAULT NULL,
-  `address` text COLLATE utf8mb4_unicode_ci,
-  `image` text COLLATE utf8mb4_unicode_ci,
+  `address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '0=inactive, 1=active',
+  `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=inactive, 1=active',
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -5424,17 +5803,17 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `phone`, `profession`, `ge
 (8, 'Moeen', 'Ali', '01711746898', 'Crickrter', 'Male', NULL, 1, NULL, 'moeen@gmail.com', NULL, 'Jamalpur', NULL, '$2y$10$n9eND1nr7AkeFv/rMZuF0eDCTUtq1.thWm1I1pP11qwiiFcNmTjv.', 1, NULL, '2021-06-05 21:20:31', '2021-06-05 21:20:31'),
 (9, 'Morshed', 'Ali', '01314378154', 'Developer', 'Male', NULL, 1, NULL, 'Banasree', NULL, 'morshed.ali@g.com', NULL, '$2y$10$1.SKgCjjJBTscG53gvrSb.UGcc4wCZTEwI9euiUYsc1C9s2.GVOqm', 1, NULL, '2021-06-05 21:31:05', '2021-06-05 21:31:05'),
 (10, 'Sergio', 'Ramos', '01511535808', 'Footballer', 'Male', NULL, 1, NULL, 'Madrid', NULL, 'sergio@g.com', NULL, '$2y$10$T9wXimy.F2Uf0YK/i8.mauxAWhaZgLTdHtHwP7hJOu1FVi8aAy2XC', 1, NULL, '2021-06-05 22:05:55', '2021-06-05 22:05:55'),
-(11, 'JJ', 'Olatunji', '01411435808', 'Teacher', 'Male', NULL, 1, NULL, 'Rangamati', NULL, 'jj@g.com', NULL, '$2y$10$KQicCEZq7fSUFl9CspiM.u237Oq/rfbKMM8nuK9QutD81a/aGKYWy', 1, NULL, '2021-06-06 15:09:03', '2021-06-21 00:28:43'),
+(11, 'Olajide', 'Olatunji', '01411435808', 'Teacher', 'Male', NULL, 1, NULL, 'Mirpur', 'assets/backend/images/user/WVy4QgMcZzZPe6vaUyRedCRXiIx5iiwqLEbuQbfs.jpg', 'jj@g.com', NULL, '$2y$10$6r0LpAgc/bcg0VATTqtobe7acCpZ.Ayfy2VzYBddeZk0akBYf49d6', 1, NULL, '2021-06-06 15:09:03', '2021-06-27 18:52:47'),
 (12, 'Brad', 'Pitt', '01911935808', 'Actor', 'Male', NULL, 1, NULL, 'Khulna', NULL, 'brad.pi@g.com', NULL, '$2y$10$dUdH12GTXGan1pMwsmh7COyOhnzPQDpNn2qyuseAIlp3OSotzARyO', 1, NULL, '2021-06-06 15:17:57', '2021-06-06 15:17:57'),
 (13, 'Samiul', 'Baskir', '01411435812', 'Designer', 'Male', NULL, 1, NULL, 'Banasree', NULL, 'sam@g.com', NULL, '$2y$10$zdnrOIUgqE432IdH21n8huzIQTom90PqP5Dpw61CC32uQtwIaMWlm', 1, NULL, '2021-06-06 15:22:11', '2021-06-06 15:22:11'),
 (14, 'Alexander', 'Arnold', '01841209267', 'Footballer', 'Male', NULL, 1, NULL, 'Bandarban', NULL, 'alex@g.com', NULL, '$2y$10$djbeTUayUHAB.7B0uZpJCeCfD5zvsddnZfqmUCBTn4/6VWwuUmvOu', 1, NULL, '2021-06-06 17:25:12', '2021-06-06 17:25:12'),
 (15, 'Jamal', 'Bhuiyan', '01843902165', 'Footballer', 'Male', NULL, 1, NULL, 'Feni', NULL, 'jamalb@g.com', NULL, '$2y$10$tpa3179UKBOcshyXSPYMTuCoCHLC8AlZp6mpG9r8wAbQ55nInkse.', 1, NULL, '2021-06-07 17:15:12', '2021-06-07 17:15:12'),
 (16, 'Lal', 'Mia', '01547362514', 'Developer', 'Male', NULL, 1, NULL, 'Banani', NULL, 'lalmia@g.com', NULL, '$2y$10$zhPyB2moZnQ0LCWzmoiyju8.Ezkw3BvNZ5Z6q8ou6kT/raXbL162i', 1, NULL, '2021-06-13 11:52:54', '2021-06-13 11:52:54'),
 (17, 'Randvu', 'Sah', '01711738898', 'Student', 'Male', NULL, 1, NULL, 'Mirpur', NULL, 'ru@g.com', NULL, '$2y$10$2ga1BD7Vc4TJHzQuYxKHOebmvORrG8glekpDxufzhrkm2iCSSZm06', 1, NULL, '2021-06-13 16:54:36', '2021-06-13 16:54:36'),
-(18, 'Trinath', 'Saha', '01751867845', 'sales representative', 'Male', NULL, 1, NULL, 'rampura', NULL, 'tri@gmail.com', NULL, '$2y$10$7HIz0IROljKp842us6.hyO4PImT/YSlN0kV5eAGNvgyCro.k85HL6', 1, NULL, '2021-06-13 17:24:07', '2021-06-13 17:24:07'),
+(18, 'Trinath', 'Saha', '01751867845', 'sales representative', 'Male', NULL, 1, NULL, 'rampura', NULL, 'tri@gmail.com', NULL, '$2y$12$Ak2/xdEo0U7JDzbMq4rzXOREfNNmkfHclCP9.MH4uMTmTXELCX.GO', 1, NULL, '2021-06-13 17:24:07', '2021-06-13 17:24:07'),
 (19, 'Radowan', 'Bhuiyam', '01558967635', 'Software Engineer', 'Male', NULL, 1, NULL, 'rampura', NULL, 'radowan@gmail.com', NULL, '$2y$10$2NZ.czmgJTc3BLtaYql07uOC3c5pLoVLSYv7hF/hTNfpu3.YDDBXa', 1, NULL, '2021-06-13 17:35:24', '2021-06-13 17:35:24'),
 (20, 'kksad', 'adada', '01314358087', 'Saifbaf', 'Female', NULL, 1, NULL, 'Mohakhali', NULL, 'lpl@g.com', NULL, '$2y$10$57fwVrYgQC62wjQ2s/htU.kttjT0E.5R0fFWbv86hzMCvyhuzmpwG', 1, NULL, '2021-06-13 17:41:19', '2021-06-13 17:41:19'),
-(21, 'Tom', 'Jerry', '01711736989', 'Developer', 'Male', NULL, 1, NULL, 'Mohakhali', NULL, 'tomjerry@g.com', NULL, '$2y$10$bErD2UqHXGqM3QOH92IIV.CQVXkvrvpqDqPyJIn6VTmgf0B0ikIIy', 1, NULL, '2021-06-13 18:18:17', '2021-06-20 19:19:15'),
+(21, 'Tom', 'Jerry', '01711736989', 'Developer', 'Male', NULL, 1, NULL, 'Mohakhali', 'assets/backend/images/user/E0sPQ0q0bzBFnFNDdHm7bNszesFAD0GcFApPmnic.jpg', 'tomjerry@g.com', NULL, '$2y$10$bErD2UqHXGqM3QOH92IIV.CQVXkvrvpqDqPyJIn6VTmgf0B0ikIIy', 1, NULL, '2021-06-13 18:18:17', '2021-06-27 21:13:33'),
 (22, 'Nahid', 'Shuvo', '01745425825', 'Manager', 'Male', NULL, 1, NULL, 'Dhaka', NULL, 'nahid.shuvo.official@gmail.com', NULL, '$2y$10$Q/JIB8FSetXRFtXmUPCL4OpYvztBO3TGyiXUyJgVmuDwheVeop.ke', 1, NULL, '2021-06-13 19:12:18', '2021-06-13 19:12:18');
 
 -- --------------------------------------------------------
@@ -5447,11 +5826,11 @@ CREATE TABLE `user_questions` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `stall_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `stall_des` text COLLATE utf8_unicode_ci,
+  `stall_des` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `latitude` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `longitude` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -5472,7 +5851,33 @@ INSERT INTO `user_questions` (`id`, `user_id`, `stall_name`, `stall_des`, `latit
 (15, 22, 'Shop1', 'Details 1', '23.8139382', '90.3874158', '2021-06-13 19:13:36', '2021-06-13 19:13:36'),
 (16, 21, 'Future Shop', 'Versetile shop, crokaries, furnitures, etc.', '37.4219983', '-122.084', '2021-06-15 20:48:26', '2021-06-15 20:48:26'),
 (17, 21, 'Fortnite Shop', 'Pickaxe\nHammer\nShotgun', '37.4219983', '-122.084', '2021-06-15 20:53:58', '2021-06-15 20:53:58'),
-(18, 11, 'qpowei', 'pqoie', '37.4219983', '-122.084', '2021-06-15 21:06:14', '2021-06-15 21:06:14');
+(18, 11, 'qpowei', 'pqoie', '37.4219983', '-122.084', '2021-06-15 21:06:14', '2021-06-15 21:06:14'),
+(19, 11, 'abc', 'abcd', '23.7745978', '90.4219535', '2021-06-23 23:49:43', '2021-06-23 23:49:43'),
+(20, 11, 'tr', 'yr', '37.4219983', '-122.084', '2021-06-24 00:14:01', '2021-06-24 00:14:01'),
+(21, 11, 'asdf', 'asdf', '1.23123', '2.123123', '2021-06-29 19:01:17', '2021-06-29 19:01:17'),
+(22, 11, 'asdf', 'asdf', '1.23123', '2.123123', '2021-06-29 19:02:54', '2021-06-29 19:02:54'),
+(23, 1, 'Demo22', 'Demo Demo2', '153153', '56431', '2021-07-03 22:09:46', '2021-07-03 22:09:46'),
+(24, 1, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 22:48:15', '2021-07-03 22:48:15'),
+(25, 1, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 22:54:55', '2021-07-03 22:54:55'),
+(26, 1, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 22:55:39', '2021-07-03 22:55:39'),
+(27, 1, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 22:58:11', '2021-07-03 22:58:11'),
+(28, 1, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 22:59:20', '2021-07-03 22:59:20'),
+(29, 1, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 23:01:15', '2021-07-03 23:01:15'),
+(30, 1, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 23:02:42', '2021-07-03 23:02:42'),
+(31, 1, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 23:03:27', '2021-07-03 23:03:27'),
+(32, 1, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 23:04:12', '2021-07-03 23:04:12'),
+(33, 1, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 23:05:40', '2021-07-03 23:05:40'),
+(34, 1, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 23:09:11', '2021-07-03 23:09:11'),
+(35, 1, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 23:11:43', '2021-07-03 23:11:43'),
+(36, 1, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 23:13:25', '2021-07-03 23:13:25'),
+(37, 1, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 23:19:25', '2021-07-03 23:19:25'),
+(38, 1, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 23:20:25', '2021-07-03 23:20:25'),
+(39, 1, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 23:20:50', '2021-07-03 23:20:50'),
+(40, 1, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 23:22:18', '2021-07-03 23:22:18'),
+(41, 1, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 23:22:49', '2021-07-03 23:22:49'),
+(42, 1, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 23:24:28', '2021-07-03 23:24:28'),
+(43, 11, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 23:28:33', '2021-07-03 23:28:33'),
+(44, 11, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 23:28:49', '2021-07-03 23:28:49');
 
 --
 -- Indexes for dumped tables
@@ -5484,6 +5889,18 @@ INSERT INTO `user_questions` (`id`, `user_id`, `stall_name`, `stall_des`, `latit
 ALTER TABLE `admins`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `admins_email_unique` (`email`);
+
+--
+-- Indexes for table `contacts`
+--
+ALTER TABLE `contacts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `countries`
+--
+ALTER TABLE `countries`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `districts`
@@ -5530,6 +5947,30 @@ ALTER TABLE `question_answer`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `question_categories`
+--
+ALTER TABLE `question_categories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `question_options`
+--
+ALTER TABLE `question_options`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `request_demos`
+--
+ALTER TABLE `request_demos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `subscribes`
+--
+ALTER TABLE `subscribes`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `unions`
 --
 ALTER TABLE `unions`
@@ -5567,6 +6008,18 @@ ALTER TABLE `admins`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `contacts`
+--
+ALTER TABLE `contacts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `countries`
+--
+ALTER TABLE `countries`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=247;
+
+--
 -- AUTO_INCREMENT for table `districts`
 --
 ALTER TABLE `districts`
@@ -5588,19 +6041,43 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `question_answer`
 --
 ALTER TABLE `question_answer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+
+--
+-- AUTO_INCREMENT for table `question_categories`
+--
+ALTER TABLE `question_categories`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `question_options`
+--
+ALTER TABLE `question_options`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `request_demos`
+--
+ALTER TABLE `request_demos`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `subscribes`
+--
+ALTER TABLE `subscribes`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `unions`
@@ -5624,7 +6101,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `user_questions`
 --
 ALTER TABLE `user_questions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- Constraints for dumped tables
