@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 14, 2021 at 08:10 AM
+-- Generation Time: Jul 14, 2021 at 01:20 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.20
 
@@ -35,6 +35,7 @@ CREATE TABLE `admins` (
   `first_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `last_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `phone` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `profession` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -50,8 +51,9 @@ CREATE TABLE `admins` (
 -- Dumping data for table `admins`
 --
 
-INSERT INTO `admins` (`id`, `upazilla_id`, `union_id`, `user_role`, `first_name`, `last_name`, `phone`, `profession`, `address`, `email`, `email_verified_at`, `password`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, NULL, NULL, 1, 'Admin', NULL, NULL, NULL, NULL, '', NULL, '$2y$10$oxdZxPuLd0GRr7ZUsfci1OGMa3Prk4pYrV2w79JfxT2emf/Oz5hqK', 1, NULL, NULL, NULL);
+INSERT INTO `admins` (`id`, `upazilla_id`, `union_id`, `user_role`, `first_name`, `last_name`, `phone`, `image`, `profession`, `address`, `email`, `email_verified_at`, `password`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, NULL, NULL, 1, 'Admin', NULL, NULL, NULL, NULL, NULL, '', NULL, '$2y$10$oxdZxPuLd0GRr7ZUsfci1OGMa3Prk4pYrV2w79JfxT2emf/Oz5hqK', 1, NULL, NULL, NULL),
+(2, 395, NULL, 2, 'Trinath Saha', NULL, '01621355844', 'assets/backend/images/user/jTHSaLgBvTgOgglZftOGZc6FTue6Co81wZBgyuvm.png', 'Web Developer', 'Mirpur', 'trinath@gmail.com', NULL, '$2y$10$nMboTaZpgp15j0S2maGd8upB9DmCcJz8ROAzeA/ze/20IQLLbBzbW', 1, NULL, '2021-07-14 06:38:50', '2021-07-14 06:38:50');
 
 -- --------------------------------------------------------
 
@@ -5769,6 +5771,7 @@ INSERT INTO `upazilas` (`id`, `district_id`, `name`, `bn_name`, `url`) VALUES
 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `category_id` int(11) DEFAULT NULL,
   `first_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `last_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `phone` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -5792,29 +5795,30 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `first_name`, `last_name`, `phone`, `profession`, `gender`, `district_id`, `upazilla_id`, `union_id`, `address`, `image`, `email`, `email_verified_at`, `password`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Bashar', 'Ali', '01711735809', 'Student', '1', NULL, 1, NULL, 'Mirpur 10', 'assets/backend/images/user/DAeySuLeZRluJsxYERlo7ROlvdIPtmmM5MR6f223.png', 'Mirpur', NULL, '$2y$10$X7xv7NdaZJmgRGhuJ4vjH.92522KMKqtH0UiPb0/nMwDL47stfceG', 1, NULL, '2021-05-30 18:26:05', '2021-06-22 19:36:50'),
-(2, 'Jamal', 'Bhuiyan', '01914378154', 'Doctor', 'Male', NULL, 1, NULL, 'jb@g.com', NULL, 'Mohakhali', NULL, '$2y$10$24ob0JcmgJfWtxEtje..VOdhK5pNZHz1xX0LaSUriGRhBXEkIbzTS', 1, NULL, '2021-05-30 19:40:25', '2021-05-30 19:40:25'),
-(3, 'Kamal', 'Hossain', '01711735818', 'Doctor', 'Male', NULL, 1, NULL, 'ae@gmail.com', NULL, 'Kamalapur', NULL, '$2y$10$3eqcV9y.XTsevlfqp.4k1.k1vmM3RvVkp8XqLu8OgK7GK0PgDTtKK', 1, NULL, '2021-05-30 19:45:57', '2021-05-30 19:45:57'),
-(4, 'Naredra', 'Modi', '01685986023', 'Politician', 'Male', NULL, 1, NULL, 'n.mo@g.com', NULL, 'Chattogram', NULL, '$2y$10$pKX5uQyJmYPXqykNQIat8eIhvGi264lPXCcsIh6jVPIYgOd56YBWq', 1, NULL, '2021-05-30 22:41:56', '2021-05-30 22:41:56'),
-(5, 'Kamran', 'Akmal', '01914388155', 'Cricketer', 'Male', NULL, 1, NULL, 'kmak@g.com', NULL, 'Pakistan', NULL, '$2y$10$Gq1/XHZjO7e/VlQ8THWSYePGZ5ha.ZRtmpAXGwSM0MEhqJI3MwKTG', 1, NULL, '2021-05-31 22:12:57', '2021-05-31 22:12:57'),
-(6, 'Akkas', 'Ali', '01833103261', 'Tailor', 'Male', NULL, 1, NULL, 'akali@g.com', NULL, 'Banani', NULL, '$2y$10$8DeYt3dCCcxLljbSo0mvYOKR4MKzGjrYJ9T/gPVwcHnEQrxCehGCu', 1, NULL, '2021-06-05 20:37:11', '2021-06-05 20:37:11'),
-(7, 'Edin', 'Cavani', '01924278156', 'Footballer', 'Male', NULL, 1, NULL, 'cavani@g.com', NULL, 'Uruguay', NULL, '$2y$10$9rx1a21r9wIptkbjGpUrvee6uRDshlhCLLR2DnxgAf9P0pn1bh/B.', 1, NULL, '2021-06-05 20:56:45', '2021-06-05 20:56:45'),
-(8, 'Moeen', 'Ali', '01711746898', 'Crickrter', 'Male', NULL, 1, NULL, 'moeen@gmail.com', NULL, 'Jamalpur', NULL, '$2y$10$n9eND1nr7AkeFv/rMZuF0eDCTUtq1.thWm1I1pP11qwiiFcNmTjv.', 1, NULL, '2021-06-05 21:20:31', '2021-06-05 21:20:31'),
-(9, 'Morshed', 'Ali', '01314378154', 'Developer', 'Male', NULL, 1, NULL, 'Banasree', NULL, 'morshed.ali@g.com', NULL, '$2y$10$1.SKgCjjJBTscG53gvrSb.UGcc4wCZTEwI9euiUYsc1C9s2.GVOqm', 1, NULL, '2021-06-05 21:31:05', '2021-06-05 21:31:05'),
-(10, 'Sergio', 'Ramos', '01511535808', 'Footballer', 'Male', NULL, 1, NULL, 'Madrid', NULL, 'sergio@g.com', NULL, '$2y$10$T9wXimy.F2Uf0YK/i8.mauxAWhaZgLTdHtHwP7hJOu1FVi8aAy2XC', 1, NULL, '2021-06-05 22:05:55', '2021-06-05 22:05:55'),
-(11, 'Olajide', 'Olatunji', '01411435808', 'Teacher', 'Male', NULL, 1, NULL, 'Mirpur', 'assets/backend/images/user/WVy4QgMcZzZPe6vaUyRedCRXiIx5iiwqLEbuQbfs.jpg', 'jj@g.com', NULL, '$2y$10$6r0LpAgc/bcg0VATTqtobe7acCpZ.Ayfy2VzYBddeZk0akBYf49d6', 1, NULL, '2021-06-06 15:09:03', '2021-06-27 18:52:47'),
-(12, 'Brad', 'Pitt', '01911935808', 'Actor', 'Male', NULL, 1, NULL, 'Khulna', NULL, 'brad.pi@g.com', NULL, '$2y$10$dUdH12GTXGan1pMwsmh7COyOhnzPQDpNn2qyuseAIlp3OSotzARyO', 1, NULL, '2021-06-06 15:17:57', '2021-06-06 15:17:57'),
-(13, 'Samiul', 'Baskir', '01411435812', 'Designer', 'Male', NULL, 1, NULL, 'Banasree', NULL, 'sam@g.com', NULL, '$2y$10$zdnrOIUgqE432IdH21n8huzIQTom90PqP5Dpw61CC32uQtwIaMWlm', 1, NULL, '2021-06-06 15:22:11', '2021-06-06 15:22:11'),
-(14, 'Alexander', 'Arnold', '01841209267', 'Footballer', 'Male', NULL, 1, NULL, 'Bandarban', NULL, 'alex@g.com', NULL, '$2y$10$djbeTUayUHAB.7B0uZpJCeCfD5zvsddnZfqmUCBTn4/6VWwuUmvOu', 1, NULL, '2021-06-06 17:25:12', '2021-06-06 17:25:12'),
-(15, 'Jamal', 'Bhuiyan', '01843902165', 'Footballer', 'Male', NULL, 1, NULL, 'Feni', NULL, 'jamalb@g.com', NULL, '$2y$10$tpa3179UKBOcshyXSPYMTuCoCHLC8AlZp6mpG9r8wAbQ55nInkse.', 1, NULL, '2021-06-07 17:15:12', '2021-06-07 17:15:12'),
-(16, 'Lal', 'Mia', '01547362514', 'Developer', 'Male', NULL, 1, NULL, 'Banani', NULL, 'lalmia@g.com', NULL, '$2y$10$zhPyB2moZnQ0LCWzmoiyju8.Ezkw3BvNZ5Z6q8ou6kT/raXbL162i', 1, NULL, '2021-06-13 11:52:54', '2021-06-13 11:52:54'),
-(17, 'Randvu', 'Sah', '01711738898', 'Student', 'Male', NULL, 1, NULL, 'Mirpur', NULL, 'ru@g.com', NULL, '$2y$10$2ga1BD7Vc4TJHzQuYxKHOebmvORrG8glekpDxufzhrkm2iCSSZm06', 1, NULL, '2021-06-13 16:54:36', '2021-06-13 16:54:36'),
-(18, 'Trinath', 'Saha', '01751867845', 'sales representative', 'Male', NULL, 1, NULL, 'rampura', NULL, 'tri@gmail.com', NULL, '$2y$12$Ak2/xdEo0U7JDzbMq4rzXOREfNNmkfHclCP9.MH4uMTmTXELCX.GO', 1, NULL, '2021-06-13 17:24:07', '2021-06-13 17:24:07'),
-(19, 'Radowan', 'Bhuiyam', '01558967635', 'Software Engineer', 'Male', NULL, 1, NULL, 'rampura', NULL, 'radowan@gmail.com', NULL, '$2y$10$2NZ.czmgJTc3BLtaYql07uOC3c5pLoVLSYv7hF/hTNfpu3.YDDBXa', 1, NULL, '2021-06-13 17:35:24', '2021-06-13 17:35:24'),
-(20, 'kksad', 'adada', '01314358087', 'Saifbaf', 'Female', NULL, 1, NULL, 'Mohakhali', NULL, 'lpl@g.com', NULL, '$2y$10$57fwVrYgQC62wjQ2s/htU.kttjT0E.5R0fFWbv86hzMCvyhuzmpwG', 1, NULL, '2021-06-13 17:41:19', '2021-06-13 17:41:19'),
-(21, 'Tom', 'Jerry', '01711736989', 'Developer', 'Male', NULL, 1, NULL, 'Mohakhali', 'assets/backend/images/user/E0sPQ0q0bzBFnFNDdHm7bNszesFAD0GcFApPmnic.jpg', 'tomjerry@g.com', NULL, '$2y$10$bErD2UqHXGqM3QOH92IIV.CQVXkvrvpqDqPyJIn6VTmgf0B0ikIIy', 1, NULL, '2021-06-13 18:18:17', '2021-06-27 21:13:33'),
-(22, 'Nahid', 'Shuvo', '01745425825', 'Manager', 'Male', NULL, 1, NULL, 'Dhaka', NULL, 'nahid.shuvo.official@gmail.com', NULL, '$2y$10$Q/JIB8FSetXRFtXmUPCL4OpYvztBO3TGyiXUyJgVmuDwheVeop.ke', 1, NULL, '2021-06-13 19:12:18', '2021-06-13 19:12:18');
+INSERT INTO `users` (`id`, `category_id`, `first_name`, `last_name`, `phone`, `profession`, `gender`, `district_id`, `upazilla_id`, `union_id`, `address`, `image`, `email`, `email_verified_at`, `password`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 2, 'Bashar', 'Ali', '01711735809', 'Student', '1', NULL, 1, NULL, 'Mirpur 10', 'assets/backend/images/user/DAeySuLeZRluJsxYERlo7ROlvdIPtmmM5MR6f223.png', 'Mirpur', NULL, '$2y$10$X7xv7NdaZJmgRGhuJ4vjH.92522KMKqtH0UiPb0/nMwDL47stfceG', 1, NULL, '2021-05-30 18:26:05', '2021-06-22 19:36:50'),
+(2, 3, 'Jamal', 'Bhuiyan', '01914378154', 'Doctor', 'Male', NULL, 1, NULL, 'jb@g.com', NULL, 'Mohakhali', NULL, '$2y$10$24ob0JcmgJfWtxEtje..VOdhK5pNZHz1xX0LaSUriGRhBXEkIbzTS', 1, NULL, '2021-05-30 19:40:25', '2021-05-30 19:40:25'),
+(3, 4, 'Kamal', 'Hossain', '01711735818', 'Doctor', 'Male', NULL, 1, NULL, 'ae@gmail.com', NULL, 'Kamalapur', NULL, '$2y$10$3eqcV9y.XTsevlfqp.4k1.k1vmM3RvVkp8XqLu8OgK7GK0PgDTtKK', 1, NULL, '2021-05-30 19:45:57', '2021-05-30 19:45:57'),
+(4, 2, 'Naredra', 'Modi', '01685986023', 'Politician', 'Male', NULL, 1, NULL, 'n.mo@g.com', NULL, 'Chattogram', NULL, '$2y$10$pKX5uQyJmYPXqykNQIat8eIhvGi264lPXCcsIh6jVPIYgOd56YBWq', 1, NULL, '2021-05-30 22:41:56', '2021-05-30 22:41:56'),
+(5, 3, 'Kamran', 'Akmal', '01914388155', 'Cricketer', 'Male', NULL, 1, NULL, 'kmak@g.com', NULL, 'Pakistan', NULL, '$2y$10$Gq1/XHZjO7e/VlQ8THWSYePGZ5ha.ZRtmpAXGwSM0MEhqJI3MwKTG', 1, NULL, '2021-05-31 22:12:57', '2021-05-31 22:12:57'),
+(6, 4, 'Akkas', 'Ali', '01833103261', 'Tailor', 'Male', NULL, 1, NULL, 'akali@g.com', NULL, 'Banani', NULL, '$2y$10$8DeYt3dCCcxLljbSo0mvYOKR4MKzGjrYJ9T/gPVwcHnEQrxCehGCu', 1, NULL, '2021-06-05 20:37:11', '2021-06-05 20:37:11'),
+(7, 2, 'Edin', 'Cavani', '01924278156', 'Footballer', 'Male', NULL, 1, NULL, 'cavani@g.com', NULL, 'Uruguay', NULL, '$2y$10$9rx1a21r9wIptkbjGpUrvee6uRDshlhCLLR2DnxgAf9P0pn1bh/B.', 1, NULL, '2021-06-05 20:56:45', '2021-06-05 20:56:45'),
+(8, 3, 'Moeen', 'Ali', '01711746898', 'Crickrter', 'Male', NULL, 1, NULL, 'moeen@gmail.com', NULL, 'Jamalpur', NULL, '$2y$10$n9eND1nr7AkeFv/rMZuF0eDCTUtq1.thWm1I1pP11qwiiFcNmTjv.', 1, NULL, '2021-06-05 21:20:31', '2021-06-05 21:20:31'),
+(9, 4, 'Morshed', 'Ali', '01314378154', 'Developer', 'Male', NULL, 1, NULL, 'Banasree', NULL, 'morshed.ali@g.com', NULL, '$2y$10$1.SKgCjjJBTscG53gvrSb.UGcc4wCZTEwI9euiUYsc1C9s2.GVOqm', 1, NULL, '2021-06-05 21:31:05', '2021-06-05 21:31:05'),
+(10, 2, 'Sergio', 'Ramos', '01511535808', 'Footballer', 'Male', NULL, 1, NULL, 'Madrid', NULL, 'sergio@g.com', NULL, '$2y$10$T9wXimy.F2Uf0YK/i8.mauxAWhaZgLTdHtHwP7hJOu1FVi8aAy2XC', 1, NULL, '2021-06-05 22:05:55', '2021-06-05 22:05:55'),
+(11, 3, 'Olajide', 'Olatunji', '01411435808', 'Teacher', 'Male', NULL, 1, NULL, 'Mirpur', 'assets/backend/images/user/WVy4QgMcZzZPe6vaUyRedCRXiIx5iiwqLEbuQbfs.jpg', 'jj@g.com', NULL, '$2y$10$6r0LpAgc/bcg0VATTqtobe7acCpZ.Ayfy2VzYBddeZk0akBYf49d6', 1, NULL, '2021-06-06 15:09:03', '2021-06-27 18:52:47'),
+(12, 4, 'Brad', 'Pitt', '01911935808', 'Actor', 'Male', NULL, 1, NULL, 'Khulna', NULL, 'brad.pi@g.com', NULL, '$2y$10$dUdH12GTXGan1pMwsmh7COyOhnzPQDpNn2qyuseAIlp3OSotzARyO', 1, NULL, '2021-06-06 15:17:57', '2021-06-06 15:17:57'),
+(13, 2, 'Samiul', 'Baskir', '01411435812', 'Designer', 'Male', NULL, 1, NULL, 'Banasree', NULL, 'sam@g.com', NULL, '$2y$10$zdnrOIUgqE432IdH21n8huzIQTom90PqP5Dpw61CC32uQtwIaMWlm', 1, NULL, '2021-06-06 15:22:11', '2021-06-06 15:22:11'),
+(14, 3, 'Alexander', 'Arnold', '01841209267', 'Footballer', 'Male', NULL, 1, NULL, 'Bandarban', NULL, 'alex@g.com', NULL, '$2y$10$djbeTUayUHAB.7B0uZpJCeCfD5zvsddnZfqmUCBTn4/6VWwuUmvOu', 1, NULL, '2021-06-06 17:25:12', '2021-06-06 17:25:12'),
+(15, 4, 'Jamal', 'Bhuiyan', '01843902165', 'Footballer', 'Male', NULL, 1, NULL, 'Feni', NULL, 'jamalb@g.com', NULL, '$2y$10$tpa3179UKBOcshyXSPYMTuCoCHLC8AlZp6mpG9r8wAbQ55nInkse.', 1, NULL, '2021-06-07 17:15:12', '2021-06-07 17:15:12'),
+(16, 2, 'Lal', 'Mia', '01547362514', 'Developer', 'Male', NULL, 1, NULL, 'Banani', NULL, 'lalmia@g.com', NULL, '$2y$10$zhPyB2moZnQ0LCWzmoiyju8.Ezkw3BvNZ5Z6q8ou6kT/raXbL162i', 1, NULL, '2021-06-13 11:52:54', '2021-06-13 11:52:54'),
+(17, 3, 'Randvu', 'Sah', '01711738898', 'Student', 'Male', NULL, 1, NULL, 'Mirpur', NULL, 'ru@g.com', NULL, '$2y$10$2ga1BD7Vc4TJHzQuYxKHOebmvORrG8glekpDxufzhrkm2iCSSZm06', 1, NULL, '2021-06-13 16:54:36', '2021-06-13 16:54:36'),
+(18, 4, 'Trinath', 'Saha', '01751867845', 'sales representative', 'Male', NULL, 1, NULL, 'rampura', NULL, 'tri@gmail.com', NULL, '$2y$12$Ak2/xdEo0U7JDzbMq4rzXOREfNNmkfHclCP9.MH4uMTmTXELCX.GO', 1, NULL, '2021-06-13 17:24:07', '2021-06-13 17:24:07'),
+(19, 2, 'Radowan', 'Bhuiyam', '01558967635', 'Software Engineer', 'Male', NULL, 1, NULL, 'rampura', NULL, 'radowan@gmail.com', NULL, '$2y$10$2NZ.czmgJTc3BLtaYql07uOC3c5pLoVLSYv7hF/hTNfpu3.YDDBXa', 1, NULL, '2021-06-13 17:35:24', '2021-06-13 17:35:24'),
+(20, 3, 'kksad', 'adada', '01314358087', 'Saifbaf', 'Female', NULL, 1, NULL, 'Mohakhali', NULL, 'lpl@g.com', NULL, '$2y$10$57fwVrYgQC62wjQ2s/htU.kttjT0E.5R0fFWbv86hzMCvyhuzmpwG', 1, NULL, '2021-06-13 17:41:19', '2021-06-13 17:41:19'),
+(21, 4, 'Tom', 'Jerry', '01711736989', 'Developer', 'Male', NULL, 1, NULL, 'Mohakhali', 'assets/backend/images/user/E0sPQ0q0bzBFnFNDdHm7bNszesFAD0GcFApPmnic.jpg', 'tomjerry@g.com', NULL, '$2y$10$bErD2UqHXGqM3QOH92IIV.CQVXkvrvpqDqPyJIn6VTmgf0B0ikIIy', 1, NULL, '2021-06-13 18:18:17', '2021-06-27 21:13:33'),
+(22, 2, 'Nahid', 'Shuvo', '01745425825', 'Manager', 'Male', NULL, 1, NULL, 'Dhaka', NULL, 'nahid.shuvo.official@gmail.com', NULL, '$2y$10$Q/JIB8FSetXRFtXmUPCL4OpYvztBO3TGyiXUyJgVmuDwheVeop.ke', 1, NULL, '2021-06-13 19:12:18', '2021-06-13 19:12:18'),
+(23, 2, 'Pabel', 'Mahmud', '01621355849', 'Web Developer', '1', 5, 44, NULL, 'Mohammadpur', 'assets/backend/images/user/12YeXj7CtPZUrySncs1uzpCgE1joIWlsxvGgnf9l.png', 'pabel@gmail.com', NULL, '$2y$10$FsZAFACP1XX7upqhVpPLReC15cy.GPuLggMGK66dJ6NLVyapzRFNu', 1, NULL, '2021-07-14 10:14:24', '2021-07-14 10:17:45');
 
 -- --------------------------------------------------------
 
@@ -6005,7 +6009,7 @@ ALTER TABLE `user_questions`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `contacts`
@@ -6095,7 +6099,7 @@ ALTER TABLE `upazilas`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `user_questions`

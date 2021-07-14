@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\QuestionCategory;
 use App\Models\User;
 use Illuminate\Http\Request;
 use DB;
@@ -34,10 +35,12 @@ class UserController extends Controller
     public function addUser(){
         $title = 'Add User';
         $divisions = DB::table('divisions')->get();
-        return view('backend.user.add-user', compact('title', 'divisions'));
+        $categories = QuestionCategory::where('status', 1)->get();
+        return view('backend.user.add-user', compact('title', 'divisions', 'categories'));
     }
     public function saveUser(Request $request){
         $this->validate($request,[
+            'category_id' => 'required',
             'first_name' => 'required',
             'address' => 'required',
             'upazilla_id' => 'required',
@@ -54,6 +57,7 @@ class UserController extends Controller
             })->save($location);
         }
         User::create([
+            'category_id' => $request->category_id,
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'phone' => $request->phone,
@@ -79,11 +83,13 @@ class UserController extends Controller
         $divisions = DB::table('divisions')->get();
         $districts = DB::table('districts')->get();
         $upazilas = DB::table('upazilas')->get();
-        return view('backend.user.edit-user', compact('user', 'divisions', 'districts', 'upazilas'));
+        $categories = QuestionCategory::where('status', 1)->get();
+        return view('backend.user.edit-user', compact('user', 'divisions', 'districts', 'upazilas', 'categories'));
     }
     public function updateUser(Request $request){
         $user = User::find($request->id);
         $this->validate($request,[
+            'category_id' => 'required',
             'first_name' => 'required',
             'address' => 'required',
             'upazilla_id' => 'required',
@@ -100,6 +106,7 @@ class UserController extends Controller
             })->save($location);
             $user->image = $location;
         }
+        $user->category_id = $request->category_id;
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
         $user->phone = $request->phone;
