@@ -72,5 +72,14 @@ Route::group(['prefix' => 'admin'], function (){
         Route::post('/delete/contact', 'AdminController@deleteContact')->name('delete.contact');
         Route::get('/request/demo', 'AdminController@requestDemoList')->name('request.demo');
         Route::post('/delete/request/demo', 'AdminController@deleteRequestDemo')->name('delete.request.demo');
+
+
+        // answer
+        Route::get('/show/answer', 'QuestionController@showAnswer')->name('show.answer');
+        Route::get('/view/answer/{id}', 'QuestionController@viewAnswer')->name('view_answer');
+
+        //maps
+        Route::get('/show/maps/{id}', 'QuestionController@showMaps')->name('show.maps');
+        Route::get('/all/maps/', 'QuestionController@showMapsAll')->name('show.maps.all');
     });
 });

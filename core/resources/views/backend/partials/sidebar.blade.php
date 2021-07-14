@@ -101,7 +101,7 @@
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="{{ route('show.answer') }}" class="nav-link @if(request()->path() == 'admin/show/answer') bg-info @endif">
-                        <i class="nav-icon fas fa-home icon-color" style="color: green"></i><p>Show Answer</p>
+                        <i class="nav-icon fas fa-box icon-color" style="color: green"></i><p>Collected Data</p>
                     </a>
                 </li>
                 <li class="nav-item has-treeview">
@@ -193,7 +193,7 @@
 
                 <li class="nav-item has-treeview">
                     <a href="{{ route('show.answer') }}" class="nav-link @if(request()->path() == 'admin/show/answer') bg-info @endif">
-                        <i class="nav-icon fas fa-home icon-color" style="color: green"></i><p>Show Answer</p>
+                        <i class="nav-icon fas fa-home icon-color" style="color: green"></i><p>Collected Data</p>
                     </a>
                 </li>
                 <li class="nav-item has-treeview">

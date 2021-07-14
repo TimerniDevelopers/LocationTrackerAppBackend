@@ -7,6 +7,7 @@ use App\Models\QuestionCategory;
 use App\Models\QuestionOption;
 use App\Models\UserQuestion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class QuestionController extends Controller
 {
@@ -111,5 +112,33 @@ class QuestionController extends Controller
     {
         $answers = UserQuestion::orderBy('id', 'desc')->get();
         return view('backend.questionAnswer.show-answer', compact('answers'));
+    }
+
+    public function viewAnswer($id)
+    {
+        $answer = DB::table('question_answer')
+        ->join('user_questions', 'user_questions.id', '=', 'question_answer.user_question_id')
+        ->join('questions', 'questions.id', '=', 'question_answer.question_id')
+        
+        ->where('user_question_id', $id)
+        ->get();
+
+        $questions = DB::table('questions')->get();
+
+        
+        return view('backend.questionAnswer.single-answer', compact('questions', 'answer'));
+    }
+
+    public function showMaps($id)
+    {
+        $map = UserQuestion::findorFail($id);
+        return view('backend.questionAnswer.maps', compact('map'));
+    }
+
+    public function showMapsAll()
+    {
+        
+        $maps = UserQuestion::get();
+        return view('backend.questionAnswer.all_maps', compact('maps'));
     }
 }

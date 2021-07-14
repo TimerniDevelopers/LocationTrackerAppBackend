@@ -22,6 +22,11 @@
                         <div class="card card-info">
                             <div class="card-header">
                                 <h3 class="card-title" style="font-family: kalpurush">Add User</h3>
+                                <div class="fa-pull-right">
+                                    <a href="{{ route('manage.user') }}">
+                                        <button class="btn btn-light"><i class="fa fa-arrow-left"></i><b> Back To User List</b></button>
+                                    </a>
+                                </div>
                             </div>
                             <form method="POST" action="{{ route('save.user') }}" enctype="multipart/form-data" role="form">
                                 @csrf
@@ -124,7 +129,9 @@
                                     </div>
                                 </div>
                                 <div class="card-footer">
+                                <a href="{{ route('manage.user') }}">
                                     <button type="button" class="btn btn-danger">Close</button>
+                                    </a>
                                     <button type="submit" class="btn btn-info float-right">Submit</button>
                                 </div>
                             </form>
