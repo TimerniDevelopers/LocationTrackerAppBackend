@@ -77,5 +77,14 @@ Route::group(['prefix' => 'admin'], function (){
         //maps
         Route::get('/show/maps/{id}', 'QuestionController@showMaps')->name('show.maps');
         Route::get('/all/maps/', 'QuestionController@showMapsAll')->name('show.maps.all');
+
+        // Notification
+        Route::get('/all/notfication/', 'QuestionController@NotifyController')->name('notify.all');
+
+        Route::get('message/{id}', 'MessageController@index')->name('message');
+        
+        Route::get('message/box/{id}', 'MessageController@messageBox')->name('message.box');
+
+        Route::post('message/user2', 'MessageController@message2User')->name('message2.user');
     });
 });

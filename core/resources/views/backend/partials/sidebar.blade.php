@@ -109,6 +109,13 @@
                         <i class="nav-icon fas fa-home icon-color" style="color: green"></i><p>Subscriber List</p>
                     </a>
                 </li>
+
+                <li class="nav-item has-treeview">
+                    <a href="{{ route('notify.all') }}" class="nav-link @if(request()->path() == 'admin/subscriber/list') bg-info @endif">
+                        <i class="nav-icon fas fa-home icon-color" style="color: green"></i><p>Notify List</p>
+                    </a>
+                </li>
+                
                 {{-- <li class="nav-item has-treeview">
                     <a href="{{ route('contact.list') }}" class="nav-link @if(request()->path() == 'admin/contact/list') bg-info @endif">
                         <i class="nav-icon fas fa-home icon-color" style="color: green"></i><p>Contact List</p>
@@ -180,6 +187,14 @@
                         <i class="nav-icon fas fa-home icon-color" style="color: green"></i><p>Subscriber List</p>
                     </a>
                 </li>
+
+                <li class="nav-item has-treeview">
+                    <a href="{{ route('notify.all') }}" class="nav-link @if(request()->path() == 'admin/subscriber/list') bg-info @endif">
+                        <i class="nav-icon fas fa-home icon-color" style="color: green"></i><p>Notify List</p>
+                    </a>
+                </li>
+
+
                 {{-- <li class="nav-item has-treeview">
                     <a href="{{ route('contact.list') }}" class="nav-link @if(request()->path() == 'admin/contact/list') bg-info @endif">
                         <i class="nav-icon fas fa-home icon-color" style="color: green"></i><p>Contact List</p>
