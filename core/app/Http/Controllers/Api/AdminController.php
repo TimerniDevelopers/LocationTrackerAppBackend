@@ -91,12 +91,14 @@ class AdminController extends Controller
         }
         else {
             $this->validate($request, [
+                'category_id' => 'required',
                 'first_name' => 'required',
                 'email' => 'required|unique:users',
                 'password' => 'required',
                 'phone' => 'required',
             ]);
             $user = new User();
+            $user->category_id = $request->category_id;
             $user->first_name = $request->first_name;
             $user->last_name = $request->last_name;
             $user->phone = $request->phone;

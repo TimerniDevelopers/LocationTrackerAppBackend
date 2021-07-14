@@ -23,6 +23,10 @@ class User extends Authenticatable implements JWTSubject
 //        'password',
 //    ];
     protected $guarded = [];
+
+    public function categoryName(){
+        return $this->belongsTo(QuestionCategory::class, 'category_id', 'id');
+    }
     public function upazilaName(){
         return $this->belongsTo(Upazila::class, 'upazilla_id', 'id');
     }

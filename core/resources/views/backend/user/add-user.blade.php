@@ -31,7 +31,18 @@
                             <form method="POST" action="{{ route('save.user') }}" enctype="multipart/form-data" role="form">
                                 @csrf
                                 <div class="card-body">
-                                    <div class="row" id="included_all_description">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Select Category/Field <span class='required-star'>*</span></label>
+                                                <select name="category_id" id="" class="form-control select2">
+                                                    <option selected disabled>Select Category/Field</option>
+                                                    @foreach ($categories as $category)
+                                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>First Name <span class='required-star'>*</span></label>

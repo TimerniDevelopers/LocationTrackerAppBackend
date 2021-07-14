@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use App\Models\RequestDemo;
 use App\Models\Subscribe;
 use Illuminate\Http\Request;
 use DB;
@@ -42,11 +43,28 @@ class IndexController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
-            'company' => $request->company,
-            'employee' => $request->employee,
-            'address' => $request->address,
             'message' => $request->message,
         ]);
         return back()->withSuccess('Contact Form Submitted Successfully');
+    }
+    public function saveRequestDemo(Request $request){
+        $this->validate($request,[
+            'name' => 'required|max:100',
+            'email' => 'required|max:50',
+            'phone' => 'required|min:11,max:11',
+        ]);
+        RequestDemo::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'company_name' => $request->company_name,
+            'employee' => $request->employee,
+            'country_id' => $request->country_id,
+            'city_id' => $request->city_id,
+            'industry_type' => $request->industry_type,
+            'address' => $request->address,
+            'message' => $request->message,
+        ]);
+        return back()->withSuccess('To Request a Demo Submitted Successfully');
     }
 }

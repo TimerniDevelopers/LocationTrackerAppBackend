@@ -7,6 +7,7 @@ Route::get('/contact', 'IndexController@contact')->name('contact');
 Route::get('/about', 'IndexController@about')->name('about');
 Route::post('/save/subscribe', 'IndexController@saveSubscribe')->name('save.subscribe');
 Route::post('/save/contact', 'IndexController@saveContact')->name('save.contact');
+Route::post('/save/request/demo', 'IndexController@saveRequestDemo')->name('save.request.demo');
 
 Auth::routes();
 
@@ -68,6 +69,9 @@ Route::group(['prefix' => 'admin'], function (){
         Route::post('/delete/subscriber', 'AdminController@deleteSubscriber')->name('delete.subscriber');
         /* Contact List */
         Route::get('/contact/list', 'AdminController@contactList')->name('contact.list');
+        Route::post('/delete/contact', 'AdminController@deleteContact')->name('delete.contact');
+        Route::get('/request/demo', 'AdminController@requestDemoList')->name('request.demo');
+        Route::post('/delete/request/demo', 'AdminController@deleteRequestDemo')->name('delete.request.demo');
 
 
         // answer

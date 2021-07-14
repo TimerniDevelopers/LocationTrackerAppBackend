@@ -100,7 +100,7 @@ class QuestionController extends Controller
             'name' =>  $request->name != $question->name ? 'required|unique:questions,name' : 'required',
         ]);
         Question::updateQuestionData($request);
-        return redirect()->route('manage.question')->withSuccess('Update Successfully');
+        return redirect('admin/manage/question/'.$request->category_id)->withSuccess('Update Successfully');
     }
     public function deleteQuestion(Request $request)
     {

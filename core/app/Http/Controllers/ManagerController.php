@@ -7,6 +7,7 @@ use App\Models\Division;
 use App\Models\Question;
 use Illuminate\Http\Request;
 use DB;
+use Image;
 
 class ManagerController extends Controller
 {
@@ -46,11 +47,20 @@ class ManagerController extends Controller
             'password' => 'required',
             'phone' => 'required|unique:admins|max:11|min:11',
         ]);
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $filename = $image->hashName();
+            $location = 'assets/backend/images/user/';
+            Image::make($image)->resize(400,400, function ($constraint){
+                $constraint->aspectRatio();
+            })->save($location.$filename);
+        }
         Admin::create([
             'user_role' => 2,
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'phone' => $request->phone,
+            'image' => $request->hasFile('image') ? $location.$filename : null,
             'profession' => $request->profession,
             'address' => $request->address,
             'upazilla_id' => $request->upazilla_id,
@@ -86,6 +96,16 @@ class ManagerController extends Controller
             'email' =>  $request->email != $manager->email ? 'required|unique:admins,email' : 'required',
             'phone' =>  $request->phone != $manager->phone ? 'required|unique:admins,phone' : 'required',
         ]);
+        if($request->hasFile('image')){
+            @unlink($manager->image);
+            $image = $request->file('image');
+            $filename = $image->hashName();
+            $location = 'assets/backend/images/user/';
+            Image::make($image)->resize(400,400, function ($constraint){
+                $constraint->aspectRatio();
+            })->save($location.$filename);
+            $manager->image = $location.$filename;
+        }
         $manager->first_name = $request->first_name;
         $manager->last_name = $request->last_name;
         $manager->phone = $request->phone;
@@ -99,6 +119,7 @@ class ManagerController extends Controller
     public function deleteManager(Request $request){
         $manager = Admin::find($request->id);
         if($manager != null){
+            @unlink($manager->image);
             $manager->delete();
         }
         return back()->withSuccess('Delete Successfully');

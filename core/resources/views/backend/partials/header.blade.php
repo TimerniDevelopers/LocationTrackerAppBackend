@@ -61,7 +61,11 @@
                aria-haspopup="true" aria-expanded="false">
 
                 <span class="ml-2 d-none d-lg-inline text-black-50 small pr-2" style="font-size: 18px">{{ Auth::guard('admin')->user()->first_name }}</span>
+                @if (Auth::guard('admin')->user()->image)
+                <img class="img-profile rounded-circle" style="height: 40px;width: 40px;border-radius: 50%" src="{{ asset(Auth::guard('admin')->user()->image) }}" alt="Image">
+                @else
                 <img class="img-profile rounded-circle" style="height: 40px;width: 40px;border-radius: 50%" src="https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png">
+                @endif
                 <b class="fa fa-angle-down pl-2"></b>
             </a>
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -73,10 +77,10 @@
                     <i class="fas fa-passport fa-sm fa-fw mr-2 text-gray-400"></i>
                     Change Password
                 </a>
-                <a class="dropdown-item" href="javascript:void(0);">
+                {{-- <a class="dropdown-item" href="javascript:void(0);">
                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                     Settings
-                </a>
+                </a> --}}
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="javascript:void(0);" data-toggle="modal" data-target="#logoutModal">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>

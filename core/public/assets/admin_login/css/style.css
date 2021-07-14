@@ -1,0 +1,378 @@
+/*------------------------------------------------------------------
+Last change:    24/04/21 [fixed Float bug, vf]
+
+-------------------------------------------------------------------*/
+
+
+/*------------------------------------------------------------------
+[Table of contents]
+
+  01. Theme Default Css
+
+  -------------------------------------------------------------------*/
+
+
+==========================================
+   01. Theme Default CSS
+==========================================
+*/
+
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+}
+body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    background-color: #EEEEEE;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Sora-Bold';
+  margin-bottom:0;
+}
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+}
+input,
+select,
+textarea {
+  outline: none;
+  border: none;
+}
+a,
+i,
+button,
+img,
+input,
+span,
+*:before,
+*:after {
+  -webkit-transition: all 0.3s ease 0s;
+  -ms-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  border: none;
+}
+.btn:focus {
+  outline: none !important;
+  box-shadow: none;
+}
+button:focus {
+  outline: none;
+}
+*:focus {
+  outline: none;
+}
+.form-control:focus {
+  border: none;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+a:focus {
+  color: inherit;
+  outline: medium none;
+  transform: scale(1);
+  text-decoration: none;
+}
+a,
+a:hover {
+  text-decoration: none;
+}
+ul {
+  list-style: outside none none;
+  margin: 0;
+  padding: 0;
+}
+img {
+  max-width: 100%;
+}
+p {
+  font-weight: normal;
+  margin-bottom: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: 'Sora-Regular';
+}
+.custom-btn {
+  display: inline-block;
+  padding: 10px 25px;
+  color: #fff;
+  background: #fff;
+  text-align: center;
+  outline: none;
+  margin-top: 14px;
+  font-size: 18px;
+  border: none;
+  transition: .3s;
+  border-radius: 50px;
+  font-weight: 500;
+}
+.underline {
+  text-decoration: underline;
+}
+.content-top-space {
+  margin-top: 45px;
+}
+.section-padding{
+  padding: 60px 0px;
+}
+.box_shadow {
+  border-radius: 5px;
+  box-shadow: 0px 0px 8px 1px #0404040d;
+  background: #fff;
+}
+.pt-top-100{
+  padding-top: 100px;
+}
+.pb-top-100{
+  padding-bottom: 100px;
+}
+.pt-30{
+  padding-top: 30px;
+}
+.pb-30{
+  padding-bottom: 30px;
+}
+.pb-40{
+  padding-bottom: 40px;
+}
+.pt-40{
+  padding-top: 40px;
+}
+.pb-60{
+  padding-bottom: 60px;
+}
+.pt-60{
+  padding-top: 60px;
+}
+.mt-30{
+  margin-top: 30px;
+}
+.mb-30{
+  margin-bottom: 30px;
+}
+.mt-40{
+  margin-top: 40px;
+}
+.mb-40{
+  padding-bottom: 40px;
+}
+.theme-color{
+  background: #000;
+}
+.black-color{
+  background: #ddd;
+}
+.common-color{
+  color: #000;
+}
+.text-color{
+  color: #ddd;
+}
+.font-size-40{
+  color: #000;
+}
+
+.sub-heading{
+
+}
+.clearfix:after{
+  content: "";
+  display: table;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+
+}
+.f-left{
+  float: left;
+}
+.f-right{
+  float: left;
+}
+
+.sm-flex-item{
+  display: flex;
+}
+.sm-block-item{
+  display:block;
+}
+
+.fix{
+  overflow: hidden;
+}
+
+.section-heading{
+    font-size: 40px;
+    font-weight: 700;
+    line-height:1.5;
+    color: #0910E2;
+    text-align: center;
+    padding-bottom: 30px;
+    text-transform: uppercase;
+}
+
+
+/*Form*/
+
+ .myform{
+ position: relative;
+ padding:20px;
+ background-color: #fff;
+ border: 1px solid rgba(0,0,0,.2);
+ border-radius: 1.1rem;
+ outline: 0;
+ }
+ .myform .form-control {
+  display: block;
+  width: 100%;
+  height:40px;
+  
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #000;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25px;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+ .myform .tx-tfm{
+ text-transform:uppercase;
+ }
+ .myform .mybtn{
+ border-radius:50px;
+ }
+ .myform .login-or {
+ position: relative;
+ color: #aaa;
+ margin-top: 10px;
+ margin-bottom: 10px;
+ padding-top: 10px;
+ padding-bottom: 10px;
+ }
+ .myform .span-or {
+ display: block;
+ position: absolute;
+ left: 50%;
+ top: -2px;
+ margin-left: -25px;
+ background-color: #fff;
+ width: 50px;
+ text-align: center;
+ }
+ .myform .hr-or {
+ height: 1px;
+ margin-top: 0px !important;
+ margin-bottom: 0px !important;
+ }
+ .myform label {
+  display: inline-block;
+  margin-bottom: .5rem;
+  font-size: 18px;
+}
+.myform label.termscondition{
+  font-size: 16px !important;
+}
+.myform  p.font-small.blue-text {
+  font-size: 16px;
+}
+.myform .btn{
+  display: inline-block;
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+.myform  .form-group {
+   padding: 2px 0px; 
+
+}
+form .error {
+ color: #ff0000;
+ }
+
+
+.form-footer li{
+  display: inline-block;
+  margin-left: 10px;
+}
+.form-footer li a{
+  color: #1e991e;
+  font-size: 18px;
+  font-weight: 400;
+}
+.form-footer img {
+  max-width:50px;
+}
+.form-footer p{
+  font-size: 18px;
+  margin-top: 0 !important;
+}
+
+.space{
+  padding:35px 0px;
+}
+
+.art-round img{
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  padding: 20px 0px;
+}
+.art-socail-link a{
+  display: block;
+  font-size: 20px;
+  padding-bottom: 6px;
+}
+
+.art-description1 {
+  display: flex;
+  justify-content: space-around;
+  align-items:center;
+}
+.form-height{
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  text-align:left;
+  z-index: 1;
+  padding:50px;
+
+}
+#signup-footer{
+  background-color: #B4B4B4;
+    color: #000;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .modal-popup .btn,
+  .modal-popup .btn:hover{
+    background:transparent !important;
+}
+ .modal-popup i.fas.fa-edit {
+    font-size: 23px;
+    color: #000;
+}
+section.cv_top_section h3 {
+    font-size: 23px;
+}
+
+.form-height p,
+.myform p{
+  font-size: 22px;
+}
