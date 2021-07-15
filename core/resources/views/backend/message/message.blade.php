@@ -114,27 +114,28 @@ img{ max-width:100%;}
   width: 46%;
 }
 .input_msg_write input {
-  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
-  border: medium none;
-  color: #4c4c4c;
-  font-size: 15px;
-  min-height: 48px;
-  width: 100%;
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: medium none;
+    color: #4c4c4c;
+    font-size: 15px;
+    min-height: 48px;
+    width: 100%;
+    padding: 10px;
 }
 
 .type_msg {border-top: 1px solid #c4c4c4;position: relative;}
 .msg_send_btn {
-  background: #05728f none repeat scroll 0 0;
-  border: medium none;
-  border-radius: 50%;
-  color: #fff;
-  cursor: pointer;
-  font-size: 17px;
-  height: 33px;
-  position: absolute;
-  right: 0;
-  top: 11px;
-  width: 33px;
+    background: #05728f none repeat scroll 0 0;
+    border: medium none;
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    font-size: 17px;
+    height: 38px;
+    position: absolute;
+    right: 13px;
+    top: 4px;
+    width: 42px;
 }
 .messaging { padding: 0 0 50px 0;}
 .msg_history {
@@ -143,7 +144,7 @@ img{ max-width:100%;}
 }
 </style>
     <div class="content-wrapper" style="font-family: Roboto">
-    <h3 class=" text-center"></h3>
+    <h3 class=" text-center">{{ $name->first_name }} {{ $name->last_name }}</h3>
     <div class="mesgs">
           <div id="msg_historyid" class="msg_history" style="overflow:auto">
             
@@ -180,23 +181,34 @@ $( document ).ready(function() {
                     
                     for(i = 0; i < data.length; i++)
                     {
-                        var date = data[i]['created_at'].split(" ");
+                      var str = data[i]['created_at'];
+                      var datetime = str.split("T")
                         if(data[i]['user_id'] != null && data[i]['user_id2'] == null){
                             output+='<div class="incoming_msg">'+
-                            '<div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>'+
+                            '<div class="incoming_msg_img"> <img src="{{ asset(null) }}'+data[i]['user']['image']+'" alt="sunil"> </div>'+
                             '<div class="received_msg">'+
                                 '<div class="received_withd_msg">'+
                                 '<p>'+ data[i]['message'] +'</p>'+
-                                '<span class="time_date">'+data[i]['created_at']+'</span></div>'+
+                                '<span class="time_date">'+new Date(datetime[0])+'</span></div>'+
                             '</div>'+
-                            '</div>'
+                            '</div>';
+
+                            $.ajax({
+                              url: '/admin/status_update/'+data[i]['id'],
+                                method: "post",
+                                dataType: "json",
+                                data:{"_token": "{{ csrf_token() }}"},
+                                success:function (data) {
+                                  
+                                }
+                            })
                         }else{
                             output+='<div class="outgoing_msg">'+
                                 '<div class="sent_msg">'+
                                     '<p>'+ data[i]['message'] +'</p>'+
-                                    '<span class="time_date">'+data[0]+'</span>'+
+                                    '<span class="time_date">'+new Date(datetime[0])+'</span>'+
                                 '</div>'+
-                            '</div>'
+                            '</div>';
                         }
                     }
                     document.getElementById("msg_historyid").innerHTML=output;
@@ -208,7 +220,7 @@ $( document ).ready(function() {
             })
         }
         
-
+        
         
         showMessage();
 

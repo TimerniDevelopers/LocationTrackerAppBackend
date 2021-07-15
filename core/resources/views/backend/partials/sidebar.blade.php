@@ -113,7 +113,6 @@
                         <i class="nav-icon fas fa-home icon-color" style="color: green"></i><p>Subscriber List</p>
                     </a>
                 </li>
-<<<<<<< HEAD
 
                 <li class="nav-item has-treeview">
                     <a href="{{ route('notify.all') }}" class="nav-link @if(request()->path() == 'admin/subscriber/list') bg-info @endif">
@@ -121,10 +120,9 @@
                     </a>
                 </li>
                 
-                {{-- <li class="nav-item has-treeview">
+                <li class="nav-item has-treeview">
                     <a href="{{ route('contact.list') }}" class="nav-link @if(request()->path() == 'admin/contact/list') bg-info @endif">
                         <i class="nav-icon fas fa-home icon-color" style="color: green"></i><p>Contact List</p>
-=======
                 <li class="nav-item has-treeview
                         {{ ((Request::is('admin/contact/list')) ? 'menu-open' : '') }}
                         {{ ((Request::is('admin/request/demo')) ? 'menu-open' : '') }}
@@ -135,7 +133,6 @@
                             Contact
                             <i class="right fas fa-angle-left"></i>
                         </p>
->>>>>>> 1431fb14de3a3cd4f9302b02a9e9669f2f392050
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
@@ -221,7 +218,6 @@
                         <i class="nav-icon fas fa-home icon-color" style="color: green"></i><p>Subscriber List</p>
                     </a>
                 </li>
-<<<<<<< HEAD
 
                 <li class="nav-item has-treeview">
                     <a href="{{ route('notify.all') }}" class="nav-link @if(request()->path() == 'admin/subscriber/list') bg-info @endif">
@@ -230,10 +226,9 @@
                 </li>
 
 
-                {{-- <li class="nav-item has-treeview">
+                <li class="nav-item has-treeview">
                     <a href="{{ route('contact.list') }}" class="nav-link @if(request()->path() == 'admin/contact/list') bg-info @endif">
                         <i class="nav-icon fas fa-home icon-color" style="color: green"></i><p>Contact List</p>
-=======
                 <li class="nav-item has-treeview
                         {{ ((Request::is('admin/contact/list')) ? 'menu-open' : '') }}
                         {{ ((Request::is('admin/request/demo')) ? 'menu-open' : '') }}
@@ -244,7 +239,6 @@
                             Contact
                             <i class="right fas fa-angle-left"></i>
                         </p>
->>>>>>> 1431fb14de3a3cd4f9302b02a9e9669f2f392050
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">

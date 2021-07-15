@@ -88,7 +88,9 @@ Route::group(['prefix' => 'admin'], function (){
         Route::get('message/{id}', 'MessageController@index')->name('message');
         
         Route::get('message/box/{id}', 'MessageController@messageBox')->name('message.box');
+        Route::post('status_update/{id}', 'MessageController@StatusUpdate')->name('status_update');
 
         Route::post('message/user2', 'MessageController@message2User')->name('message2.user');
+        Route::get('unseenmessage', 'MessageController@unSeenMessage')->name('unseenmessage');
     });
 });

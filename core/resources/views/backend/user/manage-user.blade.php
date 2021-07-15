@@ -74,6 +74,10 @@
                                                 <a href="#deleteUser-{{ $user->id }}" data-toggle="modal" class="btn btn-danger text-white">
                                                     <span class="fa fa-trash"></span>
                                                 </a>
+
+                                                <a href="{{ route('message', ['id'=>$user->id]) }}" class="btn btn-primary text-white">
+                                                    <span class="fas fa-sms"></span>
+                                                </a>
                                             </td>
                                         </tr>
                                         <div class="modal fade" id="deleteUser-{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout"

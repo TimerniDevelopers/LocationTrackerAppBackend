@@ -9,11 +9,8 @@ class Notification extends Model
 {
     use HasFactory;
 
-    public static function saveNotificationDataAjax($request, $user_id){
-       
-        Notification::create([
-            
-            'message' => $request->message,
-        ]);
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
+    
 }
