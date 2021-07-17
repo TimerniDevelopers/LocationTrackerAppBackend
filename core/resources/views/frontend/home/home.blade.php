@@ -105,7 +105,7 @@
                                 </div>
                                 <div class="wow animate__fadeInUp hero-img" data-wow-duration="1s" data-wow-delay="1.5s">
                                     <div>
-                                        <img loading="lazy" src="{{ asset('assets/frontend/img/Record audiovisual.gif') }}"
+                                        <img loading="lazy" src="{{ asset('assets/frontend/img/Record-audiovisual-1.gif') }}"
                                             alt="covid">
                                     </div>
                                 </div>
