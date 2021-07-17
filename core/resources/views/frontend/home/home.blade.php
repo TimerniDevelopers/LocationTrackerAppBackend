@@ -31,7 +31,7 @@
                                 </div>
                                 <div class="wow animate__fadeInUp hero-img" data-wow-duration="1s" data-wow-delay="1.5s">
                                     <div>
-                                        <img loading="lazy" src="{{ asset('assets/frontend/img/Try Doctrack free 01.png') }}" alt="covid">
+                                        <img loading="lazy" src="{{ asset('assets/frontend/img/Comp 3.gif') }}" alt="covid">
                                     </div>
                                 </div>
                             </div>
@@ -56,7 +56,7 @@
                                 </div>
                                 <div class="wow animate__fadeInUp hero-img" data-wow-duration="1s" data-wow-delay="1.5s">
                                     <div>
-                                        <img loading="lazy" src="{{ asset('assets/frontend/img/qualitative&quantative.gif') }}"
+                                        <img loading="lazy" src="{{ asset('assets/frontend/img/Statistics (1).gif') }}"
                                             alt="covid">
                                     </div>
                                 </div>
@@ -81,7 +81,7 @@
                                 </div>
                                 <div class="wow animate__fadeInUp hero-img" data-wow-duration="1s" data-wow-delay="1.5s">
                                     <div>
-                                        <img loading="lazy" src="{{ asset('assets/frontend/img/locate datacollectors .png') }}"
+                                        <img loading="lazy" src="{{ asset('assets/frontend/img/Take Away.gif') }}"
                                             alt="covid">
                                     </div>
                                 </div>
@@ -105,7 +105,7 @@
                                 </div>
                                 <div class="wow animate__fadeInUp hero-img" data-wow-duration="1s" data-wow-delay="1.5s">
                                     <div>
-                                        <img loading="lazy" src="{{ asset('assets/frontend/img/Record audiovisual.png') }}"
+                                        <img loading="lazy" src="{{ asset('assets/frontend/img/Record audiovisual.gif') }}"
                                             alt="covid">
                                     </div>
                                 </div>
@@ -130,7 +130,7 @@
                                 </div>
                                 <div class="wow animate__fadeInUp hero-img" data-wow-duration="1s" data-wow-delay="1.5s">
                                     <div>
-                                        <img loading="lazy" src="{{ asset('assets/frontend/img/progresswithproperanalysis.gif') }}"
+                                        <img loading="lazy" src="{{ asset('assets/frontend/img/Revenue.gif') }}"
                                             alt="covid">
                                     </div>
                                 </div>
@@ -183,7 +183,7 @@
                             </div>
                             <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
                                 <div class="rcord-img qrcode-img">
-                                    <img src="{{ asset('assets/frontend/img/Dectrack-illustration-02.png') }}"
+                                    <img src="{{ asset('assets/frontend/img/Dectrack illustration.gif') }}"
                                         alt="qrcode" loading="lazy">
                                 </div>
                             </div>
@@ -371,7 +371,8 @@
                     </div>
                     <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
                         <div class="rcord-img">
-                            <img src="{{ asset('assets/frontend/img/Record audiovisual.png') }}" alt="recod"
+                            <img src="{{ asset('assets/frontend/img/Data extraction.gif') }}" alt="recod"
+                            {{-- <img src="{{ asset('assets/frontend/img/Data.gif') }}" alt="recod" --}}
                                 loading="lazy">
                         </div>
                     </div>
@@ -416,7 +417,7 @@
                     </div>
                     <div class="col-lg-5 col-md-6" data-aos="fade-up" data-aos-delay="100">
                         <div class="rcord-img qrcode-img">
-                            <img src="{{ asset('assets/frontend/img/ConsultWithOurExpert .gif') }}" alt="qrcode" loading="lazy">
+                            <img src="{{ asset('assets/frontend/img/Analytics (1).gif') }}" alt="qrcode" loading="lazy">
                         </div>
                     </div>
                 </div>
@@ -434,7 +435,7 @@
                 <div class="row justify-content-center">
                     <div class="col-md-6 col-lg-5 sm-margin-b" data-aos="fade-up" data-aos-delay="100">
                         <div class="rcord-img qrcode-img">
-                            <img src="{{ asset('assets/frontend/img/monitorYourProgress.gif') }}" alt="qrcode" loading="lazy">
+                            <img src="{{ asset('assets/frontend/img/Visual data.gif') }}" alt="qrcode" loading="lazy">
                         </div>
                     </div>
 
@@ -484,7 +485,7 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-5">
-                        <img src="{{ asset('assets/frontend/img/Dectrack-illustration-02.png') }}" alt="App_Logo">
+                        <img src="{{ asset('assets/frontend/img/Dectrack illustration.gif') }}" alt="App_Logo">
                     </div>
                     <div class="col-sm-7 pt-5 d-flex align-items-center" id="apps-img">
                         <div>
@@ -529,7 +530,7 @@
                 <div class="row justify-content-center">
                     <div class="col-md-6 sm-margin-b">
                         <div class="newsletter-left-img">
-                            <img src="{{ asset('assets/frontend/img/subscribe to our newslater.gif') }}" alt="newsletter">
+                            <img src="{{ asset('assets/frontend/img/Full inbox.gif') }}" alt="newsletter">
                         </div>
                     </div>
                     <div class="col-md-6 ">

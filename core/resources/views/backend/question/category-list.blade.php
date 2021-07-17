@@ -54,9 +54,12 @@
                                     <tbody>
                                     @php($i=1)
                                     @foreach($categories as $category)
+                                    <?php
+                                        $questionCount = App\Models\Question::where('category_id', $category->id)->where('status', 1)->count();
+                                    ?>
                                         <tr>
                                             <td>{{ $i++ }}</td>
-                                            <td>{{ $category->name }}</td>
+                                            <td>{{ $category->name }} ({{ $questionCount }} Questions)</td>
                                             <td>
                                                 @if($category->status == 1)
                                                     <button class="btn btn-sm btn-success"><span class="fa fa-check"></span> Active</button>
@@ -68,6 +71,7 @@
                                                 <a href="{{ route('manage.question', ['id'=>$category->id]) }}" target="_blank" class="btn btn-primary text-white">
                                                     <span class="fa fa-edit"></span> View Question
                                                 </a>
+
                                             </td>
                                         </tr>
                                     @endforeach

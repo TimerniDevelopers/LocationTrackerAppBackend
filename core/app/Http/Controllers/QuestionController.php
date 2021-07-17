@@ -108,10 +108,27 @@ class QuestionController extends Controller
         return back()->withSuccess('Delete Successfully');
     }
 
+    // public function getAnswer(Request $request){
+    //     $id = $request->get('id');
+    //     $answers = DB::table('question_answer')
+    //             ->join('user_questions', 'question_answer.user_question_id', '=', 'user_questions.id')
+    //             ->join('questions', 'question_answer.question_id', '=', 'questions.id')
+    //             ->join('question_categories', 'questions.category_id', '=', 'question_categories.id')
+    //             ->select('question_answer.*')
+    //             ->where('question_categories.id', $id)
+    //             ->get();
+
+    //     $result = array();
+    //         $result['answers'] = view('backend.questionAnswer.ajax-show-answer', compact('answers'))->render();
+    //         return $result;
+    // }
+
+
     public function showAnswer()
     {
         $answers = UserQuestion::orderBy('id', 'desc')->get();
-        return view('backend.questionAnswer.show-answer', compact('answers'));
+        $categories = QuestionCategory::where('status', 1)->get();
+        return view('backend.questionAnswer.show-answer', compact('answers', 'categories'));
     }
 
     public function viewAnswer($id)
@@ -119,13 +136,13 @@ class QuestionController extends Controller
         $answer = DB::table('question_answer')
         ->join('user_questions', 'user_questions.id', '=', 'question_answer.user_question_id')
         ->join('questions', 'questions.id', '=', 'question_answer.question_id')
-        
+
         ->where('user_question_id', $id)
         ->get();
 
         $questions = DB::table('questions')->get();
 
-        
+
         return view('backend.questionAnswer.single-answer', compact('questions', 'answer'));
     }
 
@@ -137,7 +154,7 @@ class QuestionController extends Controller
 
     public function showMapsAll()
     {
-        
+
         $maps = UserQuestion::get();
         return view('backend.questionAnswer.all_maps', compact('maps'));
     }

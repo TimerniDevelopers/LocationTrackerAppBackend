@@ -40,6 +40,10 @@
                             </div>
                         </div>
 
+                        @if(Auth::guard('admin')->user()->user_role == 10)
+                            <div class="piechartResponsive" id="piechart2" ></div>
+                            @include('backend.questionAnswer.admin-analytics')
+                        @endif
                         @if(Auth::guard('admin')->user()->user_role == 1)
                             <div class="piechartResponsive" id="piechart2" ></div>
                             @include('backend.questionAnswer.admin-analytics')

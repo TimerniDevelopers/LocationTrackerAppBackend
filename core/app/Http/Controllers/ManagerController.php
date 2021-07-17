@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin\Admin;
-use App\Models\Division;
-use App\Models\Question;
 use Illuminate\Http\Request;
 use DB;
 use Image;

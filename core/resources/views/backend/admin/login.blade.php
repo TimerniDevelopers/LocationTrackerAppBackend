@@ -21,8 +21,6 @@
     <div class="form-height">
       <div class="container">
         <div class="text-center">
-          <a target="_blank" href="https://timerni.com"><img src="{{ asset('assets/admin_login/img/Tri_login_logo.png') }}" alt="TRI" style="max-height: 60px"></a>
-          <p class="pt-2 sign">Sign in to stay updated on your professional world.</p>
           <a href="{{ route('index') }}"><img src="{{ asset('assets/frontend/img/dcotrak.png') }}" alt="DcoTrack"></a>
           <p class="pb-2 sign">Control Panel</p>
         </div>
@@ -57,6 +55,10 @@
 
           </div>
         </div>
+        <div class="text-center">
+            <p class="pt-3 sign">Sign in to stay updated on your professional world</p>
+            <a target="_blank" href="https://timerni.com"><img class="pt-2" src="{{ asset('assets/admin_login/img/Tri_login_logo.png') }}" alt="TRI" style="max-height: 70px"></a>
+        </div>
       </div>
     </div>
 
@@ -68,7 +70,7 @@
 
               <div class="d-flex align-items-center justify-content-center">
                 <ul >
-                  <li><a href="index.html">
+                  <li><a href="https://timerni.com" target="_blank">
                   <img src="{{ asset('assets/admin_login/img/sitelogo.png') }}" alt="our logo">
                 </a></li>
                 <li class="mr-3"><p><img src="{{ asset('assets/admin_login/img/copyr8.png') }}" alt=""> Copyright Time research & innovation.</p></li>

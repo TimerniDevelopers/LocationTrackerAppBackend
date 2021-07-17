@@ -7,6 +7,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use DB;
 use Image;
+use Auth;
+use Hash;
 
 class UserController extends Controller
 {
@@ -32,6 +34,64 @@ class UserController extends Controller
         }
     }
 
+    public function index(){
+        if(Auth::guard('web')->check()){
+            return redirect()->route('user.dashboard');
+        }
+        return view('user.user.login');
+    }
+    public function loginCheck(Request $request){
+        $this->validate($request,[
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+        if(Auth::guard('web')->attempt([
+            'email' => $request->email,
+            'password' => $request->password
+        ])){
+            return redirect()->route('user.dashboard');
+        }
+        return back()->withErrors('The Combination of Username or Password is Wrong!.');
+    }
+    public function userDashboard(){
+        return view('user.dashboard');
+    }
+    public function userLogout(){
+        Auth::guard('web')->logout();
+        return redirect()->route('index');
+    }
+
+    /*Profile*/
+    public function profile(){
+        return view('user.user.profile');
+    }
+
+    //Change Password
+    public function changePassword(){
+        return view('user.user.change-password');
+    }
+    public function submitChangePassword(Request $request){
+        $this->validate($request,[
+            'current_password' => 'required',
+            'password' => 'required|min:6',
+            'confirm_password' => 'required|min:6',
+        ]);
+        $ok = User::find($request->id);
+        $password = $request->input('current_password');
+        $check = User::where('id', Auth::guard('web')->user()->id)->first();
+        if(Hash::check($password, $check->password)) {
+            if ($request->password == $request->confirm_password){
+                $ok->password = bcrypt($request->password);
+                $ok->save();
+                return back()->withSuccess('Password Change Successful');
+            }
+            return back()->withErrors('New Password & Confirm Password Not Match!');
+        } else {
+            return back()->withErrors('Current Password Not Match');
+        }
+    }
+
+    /* User Add Section */
     public function addUser(){
         $title = 'Add User';
         $divisions = DB::table('divisions')->get();

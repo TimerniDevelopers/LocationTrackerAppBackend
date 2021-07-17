@@ -13,6 +13,27 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+/* User Panel */
+Route::group(['prefix' => 'user'], function (){
+    Route::get('/', 'UserController@index')->name('user.login');
+    Route::post('/login', 'UserController@loginCheck')->name('user.loginCheck');
+
+    Route::middleware('auth:web')->group(function (){
+        Route::get('/dashboard', 'UserController@userDashboard')->name('user.dashboard');
+        Route::get('/logout', 'UserController@userLogout')->name('user.logout');
+
+        Route::get('/profile', 'UserController@profile')->name('user.profile');
+
+        Route::get('/change/password', 'UserController@changePassword')->name('user.change.password');
+        Route::post('/submit/change/password', 'UserController@submitChangePassword')->name('user.submit.change.password');
+
+        /* Start Survey */
+        Route::get('/start/survey', 'SurveyController@startSurvey')->name('start.survey');
+        Route::post('/submit/survey', 'SurveyController@submitSurvey')->name('submit.survey');
+    });
+});
+
+/* Admin/Manager Panel */
 Route::group(['prefix' => 'admin'], function (){
     Route::get('/', 'AdminController@index')->name('admin.login');
     Route::post('/login', 'AdminController@loginCheck')->name('admin.loginCheck');
@@ -31,6 +52,7 @@ Route::group(['prefix' => 'admin'], function (){
 
         Route::get('/get-district', 'ManagerController@getDistrict'); //ajax request
         Route::get('/get-upazila', 'ManagerController@getUpazila'); //ajax request
+        // Route::get('/get-answer', 'QuestionController@getAnswer'); //ajax request
 
         /*Question Category*/
         Route::get('/add/question/category', 'QuestionController@addQuestionCategory')->name('add.question.category');

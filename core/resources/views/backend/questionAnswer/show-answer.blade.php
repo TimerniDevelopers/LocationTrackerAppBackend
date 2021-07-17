@@ -25,6 +25,24 @@
 
         <section class="content">
             <div class="container-fluid">
+
+                {{-- <div class="row">
+                    <div class="col-sm-4">
+
+                    </div>
+                    <div class="col-sm-4">
+                        <select name="category_id" id="category_id" onchange="showAnswer(this.id);" class="form-control select2">
+                            <option selected disabled>Selcet Category</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-sm-4">
+
+                    </div>
+                </div> --}}
+
                 <div class="row">
                     <div class="col-12">
                         <div class="card mt-3">
@@ -48,8 +66,10 @@
                                     <thead>
                                     <tr>
                                         <th style="font-family: Kalpurush">#</th>
-                                        <th style="font-family: Kalpurush">User Name</th>
-                                        <th style="font-family: Kalpurush">Stall Name</th>
+                                        <th style="font-family: Kalpurush">User/Volunteer Name</th>
+                                        <th style="font-family: Kalpurush">Patient ID</th>
+                                        <th style="font-family: Kalpurush">Patient Name</th>
+                                        <th style="font-family: Kalpurush">Phone</th>
                                         <th style="font-family: Kalpurush">Date</th>
                                         <th style="font-family: Kalpurush">Time</th>
                                         <th style="font-family: Kalpurush">Action</th>
@@ -58,17 +78,19 @@
                                     <tbody>
                                     @php($i=1)
                                     @foreach($answers as $answer)
-                                    <?php 
+                                    <?php
                                     $temp = explode(' ',$answer->created_at);
                                     ?>
                                         <tr>
                                             <td>{{ $i++ }}</td>
                                             <td>{{ $answer->userName->first_name ?? '' }}</td>
-                                            <td>{{ $answer->stall_name }}</td>
+                                            <td>{{ $answer->unique_id }}</td>
+                                            <td>{{ $answer->name }}</td>
+                                            <td>{{ $answer->phone }}</td>
                                             <td>{!! date('d-M-y', strtotime($temp[0])) !!}</td>
-                                            
+
                                             <td>{{ date('h:i A', strtotime($temp[1])) }}</td>
-                                            
+
                                             <td> <a href="{{ route('show.maps', ['id'=>$answer->id]) }}" class="btn btn-primary text-white">
                                                     <span class="fas fa-eye"></span> Show Map
                                                 </a>
@@ -78,7 +100,7 @@
                                             </td>
                                         </tr>
                                     @endforeach
-                                    </tbody>
+                                </tbody>
                                 </table>
                             </div>
                         </div>
@@ -88,3 +110,26 @@
         </section>
     </div>
 @endsection
+
+@section('js')
+{{-- <script>
+        function showAnswer() {
+            $('.defaultData').hide();
+        var id = $('#category_id').val();
+            // console.log(id);
+        $.ajax({
+            url: '/admin/get-answer',
+            type: 'get',
+            data: {
+                id: id
+            },
+            success: function(data) {
+
+                $('.newData').hide();
+                $('.newData').html(data.answers)
+            }
+        })
+    }
+    </script> --}}
+@endsection
+

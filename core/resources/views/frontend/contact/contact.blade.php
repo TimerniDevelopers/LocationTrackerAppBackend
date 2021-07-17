@@ -116,12 +116,12 @@
                                     <ul class="nav nav-tabs text-center">
                                         <li class="active mr-2">
                                             <a data-toggle="tab" href="#home">
-                                                <button class="btn" style="background-color: rgb(36, 170, 24)">Contact Us</button>
+                                                <button class="btn hover-btn">Contact Us</button>
                                             </a>
                                         </li>
                                         <li>
                                             <a data-toggle="tab" href="#menu2">
-                                                <button class="btn" style="background-color: darkcyan">To Request a Demo</button>
+                                                <button class="btn hover-btn">To Request a Demo</button>
                                             </a>
                                         </li>
                                     </ul>
@@ -135,6 +135,11 @@
                                             @include('frontend.contact.request-demo-form')
                                         </div>
                                     </div>
+                                    <style>
+                                        .hover-btn:hover{
+                                            color: white;
+                                        }
+                                    </style>
 
                                 </div>
                             </div>
