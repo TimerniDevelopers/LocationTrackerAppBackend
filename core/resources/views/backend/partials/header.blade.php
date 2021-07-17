@@ -28,6 +28,19 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
+
+    <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="fas fa-bell" style="width:25px;"></i>
+          <span class="badge badge-warning navbar-badge" style="font-size: 10px;" id="counter"></span>
+        </a>
+        <div id="unseenmessage" class="dropdown-menu dropdown-menu-lg dropdown-menu-right"  style="left: inherit; right:0px;
+    width: 276px;
+">
+          
+        </div>
+      </li>
+
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" style="display: flex;align-items: center;"
                aria-haspopup="true" aria-expanded="false">
@@ -60,6 +73,8 @@
                 </a>
             </div>
         </li>
+
+        
     </ul>
 </nav>
 
@@ -85,3 +100,4 @@
         </div>
     </div>
 </div>
+

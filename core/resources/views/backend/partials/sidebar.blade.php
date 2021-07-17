@@ -148,6 +148,16 @@
                         </li>
                     </ul>
                 </li>
+
+                <li class="nav-item has-treeview">
+                    <a href="{{ route('notify.all') }}" class="nav-link @if(request()->path() == 'admin/subscriber/list') bg-info @endif">
+                        <i class="nav-icon fas fa-home icon-color" style="color: green"></i><p>Notify List</p>
+                    </a>
+                </li>
+                
+                <li class="nav-item has-treeview">
+                    <a href="{{ route('contact.list') }}" class="nav-link @if(request()->path() == 'admin/contact/list') bg-info @endif">
+                        <i class="nav-icon fas fa-home icon-color" style="color: green"></i><p>Contact List</p>
                 <li class="nav-item has-treeview
                         {{ ((Request::is('admin/add/question')) ? 'menu-open' : '') }}
                         {{ ((Request::is('admin/question/category/list')) ? 'menu-open' : '') }}
@@ -278,6 +288,17 @@
                         <i class="nav-icon fas fa-home icon-color" style="color: green"></i><p>Subscriber List</p>
                     </a>
                 </li>
+
+                <li class="nav-item has-treeview">
+                    <a href="{{ route('notify.all') }}" class="nav-link @if(request()->path() == 'admin/subscriber/list') bg-info @endif">
+                        <i class="nav-icon fas fa-home icon-color" style="color: green"></i><p>Notify List</p>
+                    </a>
+                </li>
+
+
+                <li class="nav-item has-treeview">
+                    <a href="{{ route('contact.list') }}" class="nav-link @if(request()->path() == 'admin/contact/list') bg-info @endif">
+                        <i class="nav-icon fas fa-home icon-color" style="color: green"></i><p>Contact List</p>
                 <li class="nav-item has-treeview
                         {{ ((Request::is('admin/contact/list')) ? 'menu-open' : '') }}
                         {{ ((Request::is('admin/request/demo')) ? 'menu-open' : '') }}

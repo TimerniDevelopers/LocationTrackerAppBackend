@@ -17,7 +17,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6" style="font-family: kalpurush">
-                        <h1 class="m-0 text-dark">Manage Manager</h1>
+                        <h1 class="m-0 text-dark">All Maps Mark</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -37,14 +37,8 @@
                             <div class="card-header">
                                 <div class="fa-pull-left">
                                     <h3 class="card-title">
-                                        <i class="fas fa-list"></i> Manage Manager
+                                        <i class="fas fa-list"></i> All Maps Mark
                                     </h3>
-                                </div>
-
-                                <div class="fa-pull-right">
-                                    <a href="{{ route('add.manager') }}">
-                                        <button class="btn btn-info"><i class="fa fa-plus"></i><b> Add Manager</b></button>
-                                    </a>
                                 </div>
 
                             </div>
