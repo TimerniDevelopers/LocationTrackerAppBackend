@@ -52,4 +52,5 @@ Route::group(['prefix' => 'location'], function () {
     Route::get('union/{id}', 'Api\AreaController@union');
 
     Route::post('notification', 'Api\NotificationController@submitNotification');
+    Route::get('message', 'Api\NotificationController@GetNotification')
 });
