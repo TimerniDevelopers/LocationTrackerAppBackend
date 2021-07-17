@@ -24,4 +24,17 @@ class NotificationController extends Controller
         return response()->json('success');
         
     }
+
+    public function GetNotification()
+    {
+        try{
+            $user_id = Auth::guard()->user()->id;
+            $messages = Notification::where('user_id', $user_id)->with('user')->get();
+
+            return response()->json($messages);
+        }catch (\Exception $e){
+            return response()->json('something error');
+        }
+        
+    }
 }
