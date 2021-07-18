@@ -35,6 +35,12 @@
                     </a>
                 </li>
 
+                <li class="nav-item has-treeview ">
+                    <a href="{{ route('user.message') }}" class="nav-link hover-color @if(request()->path() == 'user/message') bg-success @endif">
+                        <i class="nav-icon fas fa-inbox icon-color" style="color: green"></i><p>Message</p>
+                    </a>
+                </li>
+
                 {{-- <li class="nav-item has-treeview
                         {{ ((Request::is('admin/add/user')) ? 'menu-open' : '') }}
                         {{ ((Request::is('admin/manage/user')) ? 'menu-open' : '') }}

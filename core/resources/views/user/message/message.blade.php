@@ -1,7 +1,7 @@
-@extends('backend.master')
+@extends('user.master')
 
 @section('title')
-    Add Question Category
+    User Message
 @endsection
 
 @section('content')
@@ -144,7 +144,7 @@ img{ max-width:100%;}
 }
 </style>
     <div class="content-wrapper" style="font-family: Roboto">
-    <h3 class=" text-center">{{ $name->first_name }} {{ $name->last_name }}</h3>
+    <h3 class=" text-center">Admin</h3>
     <div class="mesgs">
           <div id="msg_historyid" class="msg_history" style="overflow:auto">
             
@@ -174,7 +174,7 @@ $( document ).ready(function() {
             
             var output = "";
             $.ajax({
-                url: 'box/'+user_id,
+                url: 'message/get/',
                 method: "get",
                 dataType: "json",
                 success:function (data) {
@@ -183,19 +183,18 @@ $( document ).ready(function() {
                     {
                       var str = data[i]['created_at'];
                       var datetime = str.split("T")
-                        if(data[i]['user_id'] != null && data[i]['user_id2'] == null){
+                        if(data[i]['user_id'] != null && data[i]['user_id2'] != null){
                             output+='<div class="incoming_msg">'+
-                            '<div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="avater"> </div>';
-                            if(data[i]['user']['image']){
-                              output += '<div class="incoming_msg_img"> <img src="{{ asset(null) }}'+data[i]['user']['image']+'" alt="sunil"> </div>';
-                              
-                            }
-                            output +='<div class="received_msg">'+
+                            
+                            '<div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="avater"> </div>'+
+                            '<div class="received_msg">'+
                                 '<div class="received_withd_msg">'+
                                 '<p>'+ data[i]['message'] +'</p>'+
                                 '<span class="time_date">'+new Date(datetime[0])+'</span></div>'+
                             '</div>'+
                             '</div>';
+
+                            
 
                             $.ajax({
                               url: '/admin/status_update/'+data[i]['id'],
@@ -208,6 +207,7 @@ $( document ).ready(function() {
                             })
                         }else{
                             output+='<div class="outgoing_msg">'+
+                            
                                 '<div class="sent_msg">'+
                                     '<p>'+ data[i]['message'] +'</p>'+
                                     '<span class="time_date">'+new Date(datetime[0])+'</span>'+
@@ -227,16 +227,14 @@ $( document ).ready(function() {
         
         
         showMessage();
-
         setInterval(function(){ showMessage(); }, 3000);
-        
         
         $('#message_submit').click(function(e) {  
             e.preventDefault();
             var msg_write = $('#msg_write').val();
             var user_id = $('#user').val();
             $.ajax({
-                url:"user2",
+                url:"sent/message",
                 method:'POST',
                 data:{"_token": "{{ csrf_token() }}", user_id:user_id, msg_write:msg_write},
                 dataType: "json",
@@ -253,6 +251,4 @@ $( document ).ready(function() {
         });
     });
 </script>
-    
 @endsection
-
