@@ -30,6 +30,11 @@ Route::group(['prefix' => 'user'], function (){
         /* Start Survey */
         Route::get('/start/survey', 'SurveyController@startSurvey')->name('start.survey');
         Route::post('/submit/survey', 'SurveyController@submitSurvey')->name('submit.survey');
+
+        //message
+        Route::get('message', 'UserMessageController@messageindex')->name('user.message');
+        Route::get('message/get/', 'UserMessageController@messageGet')->name('get.message');
+        Route::post('sent/message', 'UserMessageController@messageSent')->name('sent.message');
     });
 });
 
