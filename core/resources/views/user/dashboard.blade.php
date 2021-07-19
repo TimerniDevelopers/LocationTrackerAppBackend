@@ -39,9 +39,9 @@
                                 </div>
                             </div>
                         </div>
-                        <iframe width="100%" height="430px" src="https://www.youtube.com/embed/nsJD62lIzC8" title="YouTube video player"
+                        {{-- <iframe width="100%" height="430px" src="https://www.youtube.com/embed/nsJD62lIzC8" title="YouTube video player"
                         frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
+                        allowfullscreen></iframe> --}}
 
                         {{-- @if(Auth::guard('admin')->user()->user_role == 10)
                             <div class="piechartResponsive" id="piechart2" ></div>

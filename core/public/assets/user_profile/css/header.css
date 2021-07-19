@@ -1,0 +1,145 @@
+/*
+==========================================
+   02. Heaader CSS
+==========================================
+*/
+
+
+
+#header {
+  position: sticky;
+  background: #EEEEEE;
+  left: 0;
+  top: 0;;
+  width: 100%;
+  padding: 15px 0px !important;
+  box-shadow: 10px 3px 120px 31px #00000012;
+  z-index: 99999;
+}
+
+#header.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 15px 0px !important;
+    background: #EEEEEE;
+    width: 100%;
+}
+.headerLogo {
+  display: flex;
+  align-items: center;
+}
+.headerMenu {
+  align-items: center;
+  font-size: 16px;
+}
+
+.headerMenu li{
+  margin-right: 30px;
+}
+.headerMenu li:last-child{
+  margin-right: 0px;
+}
+.headerMenu li a{
+  background-color: #fff;
+  color:#1E2831;
+  padding: 5px 15px;
+  font-size: 16px;
+}
+.headerLogo img {
+    max-width: 75%;
+}
+
+.headerLogo form input {
+    border: none;
+    border-radius: 20px;
+    padding: 4px 15px;
+    width: 100%;
+}
+.headerLogo form button {
+  background: white;
+  padding: 0px 10px;
+  border-radius: 20px;
+  font-weight: 300;
+  color: #00000075;
+  font-size: 13px;
+}
+
+.headLogin button:hover {
+  background: white;
+  color: #1e991e;
+}
+
+.headerLogo form {
+  display: flex;
+   align-items: center;
+}
+
+.headerLogo form button {
+  margin-left: -34px;
+}
+
+/*privacy*/
+
+
+.mr-10{
+  margin-right: 10px;
+
+}
+
+
+.select-group select{
+  background: #089DF3;
+  border-radius: 5px;
+  color: #fff;
+  margin: 0px 12px;
+
+}
+
+
+
+
+
+@media only screen and (min-width: 992px) and (max-width: 1299px) {
+
+  
+}
+@media only screen and (max-width: 991px) {
+ 
+  .headerLogo img {
+    max-width: 55%;
+  }
+
+  .header i.fas.fa-bars {
+    font-size: 2rem;
+  }
+  .icon-bar {
+    display: none;
+  }
+
+ .headerMenu li {
+   margin-right: 10px;
+ }
+.headerMenu li a {
+  padding: 5px 10px;
+  font-size: 15px;
+  display: block;
+}
+
+.headerLogo form input {
+  width: 80%;
+}
+
+}
+
+@media only screen and (max-width: 767px) {
+
+ .headerMenu li {
+   margin: 10px 0px;
+ }
+
+
+
+
+}
+

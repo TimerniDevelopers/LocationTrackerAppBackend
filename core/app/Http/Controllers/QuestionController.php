@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Question;
 use App\Models\QuestionCategory;
 use App\Models\QuestionOption;
+use App\Models\User;
 use App\Models\UserQuestion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -47,8 +48,8 @@ class QuestionController extends Controller
     {
         $category = QuestionCategory::find($request->id);
         $question = Question::where('category_id', $request->id)->first();
-        if ($category != null){
-            if($question == null){
+        if ($category != null) {
+            if ($question == null) {
                 $category->delete();
                 return back()->withSuccess('Delete Successfully');
             } else {
@@ -100,7 +101,7 @@ class QuestionController extends Controller
             'name' =>  $request->name != $question->name ? 'required|unique:questions,name' : 'required',
         ]);
         Question::updateQuestionData($request);
-        return redirect('admin/manage/question/'.$request->category_id)->withSuccess('Update Successfully');
+        return redirect('admin/manage/question/' . $request->category_id)->withSuccess('Update Successfully');
     }
     public function deleteQuestion(Request $request)
     {
@@ -108,20 +109,21 @@ class QuestionController extends Controller
         return back()->withSuccess('Delete Successfully');
     }
 
-    // public function getAnswer(Request $request){
-    //     $id = $request->get('id');
-    //     $answers = DB::table('question_answer')
-    //             ->join('user_questions', 'question_answer.user_question_id', '=', 'user_questions.id')
-    //             ->join('questions', 'question_answer.question_id', '=', 'questions.id')
-    //             ->join('question_categories', 'questions.category_id', '=', 'question_categories.id')
-    //             ->select('question_answer.*')
-    //             ->where('question_categories.id', $id)
-    //             ->get();
+    public function getAnswer(Request $request)
+    {
+        $id = $request->get('id');
 
-    //     $result = array();
-    //         $result['answers'] = view('backend.questionAnswer.ajax-show-answer', compact('answers'))->render();
-    //         return $result;
-    // }
+        $answers = DB::table('user_questions')
+        ->join('users', 'user_questions.user_id', '=', 'users.id')
+        ->join('question_categories', 'users.category_id', '=', 'question_categories.id')
+        ->select('user_questions.*', 'users.first_name', 'question_categories.id')
+        ->where('question_categories.id', $id)
+        ->get();
+
+        $result = array();
+        $result['answers'] = view('backend.questionAnswer.ajax-show-answer', compact('answers'))->render();
+        return $result;
+    }
 
 
     public function showAnswer()
@@ -131,17 +133,16 @@ class QuestionController extends Controller
         return view('backend.questionAnswer.show-answer', compact('answers', 'categories'));
     }
 
-    public function viewAnswer($id)
+    public function viewAnswer($id, $user_id)
     {
+        $user_category = User::where('id', $user_id)->select('category_id')->first();
+        $questions = DB::table('questions')->where('category_id', $user_category->category_id)->get();
+
         $answer = DB::table('question_answer')
-        ->join('user_questions', 'user_questions.id', '=', 'question_answer.user_question_id')
-        ->join('questions', 'questions.id', '=', 'question_answer.question_id')
-
-        ->where('user_question_id', $id)
-        ->get();
-
-        $questions = DB::table('questions')->get();
-
+            ->join('user_questions', 'user_questions.id', '=', 'question_answer.user_question_id')
+            ->join('questions', 'questions.id', '=', 'question_answer.question_id')
+            ->where('user_question_id', $id)
+            ->get();
 
         return view('backend.questionAnswer.single-answer', compact('questions', 'answer'));
     }

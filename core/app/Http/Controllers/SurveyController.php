@@ -27,7 +27,7 @@ class SurveyController extends Controller
         if($uniqueCheck != ''){
             $userQuestionId = UserQuestion::create([
                 'user_id' => Auth::guard('web')->user()->id,
-                'unique_id' => $request->unique_id,
+                'unique_id' => $uniqueCheck->unique_id,
                 'name' => $request->name,
                 'phone' => $request->phone,
                 'latitude' => 31133,
@@ -59,29 +59,27 @@ class SurveyController extends Controller
             else{
                 $name = "checkbox_ans".$i;
             }
+
             $user_question_id = $userQuestionId->id;
             $question_id = "question_id".$i;
+            $others = "others".$i;
             $ans['question_id'] = $request->$question_id;
-            // if($request->$type == "3"){
-            //     foreach($request->$name as $key => $j){
-            //         if($request->$name[$key] == 0){
-            //             $ans['question_ans'] = $request->$name;
-            //         } else {
-            //             $ans['others'] = $request->$name;
-            //         }
-            //     }
-            // } else if ($request->$type == "4"){
-            //     foreach($request->$name as $key => $j){
-            //         if($request->$name[$key] == 0){
-            //             $ans['question_ans'] = $request->$name;
-            //         } else {
-            //             $ans['others'] = $request->$name;
-            //         }
-            //     }
-            // } else{
-            //     $ans['question_ans'] = $request->$name;
-            // }
-            $ans['question_ans'] = $request->$name;
+
+             if ($request->$type == "4"){
+                // foreach($request->$name as $key => $j){
+                //     if($key == 0){
+                //         $ans['question_ans'] = $request->$name[$key];
+                //     } else {
+                //         $ans['others'] = $request->$name[$key];
+                //     }
+                // }
+                $ans['question_ans'] = json_encode($request->$name);
+                $ans['others'] = $request->$others;
+            } else{
+                $ans['question_ans'] = $request->$name;
+                $ans['others'] = $request->$others;
+            }
+            // $ans['question_ans'] = $request->$name;
             $ans['user_question_id'] = $user_question_id;
             DB::table('question_answer')->insert($ans);
         }

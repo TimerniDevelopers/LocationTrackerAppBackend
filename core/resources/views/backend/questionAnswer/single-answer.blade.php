@@ -37,42 +37,31 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                
+
 
 
                                 <table id="table_id" class="table table-striped">
                                     <thead>
                                         <tr>
-                                            @foreach($questions as $key=>$question)
+                                            @foreach ($questions as $key => $question)
                                                 <th style="font-family: Kalpurush;">{{ $question->name }}</th>
                                             @endforeach
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                    @foreach($questions as $key=>$question)
-                                        @foreach($answer as $key=>$ans)
-                                            @if($question->id == $ans->question_id)
-                                                @if($ans->question_id != '')
-                                                <td>
-                                                
-                                                        {{ $ans->question_ans }}
-                                                    
-                                                </td>
-                                                @else
-                                                <td>
-                                                
-                                                        null
-                                                    
-                                                </td>
-                                                @endif
-
-                                            @endif
-                                        @endforeach
+                                            @foreach ($questions as $key => $question)
+                                                @foreach ($answer as $key => $ans)
+                                                    @if ($question->id == $ans->question_id)
+                                                        @if ($ans->question_id != '')
+                                                            <td>{{ $ans->question_ans }}</td>
+                                                        @else
+                                                            <td> null </td>
+                                                        @endif
+                                                    @endif
+                                                @endforeach
+                                            @endforeach
                                         </tr>
-                                        
-
-                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>

@@ -68,7 +68,7 @@
                                                 </div>
                                             @endforeach
                                             <input type="hidden" name="question_type{{$index + 1}}" value="{{ $inputQuestion->type }}" class="form-control">
-                                            {{-- <input type="text" name="mcq_ans{{$index + 1}}[]" class="form-control" placeholder="Comment Others"> --}}
+                                            <input type="text" name="others{{$index + 1}}" class="form-control" placeholder="Comment Others">
                                             <input type="hidden" name="question_id{{$index + 1}}" value="{{ $inputQuestion->id }}" class="form-control">
                                         </div>
                                     @endif
@@ -89,7 +89,7 @@
                                                 </div>
                                             @endforeach
                                             <input type="hidden" name="question_type{{$index + 1}}" value="{{ $inputQuestion->type }}" class="form-control">
-                                            {{-- <input type="text" name="checkbox_ans{{$index + 1}}[]" class="form-control" placeholder="Comment Others"> --}}
+                                            <input type="text" name="others{{$index + 1}}" class="form-control" placeholder="Comment Others">
                                             <input type="hidden" name="question_id{{$index + 1}}" value="{{ $inputQuestion->id }}" class="form-control">
                                         </div>
                                     @endif

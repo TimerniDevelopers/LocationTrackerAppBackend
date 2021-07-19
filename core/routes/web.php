@@ -52,7 +52,7 @@ Route::group(['prefix' => 'admin'], function (){
 
         Route::get('/get-district', 'ManagerController@getDistrict'); //ajax request
         Route::get('/get-upazila', 'ManagerController@getUpazila'); //ajax request
-        // Route::get('/get-answer', 'QuestionController@getAnswer'); //ajax request
+        Route::get('/get-answer', 'QuestionController@getAnswer'); //ajax request
 
         /*Question Category*/
         Route::get('/add/question/category', 'QuestionController@addQuestionCategory')->name('add.question.category');
@@ -98,7 +98,7 @@ Route::group(['prefix' => 'admin'], function (){
 
         // answer
         Route::get('/show/answer', 'QuestionController@showAnswer')->name('show.answer');
-        Route::get('/view/answer/{id}', 'QuestionController@viewAnswer')->name('view_answer');
+        Route::get('/view/answer/{id}/{user_id}', 'QuestionController@viewAnswer')->name('view_answer');
 
         //maps
         Route::get('/show/maps/{id}', 'QuestionController@showMaps')->name('show.maps');
@@ -108,7 +108,7 @@ Route::group(['prefix' => 'admin'], function (){
         Route::get('/all/notfication/', 'QuestionController@NotifyController')->name('notify.all');
 
         Route::get('message/{id}', 'MessageController@index')->name('message');
-        
+
         Route::get('message/box/{id}', 'MessageController@messageBox')->name('message.box');
         Route::post('status_update/{id}', 'MessageController@StatusUpdate')->name('status_update');
 
