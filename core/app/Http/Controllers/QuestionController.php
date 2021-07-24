@@ -6,9 +6,14 @@ use App\Models\Question;
 use App\Models\QuestionCategory;
 use App\Models\QuestionOption;
 use App\Models\User;
+use App\Libraries\CommonFunction;
+use App\Libraries\Encryption;
 use App\Models\UserQuestion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
+use Yajra\DataTables\DataTables;
 
 class QuestionController extends Controller
 {
@@ -27,8 +32,37 @@ class QuestionController extends Controller
     }
     public function manageQuestionCategory()
     {
-        $categories = QuestionCategory::orderBy('id', 'desc')->get();
-        return view('backend.questionCategory.manage-question-category', compact('categories'));
+        
+        // $categories = QuestionCategory::orderBy('id', 'desc')->get();
+
+
+        return view('backend.questionCategory.manage-question-category');
+    }
+
+    public function  getQuestionCategory(Request $request)
+    {
+        if (!$request->ajax()) {
+            return 'Sorry! this is a request without proper way.';
+        }
+
+        try {
+            $list = QuestionCategory::orderBy('id', 'desc')->get();
+
+            return DataTables::of($list)
+                ->editColumn('status', function ($list) {
+                    return CommonFunction::getStatus($list->status);
+                })
+                ->addColumn('action', function ($list) {
+                    return '<a style="padding:2px;font-size:15px;" href="' . route('edit.question.category', ['id' => $list->id]) .
+                        '" class="btn btn-primary btn-xs"> <i class="fa fa-folder-open"></i> Edit </a> <a style="padding:2px; font-size:15px; color: #fff" class="btn btn-danger btn-xs" id="' . $list->id . '" onClick="deleteQustionCategory(this.id,event)"> <i class="fas fa-remove"></i> Delete </a> ';
+                })
+                ->addIndexColumn()
+                ->rawColumns(['status', 'action'])
+                ->make(true);
+        } catch (\Exception $e) {
+            // Session::flash('error', CommonFunction::showErrorPublic($e->getMessage()) . '[UC-1001]');
+            return Redirect::back();
+        }
     }
     public function editQuestionCategory($id)
     {
@@ -51,9 +85,9 @@ class QuestionController extends Controller
         if ($category != null) {
             if ($question == null) {
                 $category->delete();
-                return back()->withSuccess('Delete Successfully');
+                return response()->json('success');
             } else {
-                return back()->withErrors('Do not Delete this Category, because have this category question.');
+                return response()->json('Something Error');
             }
         }
     }

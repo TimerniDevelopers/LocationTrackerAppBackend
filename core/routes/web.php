@@ -63,6 +63,7 @@ Route::group(['prefix' => 'admin'], function (){
         Route::get('/add/question/category', 'QuestionController@addQuestionCategory')->name('add.question.category');
         Route::post('/save/question/category', 'QuestionController@saveQuestionCategory')->name('save.question.category');
         Route::get('/manage/question/category', 'QuestionController@manageQuestionCategory')->name('manage.question.category');
+        Route::post('/get-question-category', 'QuestionController@getQuestionCategory')->name('get.question.category');
         Route::get('/edit/question/category/{id}', 'QuestionController@editQuestionCategory')->name('edit.question.category');
         Route::post('/update/question/category', 'QuestionController@updateQuestionCategory')->name('update.question.category');
         Route::post('/delete/question/category', 'QuestionController@deleteQuestionCategory')->name('delete.question.category');
