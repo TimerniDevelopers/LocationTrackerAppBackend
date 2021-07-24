@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>@yield('title')</title>
+    @yield('css')
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -24,6 +25,7 @@
     <link rel="stylesheet" href="{{ asset('assets/common/owl-carousel/css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/backend/css/toastr.css') }}">
     <link href="{{ asset('assets/backend/css/select2.min.css') }}" rel="stylesheet" />
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 
@@ -130,6 +132,8 @@
         });
     </script>
 
+<script src="{{ asset('assets/user_profile/js/magnific-popup.min.js') }}"></script>
+<script src="{{ asset('assets/user_profile/js/user_manual.js') }}"></script>
 @include('backend.partials.notifications')
 @include('backend.partials.js')
 @yield('js')

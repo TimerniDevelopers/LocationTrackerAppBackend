@@ -25,6 +25,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('contact') }}">Contact</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#collaborator">Collaborator</a>
+                        </li>
                         <li class="nav-item d-flex align-items-center justify-content-center">
                             <a class="nav-link custom-btn log-in-btn" href="{{ route('admin.login') }}">Login</a>
                         </li>

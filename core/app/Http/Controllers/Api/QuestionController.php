@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\UserQuestion;
 use Illuminate\Http\Request;
 use App\Services\PayUService\Exception;
+use Carbon\Carbon;
 use DB;
 
 class QuestionController extends Controller
@@ -26,15 +27,18 @@ class QuestionController extends Controller
 
     public function questionSubmit(Request $request)
     {
-        try {
-            $this->validate($request,[
-                'name' => 'required',
-                'phone' => 'required',
-            ]);
-            $uniqueCheck = UserQuestion::where('unique_id', $request->unique_id)->first();
-            $lastUnique = UserQuestion::orderBy('id', 'desc')->select('unique_id')->take(1)->first();
+        $year = Carbon::now()->format('Y');
+        $month = Carbon::now()->format('m');
+        $date = Carbon::now()->format('d');
+        $hour = Carbon::now()->format('h');
+        $minute = Carbon::now()->format('i');
+        $second = Carbon::now()->format('s');
+        $thisUnique = $year . $month . $date . $hour . $minute . $second . '01';
+        $lastUnique = UserQuestion::where('unique_id', $thisUnique)->select('unique_id')->first();
 
-            if($uniqueCheck != ''){
+        if ($request->unique_id) {
+            $uniqueCheck = UserQuestion::where('unique_id', $request->unique_id)->first();
+            if ($uniqueCheck != '') {
                 $userQuestionID = UserQuestion::create([
                     'user_id' => $request->user_id,
                     'name' => $request->name,
@@ -43,17 +47,28 @@ class QuestionController extends Controller
                     'latitude' => $request->latitude,
                     'longitude' => $request->longitude,
                 ]);
+                foreach ($request->question_ans as $index => $data) {
+                    $answers = array();
+                    $answer_list = $request->question_ans[$index];
+                    foreach ($answer_list as $key => $data1) {
+                        $answers[$key] = $answer_list[$key];
+                    }
+                    $answers['user_question_id'] = $userQuestionID->id;
+                    DB::table('question_answer')->insert($answers);
+                }
+                return response()->json($userQuestionID);
             } else {
-                $userQuestionID = UserQuestion::create([
-                    'user_id' => $request->user_id,
-                    'name' => $request->name,
-                    'phone' => $request->phone,
-                    'unique_id' => $lastUnique->unique_id + 1,
-                    'latitude' => $request->latitude,
-                    'longitude' => $request->longitude,
-                ]);
+                return back()->withErrors('This Patient ID are not match any record');
             }
-
+        } else {
+            $userQuestionID = UserQuestion::create([
+                'user_id' => $request->user_id,
+                'name' => $request->name,
+                'phone' => $request->phone,
+                'unique_id' => $lastUnique ? $thisUnique + 1 : $thisUnique,
+                'latitude' => $request->latitude,
+                'longitude' => $request->longitude,
+            ]);
             foreach ($request->question_ans as $index => $data) {
                 $answers = array();
                 $answer_list = $request->question_ans[$index];
@@ -64,10 +79,50 @@ class QuestionController extends Controller
                 DB::table('question_answer')->insert($answers);
             }
             return response()->json($userQuestionID);
-        } catch (\Exception $e) {
-            return $e->getMessage();
         }
+        // try {
+        //     $this->validate($request,[
+        //         'name' => 'required',
+        //         'phone' => 'required',
+        //     ]);
+        //     $uniqueCheck = UserQuestion::where('unique_id', $request->unique_id)->first();
+        //     $lastUnique = UserQuestion::orderBy('id', 'desc')->select('unique_id')->take(1)->first();
+
+        //     if($uniqueCheck != ''){
+        //         $userQuestionID = UserQuestion::create([
+        //             'user_id' => $request->user_id,
+        //             'name' => $request->name,
+        //             'phone' => $request->phone,
+        //             'unique_id' => $uniqueCheck->unique_id,
+        //             'latitude' => $request->latitude,
+        //             'longitude' => $request->longitude,
+        //         ]);
+        //     } else {
+        //         $userQuestionID = UserQuestion::create([
+        //             'user_id' => $request->user_id,
+        //             'name' => $request->name,
+        //             'phone' => $request->phone,
+        //             'unique_id' => $lastUnique->unique_id + 1,
+        //             'latitude' => $request->latitude,
+        //             'longitude' => $request->longitude,
+        //         ]);
+        //     }
+
+        //     foreach ($request->question_ans as $index => $data) {
+        //         $answers = array();
+        //         $answer_list = $request->question_ans[$index];
+        //         foreach ($answer_list as $key => $data1) {
+        //             $answers[$key] = $answer_list[$key];
+        //         }
+        //         $answers['user_question_id'] = $userQuestionID->id;
+        //         DB::table('question_answer')->insert($answers);
+        //     }
+        //     return response()->json($userQuestionID);
+        // } catch (\Exception $e) {
+        //     return $e->getMessage();
+        // }
     }
+
     // public function questionSubmit(Request $request)
     // {
     //     try {

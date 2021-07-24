@@ -63,7 +63,8 @@ class UserController extends Controller
 
     /*Profile*/
     public function profile(){
-        return view('user.user.profile');
+        $user_profile = User::where('id', Auth::guard('web')->user()->id)->first();
+        return view('user.user.profile', compact('user_profile'));
     }
 
     //Change Password
