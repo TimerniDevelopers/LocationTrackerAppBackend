@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Libraries\CommonFunction;
 use App\Models\Admin\Admin;
 use Illuminate\Http\Request;
 use DB;
 use Image;
+use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\Redirect;
 
 class ManagerController extends Controller
 {
@@ -69,15 +72,43 @@ class ManagerController extends Controller
         return back()->withSuccess('Add Successful');
     }
     public function manageManager(){
-        // $managers = Admin::where('user_role', 2)->get();
-        $managers = DB::table('admins')
-            ->join('upazilas', 'admins.upazilla_id', '=', 'upazilas.id')
-            ->select('admins.*', 'upazilas.name')
-            ->where('admins.user_role', 2)
-            ->orderBy('admins.id', 'desc')
-            ->get();
-        return view('backend.manager.manage-manager', compact('managers'));
+        
+        return view('backend.manager.manage-manager');
     }
+
+    public function getManager(Request $request)
+    {
+        if (!$request->ajax()) {
+            return 'Sorry! this is a request without proper way.';
+        }
+
+        try {
+            $list = DB::table('admins')
+                    ->join('upazilas', 'admins.upazilla_id', '=', 'upazilas.id')
+                    ->select('admins.*', 'upazilas.name')
+                    ->where('admins.user_role', 2)
+                    ->orderBy('admins.id', 'desc')
+                    ->get();
+
+            return DataTables::of($list)
+                
+               
+                ->editColumn('status', function ($list) {
+                    return CommonFunction::getStatus($list->status);
+                })
+                ->addColumn('action', function ($list) {
+                    return '<a style="padding:2px;font-size:15px;" href="' . route('edit.manager', ['id'=>$list->id]) .
+                    '" class="btn btn-primary btn-xs"> <i class="fa fa-folder-open"></i> Edit </a> <a style="padding:2px; font-size:15px; color: #fff" class="btn btn-danger btn-xs" id="' . $list->id . '" onClick="deleteManager(this.id,event)"> <i class="fas fa-trash"></i> Delete </a>';
+                })
+                ->addIndexColumn()
+                ->rawColumns(['status', 'category_id', 'name', 'area','action'])
+                ->make(true);
+        } catch (\Exception $e) {
+            // Session::flash('error', CommonFunction::showErrorPublic($e->getMessage()) . '[UC-1001]');
+            return Redirect::back();
+        }
+    }
+
     public function editManager($id){
         $manager = Admin::findorFail($id);
         $divisions = DB::table('divisions')->get();
@@ -120,6 +151,6 @@ class ManagerController extends Controller
             @unlink($manager->image);
             $manager->delete();
         }
-        return back()->withSuccess('Delete Successfully');
+        return response()->json('success');
     }
 }

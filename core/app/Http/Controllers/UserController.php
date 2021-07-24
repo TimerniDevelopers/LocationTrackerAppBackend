@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Libraries\CommonFunction;
 use App\Models\QuestionCategory;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -9,6 +10,8 @@ use DB;
 use Image;
 use Auth;
 use Hash;
+use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\Redirect;
 
 class UserController extends Controller
 {
@@ -136,8 +139,49 @@ class UserController extends Controller
         return back()->withSuccess('Add Successful');
     }
     public function manageUser(){
-        $users = User::orderBy('id', 'desc')->get();
-        return view('backend.user.manage-user', compact('users'));
+        // $users = User::orderBy('id', 'desc')->get();
+        return view('backend.user.manage-user');
+    }
+
+    public function getUser(Request $request)
+    {
+        if (!$request->ajax()) {
+            return 'Sorry! this is a request without proper way.';
+        }
+
+        try {
+            $list = User::orderBy('id', 'desc')->get();
+            return DataTables::of($list)
+                ->editColumn('category_id', function ($list) {
+                    if($list->category_id)
+                    {
+                        return '<td>'.$list->categoryName->name.'</td>';
+                    }else{
+
+                    }
+                })
+                ->editColumn('name', function ($list) {
+                    return '<td>'.$list->first_name.' '.$list->last_name.'</td>';
+                    
+                })
+                ->editColumn('area', function ($list) {
+                    return '<td>'.$list->upazilaName->name.', '.$list->upazilaName->districtName->name.'</td>';
+                    
+                })
+                ->editColumn('status', function ($list) {
+                    return CommonFunction::getStatus($list->status);
+                })
+                ->addColumn('action', function ($list) {
+                    return '<a style="padding:2px;font-size:15px;" href="' . route('edit.user', ['id'=>$list->id]) .
+                    '" class="btn btn-primary btn-xs"> <i class="fa fa-folder-open"></i> Edit </a> <a style="padding:2px; font-size:15px; color: #fff" class="btn btn-danger btn-xs" id="' . $list->id . '" onClick="deleteUser(this.id,event)"> <i class="fas fa-trash"></i> Delete </a> <a style="padding:2px;font-size:15px;" href="'.route('message', ['id'=>$list->id]).'" class="btn btn-primary text-white"><span class="fas fa-sms"> SMS </span></a>';
+                })
+                ->addIndexColumn()
+                ->rawColumns(['status', 'category_id', 'name', 'area','action'])
+                ->make(true);
+        } catch (\Exception $e) {
+            // Session::flash('error', CommonFunction::showErrorPublic($e->getMessage()) . '[UC-1001]');
+            return Redirect::back();
+        }
     }
     public function editUser($id){
         $user = User::findorFail($id);
@@ -188,6 +232,6 @@ class UserController extends Controller
             @unlink($user->image);
             $user->delete();
         }
-        return back()->withSuccess('Delete Successfully');
+        return response()->json('success');
     }
 }

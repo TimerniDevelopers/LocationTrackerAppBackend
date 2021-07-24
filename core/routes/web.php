@@ -71,7 +71,9 @@ Route::group(['prefix' => 'admin'], function (){
         Route::get('/add/question', 'QuestionController@addQuestion')->name('add.question');
         Route::post('/save/question', 'QuestionController@saveQuestion')->name('save.question');
         Route::get('/question/category/list', 'QuestionController@questionCategoryList')->name('question.category.list');
+        Route::post('/get-question-category-filter', 'QuestionController@questionCategoryFilter')->name('question.category.filter');
         Route::get('/manage/question/{id}', 'QuestionController@manageQuestion')->name('manage.question');
+        Route::post('/get-question', 'QuestionController@getQuestion')->name('get.question');
         Route::get('/edit/question/{id}', 'QuestionController@editQuestion')->name('edit.question');
         Route::post('/update/question', 'QuestionController@updateQuestion')->name('update.question');
         Route::post('/delete/question', 'QuestionController@deleteQuestion')->name('delete.question');
@@ -80,6 +82,7 @@ Route::group(['prefix' => 'admin'], function (){
         Route::get('/add/manager', 'ManagerController@addManager')->name('add.manager');
         Route::post('/save/manager', 'ManagerController@saveManager')->name('save.manager');
         Route::get('/manage/manager', 'ManagerController@manageManager')->name('manage.manager');
+        Route::post('/get-manager', 'ManagerController@getManager')->name('get.manager');
         Route::get('/edit/manager/{id}', 'ManagerController@editManager')->name('edit.manager');
         Route::post('/update/manager', 'ManagerController@updateManager')->name('update.manager');
         Route::post('/delete/manager', 'ManagerController@deleteManager')->name('delete.manager');
@@ -87,11 +90,15 @@ Route::group(['prefix' => 'admin'], function (){
         Route::get('/add/user', 'UserController@addUser')->name('add.user');
         Route::post('/save/user', 'UserController@saveUser')->name('save.user');
         Route::get('/manage/user', 'UserController@manageUser')->name('manage.user');
+        Route::post('/get-user', 'UserController@getUser')->name('get.user');
         Route::get('/edit/user/{id}', 'UserController@editUser')->name('edit.user');
         Route::post('/update/user', 'UserController@updateUser')->name('update.user');
         Route::post('/delete/user', 'UserController@deleteUser')->name('delete.user');
 
         Route::get('/show/answer', 'QuestionController@showAnswer')->name('show.answer');
+        Route::post('/get-answer-all', 'QuestionController@getAnswerAll')->name('get.answer.all');
+        Route::post('/show/answe/ajax', 'QuestionController@showAnswerAjax')->name('show.answer.ajax');
+
         /* Subscriber List */
         Route::get('/subscriber/list', 'AdminController@subscriberList')->name('subscriber.list');
         Route::post('/delete/subscriber', 'AdminController@deleteSubscriber')->name('delete.subscriber');

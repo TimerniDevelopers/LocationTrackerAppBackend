@@ -54,7 +54,7 @@ class QuestionController extends Controller
                 })
                 ->addColumn('action', function ($list) {
                     return '<a style="padding:2px;font-size:15px;" href="' . route('edit.question.category', ['id' => $list->id]) .
-                        '" class="btn btn-primary btn-xs"> <i class="fa fa-folder-open"></i> Edit </a> <a style="padding:2px; font-size:15px; color: #fff" class="btn btn-danger btn-xs" id="' . $list->id . '" onClick="deleteQustionCategory(this.id,event)"> <i class="fas fa-remove"></i> Delete </a> ';
+                        '" class="btn btn-primary btn-xs"> <i class="fa fa-folder-open"></i> Edit </a> <a style="padding:2px; font-size:15px; color: #fff" class="btn btn-danger btn-xs" id="' . $list->id . '" onClick="deleteQustionCategory(this.id,event)"> <i class="fas fa-trash"></i> Delete </a> ';
                 })
                 ->addIndexColumn()
                 ->rawColumns(['status', 'action'])
@@ -110,13 +110,88 @@ class QuestionController extends Controller
     }
     public function questionCategoryList()
     {
-        $categories = QuestionCategory::where('status', 1)->orderBy('id', 'desc')->get();
-        return view('backend.question.category-list', compact('categories'));
+        // $categories = QuestionCategory::where('status', 1)->orderBy('id', 'desc')->get();
+        return view('backend.question.category-list');
     }
+
+    public function  questionCategoryFilter(Request $request)
+    {
+        if (!$request->ajax()) {
+            return 'Sorry! this is a request without proper way.';
+        }
+
+        try {
+            $list = QuestionCategory::where('status', 1)->orderBy('id', 'desc')->get();
+
+            return DataTables::of($list)
+                ->editColumn('name', function ($list) {
+                    $questionCount = Question::where('category_id', $list->id)->where('status', 1)->count();
+                    return '<td>'.$list->name.' ('. $questionCount.' Questions)</td>';
+                    
+                })
+                ->editColumn('status', function ($list) {
+                    return CommonFunction::getStatus($list->status);
+                })
+                ->addColumn('action', function ($list) {
+                    return '<a href="'.route('manage.question', ['id'=>$list->id]).'" target="_blank" class="btn btn-primary text-white">
+                    <span class="fa fa-eye"></span> View Question
+                </a>';
+                })
+                ->addIndexColumn()
+                ->rawColumns(['status', 'name', 'action'])
+                ->make(true);
+        } catch (\Exception $e) {
+            // Session::flash('error', CommonFunction::showErrorPublic($e->getMessage()) . '[UC-1001]');
+            return Redirect::back();
+        }
+    }
+
     public function manageQuestion($id)
     {
-        $questions = Question::where('category_id', $id)->orderBy('id', 'desc')->get();
-        return view('backend.question.manage-question', compact('questions'));
+        // $questions = Question::where('category_id', $id)->orderBy('id', 'desc')->get();
+
+        return view('backend.question.manage-question', compact('id'));
+    }
+
+    public function getQuestion(Request $request)
+    {
+        if (!$request->ajax()) {
+            return 'Sorry! this is a request without proper way.';
+        }
+
+        try {
+            $list = Question::where('category_id', $request->category_id)->orderBy('id', 'desc')->get();
+
+            return DataTables::of($list)
+                ->editColumn('category_name', function ($list) {
+                    return '<td>'.$list->categoryName->name.'</td>';
+                    
+                })
+                ->editColumn('type', function ($list) {
+                    if($list->type == 1){
+                        return 'Input/Text';
+                    }elseif($list->type == 2){
+                        return 'Dropdown';
+                    }elseif($list->type == 3){
+                        return 'MCQ';
+                    }elseif($list->type == 4){
+                        return 'Checkbox';
+                    }
+                })
+                ->editColumn('status', function ($list) {
+                    return CommonFunction::getStatus($list->status);
+                })
+                ->addColumn('action', function ($list) {
+                    return '<a style="padding:2px;font-size:15px;" href="' . route('edit.question', ['id'=>$list->id]) .
+                    '" class="btn btn-primary btn-xs"> <i class="fa fa-folder-open"></i> Edit </a> <a style="padding:2px; font-size:15px; color: #fff" class="btn btn-danger btn-xs" id="' . $list->id . '" onClick="deleteQustion(this.id,event)"> <i class="fas fa-trash"></i> Delete </a> ';
+                })
+                ->addIndexColumn()
+                ->rawColumns(['status', 'category_name', 'type','action'])
+                ->make(true);
+        } catch (\Exception $e) {
+            // Session::flash('error', CommonFunction::showErrorPublic($e->getMessage()) . '[UC-1001]');
+            return Redirect::back();
+        }
     }
     public function editQuestion($id)
     {
@@ -140,7 +215,7 @@ class QuestionController extends Controller
     public function deleteQuestion(Request $request)
     {
         Question::deleteQuestionData($request);
-        return back()->withSuccess('Delete Successfully');
+        return response()->json('success');
     }
 
     public function getAnswer(Request $request)
@@ -162,9 +237,48 @@ class QuestionController extends Controller
 
     public function showAnswer()
     {
-        $answers = UserQuestion::orderBy('id', 'desc')->get();
+        // $answers = UserQuestion::orderBy('id', 'desc')->get();
         $categories = QuestionCategory::where('status', 1)->get();
-        return view('backend.questionAnswer.show-answer', compact('answers', 'categories'));
+        return view('backend.questionAnswer.show-answer', compact('categories'));
+    }
+    
+    public function getAnswerAll(Request $request)
+    {
+        if (!$request->ajax()) {
+            return 'Sorry! this is a request without proper way.';
+        }
+
+        try {
+            $list = UserQuestion::orderBy('id', 'desc')->get();
+            return DataTables::of($list)
+                
+                ->editColumn('user_name', function ($list) {
+                    if($list->user_id)
+                    {
+                        return $list->userName->first_name;
+                    }else{
+
+                    }
+                })
+                ->editColumn('date', function ($list) {
+                    $temp = explode(' ', $list->created_at);
+                    return date('d-M-y', strtotime($temp[0]));
+                })
+                ->editColumn('time', function ($list) {
+                    $temp = explode(' ', $list->created_at);
+                    return date('h:i A', strtotime($temp[1]));
+                })
+                ->addColumn('action', function ($list) {
+                    return '<a style="padding:2px;font-size:15px;" href="'.route('show.maps', ['id' => $list->id]).'" class="btn btn-primary text-white"> <span class="fas fa-map"></span> Show Map </a> <a style="padding:2px;font-size:15px;" href="'.route('view_answer', ['id' => $list->id, 'user_id' => $list->user_id]).'" class="btn btn-primary text-white"> <span class="fas fa-eye"></span> Show Data </a>';
+                })
+                
+                ->addIndexColumn()
+                ->rawColumns(['status', 'user_name', 'date', 'time', 'action'])
+                ->make(true);
+        } catch (\Exception $e) {
+            // Session::flash('error', CommonFunction::showErrorPublic($e->getMessage()) . '[UC-1001]');
+            return Redirect::back();
+        }
     }
 
     public function viewAnswer($id, $user_id)
