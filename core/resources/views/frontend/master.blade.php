@@ -82,10 +82,9 @@
       </script>
 <script src="{{ asset('assets/backend/js/toastr.js') }}"></script>
     @include('backend.partials.notifications')
-<script>
+{{-- <script>
   function myContact(e) {
     let url = this.href;
-    // let url = '/contact';
     window.location.hash = url;
   }
 
@@ -93,7 +92,7 @@
     $("#contact").show(1000);
     $("#home").hide(1000);
 });
-  </script>
+  </script> --}}
 
    </body>
 </html>

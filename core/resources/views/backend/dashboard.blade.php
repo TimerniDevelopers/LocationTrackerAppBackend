@@ -45,8 +45,16 @@
                             @include('backend.questionAnswer.admin-analytics')
                         @endif
                         @if(Auth::guard('admin')->user()->user_role == 1)
-                            <div class="piechartResponsive" id="piechart2" ></div>
-                            @include('backend.questionAnswer.admin-analytics')
+                            <div class="row">
+                                <div class="col-sm-12 col-12 col-md-6 col-lg-6 col-xl-6">
+                                    <div class="piechartResponsive mb-3" id="piechart2" style="99%"></div>
+                                    @include('backend.questionAnswer.admin-analytics')
+                                </div>
+                                {{-- <div class="col-sm-12 col-12 col-md-6 col-lg-6 col-xl-6">
+                                    <div class="piechartResponsive mb-3" id="piechart3" style="99%"></div>
+                                    @include('backend.questionAnswer.admin-analytics')
+                                </div> --}}
+                            </div>
                         @endif
                         @if(Auth::guard('admin')->user()->user_role == 2)
                             <div class="piechartResponsive" id="piechart" ></div>

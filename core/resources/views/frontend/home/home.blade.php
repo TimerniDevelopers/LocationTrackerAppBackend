@@ -194,6 +194,61 @@
         </section>
         <!-- end app section -->
 
+        <!-- Do Something Foundation section -->
+        <section class="qr-code-area content-padding-t" id="collaborator">
+            <div class="container">
+                <div class="sub-heading">
+                    <h2 class="common-color content-padding-b" data-aos="zoom-in">
+                        <p class="font-weight-bold font-size-40">Do Something Foundation</p>
+                        <p class="common-color content-padding-b" style="font-size: 30px" data-aos="zoom-in">
+                            24/7 Helpline: +880 1737-799 100
+                        </p>
+                    </h2>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 col-md-12">
+                        <div class="row">
+                            <div class="col-md-6 d-flex align-items-center sm-margin-b" data-aos="fade-up"
+                                data-aos-delay="100">
+                                <div class="before-srarting-img">
+                                    <ul>
+                                        <li>
+                                            Basic health education and training.
+                                        </li>
+                                        <li>
+                                            To achieve universal primary education.
+                                        </li>
+                                        <li>
+                                            Quality sanitation.
+                                        </li>
+                                        <li>
+                                            Clean water and sanitation.
+                                        </li>
+                                        <li>
+                                            Good health and well being.
+                                        </li>
+                                        <li>
+                                            Zero figure of street children
+                                        </li>
+                                        <li>
+                                            Good nutrition to mother and children.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                                <div class="rcord-img qrcode-img">
+                                    <img src="{{ asset('assets/frontend/img/Dectrack illustration.gif') }}"
+                                        alt="qrcode" loading="lazy">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end app section -->
+
         <!--====== About Start ======-->
         <section class="about-area content-padding-t" id="about">
             <div class="container">

@@ -169,6 +169,7 @@ return [
          */
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        \Torann\GeoIP\GeoIPServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -236,6 +237,8 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
+        'GeoIP' => \Torann\GeoIP\Facades\GeoIP::class,
+
     ],
 
 ];

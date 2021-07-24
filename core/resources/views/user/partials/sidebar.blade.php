@@ -40,6 +40,16 @@
                         <i class="nav-icon fas fa-inbox icon-color" style="color: green"></i><p>Message</p>
                     </a>
                 </li>
+                <li class="nav-item has-treeview ">
+                    <a href="{{ route('user.profile') }}" class="nav-link hover-color @if(request()->path() == 'user/profile') bg-success @endif">
+                        <i class="nav-icon fas fa-user icon-color" style="color: green"></i><p>Profile</p>
+                    </a>
+                </li>
+                <li class="nav-item has-treeview ">
+                    <a href="{{ route('user.logout') }}" class="nav-link hover-color">
+                        <i class="nav-icon fas fa-lock icon-color" style="color: green"></i><p>Logout</p>
+                    </a>
+                </li>
 
                 {{-- <li class="nav-item has-treeview
                         {{ ((Request::is('admin/add/user')) ? 'menu-open' : '') }}

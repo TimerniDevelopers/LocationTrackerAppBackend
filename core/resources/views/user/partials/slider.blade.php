@@ -1,64 +1,50 @@
 <div class="blog_carousel_container1 row">
     <div class="services-carousel1 owl-carousel owl-theme">
         <div class="single_research_card first">
-            <div class="avater1 bg-1">
-                <div class="circle-das text-center">
-                    <i class="fa fa-user fa-2x"></i>
-                </div>
-            </div>
-            <div class="services-single_research_card_info">
-                <div>
-                    <h4 style="font-size: 24px">Total user</h4>
-                </div>
-                <div>
-                    <h4 style="color: #0E7AE6;">{{ $totalUser }}</h4>
-                </div>
-            </div>
+            <a class="videos-icon" href="https://www.youtube.com/watch?v=y0uT4izH8F0">
+                <img style="height: 150px;width:310px" src="https://images.unsplash.com/photo-1516475429286-465d815a0df7?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bmF0dXJhbHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80" alt="">
+                <i class="fas fa-play"></i>
+            </a>
         </div>
         <div class="single_research_card first">
-            <div class="avater1 bg-1">
-                <div class="circle-das text-center">
-                    <i class="fa fa-list-alt fa-2x"></i>
-                </div>
-            </div>
-            <div class="services-single_research_card_info">
-                <div>
-                    <h4 style="font-size: 24px">Total Category</h4>
-                </div>
-                <div>
-                    <h4 style="color: #0E7AE6;">{{ $totalCategory }}</h4>
-                </div>
-            </div>
+            <a class="videos-icon" href="https://www.youtube.com/watch?v=y0uT4izH8F0">
+                <img style="height: 150px;width:310px" src="https://images.unsplash.com/photo-1516475429286-465d815a0df7?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bmF0dXJhbHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80" alt="">
+                <i class="fas fa-play"></i>
+            </a>
         </div>
         <div class="single_research_card first">
-            <div class="avater1 bg-1">
-                <div class="circle-das text-center">
-                    <i class="fa fa-poll fa-2x"></i>
-                </div>
-            </div>
-            <div class="services-single_research_card_info">
-                <div>
-                    <h4 style="font-size: 24px">Total Survey</h4>
-                </div>
-                <div>
-                    <h4 style="color: #0E7AE6;">{{ $totalSurvey }}</h4>
-                </div>
-            </div>
+            <a class="videos-icon" href="https://www.youtube.com/watch?v=y0uT4izH8F0">
+                <img style="height: 150px;width:310px" src="https://images.unsplash.com/photo-1516475429286-465d815a0df7?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bmF0dXJhbHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80" alt="">
+                <i class="fas fa-play"></i>
+            </a>
         </div>
         <div class="single_research_card first">
-            <div class="avater1 bg-1">
-                <div class="circle-das text-center">
-                    <i class="fa fa-question fa-2x"></i>
-                </div>
-            </div>
-            <div class="services-single_research_card_info">
-                <div>
-                    <h4 style="font-size: 24px">Total Question</h4>
-                </div>
-                <div>
-                    <h4 style="color: #0E7AE6;">{{ $totalQuestion }}</h4>
-                </div>
-            </div>
+            <a class="videos-icon" href="https://www.youtube.com/watch?v=y0uT4izH8F0">
+                <img style="height: 150px;width:310px" src="https://images.unsplash.com/photo-1516475429286-465d815a0df7?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bmF0dXJhbHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80" alt="">
+                <i class="fas fa-play"></i>
+            </a>
         </div>
     </div>
-    </div>
+</div>
+<style>
+    .single_research_card i {
+        background: #fff;
+        height: 60px;
+        text-align: center;
+        width: 60px;
+        border-radius: 100%;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        left: 42%;
+        top: 32%;
+    }
+
+    .single_research_card .video-icon {
+        position: relative;
+        text-decoration: none;
+    }
+
+</style>
