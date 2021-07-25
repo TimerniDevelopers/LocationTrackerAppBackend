@@ -135,7 +135,7 @@
 <script src="{{ asset('assets/user_profile/js/magnific-popup.min.js') }}"></script>
 <script src="{{ asset('assets/user_profile/js/user_manual.js') }}"></script>
 @include('backend.partials.notifications')
-@include('backend.partials.js')
+@include('user.partials.js')
 @yield('js')
 </body>
 </html>

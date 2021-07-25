@@ -146,78 +146,74 @@
                 </div>
                 <div class="col-md-4">
                     <h2 class="pt-3 text-center mb-3">User Manual</h1>
-                    <div class="accordion " id="accordionExample">
-                        <div class="card">
-                            <div class="card-header" id="headingOne">
-                                <h2 class="mb-0">
-                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
-                                        data-target="#p__detail" aria-expanded="true" aria-controls="p__detail">
-                                        How to open dcotrack app
-                                    </button>
-                                </h2>
-                            </div>
+                        <div class="accordion " id="accordionExample">
+                            <div class="card">
+                                <div class="card-header" id="headingOne">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                            data-target="#p__detail" aria-expanded="true" aria-controls="p__detail">
+                                            How to open dcotrack app
+                                        </button>
+                                    </h2>
+                                </div>
 
-                            <div id="p__detail" class="collapse show" aria-labelledby="headingOne"
-                                data-parent="#accordionExample">
-                                <div class="card-body">
-                                    <div class="pop_up_item">
-                                        <a class="videos-icon" href="https://www.youtube.com/watch?v=y0uT4izH8F0">
-                                            <p class="d-flex"><i class="fas fa-play"></i>
-                                                <span>What You'll Get in This App</span>
-                                            </p>
-                                        </a>
-                                        <a class="videos-icon" href="https://www.youtube.com/watch?v=y0uT4izH8F0">
-                                            <p class="d-flex"><i class="fas fa-play"></i>
-                                                <span>What You'll Get in This App</span>
-                                            </p>
-                                        </a>
-                                        <a class="videos-icon" href="https://www.youtube.com/watch?v=y0uT4izH8F0">
-                                            <p class="d-flex"><i class="fas fa-play"></i>
-                                                <span>What You'll Get in This App</span>
-                                            </p>
-                                        </a>
+                                <div id="p__detail" class="collapse show" aria-labelledby="headingOne"
+                                    data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div class="pop_up_item">
+                                            <a class="videos-icon" href="https://www.youtube.com/watch?v=y0uT4izH8F0">
+                                                <p class="d-flex"><i class="fas fa-play"></i>
+                                                    <span>What You'll Get in This App</span>
+                                                </p>
+                                            </a>
+                                            <a class="videos-icon" href="https://www.youtube.com/watch?v=y0uT4izH8F0">
+                                                <p class="d-flex"><i class="fas fa-play"></i>
+                                                    <span>What You'll Get in This App</span>
+                                                </p>
+                                            </a>
+                                            <a class="videos-icon" href="https://www.youtube.com/watch?v=y0uT4izH8F0">
+                                                <p class="d-flex"><i class="fas fa-play"></i>
+                                                    <span>What You'll Get in This App</span>
+                                                </p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingTwo">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                            data-target="#size__and__fit" aria-expanded="false"
+                                            aria-controls="size__and__fit">
+                                            How do I register?
+                                        </button>
+                                    </h2>
+                                </div>
+                                <div id="size__and__fit" class="collapse" aria-labelledby="headingTwo"
+                                    data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div class="pop_up_item">
+                                            <a class="videos-icon" href="https://www.youtube.com/watch?v=y0uT4izH8F0">
+                                                <p class="d-flex"><i class="fas fa-play"></i>
+                                                    <span>What You'll Get in This App</span>
+                                                </p>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="card">
-                            <div class="card-header" id="headingTwo">
-                                <h2 class="mb-0">
-                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
-                                        data-target="#size__and__fit" aria-expanded="false" aria-controls="size__and__fit">
-                                        How do I register?
-                                    </button>
-                                </h2>
-                            </div>
-                            <div id="size__and__fit" class="collapse" aria-labelledby="headingTwo"
-                                data-parent="#accordionExample">
-                                <div class="card-body">
-                                    <div class="pop_up_item">
-                                        <a class="videos-icon" href="https://www.youtube.com/watch?v=y0uT4izH8F0">
-                                            <p class="d-flex"><i class="fas fa-play"></i>
-                                                <span>What You'll Get in This App</span>
-                                            </p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <style>
-                .piechartResponsive {
-                    height: 500px;
-                    width: 900px
-                }
-
-                @media screen and (max-width: 767px) {
-                    .piechartResponsive {
-                        width: 300px;
-                        height: 300px;
-                    }
+                .services-carousel1.owl-carousel .owl-nav button.owl-next,
+                .services-carousel1.owl-carousel .owl-nav button.owl-prev,
+                .services-carousel1.owl-carousel button.owl-dot {
+                    position: absolute;
+                    top: 30%;
                 }
 
             </style>
         </div>
-@endsection
+    @endsection

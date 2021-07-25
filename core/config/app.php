@@ -167,7 +167,6 @@ return [
          */
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-        \Torann\GeoIP\GeoIPServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -233,7 +232,6 @@ return [
         'JWTAuth' => 'TymonJWTAuthFacadesJWTAuth',
         'JWTFactory' => 'TymonJWTAuthFacadesJWTFactory',
         'Image' => Intervention\Image\Facades\Image::class,
-        'GeoIP' => \Torann\GeoIP\Facades\GeoIP::class,
 
     ],
 

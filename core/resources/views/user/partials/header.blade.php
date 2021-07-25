@@ -3,7 +3,7 @@
     <ul class="navbar-nav">
         <li class="nav-item">
             <button type="button" class="navbar-toggle collapsed" style="border:none; margin-top: 7px;">
-                <a class="nav-link" data-widget="pushmenu" href="#" role="button">
+                <a class="nav-link" data-widget="pushmenu" href="javascript:void(0);" role="button">
 
                     <!-- <i class="fas fa-bars"></i> -->
                     <span class="sr-only">Toggle navigation</span>
@@ -15,7 +15,7 @@
         </li>
         <li class="nav-item">
             <div class="headerLogo">
-                <a class="navbar-brand" href="">
+                <a class="navbar-brand" href="{{ route('user.dashboard') }}">
                     <img src="{{ asset('assets/admin/img/logo-top.png') }}" alt="our logo">
                 </a>
                 <form action="">
