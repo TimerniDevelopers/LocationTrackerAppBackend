@@ -42,7 +42,7 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <table id="table_id" class="table dt-responsive table-bordered table-striped nowrap">
+                                <table id="list" class="table dt-responsive table-bordered table-striped nowrap">
                                     <thead>
                                     <tr>
                                         <th style="font-family: Kalpurush">#</th>
@@ -52,29 +52,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @php($i=1)
-                                    @foreach($categories as $category)
-                                    <?php
-                                        $questionCount = App\Models\Question::where('category_id', $category->id)->where('status', 1)->count();
-                                    ?>
-                                        <tr>
-                                            <td>{{ $i++ }}</td>
-                                            <td>{{ $category->name }} ({{ $questionCount }} Questions)</td>
-                                            <td>
-                                                @if($category->status == 1)
-                                                    <button class="btn btn-sm btn-success"><span class="fa fa-check"></span> Active</button>
-                                                @else
-                                                    <button class="btn btn-sm btn-danger"><span class="fa fa-ban"></span> Inactive</button>
-                                                @endif
-                                            </td>
-                                            <td>
-                                                <a href="{{ route('manage.question', ['id'=>$category->id]) }}" target="_blank" class="btn btn-primary text-white">
-                                                    <span class="fa fa-edit"></span> View Question
-                                                </a>
-
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                    
                                     </tbody>
                                 </table>
                             </div>
@@ -84,4 +62,35 @@
             </div>
         </section>
     </div>
+@endsection
+
+@section('js')
+<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+<script>
+        function showquestionCategory(){
+            $('#list').DataTable({
+               bAutoWidth: false,
+               processing: true,
+               serverSide: true,
+               iDisplayLength: 10,
+               ajax: {
+                   url: '{{url("admin/get-question-category-filter")}}',
+                   method: 'post',
+                   data: function (d) {
+                       d._token = $('input[name="_token"]').val();
+                   }
+               },
+               columns: [
+                   {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                   {data: 'name', name: 'name'},
+                   {data: 'status', name: 'status'},
+                   {data: 'action', name: 'action', orderable: false, searchable: false},
+               ],
+               "aaSorting": []
+           });
+        }
+
+        showquestionCategory();
+</script>
+    
 @endsection

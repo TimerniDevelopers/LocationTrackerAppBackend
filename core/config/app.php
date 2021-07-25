@@ -161,6 +161,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Yajra\DataTables\DataTablesServiceProvider::class,
+        UxWeb\SweetAlert\SweetAlertServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -232,6 +234,8 @@ return [
         'JWTAuth' => 'TymonJWTAuthFacadesJWTAuth',
         'JWTFactory' => 'TymonJWTAuthFacadesJWTFactory',
         'Image' => Intervention\Image\Facades\Image::class,
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
+        'Alert' => UxWeb\SweetAlert\SweetAlert::class,
 
     ],
 

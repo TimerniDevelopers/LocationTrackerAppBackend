@@ -37,7 +37,7 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <table id="table_id" class="table dt-responsive table-bordered table-striped nowrap">
+                                <table id="list" class="table dt-responsive table-bordered table-striped nowrap">
                                     <thead>
                                     <tr>
                                         <th style="font-family: Kalpurush">#</th>
@@ -51,60 +51,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @php($i=1)
-                                    @foreach($users as $user)
-                                        <tr>
-                                            <td>{{ $i++ }}</td>
-                                            <td>{{ $user->categoryName->name ?? '' }}</td>
-                                            <td>{{ $user->first_name }} {{ $user->last_name }}</td>
-                                            <td>{{ $user->phone }}</td>
-                                            <td>{{ $user->email }}</td>
-                                            <td>{{ $user->upazilaName->name }}, {{ $user->upazilaName->districtName->name }}</td>
-                                            <td>
-                                                @if($user->status == 1)
-                                                    <button class="btn btn-sm btn-success"><span class="fa fa-check"></span> Active</button>
-                                                @else
-                                                    <button class="btn btn-sm btn-danger"><span class="fa fa-ban"></span> Inactive</button>
-                                                @endif
-                                            </td>
-                                            <td>
-                                                <a href="{{ route('edit.user', ['id'=>$user->id]) }}" class="btn btn-primary text-white">
-                                                    <span class="fa fa-edit"></span>
-                                                </a>
-                                                <a href="#deleteUser-{{ $user->id }}" data-toggle="modal" class="btn btn-danger text-white">
-                                                    <span class="fa fa-trash"></span>
-                                                </a>
 
-                                                <a href="{{ route('message', ['id'=>$user->id]) }}" class="btn btn-primary text-white">
-                                                    <span class="fas fa-sms"></span>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <div class="modal fade" id="deleteUser-{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout"
-                                             aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <form action="{{ route('delete.user') }}" method="POST">
-                                                        @csrf
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabelLogout">Delete User!</h5>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <p>Are you sure you want to delete this?</p>
-                                                            <input type="hidden" name="id" value="{{ $user->id }}">
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
-                                                            <button type="submit" class="btn btn-info float-right">Submit</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -114,4 +61,75 @@
             </div>
         </section>
     </div>
+@endsection
+
+@section('js')
+<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+<script src="{{ asset('assets/sweetalert2/sweetalert2.all.min.js') }}"></script>
+<script>
+        function showUser(){
+            $('#list').DataTable({
+               bAutoWidth: false,
+               processing: true,
+               serverSide: true,
+               iDisplayLength: 10,
+               ajax: {
+                   url: '{{url("admin/get-user")}}',
+                   method: 'post',
+                   data: function (d) {
+                       d._token = $('input[name="_token"]').val();
+                   }
+               },
+               columns: [
+                   {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                   {data: 'category_id', name: 'category_id'},
+                   {data: 'name', name: 'name'},
+                   {data: 'phone', name: 'phone'},
+                   {data: 'email', name: 'email'},
+                   {data: 'area', name: 'area'},
+                   {data: 'status', name: 'status'},
+                   {data: 'action', name: 'action', orderable: false, searchable: false},
+               ],
+               "aaSorting": []
+           });
+        }
+
+        showUser();
+
+        function deleteUser(id,e){
+            e.preventDefault();
+            swal.fire({
+                title: "Are you sure?",
+                text: "You want to delete this User!",
+                icon: "warning",
+                showCloseButton: true,
+                // showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: `Delete`,
+                // dangerMode: true,
+            }).then((result) => {
+                if (result.value == true) {
+                    swal.fire({
+                        title: 'Success',
+                        text: 'User is deleted Successfully!',
+                        icon: 'success'
+                    }).then(function () {
+                        $.ajax({
+                            url: '{{ url("admin/delete/user") }}',
+                            method: 'POST',
+                            data: {id: id, "_token": "{{ csrf_token() }}"},
+                            dataType: 'json',
+                            success: function () {
+                                location.reload(); 
+                            }
+                        })
+                    })
+                }
+                else if (result.value == false) {
+                    swal.fire("Cancelled", "Question Category is safe :)", "error");
+                }
+            })
+        }
+</script>
+    
 @endsection

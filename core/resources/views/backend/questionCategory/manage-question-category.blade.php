@@ -42,7 +42,7 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <table id="table_id" class="table dt-responsive table-bordered table-striped nowrap">
+                                <table id="list" class="table dt-responsive table-bordered table-striped nowrap">
                                     <thead>
                                     <tr>
                                         <th style="font-family: Kalpurush">#</th>
@@ -52,52 +52,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @php($i=1)
-                                    @foreach($categories as $category)
-                                        <tr>
-                                            <td>{{ $i++ }}</td>
-                                            <td>{{ $category->name }}</td>
-                                            <td>
-                                                @if($category->status == 1)
-                                                    <button class="btn btn-sm btn-success"><span class="fa fa-check"></span> Active</button>
-                                                @else
-                                                    <button class="btn btn-sm btn-danger"><span class="fa fa-ban"></span> Inactive</button>
-                                                @endif
-                                            </td>
-                                            <td>
-                                                <a href="{{ route('edit.question.category', ['id'=>$category->id]) }}" class="btn btn-primary text-white">
-                                                    <span class="fa fa-edit"></span>
-                                                </a>
-                                                <a href="#deleteQuestion-{{ $category->id }}" data-toggle="modal" class="btn btn-danger text-white">
-                                                    <span class="fa fa-trash"></span> 
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <div class="modal fade" id="deleteQuestion-{{ $category->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout"
-                                             aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <form action="{{ route('delete.question.category') }}" method="POST">
-                                                        @csrf
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabelLogout">Delete Question!</h5>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <p>Are you sure you want to delete this?</p>
-                                                            <input type="hidden" name="id" value="{{ $category->id }}">
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
-                                                            <button type="submit" class="btn btn-info float-right">Submit</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
+
                                     </tbody>
                                 </table>
                             </div>
@@ -107,4 +62,71 @@
             </div>
         </section>
     </div>
+@endsection
+
+@section('js')
+<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+<script src="{{ asset('assets/sweetalert2/sweetalert2.all.min.js') }}"></script>
+<script>
+        function showquestionCategory(){
+            $('#list').DataTable({
+               bAutoWidth: false,
+               processing: true,
+               serverSide: true,
+               iDisplayLength: 10,
+               ajax: {
+                   url: '{{url("admin/get-question-category")}}',
+                   method: 'post',
+                   data: function (d) {
+                       d._token = $('input[name="_token"]').val();
+                   }
+               },
+               columns: [
+                   {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                   {data: 'name', name: 'name'},
+                   {data: 'status', name: 'status'},
+                   {data: 'action', name: 'action', orderable: false, searchable: false},
+               ],
+               "aaSorting": []
+           });
+        }
+
+        showquestionCategory();
+
+        function deleteQustionCategory(id,e){
+            e.preventDefault();
+            swal.fire({
+                title: "Are you sure?",
+                text: "You want to delete this Question Category!",
+                icon: "warning",
+                showCloseButton: true,
+                // showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: `Delete`,
+                // dangerMode: true,
+            }).then((result) => {
+                if (result.value == true) {
+                    swal.fire({
+                        title: 'Success',
+                        text: 'Question is deleted Successfully!',
+                        icon: 'success'
+                    }).then(function () {
+                        $.ajax({
+                            url: '{{ url("admin/delete/question/category") }}',
+                            method: 'POST',
+                            data: {id: id, "_token": "{{ csrf_token() }}"},
+                            dataType: 'json',
+                            success: function () {
+                                location.reload(); 
+                            }
+                        })
+                    })
+                }
+                else if (result.value == false) {
+                    swal.fire("Cancelled", "Question Category is safe :)", "error");
+                }
+            })
+        }
+</script>
+    
 @endsection
