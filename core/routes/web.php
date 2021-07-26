@@ -100,6 +100,7 @@ Route::group(['prefix' => 'admin'], function (){
 
         /* User Track */
         Route::get('/user/track', 'UserController@adminUserTrack')->name('admin.user.track');
+        Route::post('/get-user-track', 'UserController@getUserTrack')->name('get.user.track');
         Route::get('/view/login/history/{id}', 'UserController@viewLoginHistory')->name('admin.view.login.history');
         Route::get('/view/user/servey/{id}', 'UserController@viewUserServey')->name('admin.view.user.servey');
 

@@ -37,7 +37,7 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <table id="table_id" class="table dt-responsive table-bordered table-striped nowrap">
+                                <table id="list" class="table dt-responsive table-bordered table-striped nowrap">
                                     <thead>
                                     <tr>
                                         <th style="font-family: Kalpurush">#</th>
@@ -50,28 +50,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @php($i=1)
-                                    @foreach($users as $user)
-                                    <?php
-                                        $survey = DB::table('user_questions')->where('user_id', $user->id)->count();
-                                    ?>
-                                        <tr>
-                                            <td>{{ $i++ }}</td>
-                                            <td>{{ $user->categoryName->name ?? '' }}</td>
-                                            <td>{{ $user->first_name }} {{ $user->last_name }}</td>
-                                            <td>{{ $user->phone }}</td>
-                                            <td>{{ $user->upazilaName->name }}, {{ $user->upazilaName->districtName->name }}</td>
-                                            <td>{{ $survey }}</td>
-                                            <td>
-                                                <a href="{{ route('admin.view.user.servey', ['id'=>$user->id]) }}" target="_blank" class="btn btn-primary text-white">
-                                                    <span class="fa fa-eye">Total Survey ({{ $survey }})</span>
-                                                </a>
-                                                <a href="{{ route('admin.view.login.history', ['id'=>$user->id]) }}" target="_blank" class="btn btn-primary text-white">
-                                                    <span class="fa fa-lock"></span>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                    
                                     </tbody>
                                 </table>
                             </div>
@@ -81,4 +60,73 @@
             </div>
         </section>
     </div>
+@endsection
+@section('js')
+<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+<script src="{{ asset('assets/sweetalert2/sweetalert2.all.min.js') }}"></script>
+<script>
+        function showquestionCategory(){
+            $('#list').DataTable({
+               bAutoWidth: false,
+               processing: true,
+               serverSide: true,
+               iDisplayLength: 10,
+               ajax: {
+                   url: '{{url("admin/get-user-track")}}',
+                   method: 'post',
+                   data: function (d) {
+                       d._token = $('input[name="_token"]').val();
+                   }
+               },
+               columns: [
+                   {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                   {data: 'category_name', name: 'category_name'},
+                   {data: 'name', name: 'name'},
+                   {data: 'phone', name: 'phone'},
+                   {data: 'area', name: 'area'},
+                   {data: 'survey', name: 'survey'},
+                   {data: 'action', name: 'action', orderable: false, searchable: false},
+               ],
+               "aaSorting": []
+           });
+        }
+
+        showquestionCategory();
+
+        function deleteQustionCategory(id,e){
+            e.preventDefault();
+            swal.fire({
+                title: "Are you sure?",
+                text: "You want to delete this Question Category!",
+                icon: "warning",
+                showCloseButton: true,
+                // showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: `Delete`,
+                // dangerMode: true,
+            }).then((result) => {
+                if (result.value == true) {
+                    swal.fire({
+                        title: 'Success',
+                        text: 'Question is deleted Successfully!',
+                        icon: 'success'
+                    }).then(function () {
+                        $.ajax({
+                            url: '{{ url("admin/delete/question/category") }}',
+                            method: 'POST',
+                            data: {id: id, "_token": "{{ csrf_token() }}"},
+                            dataType: 'json',
+                            success: function () {
+                                location.reload(); 
+                            }
+                        })
+                    })
+                }
+                else if (result.value == false) {
+                    swal.fire("Cancelled", "Question Category is safe :)", "error");
+                }
+            })
+        }
+</script>
+    
 @endsection

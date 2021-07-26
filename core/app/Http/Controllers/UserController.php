@@ -251,8 +251,47 @@ class UserController extends Controller
 
     /* User Track */
     public function adminUserTrack(){
-        $users = User::orderBy('id', 'desc')->get();
-        return view('backend.user.user-track', compact('users'));
+        // $users = User::orderBy('id', 'desc')->get();
+        return view('backend.user.user-track');
+    }
+
+    public function getUserTrack(Request $request)
+    {
+        if (!$request->ajax()) {
+            return 'Sorry! this is a request without proper way.';
+        }
+
+        try {
+            $list = User::orderBy('id', 'desc')->get();
+            return DataTables::of($list)
+                ->editColumn('category_name', function ($list) {
+                    return $list->categoryName->name;
+                })
+                ->editColumn('name', function ($list) {
+                    return '<td>'. $list->first_name.' '. $list->last_name.'</td>';
+                })
+                ->editColumn('area', function ($list) {
+                    return '<td>'. $list->upazilaName->name.' '. $list->upazilaName->districtName->name.'</td>';
+                })
+                ->editColumn('survey', function ($list) {
+                    $survey = DB::table('user_questions')->where('user_id', $list->id)->count();
+                    return $survey;
+                })
+                ->editColumn('status', function ($list) {
+                    return CommonFunction::getStatus($list->status);
+                })
+                ->addColumn('action', function ($list) {
+                    $survey = DB::table('user_questions')->where('user_id', $list->id)->count();
+                    return '<a style="padding:2px;font-size:15px;" target="_blank" href="' . route('admin.view.user.servey', ['id'=>$list->id]) .
+                    '" class="btn btn-primary text-white btn-xs"> <i class="fa fa-eye"></i> Total Survey '. $survey.' </a> <a style="padding:2px;font-size:15px;" href="'. route('admin.view.login.history', ['id'=>$list->id]).' " target="_blank" class="btn btn-primary text-white"><span class="fa fa-lock"></span></a>';
+                })
+                ->addIndexColumn()
+                ->rawColumns(['status', 'category_name', 'name', 'area', 'survey','action'])
+                ->make(true);
+        } catch (\Exception $e) {
+            // Session::flash('error', CommonFunction::showErrorPublic($e->getMessage()) . '[UC-1001]');
+            return Redirect::back();
+        }
     }
     public function viewLoginHistory($id){
         $users = LoginHistory::where('user_id', $id)->orderBy('id', 'desc')->get();
