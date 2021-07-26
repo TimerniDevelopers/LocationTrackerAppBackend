@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LoginHistory;
 use App\Libraries\CommonFunction;
 use App\Models\QuestionCategory;
 use App\Models\User;
+use App\Models\UserQuestion;
 use Illuminate\Http\Request;
 use DB;
 use Image;
 use Auth;
+use Carbon\Carbon;
 use Hash;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Redirect;
@@ -52,6 +55,10 @@ class UserController extends Controller
             'email' => $request->email,
             'password' => $request->password
         ])){
+            LoginHistory::create([
+                'user_id' => Auth::guard('web')->user()->id,
+                'login' => Carbon::now(),
+            ]);
             return redirect()->route('user.dashboard');
         }
         return back()->withErrors('The Combination of Username or Password is Wrong!.');
@@ -60,7 +67,14 @@ class UserController extends Controller
         return view('user.dashboard');
     }
     public function userLogout(){
-        Auth::guard('web')->logout();
+        $user_id = LoginHistory::where('user_id', Auth::guard('web')->user()->id)->whereNull('logout')->latest()->first();
+        if($user_id != ''){
+            $user_id->logout = Carbon::now();
+            $user_id->save();
+            Auth::guard('web')->logout();
+        } else {
+            Auth::guard('web')->logout();
+        }
         return redirect()->route('index');
     }
 
@@ -162,11 +176,11 @@ class UserController extends Controller
                 })
                 ->editColumn('name', function ($list) {
                     return '<td>'.$list->first_name.' '.$list->last_name.'</td>';
-                    
+
                 })
                 ->editColumn('area', function ($list) {
                     return '<td>'.$list->upazilaName->name.', '.$list->upazilaName->districtName->name.'</td>';
-                    
+
                 })
                 ->editColumn('status', function ($list) {
                     return CommonFunction::getStatus($list->status);
@@ -199,7 +213,7 @@ class UserController extends Controller
             'address' => 'required',
             'upazilla_id' => 'required',
             'email' =>  $request->email != $user->email ? 'required|unique:users,email' : 'required',
-            'phone' =>  $request->phone != $user->phone ? 'required|unique:users,phone|max:11,min:11' : 'required|max:11,min:11',
+            'phone' =>  $request->phone != $user->phone ? 'required|unique:users,phone|min:11,max:11' : 'required|max:11,min:11',
         ]);
         if($request->hasFile('image')){
             @unlink($user->image);
@@ -233,5 +247,19 @@ class UserController extends Controller
             $user->delete();
         }
         return response()->json('success');
+    }
+
+    /* User Track */
+    public function adminUserTrack(){
+        $users = User::orderBy('id', 'desc')->get();
+        return view('backend.user.user-track', compact('users'));
+    }
+    public function viewLoginHistory($id){
+        $users = LoginHistory::where('user_id', $id)->orderBy('id', 'desc')->get();
+        return view('backend.user.view-login-history', compact('users'));
+    }
+    public function viewUserServey($id){
+        $answers = UserQuestion::where('user_id', $id)->orderBy('id', 'desc')->get();
+        return view('backend.user.view-user-survey', compact('answers'));
     }
 }

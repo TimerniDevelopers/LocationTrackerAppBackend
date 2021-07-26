@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\QuestionCollection;
+use App\Models\Patient;
 use App\Models\Question;
 use App\Models\User;
 use App\Models\UserQuestion;
@@ -58,7 +59,7 @@ class QuestionController extends Controller
                 }
                 return response()->json($userQuestionID);
             } else {
-                return back()->withErrors('This Patient ID are not match any record');
+                return 'This Patient ID are not match any record';
             }
         } else {
             $userQuestionID = UserQuestion::create([
@@ -78,6 +79,16 @@ class QuestionController extends Controller
                 $answers['user_question_id'] = $userQuestionID->id;
                 DB::table('question_answer')->insert($answers);
             }
+            Patient::create([
+                'unique_id' => $lastUnique ? $thisUnique + 1 : $thisUnique,
+                'name' => $request->name,
+                'phone' => $request->phone,
+                'nid' => $request->nid,
+                'f_name' => $request->f_name,
+                'blood_group' => $request->blood_group,
+                'occupation' => $request->occupation,
+                'upazila_id' => $request->upazila_id,
+            ]);
             return response()->json($userQuestionID);
         }
         // try {

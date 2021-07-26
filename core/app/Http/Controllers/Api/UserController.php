@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\AdminResource;
+use App\Models\LoginHistory;
 use App\Models\User;
+use Carbon\Carbon;
 use Validator;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -35,6 +37,10 @@ class UserController extends Controller
         if (! $token = auth()->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
+        LoginHistory::create([
+            'user_id' => auth()->user()->id,
+            'login' => Carbon::now(),
+        ]);
 
         return $this->respondWithToken($token);
     }
@@ -56,7 +62,14 @@ class UserController extends Controller
      */
     public function logout()
     {
-        auth()->logout();
+        $user_id = LoginHistory::where('user_id', auth()->user()->id)->whereNull('logout')->latest()->first();
+        if($user_id != ''){
+            $user_id->logout = Carbon::now();
+            $user_id->save();
+            auth()->logout();
+        } else {
+            auth()->logout();
+        }
 
         return response()->json(['message' => 'Successfully logged out']);
     }

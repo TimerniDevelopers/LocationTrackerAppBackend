@@ -27,6 +27,9 @@ Route::group(['prefix' => 'user'], function (){
         Route::get('/change/password', 'UserController@changePassword')->name('user.change.password');
         Route::post('/submit/change/password', 'UserController@submitChangePassword')->name('user.submit.change.password');
 
+        Route::get('/get-district', 'SurveyController@getDistrict'); //ajax request
+        Route::get('/get-upazila', 'SurveyController@getUpazila'); //ajax request
+
         /* Start Survey */
         Route::get('/start/survey', 'SurveyController@startSurvey')->name('start.survey');
         Route::post('/submit/survey', 'SurveyController@submitSurvey')->name('submit.survey');
@@ -94,6 +97,11 @@ Route::group(['prefix' => 'admin'], function (){
         Route::get('/edit/user/{id}', 'UserController@editUser')->name('edit.user');
         Route::post('/update/user', 'UserController@updateUser')->name('update.user');
         Route::post('/delete/user', 'UserController@deleteUser')->name('delete.user');
+
+        /* User Track */
+        Route::get('/user/track', 'UserController@adminUserTrack')->name('admin.user.track');
+        Route::get('/view/login/history/{id}', 'UserController@viewLoginHistory')->name('admin.view.login.history');
+        Route::get('/view/user/servey/{id}', 'UserController@viewUserServey')->name('admin.view.user.servey');
 
         Route::get('/show/answer', 'QuestionController@showAnswer')->name('show.answer');
         Route::post('/get-answer-all', 'QuestionController@getAnswerAll')->name('get.answer.all');

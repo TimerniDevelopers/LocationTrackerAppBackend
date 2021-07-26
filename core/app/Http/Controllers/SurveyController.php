@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Patient;
 use App\Models\Question;
 use App\Models\UserQuestion;
 use Illuminate\Http\Request;
@@ -11,25 +12,52 @@ use DB;
 
 class SurveyController extends Controller
 {
+    //ajax
+    public function getDistrict(Request $request)
+    {
+        $id = $request->get('id');
+        $districts = DB::table('districts')->where('division_id', $id)->get();
+
+        echo '<option selected disabled value="" > Select District </option>';
+        foreach ($districts as $district) {
+            echo '<option value="' . $district->id . '">' . $district->name . '</option>';
+        }
+    }
+    public function getUpazila(Request $request)
+    {
+        $id = $request->get('id');
+        $upazilas = DB::table('upazilas')->where('district_id', $id)->get();
+
+        echo '<option selected disabled value="" > Select Upazila / Thana </option>';
+        foreach ($upazilas as $upazila) {
+            echo '<option value="' . $upazila->id . '">' . $upazila->name . '</option>';
+        }
+    }
     public function startSurvey()
     {
         $user_category_id = Auth::guard('web')->user()->category_id;
         $inputQuestions = Question::where('category_id', $user_category_id)->where('status', 1)->get();
-        return view('user.survey.start-survey', compact('inputQuestions'));
+        $divisions = DB::table('divisions')->get();
+        $uniques = UserQuestion::orderBy('id', 'desc')->get();
+        return view('user.survey.start-survey', compact('inputQuestions', 'divisions', 'uniques'));
     }
     public function submitSurvey(Request $request)
     {
-        // $location = \GeoIP::getLocation();
-        // $country = $location['country'];
-        // $city = $location['city'];
-        // $state = $location['state'];
-        // $lat = $location['lat'];
-        // $lng = $location['lon'];
-        // dd($lat);
-        // dd($request->all());
+        $ip = $request->ip; // the IP address to query
+        $query = @unserialize(file_get_contents('http://ip-api.com/php/' . $ip));
+        // if ($query && $query['status'] == 'success') {
+        //     $query['lat'] . ',' . $query['lon'];
+        // } else {
+        //     'Unable to get location';
+        // }
+        if ($request->patient == 2) {
+            $this->validate($request, [
+                'unique_id' => 'required',
+            ]);
+        }
         $this->validate($request, [
             'name' => 'required',
-            'phone' => 'required',
+            'phone' => 'required|min:11,max:11',
         ]);
         $year = Carbon::now()->format('Y');
         $month = Carbon::now()->format('m');
@@ -42,14 +70,14 @@ class SurveyController extends Controller
 
         if ($request->unique_id) {
             $uniqueCheck = UserQuestion::where('unique_id', $request->unique_id)->first();
-            if ($uniqueCheck != '') {
+            if ($uniqueCheck) {
                 $userQuestionId = UserQuestion::create([
                     'user_id' => Auth::guard('web')->user()->id,
                     'unique_id' => $uniqueCheck->unique_id,
                     'name' => $request->name,
                     'phone' => $request->phone,
-                    'latitude' => 22.809681,
-                    'longitude' => 91.094582,
+                    'latitude' => $query['lat'] ? $query['lat'] : 23.810331,
+                    'longitude' => $query['lon'] ? $query['lon'] : 90.412521,
                 ]);
                 for ($i = 1; $i <= $request->question_length; $i++) {
                     $ans = array();
@@ -97,8 +125,8 @@ class SurveyController extends Controller
                 'unique_id' => $lastUnique ? $thisUnique + 1 : $thisUnique,
                 'name' => $request->name,
                 'phone' => $request->phone,
-                'latitude' => 22.809681,
-                'longitude' => 91.094582,
+                'latitude' => $query['lat'] ? $query['lat'] : 23.810331,
+                'longitude' => $query['lon'] ? $query['lon'] : 90.412521,
             ]);
             for ($i = 1; $i <= $request->question_length; $i++) {
                 $ans = array();
@@ -128,6 +156,17 @@ class SurveyController extends Controller
                 $ans['user_question_id'] = $user_question_id;
                 DB::table('question_answer')->insert($ans);
             }
+
+            Patient::create([
+                'unique_id' => $lastUnique ? $thisUnique + 1 : $thisUnique,
+                'name' => $request->name,
+                'phone' => $request->phone,
+                'nid' => $request->nid,
+                'f_name' => $request->f_name,
+                'blood_group' => $request->blood_group,
+                'occupation' => $request->occupation,
+                'upazila_id' => $request->upazila_id,
+            ]);
             return back()->withSuccess('Survey Submitted Successful');
         }
     }

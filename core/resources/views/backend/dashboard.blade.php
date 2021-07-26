@@ -46,7 +46,7 @@
                         @endif
                         @if(Auth::guard('admin')->user()->user_role == 1)
                             <div class="row">
-                                <div class="col-sm-12 col-12 col-md-6 col-lg-6 col-xl-6">
+                                <div class="col-sm-12 col-12">
                                     <div class="piechartResponsive mb-3" id="piechart2" style="99%"></div>
                                     @include('backend.questionAnswer.admin-analytics')
                                 </div>
@@ -68,7 +68,8 @@
     <style>
         .piechartResponsive{
             height: 500px;
-            width: 900px
+            /* width: 900px; */
+            width: 100%;
         }
         @media screen and (max-width: 767px) {
             .piechartResponsive {

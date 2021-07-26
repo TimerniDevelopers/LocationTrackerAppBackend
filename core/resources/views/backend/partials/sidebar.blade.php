@@ -29,8 +29,8 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
-                @if(Auth::guard('admin')->user()->user_role == 1)
-                <li class="nav-item has-treeview
+
+                     <li class="nav-item has-treeview
                         {{ ((Request::is('admin/add/question/category')) ? 'menu-open' : '') }}
                         {{ ((Request::is('admin/manage/question/category')) ? 'menu-open' : '') }}
                         {{ ((Request::is('admin/edit/question/category/*')) ? 'menu-open' : '') }}
@@ -85,7 +85,44 @@
                         </li>
                     </ul>
                 </li>
-
+                <li class="nav-item has-treeview ">
+                    <a href="{{ route('show.answer') }}" class="nav-link hover-color @if(request()->path() == 'admin/show/answer') bg-success @endif">
+                        <i class="nav-icon fas fa-box icon-color" style="color: green"></i><p>Collected Data</p>
+                    </a>
+                </li>
+                <li class="nav-item has-treeview
+                        {{ ((Request::is('admin/add/user')) ? 'menu-open' : '') }}
+                        {{ ((Request::is('admin/manage/user')) ? 'menu-open' : '') }}
+                        {{ ((Request::is('admin/edit/user/*')) ? 'menu-open' : '') }}
+                    ">
+                    <a href="#" class="nav-link hover-color">
+                        <i class="nav-icon fas fa-user-astronaut" style="color: green"></i>
+                        <p>
+                            User / Employee
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('add.user') }}" class="nav-link hover-color @if(request()->path() == 'admin/add/user') bg-success @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add User</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('manage.user') }}" class="nav-link hover-color @if(request()->path() == 'admin/manage/user') bg-success @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Manage User</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-treeview ">
+                    <a href="{{ route('admin.user.track') }}" class="nav-link hover-color @if(request()->path() == 'admin/user/track') bg-success @endif">
+                        <i class="nav-icon fas fa-users icon-color" style="color: green"></i><p>User Track</p>
+                    </a>
+                </li>
+                @if(Auth::guard('admin')->user()->user_role == 1)
                 <li class="nav-item has-treeview
                         {{ ((Request::is('admin/add/manager')) ? 'menu-open' : '') }}
                         {{ ((Request::is('admin/manage/manager')) ? 'menu-open' : '') }}
@@ -112,11 +149,6 @@
                             </a>
                         </li>
                     </ul>
-                </li>
-                <li class="nav-item has-treeview ">
-                    <a href="{{ route('show.answer') }}" class="nav-link hover-color @if(request()->path() == 'admin/show/answer') bg-success @endif">
-                        <i class="nav-icon fas fa-box icon-color" style="color: green"></i><p>Collected Data</p>
-                    </a>
                 </li>
                 {{-- <li class="nav-item has-treeview">
                     <a href="{{ route('notify.all') }}" class="nav-link @if(request()->path() == 'admin/subscriber/list') bg-info @endif">
@@ -126,68 +158,6 @@
                 @endif
 
                 @if(Auth::guard('admin')->user()->user_role == 2)
-                <li class="nav-item has-treeview
-                        {{ ((Request::is('admin/add/question/category')) ? 'menu-open' : '') }}
-                        {{ ((Request::is('admin/manage/question/category')) ? 'menu-open' : '') }}
-                        {{ ((Request::is('admin/edit/question/category/*')) ? 'menu-open' : '') }}
-                    ">
-                    <a href="#" class="nav-link hover-color">
-                        <i class="nav-icon fas fa-question" style="color: green"></i>
-                        <p>
-                            Question Category
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('add.question.category') }}" class="nav-link hover-color @if(request()->path() == 'admin/add/question/category') bg-success @endif">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Add Category</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('manage.question.category') }}" class="nav-link hover-color @if(request()->path() == 'admin/manage/question/category') bg-success @endif">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Manage Category</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="nav-item has-treeview
-                        {{ ((Request::is('admin/add/question')) ? 'menu-open' : '') }}
-                        {{ ((Request::is('admin/question/category/list')) ? 'menu-open' : '') }}
-                        {{ ((Request::is('admin/manage/question/*')) ? 'menu-open' : '') }}
-                        {{ ((Request::is('admin/edit/question/*')) ? 'menu-open' : '') }}
-                    ">
-                    <a href="#" class="nav-link hover-color">
-                        <i class="nav-icon fas fa-question" style="color: green"></i>
-                        <p>
-                            Questions
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('add.question') }}" class="nav-link hover-color @if(request()->path() == 'admin/add/question') bg-success @endif">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Add Question</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('question.category.list') }}" class="nav-link hover-color @if(request()->path() == 'admin/question/category/list') bg-success @endif">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Manage Question</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="nav-item has-treeview">
-                    <a href="{{ route('show.answer') }}" class="nav-link hover-color @if(request()->path() == 'admin/show/answer') bg-success @endif">
-                        <i class="nav-icon fas fa-box icon-color" style="color: green"></i><p>Collected Data</p>
-                    </a>
-                </li>
                 {{-- <li class="nav-item has-treeview">
                     <a href="{{ route('notify.all') }}" class="nav-link @if(request()->path() == 'admin/subscriber/list') bg-info @endif">
                         <i class="nav-icon fas fa-home icon-color" style="color: green"></i><p>Notify List</p>
@@ -196,62 +166,6 @@
                 @endif
 
                 @if(Auth::guard('admin')->user()->user_role == 10)
-                <li class="nav-item has-treeview
-                        {{ ((Request::is('admin/add/question/category')) ? 'menu-open' : '') }}
-                        {{ ((Request::is('admin/manage/question/category')) ? 'menu-open' : '') }}
-                        {{ ((Request::is('admin/edit/question/category/*')) ? 'menu-open' : '') }}
-                    ">
-                    <a href="#" class="nav-link hover-color">
-                        <i class="nav-icon fas fa-question" style="color: green"></i>
-                        <p>
-                            Question Category
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('add.question.category') }}" class="nav-link hover-color @if(request()->path() == 'admin/add/question/category') bg-success @endif">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Add Category</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('manage.question.category') }}" class="nav-link hover-color @if(request()->path() == 'admin/manage/question/category') bg-success @endif">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Manage Category</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item has-treeview
-                        {{ ((Request::is('admin/add/question')) ? 'menu-open' : '') }}
-                        {{ ((Request::is('admin/question/category/list')) ? 'menu-open' : '') }}
-                        {{ ((Request::is('admin/manage/question/*')) ? 'menu-open' : '') }}
-                        {{ ((Request::is('admin/edit/question/*')) ? 'menu-open' : '') }}
-                    ">
-                    <a href="#" class="nav-link hover-color">
-                        <i class="nav-icon fas fa-question" style="color: green"></i>
-                        <p>
-                            Questions
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('add.question') }}" class="nav-link hover-color @if(request()->path() == 'admin/add/question') bg-success @endif">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Add Question</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('question.category.list') }}" class="nav-link hover-color @if(request()->path() == 'admin/question/category/list') bg-success @endif">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Manage Question</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
                 <li class="nav-item has-treeview
                         {{ ((Request::is('admin/add/manager')) ? 'menu-open' : '') }}
                         {{ ((Request::is('admin/manage/manager')) ? 'menu-open' : '') }}
@@ -278,11 +192,6 @@
                             </a>
                         </li>
                     </ul>
-                </li>
-                <li class="nav-item has-treeview ">
-                    <a href="{{ route('show.answer') }}" class="nav-link hover-color @if(request()->path() == 'admin/show/answer') bg-success @endif">
-                        <i class="nav-icon fas fa-box icon-color" style="color: green"></i><p>Collected Data</p>
-                    </a>
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="{{ route('subscriber.list') }}" class="nav-link hover-color  @if(request()->path() == 'admin/subscriber/list') bg-success @endif">
@@ -325,33 +234,6 @@
                     </a>
                 </li> --}}
                 @endif
-                <li class="nav-item has-treeview
-                        {{ ((Request::is('admin/add/user')) ? 'menu-open' : '') }}
-                        {{ ((Request::is('admin/manage/user')) ? 'menu-open' : '') }}
-                        {{ ((Request::is('admin/edit/user/*')) ? 'menu-open' : '') }}
-                    ">
-                    <a href="#" class="nav-link hover-color">
-                        <i class="nav-icon fas fa-user-astronaut" style="color: green"></i>
-                        <p>
-                            User / Employee
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('add.user') }}" class="nav-link hover-color @if(request()->path() == 'admin/add/user') bg-success @endif">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Add User</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('manage.user') }}" class="nav-link hover-color @if(request()->path() == 'admin/manage/user') bg-success @endif">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Manage User</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
