@@ -33,12 +33,23 @@ class SurveyController extends Controller
             echo '<option value="' . $upazila->id . '">' . $upazila->name . '</option>';
         }
     }
+    public function getPatientNamePhone(Request $request)
+    {
+        $unique_id = $request->get('unique_id');
+        $patient = DB::table('patients')->where('unique_id', $unique_id)->first();
+
+        $result = array();
+        $result['patient'] = view('user.survey.ajax-patient-name-phone', compact('patient'))->render();
+        return $result;
+
+        // echo '<input disabled name="name" value="'.$patient->name.'" class="form-control">';
+    }
     public function startSurvey()
     {
         $user_category_id = Auth::guard('web')->user()->category_id;
         $inputQuestions = Question::where('category_id', $user_category_id)->where('status', 1)->get();
         $divisions = DB::table('divisions')->get();
-        $uniques = UserQuestion::orderBy('id', 'desc')->get();
+        $uniques = Patient::orderBy('id', 'desc')->get();
         return view('user.survey.start-survey', compact('inputQuestions', 'divisions', 'uniques'));
     }
     public function submitSurvey(Request $request)
@@ -54,11 +65,13 @@ class SurveyController extends Controller
             $this->validate($request, [
                 'unique_id' => 'required',
             ]);
+        } elseif ($request->patient == 1)  {
+            $this->validate($request, [
+                'name' => 'required',
+                'phone' => 'required|min:11,max:11',
+            ]);
         }
-        $this->validate($request, [
-            'name' => 'required',
-            'phone' => 'required|min:11,max:11',
-        ]);
+
         $year = Carbon::now()->format('Y');
         $month = Carbon::now()->format('m');
         $date = Carbon::now()->format('d');
@@ -74,8 +87,8 @@ class SurveyController extends Controller
                 $userQuestionId = UserQuestion::create([
                     'user_id' => Auth::guard('web')->user()->id,
                     'unique_id' => $uniqueCheck->unique_id,
-                    'name' => $request->name,
-                    'phone' => $request->phone,
+                    'name' => $uniqueCheck->name,
+                    'phone' => $uniqueCheck->phone,
                     'latitude' => $query['lat'] ? $query['lat'] : 23.810331,
                     'longitude' => $query['lon'] ? $query['lon'] : 90.412521,
                 ]);

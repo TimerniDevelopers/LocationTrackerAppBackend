@@ -64,7 +64,7 @@
                                             <td>{{ $survey }}</td>
                                             <td>
                                                 <a href="{{ route('admin.view.user.servey', ['id'=>$user->id]) }}" target="_blank" class="btn btn-primary text-white">
-                                                    <span class="fa fa-eye">Total Survey ({{ $survey }})</span>
+                                                    <span class="fa fa-eye"> Total Survey ({{ $survey }})</span>
                                                 </a>
                                                 <a href="{{ route('admin.view.login.history', ['id'=>$user->id]) }}" target="_blank" class="btn btn-primary text-white">
                                                     <span class="fa fa-lock"></span>

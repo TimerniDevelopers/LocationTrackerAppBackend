@@ -71,7 +71,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Password <span class='required-star'>*</span></label>
-                                                <input type="password" name="password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" value="{{ old('password') }}" autofocus>
+                                                <input type="password" name="password" id="myPassword" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" value="{{ old('password') }}" autofocus>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" onclick="myPasswordFunction()" id="flexCheckDefault">
+                                                    <label class="form-check-label" for="flexCheckDefault">
+                                                        Show Password
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">

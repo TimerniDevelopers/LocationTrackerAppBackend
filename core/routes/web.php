@@ -29,6 +29,7 @@ Route::group(['prefix' => 'user'], function (){
 
         Route::get('/get-district', 'SurveyController@getDistrict'); //ajax request
         Route::get('/get-upazila', 'SurveyController@getUpazila'); //ajax request
+        Route::get('/get-patient-name-phone', 'SurveyController@getPatientNamePhone'); //ajax request
 
         /* Start Survey */
         Route::get('/start/survey', 'SurveyController@startSurvey')->name('start.survey');

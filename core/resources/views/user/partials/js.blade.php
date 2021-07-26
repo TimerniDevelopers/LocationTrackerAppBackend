@@ -28,12 +28,27 @@
         })
     }
 
-    function getNewPatient(){
+    function getNewPatient() {
         $('.appendField').show();
         $('.appendField2').hide();
     }
-    function getOldPatient(){
+
+    function getOldPatient() {
         $('.appendField2').show();
         $('.appendField').hide();
+    }
+
+    function getNamePhone(value) {
+        var unique_id = value;
+        $.ajax({
+            url: '/user/get-patient-name-phone',
+            type: 'get',
+            data: {
+                unique_id: unique_id
+            },
+            success: function(data) {
+                $('#namePhone_id').html(data.patient)
+            }
+        })
     }
 </script>
