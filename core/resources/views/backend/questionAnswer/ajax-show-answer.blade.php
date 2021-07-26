@@ -30,7 +30,7 @@
 
                 <td> <a href="{{ route('show.maps', ['id' => $answer->id]) }}"
                         class="btn btn-primary text-white">
-                        <span class="fas fa-eye"></span> Show Map
+                        <span class="fas fa-map"></span> Show Map
                     </a>
                     <a href="{{ route('view_answer', ['id' => $answer->id, 'user_id' => $answer->user_id]) }}"
                         class="btn btn-primary text-white">

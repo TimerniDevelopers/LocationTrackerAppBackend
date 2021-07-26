@@ -251,7 +251,6 @@ class QuestionController extends Controller
         try {
             $list = UserQuestion::orderBy('id', 'desc')->get();
             return DataTables::of($list)
-                
                 ->editColumn('user_name', function ($list) {
                     if($list->user_id)
                     {

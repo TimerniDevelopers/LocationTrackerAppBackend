@@ -171,7 +171,6 @@ $( document ).ready(function() {
         
         function showMessage()
         {
-            
             var output = "";
             $.ajax({
                 url: 'box/'+user_id,
@@ -184,11 +183,12 @@ $( document ).ready(function() {
                       var str = data[i]['created_at'];
                       var datetime = str.split("T")
                         if(data[i]['user_id'] != null && data[i]['user_id2'] == null){
-                            output+='<div class="incoming_msg">'+
-                            '<div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="avater"> </div>';
+                            output+='<div class="incoming_msg" style="padding: 10px;">'
                             if(data[i]['user']['image']){
-                              output += '<div class="incoming_msg_img"> <img src="{{ asset(null) }}'+data[i]['user']['image']+'" alt="sunil"> </div>';
+                              output += '<div class="incoming_msg_img"> <img style="height: 50px; width: 50px;" src="{{ asset(null) }}'+data[i]['user']['image']+'"> </div>';
                               
+                            }else{
+                                output += '<div class="incoming_msg_img"> <img style="height: 50px; width: 50px;" src="https://ptetutorials.com/images/user-profile.png" alt="avater"> </div>';
                             }
                             output +='<div class="received_msg">'+
                                 '<div class="received_withd_msg">'+
