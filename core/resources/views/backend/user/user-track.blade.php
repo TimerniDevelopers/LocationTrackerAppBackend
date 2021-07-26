@@ -65,7 +65,7 @@
 <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 <script src="{{ asset('assets/sweetalert2/sweetalert2.all.min.js') }}"></script>
 <script>
-        function showquestionCategory(){
+        function showuserTrack(){
             $('#list').DataTable({
                bAutoWidth: false,
                processing: true,
@@ -91,42 +91,7 @@
            });
         }
 
-        showquestionCategory();
-
-        function deleteQustionCategory(id,e){
-            e.preventDefault();
-            swal.fire({
-                title: "Are you sure?",
-                text: "You want to delete this Question Category!",
-                icon: "warning",
-                showCloseButton: true,
-                // showDenyButton: true,
-                showCancelButton: true,
-                confirmButtonText: `Delete`,
-                // dangerMode: true,
-            }).then((result) => {
-                if (result.value == true) {
-                    swal.fire({
-                        title: 'Success',
-                        text: 'Question is deleted Successfully!',
-                        icon: 'success'
-                    }).then(function () {
-                        $.ajax({
-                            url: '{{ url("admin/delete/question/category") }}',
-                            method: 'POST',
-                            data: {id: id, "_token": "{{ csrf_token() }}"},
-                            dataType: 'json',
-                            success: function () {
-                                location.reload(); 
-                            }
-                        })
-                    })
-                }
-                else if (result.value == false) {
-                    swal.fire("Cancelled", "Question Category is safe :)", "error");
-                }
-            })
-        }
+        showuserTrack();
 </script>
     
 @endsection
