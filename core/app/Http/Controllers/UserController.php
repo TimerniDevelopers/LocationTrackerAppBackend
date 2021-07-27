@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Libraries\SendMailFunction;
 use App\Models\LoginHistory;
 use App\Libraries\CommonFunction;
 use App\Models\QuestionCategory;
@@ -150,6 +151,14 @@ class UserController extends Controller
             'password' => bcrypt($request->password),
             'status' => $request->status,
         ]);
+        $reciever = $request->email;
+        $name = $request->first_name;
+        $email = $request->email;
+        $password = $request->password;
+        $phone = $request->phone;
+        $hostName = \Request::getHost();
+        $url = 'https://'.$hostName.'/user';
+        SendMailFunction::SendMail($reciever, $name, $email, $password, $phone, $url);
         return back()->withSuccess('Add Successful');
     }
     public function manageUser(){

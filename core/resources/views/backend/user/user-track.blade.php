@@ -46,7 +46,7 @@
                                         <th style="font-family: Kalpurush">Mobile Number</th>
                                         <th style="font-family: Kalpurush">Area</th>
                                         <th style="font-family: Kalpurush">Total Survey</th>
-                                        <th style="font-family: Kalpurush">Login History</th>
+                                        <th style="font-family: Kalpurush">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -67,7 +67,7 @@
                                                     <span class="fa fa-eye"> Total Survey ({{ $survey }})</span>
                                                 </a>
                                                 <a href="{{ route('admin.view.login.history', ['id'=>$user->id]) }}" target="_blank" class="btn btn-primary text-white">
-                                                    <span class="fa fa-lock"></span>
+                                                    <span class="fa fa-lock"> Login History</span>
                                                 </a>
                                             </td>
                                         </tr>

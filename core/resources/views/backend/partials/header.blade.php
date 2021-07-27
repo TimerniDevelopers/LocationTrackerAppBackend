@@ -15,7 +15,7 @@
         </li>
         <li class="nav-item">
             <div class="headerLogo">
-                <a class="navbar-brand" href="">
+                <a class="navbar-brand" href="{{ route('admin.dashboard') }}">
                     <img src="{{ asset('assets/admin/img/logo-top.png') }}" alt="our logo">
                 </a>
                 <form action="">

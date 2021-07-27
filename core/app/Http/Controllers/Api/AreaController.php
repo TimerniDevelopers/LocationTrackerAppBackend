@@ -43,4 +43,14 @@ class AreaController extends Controller
         $union = DB::table('unions')->find($id);
         return response()->json($union);
     }
+
+    /* Unique ID List */
+    public function uniqueIDList(){
+        $lists = DB::table('patients')->select('unique_id')->get();
+        return response()->json($lists);
+    }
+    public function uniqueID($id){
+        $list = DB::table('patients')->where('unique_id', $id)->first();
+        return response()->json($list);
+    }
 }

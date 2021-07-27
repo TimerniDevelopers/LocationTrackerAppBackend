@@ -46,7 +46,7 @@
                                     <thead>
                                     <tr>
                                         <th style="font-family: Kalpurush">#</th>
-                                        <th style="font-family: Kalpurush">Question Category</th>
+                                        <th style="font-family: Kalpurush">Organization Category</th>
                                         <th style="font-family: Kalpurush">Type</th>
                                         <th style="font-family: Kalpurush">Question</th>
                                         <th style="font-family: Kalpurush">Status</th>
@@ -54,7 +54,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                   
+
                                     </tbody>
                                 </table>
                             </div>
@@ -123,7 +123,7 @@
                             data: {id: id, "_token": "{{ csrf_token() }}"},
                             dataType: 'json',
                             success: function () {
-                                location.reload(); 
+                                location.reload();
                             }
                         })
                     })
@@ -134,5 +134,5 @@
             })
         }
 </script>
-    
+
 @endsection

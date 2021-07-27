@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Patient;
 use App\Models\Question;
+use App\Models\User;
 use App\Models\UserQuestion;
 use Illuminate\Http\Request;
 use Auth;
@@ -128,7 +129,7 @@ class SurveyController extends Controller
                     $ans['user_question_id'] = $user_question_id;
                     DB::table('question_answer')->insert($ans);
                 }
-                return back()->withSuccess('Survey Submitted Successful');
+                return back()->with('message', 'Patient ID: '.$uniqueCheck->unique_id.' -- Name: '.$uniqueCheck->name.'  -- Phone: '.$uniqueCheck->phone)->withSuccess('Survey Submitted Successful');
             } else {
                 return back()->withErrors('This Patient ID are not match any record');
             }
@@ -170,7 +171,7 @@ class SurveyController extends Controller
                 DB::table('question_answer')->insert($ans);
             }
 
-            Patient::create([
+            $uniID = Patient::create([
                 'unique_id' => $lastUnique ? $thisUnique + 1 : $thisUnique,
                 'name' => $request->name,
                 'phone' => $request->phone,
@@ -180,7 +181,24 @@ class SurveyController extends Controller
                 'occupation' => $request->occupation,
                 'upazila_id' => $request->upazila_id,
             ]);
-            return back()->withSuccess('Survey Submitted Successful');
+            return back()->with('message', 'Patient ID: '.$uniID->unique_id.' -- Name: '.$request->name.'  -- Phone: '.$request->phone)->withSuccess('Survey Submitted Successful');
         }
+    }
+
+    /* Collected Data */
+    public function userCollectedData(){
+        $collecteds = UserQuestion::where('user_id', Auth::guard('web')->user()->id)->get();
+        return view('user.survey.collected-data', compact('collecteds'));
+    }
+    public function userViewCollectedData($id, $user_id){
+        $user_category = User::where('id', $user_id)->select('category_id')->first();
+        $questions = DB::table('questions')->where('category_id', $user_category->category_id)->get();
+
+        $answer = DB::table('question_answer')
+            ->join('user_questions', 'user_questions.id', '=', 'question_answer.user_question_id')
+            ->join('questions', 'questions.id', '=', 'question_answer.question_id')
+            ->where('user_question_id', $id)
+            ->get();
+        return view('user.survey.view-collected-data', compact('answer', 'questions'));
     }
 }

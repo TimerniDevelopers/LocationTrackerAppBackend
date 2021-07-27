@@ -23,8 +23,8 @@
                                             limited user licencing. Furthermore, a special discount will be given to NGOs,
                                             universities, small businesses and students.</p>
                                         <div class="text-sm-center text-xs-center">
-                                            <a href="javascript:void(0);" class="custom-btn register-btn">
-                                                Register
+                                            <a href="{{ route('contact') }}" class="custom-btn register-btn">
+                                                Contact Us
                                             </a>
                                         </div>
                                     </div>
@@ -48,8 +48,8 @@
                                             development. We provide a effecient system for data collections to reach the
                                             exact goal </p>
                                         <div class="text-sm-center text-xs-center">
-                                            <a href="javascript:void(0);" class="custom-btn register-btn">
-                                                Register
+                                            <a href="{{ route('contact') }}" class="custom-btn register-btn">
+                                                Contact Us
                                             </a>
                                         </div>
                                     </div>
@@ -73,8 +73,8 @@
                                             Representative,"Dcotrack" provides a unique way to solve this problem with live
                                             location Update of sales person </p>
                                         <div class="d-lg-block  d-sm-flex justify-content-sm-center text-sm-center">
-                                            <a href="javascript:void(0);" class="custom-btn register-btn">
-                                                Register
+                                            <a href="{{ route('contact') }}" class="custom-btn register-btn">
+                                                Contact Us
                                             </a>
                                         </div>
                                     </div>
@@ -97,8 +97,8 @@
                                         <p>We often finds it difficult to record audio and visual data,"Dcotrack" can store
                                             your audio and video data.</p>
                                         <div class="d-lg-block  d-sm-flex justify-content-sm-center text-sm-center">
-                                            <a href="javascript:void(0);" class="custom-btn register-btn">
-                                                Register
+                                            <a href="{{ route('contact') }}" class="custom-btn register-btn">
+                                                Contact Us
                                             </a>
                                         </div>
                                     </div>
@@ -122,8 +122,8 @@
                                         <p> With the help of our application, business owner and researchers can find the
                                             insight of collected data </p>
                                         <div class="d-lg-block  d-sm-flex justify-content-sm-center text-sm-center">
-                                            <a href="javascript:void(0);" class="custom-btn register-btn">
-                                                Register
+                                            <a href="{{ route('contact') }}" class="custom-btn register-btn">
+                                                Contact Us
                                             </a>
                                         </div>
                                     </div>
@@ -238,7 +238,7 @@
                             </div>
                             <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
                                 <div class="rcord-img qrcode-img">
-                                    <img src="{{ asset('assets/frontend/img/Dectrack illustration.gif') }}"
+                                    <img src="{{ asset('assets/frontend/img/do something.gif') }}"
                                         alt="qrcode" loading="lazy">
                                 </div>
                             </div>
@@ -595,7 +595,7 @@
                                     <h3 class="font-25"></h3>
                                 </div>
                                 <div class="py-3">
-                                    <p>Contact with our professionals </p>
+                                    <p>Subscribe for update </p>
                                 </div>
 
                                 <form action="{{ route('save.subscribe') }}" method="POST">
@@ -604,7 +604,7 @@
                                         <input name="email" type="email" required class="form-control py-2 border-right-0 border" id="example-search-input" placeholder=" Write your email ">
                                         <span class="input-group-append">
                                             <button type="submit" class="btn btn-append custom-btn">
-                                                <i class="fa fa-search"></i>
+                                                <i class="fa fa-paper-plane"></i>
                                             </button>
                                         </span>
                                     </div>

@@ -51,6 +51,9 @@ Route::group(['prefix' => 'location'], function () {
     Route::get('union/list', 'Api\AreaController@unionList');
     Route::get('union/{id}', 'Api\AreaController@union');
 
+    Route::get('unique_id/list', 'Api\AreaController@uniqueIDList');
+    Route::get('unique_id/{id}', 'Api\AreaController@uniqueID');
+
     Route::post('notification', 'Api\NotificationController@submitNotification');
     Route::get('message', 'Api\NotificationController@GetNotification');
 });

@@ -93,8 +93,7 @@
                                             <div class="form-group">
                                                 <label>Address <span class='required-star'>*</span></label>
                                                 <textarea name="address"
-                                                    class="form-control {{ $errors->has('address') ? ' is-invalid' : '' }}"
-                                                    value="{{ old('address') }}" autofocus></textarea>
+                                                    class="form-control {{ $errors->has('address') ? ' is-invalid' : '' }}" autofocus>{{ old('address') }}</textarea>
                                             </div>
                                         </div>
                                         <div class="col-md-6">

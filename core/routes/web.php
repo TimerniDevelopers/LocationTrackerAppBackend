@@ -35,6 +35,9 @@ Route::group(['prefix' => 'user'], function (){
         Route::get('/start/survey', 'SurveyController@startSurvey')->name('start.survey');
         Route::post('/submit/survey', 'SurveyController@submitSurvey')->name('submit.survey');
 
+        Route::get('/collected/data', 'SurveyController@userCollectedData')->name('user.collected.data');
+        Route::get('/view/collected/data/{id}/{user_id}', 'SurveyController@userViewCollectedData')->name('user.view.collected.data');
+
         //message
         Route::get('message', 'UserMessageController@messageindex')->name('user.message');
         Route::get('message/get/', 'UserMessageController@messageGet')->name('get.message');

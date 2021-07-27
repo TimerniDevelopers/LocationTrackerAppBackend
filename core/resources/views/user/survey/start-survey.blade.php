@@ -16,6 +16,18 @@
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
         </div>
+        <div class="container">
+            @if (session()->has('success'))
+                <div class="alert alert-dismissable alert-success">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>
+                        {{ session()->get('message') }}
+                    </strong>
+                </div>
+            @endif
+        </div>
         <section class="content">
             <div class="col-sm-12">
                 <div class="card">
@@ -48,8 +60,10 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-6 mb-2 appendField2" style="display: none">
-                                    <label class="control-label">Patient Unique ID <span class="text-danger">*</span></label>
-                                    <select name="unique_id" id="unique_id" onchange="getNamePhone(this.value)" class="form-control select2" style="width: 100%">
+                                    <label class="control-label">Patient Unique ID <span
+                                            class="text-danger">*</span></label>
+                                    <select name="unique_id" id="unique_id" onchange="getNamePhone(this.value)"
+                                        class="form-control select2" style="width: 100%">
                                         <option selected disabled>Search Patient ID</option>
                                         @foreach ($uniques as $unique)
                                             <option value="{{ $unique->unique_id }}">{{ $unique->unique_id }}</option>
@@ -61,10 +75,11 @@
                                 </div>
                                 <div class="col-sm-6 mb-2 appendField">
                                     <label class="control-label">Patient Name <span class="text-danger">*</span></label>
-                                    <input type="text" name="name"  class="form-control" value="{{ old('name') }}">
+                                    <input type="text" name="name" class="form-control" value="{{ old('name') }}">
                                 </div>
                                 <div class="col-sm-6 mb-2 appendField">
-                                    <label class="control-label">Patient Phone Number <span class="text-danger">*</span></label>
+                                    <label class="control-label">Patient Phone Number <span
+                                            class="text-danger">*</span></label>
                                     <input type="text" name="phone" class="form-control" value="{{ old('phone') }}">
                                 </div>
                                 <div class="col-sm-6 mb-2 appendField">

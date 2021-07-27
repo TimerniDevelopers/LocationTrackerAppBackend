@@ -1,7 +1,7 @@
 @extends('backend.master')
 
 @section('title')
-    Update Question Category
+    Update Organization Category
 @endsection
 
 @section('content')
@@ -10,7 +10,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-12">
-                        <h1 class="m-0 text-dark" style="font-family: kalpurush">Update Question Category</h1>
+                        <h1 class="m-0 text-dark" style="font-family: kalpurush">Update Organization Category</h1>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
@@ -21,7 +21,7 @@
                     <div class="col-12">
                         <div class="card card-info">
                             <div class="card-header">
-                                <h3 class="card-title" style="font-family: kalpurush">Update Question Category</h3>
+                                <h3 class="card-title" style="font-family: kalpurush">Update Organization Category</h3>
                             </div>
                             <form method="POST" action="{{ route('update.question.category') }}"
                                 enctype="multipart/form-data" role="form">
@@ -30,7 +30,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Question Category Name <span class='required-star'>*</span></label>
+                                                <label>Organization Category Name <span class='required-star'>*</span></label>
                                                 <input type="text" name="name"
                                                     class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}"
                                                     value="{{ $category->name ?? '' }}" autofocus>

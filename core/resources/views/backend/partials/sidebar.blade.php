@@ -38,7 +38,7 @@
                     <a href="#" class="nav-link hover-color">
                         <i class="nav-icon fas fa-question" style="color: green"></i>
                         <p>
-                            Question Category
+                            Organization Category
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
@@ -46,13 +46,13 @@
                         <li class="nav-item">
                             <a href="{{ route('add.question.category') }}" class="nav-link hover-color @if(request()->path() == 'admin/add/question/category') bg-success @endif">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Add Category</p>
+                                <p>Add Organization</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('manage.question.category') }}" class="nav-link hover-color @if(request()->path() == 'admin/manage/question/category') bg-success @endif">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Manage Category</p>
+                                <p>Manage Organization</p>
                             </a>
                         </li>
                     </ul>
@@ -98,7 +98,7 @@
                     <a href="#" class="nav-link hover-color">
                         <i class="nav-icon fas fa-user-astronaut" style="color: green"></i>
                         <p>
-                            User / Employee
+                            User / Volunteer
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
