@@ -298,7 +298,49 @@ class UserController extends Controller
         return view('backend.user.view-login-history', compact('users'));
     }
     public function viewUserServey($id){
-        $answers = UserQuestion::where('user_id', $id)->orderBy('id', 'desc')->get();
-        return view('backend.user.view-user-survey', compact('answers'));
+        // $answers = UserQuestion::where('user_id', $id)->orderBy('id', 'desc')->get();
+        return view('backend.user.view-user-survey', compact('id'));
+    }
+
+    public function getUserServey(Request $request)
+    {
+        if (!$request->ajax()) {
+            return 'Sorry! this is a request without proper way.';
+        }
+
+        try {
+            $list = UserQuestion::where('user_id', $request->id)->orderBy('id', 'desc')->get();
+            return DataTables::of($list)
+                ->editColumn('user_name', function ($list) {
+                    if($list->user_id)
+                    {
+                        return '<td>'.$list->userName->first_name.'</td>';
+                    }else{
+
+                    }
+                })
+                ->editColumn('date', function ($list) {
+                    $temp = explode(' ', $list->created_at);
+                    return '<td>'.date('d-M-y', strtotime($temp[0])).'</td>';
+                })
+                ->editColumn('time', function ($list) {
+                    $temp = explode(' ', $list->created_at);
+                        return '<td>'.date('h:i A', strtotime($temp[1])).'</td>';
+                })
+                ->editColumn('status', function ($list) {
+                    return CommonFunction::getStatus($list->status);
+                })
+                ->addColumn('action', function ($list) {
+                    return '<a style="padding:2px;font-size:15px;" href="' . route('show.maps', ['id' => $list->id]) .
+                    '" class="btn btn-primary btn-xs"> <i class="fa fa-map"></i> Show Map </a> <a style="padding:2px;font-size:15px;" href="' . route('view_answer', ['id' => $list->id, 'user_id' => $list->user_id]) .
+                    '" class="btn btn-primary text-white"> <span class="fas fa-eye"></span> Show Data </a>';
+                })
+                ->addIndexColumn()
+                ->rawColumns(['status', 'category_id', 'user_name', 'date', 'time', 'area','action'])
+                ->make(true);
+        } catch (\Exception $e) {
+            // Session::flash('error', CommonFunction::showErrorPublic($e->getMessage()) . '[UC-1001]');
+            return Redirect::back();
+        }
     }
 }

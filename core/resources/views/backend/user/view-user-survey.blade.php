@@ -39,7 +39,7 @@
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <div class="defaultData">
-                                    <table id="table_id" class="table dt-responsive table-bordered table-striped nowrap">
+                                    <table id="list" class="table dt-responsive table-bordered table-striped nowrap">
                                         <thead>
                                             <tr>
                                                 <th style="font-family: Kalpurush">#</th>
@@ -54,32 +54,7 @@
                                         </thead>
 
                                         <tbody>
-                                            @php($i = 1)
-                                            @foreach ($answers as $answer)
-                                                <?php
-                                                $temp = explode(' ', $answer->created_at);
-                                                ?>
-                                                <tr>
-                                                    <td>{{ $i++ }}</td>
-                                                    <td>{{ $answer->userName->first_name ?? '' }}</td>
-                                                    <td>{{ $answer->unique_id }}</td>
-                                                    <td>{{ $answer->name }}</td>
-                                                    <td>{{ $answer->phone }}</td>
-                                                    <td>{!! date('d-M-y', strtotime($temp[0])) !!}</td>
-
-                                                    <td>{{ date('h:i A', strtotime($temp[1])) }}</td>
-
-                                                    <td> <a href="{{ route('show.maps', ['id' => $answer->id]) }}"
-                                                            class="btn btn-primary text-white">
-                                                            <span class="fas fa-eye"></span> Show Map
-                                                        </a>
-                                                        <a href="{{ route('view_answer', ['id' => $answer->id, 'user_id' => $answer->user_id]) }}"
-                                                            class="btn btn-primary text-white">
-                                                            <span class="fas fa-eye"></span> Show Data
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
+                                            
                                         </tbody>
 
                                     </table>
@@ -97,6 +72,8 @@
 @endsection
 
 @section('js')
+<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+<input type="hidden" name="user_id" value="<?php echo $id; ?>">
     <script>
         function showAnswer() {
             $('.defaultData').hide();
@@ -115,5 +92,35 @@
                 }
             })
         }
+
+        function showuserSurvey(){
+            $('#list').DataTable({
+               bAutoWidth: false,
+               processing: true,
+               serverSide: true,
+               iDisplayLength: 10,
+               ajax: {
+                   url: '{{url("admin/get-user-survey")}}',
+                   method: 'post',
+                   data: function (d) {
+                       d._token = $('input[name="_token"]').val();
+                       d.id = $('input[name="user_id"]').val();
+                   }
+               },
+               columns: [
+                   {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                   {data: 'user_name', name: 'user_name'},
+                   {data: 'unique_id', name: 'unique_id'},
+                   {data: 'name', name: 'name'},
+                   {data: 'phone', name: 'phone'},
+                   {data: 'date', name: 'date'},
+                   {data: 'time', name: 'time'},
+                   {data: 'action', name: 'action', orderable: false, searchable: false},
+               ],
+               "aaSorting": []
+           });
+        }
+
+        showuserSurvey();
     </script>
 @endsection

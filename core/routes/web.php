@@ -103,7 +103,7 @@ Route::group(['prefix' => 'admin'], function (){
         Route::post('/get-user-track', 'UserController@getUserTrack')->name('get.user.track');
         Route::get('/view/login/history/{id}', 'UserController@viewLoginHistory')->name('admin.view.login.history');
         Route::get('/view/user/servey/{id}', 'UserController@viewUserServey')->name('admin.view.user.servey');
-        Route::get('/get-user-survey', 'UserController@getUserServey')->name('get.user.servey');
+        Route::post('/get-user-survey', 'UserController@getUserServey')->name('get.user.servey');
 
         Route::get('/show/answer', 'QuestionController@showAnswer')->name('show.answer');
         Route::post('/get-answer-all', 'QuestionController@getAnswerAll')->name('get.answer.all');
