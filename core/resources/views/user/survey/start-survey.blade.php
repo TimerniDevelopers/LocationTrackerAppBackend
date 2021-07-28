@@ -66,7 +66,7 @@
                                         class="form-control select2" style="width: 100%">
                                         <option selected disabled>Search Patient ID</option>
                                         @foreach ($uniques as $unique)
-                                            <option value="{{ $unique->unique_id }}">{{ $unique->unique_id }}</option>
+                                            <option value="{{ $unique->unique_id }}">{{ $unique->unique_id }} - {{ $unique->phone }}</option>
                                         @endforeach
                                     </select>
                                 </div>

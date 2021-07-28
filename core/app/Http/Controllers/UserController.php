@@ -48,6 +48,18 @@ class UserController extends Controller
         return view('user.user.login');
     }
     public function loginCheck(Request $request){
+        // $year = Carbon::now()->format('Y');
+        // $month = Carbon::now()->format('m');
+        // $date = Carbon::now()->format('d');
+        // $hour = Carbon::now()->format('h');
+        // $minute = Carbon::now()->format('i');
+        // $second = Carbon::now()->format('s');
+        // $thisUnique = $year . $month . $date . $hour . $minute . $second . '01';
+        // $putData = $request->session()->put('data', $thisUnique);
+        // $putData = session()->push('data', $thisUnique);
+        // return session()->all();
+        // return session('data');
+
         $this->validate($request,[
             'email' => 'required',
             'password' => 'required',

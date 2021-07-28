@@ -132,6 +132,11 @@
                 x.type = "password";
             }
         }
+        // function setLocalStorage(){
+        //     $number = <?php echo rand(10,10000) ?>
+        //     $data = localStorage.setItem("number", $number);
+        //     console.log($data);
+        // }
     </script>
 </body>
 
