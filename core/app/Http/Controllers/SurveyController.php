@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Auth;
 use Carbon\Carbon;
 use DB;
+use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\Redirect;
 
 class SurveyController extends Controller
 {
@@ -187,8 +189,38 @@ class SurveyController extends Controller
 
     /* Collected Data */
     public function userCollectedData(){
-        $collecteds = UserQuestion::where('user_id', Auth::guard('web')->user()->id)->get();
-        return view('user.survey.collected-data', compact('collecteds'));
+        // $collecteds = UserQuestion::where('user_id', Auth::guard('web')->user()->id)->get();
+        return view('user.survey.collected-data');
+    }
+
+    public function getCollectedData(Request $request)
+    {
+        if (!$request->ajax()) {
+            return 'Sorry! this is a request without proper way.';
+        }
+
+        try {
+            $list = UserQuestion::where('user_id', Auth::guard('web')->user()->id)->get();
+            return DataTables::of($list)
+                ->editColumn('date', function ($list) {
+                    $temp = explode(' ', $list->created_at);
+                    return '<td>'.date('d-M-y', strtotime($temp[0])).'</td>';
+                })
+                ->editColumn('time', function ($list) {
+                    $temp = explode(' ', $list->created_at);
+                        return '<td>'.date('h:i A', strtotime($temp[1])).'</td>';
+                })
+                ->addColumn('action', function ($list) {
+                    return '<a style="padding:2px;font-size:15px;" href="'.route('user.view.collected.data',['id'=>$list->id,'user_id'=>$list->user_id]).'" class="btn btn-primary text-white"> <span class="fas fa-eye"></span> Show Data </a>';
+                })
+                
+                ->addIndexColumn()
+                ->rawColumns(['status', 'date', 'time', 'action'])
+                ->make(true);
+        } catch (\Exception $e) {
+            // Session::flash('error', CommonFunction::showErrorPublic($e->getMessage()) . '[UC-1001]');
+            return Redirect::back();
+        }
     }
     public function userViewCollectedData($id, $user_id){
         $user_category = User::where('id', $user_id)->select('category_id')->first();

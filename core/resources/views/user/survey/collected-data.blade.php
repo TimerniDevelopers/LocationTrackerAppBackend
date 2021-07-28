@@ -39,7 +39,7 @@
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <div class="defaultData">
-                                    <table id="table_id" class="table dt-responsive table-bordered table-striped nowrap">                                        <thead>
+                                    <table id="list" class="table dt-responsive table-bordered table-striped nowrap">                                        <thead>
                                             <tr>
                                                 <th style="font-family: Kalpurush">#</th>
                                                 <th style="font-family: Kalpurush">Patient ID</th>
@@ -52,22 +52,7 @@
                                         </thead>
 
                                         <tbody>
-                                            @php
-                                                $i = 1;
-                                            @endphp
-                                            @foreach ($collecteds as $collected)
-                                            <tr>
-                                                <td>{{ $i++ }}</td>
-                                                <td>{{ $collected->unique_id }}</td>
-                                                <td>{{ $collected->name }}</td>
-                                                <td>{{ $collected->phone }}</td>
-                                                <td>{{ \Carbon\Carbon::parse($collected->created_at)->format('d M Y') }}</td>
-                                                <td>{{ \Carbon\Carbon::parse($collected->created_at)->format('h:i A') }}</td>
-                                                <td>
-                                                    <a href="{{ route('user.view.collected.data',['id'=>$collected->id,'user_id'=>$collected->user_id]) }}" class="btn btn-sm btn-success"><span class="fa fa-eye"> View Data</span></a>
-                                                </td>
-                                            </tr>
-                                            @endforeach
+                                            
                                         </tbody>
 
                                     </table>
@@ -80,3 +65,39 @@
         </section>
     </div>
 @endsection
+
+@section('js')
+<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+<script src="{{ asset('assets/sweetalert2/sweetalert2.all.min.js') }}"></script>
+<script>
+        function showuserTrack(){
+            $('#list').DataTable({
+               bAutoWidth: false,
+               processing: true,
+               serverSide: true,
+               iDisplayLength: 10,
+               ajax: {
+                   url: '{{url("user/get-collected-data")}}',
+                   method: 'post',
+                   data: function (d) {
+                       d._token = $('input[name="_token"]').val();
+                   }
+               },
+               columns: [
+                   {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                   {data: 'unique_id', name: 'unique_id'},
+                   {data: 'name', name: 'name'},
+                   {data: 'phone', name: 'phone'},
+                   {data: 'date', name: 'date'},
+                   {data: 'time', name: 'time'},
+                   {data: 'action', name: 'action', orderable: false, searchable: false},
+               ],
+               "aaSorting": []
+           });
+        }
+
+        showuserTrack();
+</script>
+    
+@endsection
+
