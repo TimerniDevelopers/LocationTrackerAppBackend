@@ -1,7 +1,7 @@
 @extends('backend.master')
 
 @section('title')
-    Manage Question Category
+    Manage Organization Category
 @endsection
 
 @section('content')
@@ -11,12 +11,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6" style="font-family: kalpurush">
-                        <h1 class="m-0 text-dark">Manage Question Category</h1>
+                        <h1 class="m-0 text-dark">Manage Organization Category</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
-                            <li class="breadcrumb-item active">Manage Question Category</li>
+                            <li class="breadcrumb-item active">Manage Organization Category</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -31,12 +31,12 @@
                             <div class="card-header">
                                 <div class="fa-pull-left">
                                     <h3 class="card-title">
-                                        <i class="fas fa-list"></i> Manage Question Category
+                                        <i class="fas fa-list"></i> Manage Organization Category
                                     </h3>
                                 </div>
                                 <div class="fa-pull-right">
                                     <a href="{{ route('add.question.category') }}">
-                                        <button class="btn btn-info"><i class="fa fa-plus"></i><b> Add Question category</b></button>
+                                        <button class="btn btn-info"><i class="fa fa-plus"></i><b> Add Organization category</b></button>
                                     </a>
                                 </div>
                             </div>
@@ -46,7 +46,7 @@
                                     <thead>
                                     <tr>
                                         <th style="font-family: Kalpurush">#</th>
-                                        <th style="font-family: Kalpurush">Question Category Name</th>
+                                        <th style="font-family: Kalpurush">Organization Category Name</th>
                                         <th style="font-family: Kalpurush">Status</th>
                                         <th style="font-family: Kalpurush">Action</th>
                                     </tr>
@@ -117,7 +117,7 @@
                             data: {id: id, "_token": "{{ csrf_token() }}"},
                             dataType: 'json',
                             success: function () {
-                                location.reload(); 
+                                location.reload();
                             }
                         })
                     })
@@ -128,5 +128,5 @@
             })
         }
 </script>
-    
+
 @endsection

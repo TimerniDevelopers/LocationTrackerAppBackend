@@ -46,7 +46,7 @@
                                         <th style="font-family: Kalpurush">Mobile Number</th>
                                         <th style="font-family: Kalpurush">Area</th>
                                         <th style="font-family: Kalpurush">Total Survey</th>
-                                        <th style="font-family: Kalpurush">Login History</th>
+                                        <th style="font-family: Kalpurush">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>

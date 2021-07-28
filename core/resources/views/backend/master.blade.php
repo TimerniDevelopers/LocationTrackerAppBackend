@@ -131,11 +131,11 @@
     </script>
     <script>
      $( document ).ready(function() {
-        
+
     function UnseenMessage()
     {
         var output = "";
-        
+
         $.ajax({
             url: '/admin/unseenmessage',
             method: "get",
@@ -148,7 +148,7 @@
                     var url = "{{url('admin/message')}}"+"/"+id;
                   var str = data[i]['created_at'];
                   var datetime = str.split("T")
-                  
+
                     if(data[i]['user_id'] != null && data[i]['user_id2'] == null){
                         if(data[i]['status'] == 0){
                             count += 1;
@@ -157,22 +157,22 @@
                                     '<i class="fas fa-envelope mr-2"></i> Your New message <span class="float-right text-muted text-sm">3 mins</span>'+
                                 '</a>'
                         }
-                        
-                                
+
+
                     }
                 }
                 document.getElementById("unseenmessage").innerHTML=output;
                 // console.log(data[0]['message']);
                 document.getElementById("counter").innerHTML=count;
-                
+
             }
         })
-        
+
 
     }
-    
-    
-    
+
+
+
     UnseenMessage();
 
     setInterval(function(){ UnseenMessage(); }, 3000);
@@ -181,5 +181,15 @@
 @include('backend.partials.notifications')
 @include('backend.partials.js')
 @yield('js')
+<script>
+    function myPasswordFunction() {
+        var x = document.getElementById("myPassword");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+</script>
 </body>
 </html>

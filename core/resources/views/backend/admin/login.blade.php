@@ -20,7 +20,7 @@
    <body>
     <div class="form-height">
       <div class="container">
-        <div class="text-center">
+        <div class="text-center" style="margin-top: -25px">
           <a href="{{ route('index') }}"><img src="{{ asset('assets/frontend/img/dcotrak.png') }}" alt="DcoTrack"></a>
           <p class="pb-2 sign">Control Panel</p>
         </div>
@@ -37,10 +37,30 @@
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Password</label>
-                    <input type="password" name="password" id="password"  class="form-control" aria-describedby="emailHelp" placeholder="Enter Password">
+                    <input type="password" name="password" id="myPassword"  class="form-control" aria-describedby="emailHelp" placeholder="Enter Password">
                     {{-- <p class="font-small blue-text d-flex justify-content-end pt-2">
                         <a href="ressetpass.html" class="blue-text ml-1">Forgot Password?</a>
                   </p> --}}
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox"
+                        onclick="myPasswordFunction()" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Show Password
+                    </label>
+                </div>
+                  <div class="">
+                    <input type="checkbox" required name="terms"
+                        onchange="this.setCustomValidity(validity.valueMissing ? 'Please indicate that you accept the Terms and Conditions' : '');"
+                        id="field_terms">
+                    <label for="terms" class="termscondition">
+                        I agree with the <a href="https://timerni.com/policy" target="_blank"
+                            title="You may read our terms and conditions by clicking on this link">terms
+                            and conditions, </a> and
+                        <a href="javascript:void(0);">
+                            Cookie Policy
+                        </a>
+                    </label>
+                </div>
                 </div>
                 <div class="col-md-12 text-center ">
                   <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Login</button>
@@ -91,72 +111,15 @@
         <script src="{{ asset('assets/common/jquery/jquery.min.js') }}"></script>
         <script src="{{ asset('assets/common/bootstrap/js/bootstrap.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('assets/admin_login/js/main.js') }}"></script>
+        <script>
+            function myPasswordFunction() {
+                var x = document.getElementById("myPassword");
+                if (x.type === "password") {
+                    x.type = "text";
+                } else {
+                    x.type = "password";
+                }
+            }
+        </script>
    </body>
 </html>
-
-
-{{-- <!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>Admin Login | Location Tracker</title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('assets/admin/js/app.js') }}" defer></script>
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link rel="shortcut icon" href="{{asset('assets/admin/img/logo-top.png')}}" type="image/x-icon"/>
-
-    <!-- Styles -->
-    <link href="{{ asset('assets/admin/css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('assets/admin/css/login.css')}}">
-</head>
-
-<body class="bg1">
-<div class="conainer block-center">
-    <div class="col-md-4 col-sm-6 col-xs-12">
-        <div class="login-block">
-            <div class="page-logo text-center"><a href="javascript:void(0);">
-                    <img style="max-height: 70px;max-width: 90px" src="{{asset('assets/admin/img/logo-top.png')}}" class="logo-image"></a>
-            </div>
-
-            <form method="POST" action="{{ route('admin.loginCheck') }}">
-                @csrf
-                <div class="form-group">
-                    <label for="Email Address">Email Address / Mobile Number</label>
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="" required autocomplete="email" autofocus>
-                    @error('email')
-                    <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-                <div class="form-group">
-                    <label for="TxtPassword">Password</label>
-                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-                    @error('password')
-                    <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-
-                <input type="submit" id="btn_login" tabindex="3" class="btn login-button" value="Login">
-                <br>
-                <span id="lblmsg" style="color:Red;"></span>
-            </form>
-
-            <div class="login-footer">
-                <p style="color:#fff">Powered by Time Research & Innovation</p>
-                <img src=""><br><br>
-            </div>
-        </div>
-    </div>
-</div>
-</body>
-</html> --}}

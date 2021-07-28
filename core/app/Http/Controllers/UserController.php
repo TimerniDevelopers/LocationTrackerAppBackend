@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Libraries\SendMailFunction;
 use App\Models\LoginHistory;
 use App\Libraries\CommonFunction;
 use App\Models\QuestionCategory;
@@ -47,6 +48,18 @@ class UserController extends Controller
         return view('user.user.login');
     }
     public function loginCheck(Request $request){
+        // $year = Carbon::now()->format('Y');
+        // $month = Carbon::now()->format('m');
+        // $date = Carbon::now()->format('d');
+        // $hour = Carbon::now()->format('h');
+        // $minute = Carbon::now()->format('i');
+        // $second = Carbon::now()->format('s');
+        // $thisUnique = $year . $month . $date . $hour . $minute . $second . '01';
+        // $putData = $request->session()->put('data', $thisUnique);
+        // $putData = session()->push('data', $thisUnique);
+        // return session()->all();
+        // return session('data');
+
         $this->validate($request,[
             'email' => 'required',
             'password' => 'required',
@@ -150,6 +163,14 @@ class UserController extends Controller
             'password' => bcrypt($request->password),
             'status' => $request->status,
         ]);
+        $reciever = $request->email;
+        $name = $request->first_name;
+        $email = $request->email;
+        $password = $request->password;
+        $phone = $request->phone;
+        $hostName = \Request::getHost();
+        $url = 'https://'.$hostName.'/user';
+        SendMailFunction::SendMail($reciever, $name, $email, $password, $phone, $url);
         return back()->withSuccess('Add Successful');
     }
     public function manageUser(){

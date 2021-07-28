@@ -34,6 +34,11 @@
                         <i class="nav-icon fas fa-box icon-color" style="color: green"></i><p>Start Survey</p>
                     </a>
                 </li>
+                <li class="nav-item has-treeview ">
+                    <a href="{{ route('user.collected.data') }}" class="nav-link hover-color @if(request()->path() == 'user/collected/data') bg-success @endif">
+                        <i class="nav-icon fas fa-box icon-color" style="color: green"></i><p>Collected Data</p>
+                    </a>
+                </li>
 
                 <li class="nav-item has-treeview ">
                     <a href="{{ route('user.message') }}" class="nav-link hover-color @if(request()->path() == 'user/message') bg-success @endif">

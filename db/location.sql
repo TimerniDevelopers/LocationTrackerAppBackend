@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 14, 2021 at 01:20 PM
+-- Generation Time: Jul 27, 2021 at 08:12 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.20
 
@@ -53,7 +53,9 @@ CREATE TABLE `admins` (
 
 INSERT INTO `admins` (`id`, `upazilla_id`, `union_id`, `user_role`, `first_name`, `last_name`, `phone`, `image`, `profession`, `address`, `email`, `email_verified_at`, `password`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, NULL, NULL, 1, 'Admin', NULL, NULL, NULL, NULL, NULL, '', NULL, '$2y$10$oxdZxPuLd0GRr7ZUsfci1OGMa3Prk4pYrV2w79JfxT2emf/Oz5hqK', 1, NULL, NULL, NULL),
-(2, 395, NULL, 2, 'Trinath Saha', NULL, '01621355844', 'assets/backend/images/user/jTHSaLgBvTgOgglZftOGZc6FTue6Co81wZBgyuvm.png', 'Web Developer', 'Mirpur', 'trinath@gmail.com', NULL, '$2y$10$nMboTaZpgp15j0S2maGd8upB9DmCcJz8ROAzeA/ze/20IQLLbBzbW', 1, NULL, '2021-07-14 06:38:50', '2021-07-14 06:38:50');
+(2, 395, NULL, 2, 'Trinath Saha', NULL, '01621355844', 'assets/backend/images/user/jTHSaLgBvTgOgglZftOGZc6FTue6Co81wZBgyuvm.png', 'Web Developer', 'Mirpur', 'trinath@gmail.com', NULL, '$2y$10$nMboTaZpgp15j0S2maGd8upB9DmCcJz8ROAzeA/ze/20IQLLbBzbW', 1, NULL, '2021-07-14 06:38:50', '2021-07-14 06:38:50'),
+(3, NULL, NULL, 10, 'Super Admin', NULL, NULL, NULL, NULL, NULL, 'superadmin@gmail.com', NULL, '$2y$12$YqMawxDyCW.weH7wGm6d/./jVS2T7fQ4HnMD7kQIPl0CySwnBnuo.', 1, NULL, NULL, NULL),
+(4, 44, NULL, 2, 'Pabel', NULL, '01621355842', NULL, 'Web Developer', 'Mohammadpur', 'bondhupabel@gmail.com', NULL, '$2y$10$/xAdjLOBP1p7MV1b8/xJc.Rt9l9bR.9YYn2uEaJ8puEFkAyvz4ZMa', 1, NULL, '2021-07-27 06:05:20', '2021-07-27 06:05:20');
 
 -- --------------------------------------------------------
 
@@ -467,6 +469,35 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `login_histories`
+--
+
+CREATE TABLE `login_histories` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) DEFAULT NULL,
+  `login` timestamp NULL DEFAULT NULL,
+  `logout` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `login_histories`
+--
+
+INSERT INTO `login_histories` (`id`, `user_id`, `login`, `logout`, `created_at`, `updated_at`) VALUES
+(1, 18, '2021-07-24 16:49:21', '2021-07-24 16:53:15', '2021-07-24 16:49:21', '2021-07-24 16:53:15'),
+(2, 18, '2021-07-24 17:09:44', NULL, '2021-07-24 17:09:44', '2021-07-24 17:09:44'),
+(3, 18, '2021-07-25 06:45:29', NULL, '2021-07-25 06:45:29', '2021-07-25 06:45:29'),
+(4, 18, '2021-07-25 09:05:28', '2021-07-25 14:55:36', '2021-07-25 09:05:28', '2021-07-25 14:55:36'),
+(5, 18, '2021-07-25 09:12:32', '2021-07-25 09:22:38', '2021-07-25 09:12:32', '2021-07-25 09:22:38'),
+(6, 18, '2021-07-26 06:48:40', NULL, '2021-07-26 06:48:40', '2021-07-26 06:48:40'),
+(7, 18, '2021-07-26 07:16:48', '2021-07-26 12:22:30', '2021-07-26 07:16:48', '2021-07-26 12:22:30'),
+(8, 18, '2021-07-27 06:00:44', '2021-07-27 06:01:22', '2021-07-27 06:00:44', '2021-07-27 06:01:22');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `migrations`
 --
 
@@ -490,7 +521,24 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (13, '2021_07_12_121752_create_question_categories_table', 4),
 (14, '2021_07_12_171339_create_subscribes_table', 5),
 (19, '2021_07_12_171439_create_contacts_table', 6),
-(23, '2021_07_13_162041_create_request_demos_table', 7);
+(23, '2021_07_13_162041_create_request_demos_table', 7),
+(24, '2021_07_14_154206_create_notifications_table', 8),
+(25, '2021_07_24_204641_create_patients_table', 8),
+(26, '2021_07_24_224420_create_login_histories_table', 9);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notifications`
+--
+
+CREATE TABLE `notifications` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `message` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -503,6 +551,34 @@ CREATE TABLE `password_resets` (
   `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `patients`
+--
+
+CREATE TABLE `patients` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `unique_id` bigint(20) DEFAULT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nid` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `f_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `blood_group` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `occupation` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `upazila_id` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `patients`
+--
+
+INSERT INTO `patients` (`id`, `unique_id`, `name`, `phone`, `nid`, `f_name`, `blood_group`, `occupation`, `upazila_id`, `created_at`, `updated_at`) VALUES
+(1, 2021072411102401, 'Pabel', '01621355849', '123456789', 'Demo', 'O+', 'Web Developer', NULL, '2021-07-24 17:10:24', '2021-07-24 17:10:24'),
+(2, 2021072504593901, 'Pabel2', '01621355842', '4646465', NULL, NULL, NULL, NULL, '2021-07-25 10:59:39', '2021-07-25 10:59:39');
 
 -- --------------------------------------------------------
 
@@ -525,15 +601,14 @@ CREATE TABLE `questions` (
 --
 
 INSERT INTO `questions` (`id`, `category_id`, `type`, `name`, `status`, `created_at`, `updated_at`) VALUES
-(2, 4, 3, 'What are the products required?', 1, '2021-05-29 10:58:00', '2021-05-29 10:58:00'),
-(5, 4, 3, 'What is Computer?', 1, '2021-06-15 12:53:42', '2021-06-15 13:04:16'),
+(2, 4, 2, 'What are the products required?', 1, '2021-05-29 10:58:00', '2021-05-29 10:58:00'),
+(5, 4, 1, 'What is Computer?', 1, '2021-06-15 12:53:42', '2021-06-15 13:04:16'),
 (7, 4, 3, 'Connectionless protocol?', 1, '2021-06-17 20:03:27', '2021-06-17 20:03:46'),
-(8, 4, 2, 'Next branch locations?', 1, '2021-06-17 20:04:50', '2021-06-21 15:38:14'),
-(9, 3, 2, 'Products coming from', 1, '2021-06-19 14:18:50', '2021-06-22 18:53:06'),
-(10, 3, 2, 'Select desired item', 1, '2021-06-22 16:00:42', '2021-06-22 18:52:53'),
-(11, 3, 1, 'Mention the name of the seller', 1, '2021-06-30 17:13:31', '2021-06-30 17:13:31'),
-(12, 3, 3, 'Most sold product', 1, '2021-06-30 17:15:09', '2021-06-30 17:15:09'),
-(15, 4, 2, 'hello', 1, '2021-07-11 08:09:03', '2021-07-11 08:09:03');
+(8, 4, 4, 'Next branch locations?', 1, '2021-06-17 20:04:50', '2021-07-15 11:23:45'),
+(9, 4, 4, 'Products coming from', 1, '2021-06-19 14:18:50', '2021-07-15 12:28:30'),
+(10, 4, 3, 'Select desired item', 1, '2021-06-22 16:00:42', '2021-07-15 12:27:48'),
+(11, 4, 2, 'Mention the name of the seller', 1, '2021-06-30 17:13:31', '2021-07-15 12:27:09'),
+(12, 4, 1, 'Most sold product', 1, '2021-06-30 17:15:09', '2021-07-15 12:26:18');
 
 -- --------------------------------------------------------
 
@@ -545,7 +620,7 @@ CREATE TABLE `question_answer` (
   `id` int(11) NOT NULL,
   `user_question_id` int(11) DEFAULT NULL,
   `question_id` int(11) DEFAULT NULL,
-  `question_ans` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `question_ans` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
   `others` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -555,53 +630,30 @@ CREATE TABLE `question_answer` (
 --
 
 INSERT INTO `question_answer` (`id`, `user_question_id`, `question_id`, `question_ans`, `others`, `created_at`) VALUES
-(8, 11, 2, 'Notebook, Remote', NULL, NULL),
-(9, 11, 3, '123', NULL, NULL),
-(10, 11, 4, 'Japan tobacco', NULL, NULL),
-(11, 11, 2, 'jjj', NULL, NULL),
-(12, 11, 3, 'dgdeg', NULL, NULL),
-(13, 11, 4, 'wser', NULL, NULL),
-(23, 16, 2, 'Muri, Call, Daal', NULL, NULL),
-(24, 16, 3, '4 k muri, 2 k chal, 5 kg daal', NULL, NULL),
-(25, 16, 4, 'Tomar shop\'s Neel Mia', NULL, NULL),
-(26, 16, 2, 'etet', NULL, NULL),
-(27, 16, 3, 'adada', NULL, NULL),
-(28, 16, 2, 'rtet', NULL, NULL),
-(29, 11, 2, 'Call, Daal', NULL, NULL),
-(30, 11, 3, '12', NULL, NULL),
-(31, 11, 4, '55 host', NULL, NULL),
-(32, 11, 2, 'Gaming mouse, headphones, keyboards', NULL, NULL),
-(33, 11, 3, '12 in total', NULL, NULL),
-(34, 11, 4, 'Max Payne', NULL, NULL),
-(35, 21, 2, 'Gaming mouse, Keyboard, headphone', NULL, NULL),
-(36, 21, 3, '23', NULL, NULL),
-(37, 21, 4, 'McDonald\'s', NULL, NULL),
-(38, 22, 4, 'ক', NULL, NULL),
-(39, NULL, 2, 'abc', NULL, NULL),
-(40, NULL, 3, 'efg', NULL, NULL),
-(41, NULL, 4, 'hij', NULL, NULL),
-(42, 156, 103, '\"My Name\"', NULL, NULL),
-(43, 11, 5, 'Demo', NULL, NULL),
-(44, 11, 5, 'Brain', NULL, NULL),
-(45, 11, 4, 'uuuuuuuu', NULL, NULL),
-(46, 11, 5, 'Machine', NULL, NULL),
-(47, 11, 5, 'Brain', NULL, NULL),
-(48, 11, 5, 'Others', NULL, NULL),
-(49, 11, 2, 'test 1', NULL, NULL),
-(50, 11, 7, 'ICMP', NULL, NULL),
-(51, 11, 8, 'Pabna', NULL, NULL),
-(52, 11, 2, 'abcd', NULL, NULL),
-(53, 11, 7, 'TCP', NULL, NULL),
-(54, 11, 2, 'wqe', NULL, NULL),
-(55, 11, 2, 'asdf', NULL, NULL),
-(56, 11, 5, 'Machine', NULL, NULL),
-(57, 11, 2, 'dsqwerterwt', NULL, NULL),
-(58, 11, 5, 'Machine', NULL, NULL),
-(59, 11, 7, 'UDP', NULL, NULL),
-(60, NULL, 2, 'trinath saha', NULL, NULL),
-(61, 42, 2, 'trinath saha', NULL, NULL),
-(62, 43, 1, 'trinath saha', NULL, NULL),
-(63, 44, 1, 'trinath saha', NULL, NULL);
+(1, 1, 2, NULL, NULL, NULL),
+(2, 1, 5, 'asd', NULL, NULL),
+(3, 1, 7, NULL, NULL, NULL),
+(4, 1, 8, 'null', NULL, NULL),
+(5, 1, 9, 'null', NULL, NULL),
+(6, 1, 10, NULL, NULL, NULL),
+(7, 1, 11, NULL, NULL, NULL),
+(8, 1, 12, 'adf', NULL, NULL),
+(9, 2, 2, NULL, NULL, NULL),
+(10, 2, 5, NULL, NULL, NULL),
+(11, 2, 7, NULL, NULL, NULL),
+(12, 2, 8, 'null', NULL, NULL),
+(13, 2, 9, 'null', NULL, NULL),
+(14, 2, 10, NULL, NULL, NULL),
+(15, 2, 11, NULL, NULL, NULL),
+(16, 2, 12, NULL, NULL, NULL),
+(17, 3, 2, NULL, NULL, NULL),
+(18, 3, 5, 'afsd', NULL, NULL),
+(19, 3, 7, NULL, NULL, NULL),
+(20, 3, 8, 'null', NULL, NULL),
+(21, 3, 9, 'null', NULL, NULL),
+(22, 3, 10, NULL, NULL, NULL),
+(23, 3, 11, NULL, NULL, NULL),
+(24, 3, 12, 'asd', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -639,17 +691,6 @@ CREATE TABLE `question_options` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `question_options`
---
-
-INSERT INTO `question_options` (`id`, `question_id`, `option`, `created_at`, `updated_at`) VALUES
-(6, 2, 'one', '2021-07-11 08:32:35', '2021-07-11 08:32:35'),
-(7, 2, 'two', '2021-07-11 08:32:35', '2021-07-11 08:32:35'),
-(8, 2, 'four', '2021-07-11 08:32:35', '2021-07-11 08:32:35'),
-(9, 2, 'five', '2021-07-11 08:32:35', '2021-07-11 08:32:35'),
-(10, 2, 'extra', '2021-07-11 08:32:35', '2021-07-11 08:32:35');
 
 -- --------------------------------------------------------
 
@@ -5813,7 +5854,7 @@ INSERT INTO `users` (`id`, `category_id`, `first_name`, `last_name`, `phone`, `p
 (15, 4, 'Jamal', 'Bhuiyan', '01843902165', 'Footballer', 'Male', NULL, 1, NULL, 'Feni', NULL, 'jamalb@g.com', NULL, '$2y$10$tpa3179UKBOcshyXSPYMTuCoCHLC8AlZp6mpG9r8wAbQ55nInkse.', 1, NULL, '2021-06-07 17:15:12', '2021-06-07 17:15:12'),
 (16, 2, 'Lal', 'Mia', '01547362514', 'Developer', 'Male', NULL, 1, NULL, 'Banani', NULL, 'lalmia@g.com', NULL, '$2y$10$zhPyB2moZnQ0LCWzmoiyju8.Ezkw3BvNZ5Z6q8ou6kT/raXbL162i', 1, NULL, '2021-06-13 11:52:54', '2021-06-13 11:52:54'),
 (17, 3, 'Randvu', 'Sah', '01711738898', 'Student', 'Male', NULL, 1, NULL, 'Mirpur', NULL, 'ru@g.com', NULL, '$2y$10$2ga1BD7Vc4TJHzQuYxKHOebmvORrG8glekpDxufzhrkm2iCSSZm06', 1, NULL, '2021-06-13 16:54:36', '2021-06-13 16:54:36'),
-(18, 4, 'Trinath', 'Saha', '01751867845', 'sales representative', 'Male', NULL, 1, NULL, 'rampura', NULL, 'tri@gmail.com', NULL, '$2y$12$Ak2/xdEo0U7JDzbMq4rzXOREfNNmkfHclCP9.MH4uMTmTXELCX.GO', 1, NULL, '2021-06-13 17:24:07', '2021-06-13 17:24:07'),
+(18, 4, 'Trinath', 'Saha', '01751867845', 'sales representative', '3', 1, 1, NULL, 'rampura', 'assets/backend/images/user/sGbVJttVXwFggb56VmLOxdGSPt1xUA7rBInv0uTW.png', 'tri@gmail.com', NULL, '$2y$12$Ak2/xdEo0U7JDzbMq4rzXOREfNNmkfHclCP9.MH4uMTmTXELCX.GO', 1, NULL, '2021-06-13 17:24:07', '2021-07-17 11:49:38'),
 (19, 2, 'Radowan', 'Bhuiyam', '01558967635', 'Software Engineer', 'Male', NULL, 1, NULL, 'rampura', NULL, 'radowan@gmail.com', NULL, '$2y$10$2NZ.czmgJTc3BLtaYql07uOC3c5pLoVLSYv7hF/hTNfpu3.YDDBXa', 1, NULL, '2021-06-13 17:35:24', '2021-06-13 17:35:24'),
 (20, 3, 'kksad', 'adada', '01314358087', 'Saifbaf', 'Female', NULL, 1, NULL, 'Mohakhali', NULL, 'lpl@g.com', NULL, '$2y$10$57fwVrYgQC62wjQ2s/htU.kttjT0E.5R0fFWbv86hzMCvyhuzmpwG', 1, NULL, '2021-06-13 17:41:19', '2021-06-13 17:41:19'),
 (21, 4, 'Tom', 'Jerry', '01711736989', 'Developer', 'Male', NULL, 1, NULL, 'Mohakhali', 'assets/backend/images/user/E0sPQ0q0bzBFnFNDdHm7bNszesFAD0GcFApPmnic.jpg', 'tomjerry@g.com', NULL, '$2y$10$bErD2UqHXGqM3QOH92IIV.CQVXkvrvpqDqPyJIn6VTmgf0B0ikIIy', 1, NULL, '2021-06-13 18:18:17', '2021-06-27 21:13:33'),
@@ -5829,10 +5870,11 @@ INSERT INTO `users` (`id`, `category_id`, `first_name`, `last_name`, `phone`, `p
 CREATE TABLE `user_questions` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `stall_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `stall_des` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `latitude` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `longitude` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `unique_id` bigint(20) DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `phone` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `latitude` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `longitude` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -5841,47 +5883,10 @@ CREATE TABLE `user_questions` (
 -- Dumping data for table `user_questions`
 --
 
-INSERT INTO `user_questions` (`id`, `user_id`, `stall_name`, `stall_des`, `latitude`, `longitude`, `created_at`, `updated_at`) VALUES
-(1, 2, 'Demo Pharmacy', NULL, '5466513', '2425333', '2021-05-31 14:51:26', '2021-05-31 14:51:26'),
-(2, 2, 'Demo Pharmacy', NULL, '5466513', '2425333', '2021-06-01 02:14:50', '2021-06-01 02:14:50'),
-(3, 9, 'Priyoshop', NULL, '12.34', '23.56', '2021-06-06 05:06:39', '2021-06-06 05:06:39'),
-(4, 9, 'Priyoshop', NULL, '12.34', '23.56', '2021-06-06 11:29:01', '2021-06-06 11:29:01'),
-(5, 10, 'Techland', NULL, '37.4219983', '-122.084', '2021-06-06 16:46:42', '2021-06-06 16:46:42'),
-(10, 11, 'ShopName', 'ShopDetails', '37.4219983', '-122.084', '2021-06-10 05:23:25', '2021-06-10 05:23:25'),
-(11, 16, 'Amar shop', 'Excellent shop', '37.4219983', '-122.084', '2021-06-13 11:56:39', '2021-06-13 11:56:39'),
-(12, 11, 'My Shop Extreme', 'Very good shop', '37.4219983', '-122.084', '2021-06-13 16:59:50', '2021-06-13 16:59:50'),
-(13, 11, 'GreatShop', 'My shop,\nGaming gears', '23.8181347', '90.3754327', '2021-06-13 17:10:26', '2021-06-13 17:10:26'),
-(14, 21, 'MyShop', 'Gaming store, Good one', '37.4219983', '-122.084', '2021-06-13 18:23:35', '2021-06-13 18:23:35'),
-(15, 22, 'Shop1', 'Details 1', '23.8139382', '90.3874158', '2021-06-13 19:13:36', '2021-06-13 19:13:36'),
-(16, 21, 'Future Shop', 'Versetile shop, crokaries, furnitures, etc.', '37.4219983', '-122.084', '2021-06-15 20:48:26', '2021-06-15 20:48:26'),
-(17, 21, 'Fortnite Shop', 'Pickaxe\nHammer\nShotgun', '37.4219983', '-122.084', '2021-06-15 20:53:58', '2021-06-15 20:53:58'),
-(18, 11, 'qpowei', 'pqoie', '37.4219983', '-122.084', '2021-06-15 21:06:14', '2021-06-15 21:06:14'),
-(19, 11, 'abc', 'abcd', '23.7745978', '90.4219535', '2021-06-23 23:49:43', '2021-06-23 23:49:43'),
-(20, 11, 'tr', 'yr', '37.4219983', '-122.084', '2021-06-24 00:14:01', '2021-06-24 00:14:01'),
-(21, 11, 'asdf', 'asdf', '1.23123', '2.123123', '2021-06-29 19:01:17', '2021-06-29 19:01:17'),
-(22, 11, 'asdf', 'asdf', '1.23123', '2.123123', '2021-06-29 19:02:54', '2021-06-29 19:02:54'),
-(23, 1, 'Demo22', 'Demo Demo2', '153153', '56431', '2021-07-03 22:09:46', '2021-07-03 22:09:46'),
-(24, 1, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 22:48:15', '2021-07-03 22:48:15'),
-(25, 1, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 22:54:55', '2021-07-03 22:54:55'),
-(26, 1, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 22:55:39', '2021-07-03 22:55:39'),
-(27, 1, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 22:58:11', '2021-07-03 22:58:11'),
-(28, 1, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 22:59:20', '2021-07-03 22:59:20'),
-(29, 1, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 23:01:15', '2021-07-03 23:01:15'),
-(30, 1, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 23:02:42', '2021-07-03 23:02:42'),
-(31, 1, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 23:03:27', '2021-07-03 23:03:27'),
-(32, 1, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 23:04:12', '2021-07-03 23:04:12'),
-(33, 1, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 23:05:40', '2021-07-03 23:05:40'),
-(34, 1, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 23:09:11', '2021-07-03 23:09:11'),
-(35, 1, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 23:11:43', '2021-07-03 23:11:43'),
-(36, 1, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 23:13:25', '2021-07-03 23:13:25'),
-(37, 1, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 23:19:25', '2021-07-03 23:19:25'),
-(38, 1, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 23:20:25', '2021-07-03 23:20:25'),
-(39, 1, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 23:20:50', '2021-07-03 23:20:50'),
-(40, 1, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 23:22:18', '2021-07-03 23:22:18'),
-(41, 1, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 23:22:49', '2021-07-03 23:22:49'),
-(42, 1, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 23:24:28', '2021-07-03 23:24:28'),
-(43, 11, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 23:28:33', '2021-07-03 23:28:33'),
-(44, 11, 'a', 'b', '23.7745978', '90.4219535', '2021-07-03 23:28:49', '2021-07-03 23:28:49');
+INSERT INTO `user_questions` (`id`, `user_id`, `unique_id`, `name`, `phone`, `latitude`, `longitude`, `created_at`, `updated_at`) VALUES
+(1, 18, 2021072411102401, 'Pabel', '01621355849', '22.809681', '91.094582', '2021-07-24 17:10:24', '2021-07-24 17:10:24'),
+(2, 18, 2021072504593901, 'Pabel', '01621355842', '23.7263', '90.4318', '2021-07-25 10:59:39', '2021-07-25 10:59:39'),
+(3, 18, 2021072504593901, 'Pabel', '01621355842', '23.7263', '90.4318', '2021-07-26 10:37:22', '2021-07-26 10:37:22');
 
 --
 -- Indexes for dumped tables
@@ -5927,9 +5932,21 @@ ALTER TABLE `failed_jobs`
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
+-- Indexes for table `login_histories`
+--
+ALTER TABLE `login_histories`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `notifications`
+--
+ALTER TABLE `notifications`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -5937,6 +5954,12 @@ ALTER TABLE `migrations`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indexes for table `patients`
+--
+ALTER TABLE `patients`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `questions`
@@ -6009,7 +6032,7 @@ ALTER TABLE `user_questions`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `contacts`
@@ -6042,10 +6065,28 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `login_histories`
+--
+ALTER TABLE `login_histories`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT for table `notifications`
+--
+ALTER TABLE `notifications`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `patients`
+--
+ALTER TABLE `patients`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `questions`
@@ -6057,7 +6098,7 @@ ALTER TABLE `questions`
 -- AUTO_INCREMENT for table `question_answer`
 --
 ALTER TABLE `question_answer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `question_categories`
@@ -6069,7 +6110,7 @@ ALTER TABLE `question_categories`
 -- AUTO_INCREMENT for table `question_options`
 --
 ALTER TABLE `question_options`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `request_demos`
@@ -6099,13 +6140,13 @@ ALTER TABLE `upazilas`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `user_questions`
 --
 ALTER TABLE `user_questions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

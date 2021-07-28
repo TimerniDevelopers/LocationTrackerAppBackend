@@ -37,12 +37,10 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-
-
-
-                                <table id="list" class="table table-striped">
+                                <table id="table_id" class="table dt-responsive table-striped">
                                     <thead>
                                         <tr>
+                                            <th>#</th>
                                             @foreach ($questions as $key => $question)
                                                 <th style="font-family: Kalpurush;">{{ $question->name }}</th>
                                             @endforeach
@@ -50,6 +48,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
+                                            <td>1</td>
                                             @foreach ($questions as $key => $question)
                                                 @foreach ($answer as $key => $ans)
                                                     @if ($question->id == $ans->question_id)

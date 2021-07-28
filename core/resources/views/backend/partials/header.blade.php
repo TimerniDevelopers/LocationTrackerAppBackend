@@ -15,7 +15,7 @@
         </li>
         <li class="nav-item">
             <div class="headerLogo">
-                <a class="navbar-brand" href="">
+                <a class="navbar-brand" href="{{ route('admin.dashboard') }}">
                     <img src="{{ asset('assets/admin/img/logo-top.png') }}" alt="our logo">
                 </a>
                 <form action="">
@@ -37,7 +37,7 @@
         <div id="unseenmessage" class="dropdown-menu dropdown-menu-lg dropdown-menu-right"  style="left: inherit; right:0px;
     width: 276px;
 ">
-          
+
         </div>
       </li>
 
@@ -74,7 +74,7 @@
             </div>
         </li>
 
-        
+
     </ul>
 </nav>
 
@@ -83,7 +83,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabelLogout">Logout Modal!</h5>
+                <h5 class="modal-title" id="exampleModalLabelLogout">Logout!</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

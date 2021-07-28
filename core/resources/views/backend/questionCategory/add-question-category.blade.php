@@ -1,7 +1,7 @@
 @extends('backend.master')
 
 @section('title')
-    Add Question Category
+    Add Organization Category
 @endsection
 
 @section('content')
@@ -10,7 +10,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-12">
-                        <h1 class="m-0 text-dark" style="font-family: kalpurush">Add Question Category</h1>
+                        <h1 class="m-0 text-dark" style="font-family: kalpurush">Add Organization Category</h1>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
@@ -21,7 +21,7 @@
                     <div class="col-12">
                         <div class="card card-info">
                             <div class="card-header">
-                                <h3 class="card-title" style="font-family: kalpurush">Add Question Category</h3>
+                                <h3 class="card-title" style="font-family: kalpurush">Add Organization Category</h3>
                                 <div class="fa-pull-right">
                                     <a href="{{ route('manage.question.category') }}">
                                         <button class="btn btn-light"><i class="fa fa-arrow-left"></i><b> Back To Qustion Category</b></button>
@@ -35,7 +35,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Question Category Name <span
+                                                <label>Organization Category Name <span
                                                         class='required-star text-danger'>*</span></label>
                                                 <input type="text" name="name"
                                                     class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}"

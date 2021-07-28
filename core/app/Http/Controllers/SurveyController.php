@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Patient;
 use App\Models\Question;
+use App\Models\User;
 use App\Models\UserQuestion;
 use Illuminate\Http\Request;
 use Auth;
@@ -33,12 +34,23 @@ class SurveyController extends Controller
             echo '<option value="' . $upazila->id . '">' . $upazila->name . '</option>';
         }
     }
+    public function getPatientNamePhone(Request $request)
+    {
+        $unique_id = $request->get('unique_id');
+        $patient = DB::table('patients')->where('unique_id', $unique_id)->first();
+
+        $result = array();
+        $result['patient'] = view('user.survey.ajax-patient-name-phone', compact('patient'))->render();
+        return $result;
+
+        // echo '<input disabled name="name" value="'.$patient->name.'" class="form-control">';
+    }
     public function startSurvey()
     {
         $user_category_id = Auth::guard('web')->user()->category_id;
         $inputQuestions = Question::where('category_id', $user_category_id)->where('status', 1)->get();
         $divisions = DB::table('divisions')->get();
-        $uniques = UserQuestion::orderBy('id', 'desc')->get();
+        $uniques = Patient::orderBy('id', 'desc')->get();
         return view('user.survey.start-survey', compact('inputQuestions', 'divisions', 'uniques'));
     }
     public function submitSurvey(Request $request)
@@ -54,11 +66,13 @@ class SurveyController extends Controller
             $this->validate($request, [
                 'unique_id' => 'required',
             ]);
+        } elseif ($request->patient == 1)  {
+            $this->validate($request, [
+                'name' => 'required',
+                'phone' => 'required|min:11,max:11',
+            ]);
         }
-        $this->validate($request, [
-            'name' => 'required',
-            'phone' => 'required|min:11,max:11',
-        ]);
+
         $year = Carbon::now()->format('Y');
         $month = Carbon::now()->format('m');
         $date = Carbon::now()->format('d');
@@ -74,8 +88,8 @@ class SurveyController extends Controller
                 $userQuestionId = UserQuestion::create([
                     'user_id' => Auth::guard('web')->user()->id,
                     'unique_id' => $uniqueCheck->unique_id,
-                    'name' => $request->name,
-                    'phone' => $request->phone,
+                    'name' => $uniqueCheck->name,
+                    'phone' => $uniqueCheck->phone,
                     'latitude' => $query['lat'] ? $query['lat'] : 23.810331,
                     'longitude' => $query['lon'] ? $query['lon'] : 90.412521,
                 ]);
@@ -115,7 +129,7 @@ class SurveyController extends Controller
                     $ans['user_question_id'] = $user_question_id;
                     DB::table('question_answer')->insert($ans);
                 }
-                return back()->withSuccess('Survey Submitted Successful');
+                return back()->with('message', 'Patient ID: '.$uniqueCheck->unique_id.' -- Name: '.$uniqueCheck->name.'  -- Phone: '.$uniqueCheck->phone)->withSuccess('Survey Submitted Successful');
             } else {
                 return back()->withErrors('This Patient ID are not match any record');
             }
@@ -157,7 +171,7 @@ class SurveyController extends Controller
                 DB::table('question_answer')->insert($ans);
             }
 
-            Patient::create([
+            $uniID = Patient::create([
                 'unique_id' => $lastUnique ? $thisUnique + 1 : $thisUnique,
                 'name' => $request->name,
                 'phone' => $request->phone,
@@ -167,7 +181,24 @@ class SurveyController extends Controller
                 'occupation' => $request->occupation,
                 'upazila_id' => $request->upazila_id,
             ]);
-            return back()->withSuccess('Survey Submitted Successful');
+            return back()->with('message', 'Patient ID: '.$uniID->unique_id.' -- Name: '.$request->name.'  -- Phone: '.$request->phone)->withSuccess('Survey Submitted Successful');
         }
+    }
+
+    /* Collected Data */
+    public function userCollectedData(){
+        $collecteds = UserQuestion::where('user_id', Auth::guard('web')->user()->id)->get();
+        return view('user.survey.collected-data', compact('collecteds'));
+    }
+    public function userViewCollectedData($id, $user_id){
+        $user_category = User::where('id', $user_id)->select('category_id')->first();
+        $questions = DB::table('questions')->where('category_id', $user_category->category_id)->get();
+
+        $answer = DB::table('question_answer')
+            ->join('user_questions', 'user_questions.id', '=', 'question_answer.user_question_id')
+            ->join('questions', 'questions.id', '=', 'question_answer.question_id')
+            ->where('user_question_id', $id)
+            ->get();
+        return view('user.survey.view-collected-data', compact('answer', 'questions'));
     }
 }

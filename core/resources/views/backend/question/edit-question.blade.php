@@ -29,9 +29,9 @@ Update Question
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Question Category <span class='required-star text-danger'>*</span></label>
+                                            <label>Organization Category <span class='required-star text-danger'>*</span></label>
                                             <select name="category_id" class="form-control select2">
-                                                <option selected disabled>Select Question Category</option>
+                                                <option selected disabled>Select Organization Category</option>
                                                 @foreach ($categories as $category)
                                                 <option value="{{ $category->id }}">{{ $category->name ?? '' }}</option>
                                                 @endforeach

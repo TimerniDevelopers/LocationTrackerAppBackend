@@ -24,7 +24,11 @@
                                     <div class=" d-sm-block d-md-none ">
                                         <div class="profile-upload">
                                             {{-- <input type="file"> --}}
-                                            <img src="{{ asset($user_profile->image) }}" alt="">
+                                            @if ($user_profile->image != '')
+                                                <img src="{{ asset($user_profile->image) }}" alt="">
+                                            @else
+                                                <img src="https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png" alt="Image">
+                                            @endif
                                             <!-- <i class="fas fa-camera"></i> -->
                                         </div>
                                     </div>
@@ -57,7 +61,11 @@
                                 <div class="d-none d-md-block">
                                     <div class="profile-upload position-absolute">
                                         {{-- <input type="file"> --}}
-                                        <img src="{{ asset($user_profile->image) }}" alt="">
+                                            @if ($user_profile->image != '')
+                                                <img src="{{ asset($user_profile->image) }}" alt="">
+                                            @else
+                                                <img src="https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png" alt="Image">
+                                            @endif
                                         <!-- <i class="fas fa-camera"></i> -->
                                     </div>
                                 </div>

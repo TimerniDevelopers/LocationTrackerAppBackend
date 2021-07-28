@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Libraries\SendMailFunction;
 use App\Libraries\CommonFunction;
 use App\Models\Admin\Admin;
 use Illuminate\Http\Request;
@@ -69,10 +70,18 @@ class ManagerController extends Controller
             'password' => bcrypt($request->password),
             'status' => 1
         ]);
+        $reciever = $request->email;
+        $name = $request->first_name;
+        $email = $request->email;
+        $password = $request->password;
+        $phone = $request->phone;
+        $hostName = \Request::getHost();
+        $url = 'https://'.$hostName.'/admin';
+        SendMailFunction::SendMail($reciever, $name, $email, $password, $phone, $url);
         return back()->withSuccess('Add Successful');
     }
     public function manageManager(){
-        
+
         return view('backend.manager.manage-manager');
     }
 
@@ -91,8 +100,8 @@ class ManagerController extends Controller
                     ->get();
 
             return DataTables::of($list)
-                
-               
+
+
                 ->editColumn('status', function ($list) {
                     return CommonFunction::getStatus($list->status);
                 })
