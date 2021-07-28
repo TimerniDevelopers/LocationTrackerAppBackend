@@ -199,9 +199,10 @@
             <div class="container">
                 <div class="sub-heading">
                     <h2 class="common-color content-padding-b" data-aos="zoom-in">
-                        <p class="font-weight-bold font-size-40">Do Something Foundation</p>
+                        <p class="font-weight-bold font-size-40"> CoviTel </p>
+                        <p style="font-size: 30px"> Telemedicine Service Covid-19 Support. </p>
                         <p class="common-color content-padding-b" style="font-size: 30px" data-aos="zoom-in">
-                            24/7 Helpline: +880 1737-799 100
+                            24/7 Helpline: <a href="tel:01860439636">01860439636</a> , <a href="tel:01683153475">01683153475</a> , <a href="tel:01742880304">01742880304</a>
                         </p>
                     </h2>
                 </div>
@@ -243,6 +244,30 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container pt-5">
+                <div class="sub-heading">
+                    <h2 class="common-color content-padding-b" data-aos="zoom-in">
+                        <p class="font-weight-bold font-size-40"> A pilot study to treat and understand covid patients through telemedicine. </p>
+                        <p class="font-size-40"> Supported By </p>
+                        
+                    </h2>
+                </div>
+                <div class="row justify-content-center pt-5">
+                    <div class="row text-center">
+                        <div class="col-md-4">
+                            <img class="h-50" src="{{ asset('assets/frontend/img/dsf.png') }}" alt="">
+                        </div>
+                        <div class="col-md-4">
+                            <img class="h-50" src="{{ asset('assets/frontend/img/imgpsh_fullsize_anim__10_-removebg-preview.png') }}" alt="">
+                        </div>
+                        <div class="col-md-4">
+                            <img class="h-50" src="{{ asset('assets/frontend/img/care and shine logo.png') }}" alt="">
+                        </div>
+                        
                     </div>
                 </div>
             </div>
