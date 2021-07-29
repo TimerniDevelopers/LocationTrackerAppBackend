@@ -36,7 +36,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Select Category/Field <span class='required-star'>*</span></label>
+                                                <label>Select Category/Field <span class=' required-star text-danger'>*</span></label>
                                                 <select name="category_id" id="" class="form-control select2">
                                                     <option selected disabled>Select Category/Field</option>
                                                     @foreach ($categories as $category)
@@ -48,7 +48,16 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>First Name <span class='required-star'>*</span></label>
+                                                <label>Select Role <span class='required-star text-danger'>*</span></label>
+                                                <select name="role_id" id="" class="form-control select2">
+                                                    <option value="1">Doctor</option>
+                                                    <option value="2">Volunteer</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>First Name <span class='required-star text-danger'>*</span></label>
                                                 <input type="text" name="first_name"
                                                     class="form-control {{ $errors->has('first_name') ? ' is-invalid' : '' }}"
                                                     value="{{ old('first_name') }}" autofocus>
@@ -56,7 +65,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Last Name <span class='required-star'>*</span></label>
+                                                <label>Last Name </label>
                                                 <input type="text" name="last_name"
                                                     class="form-control {{ $errors->has('last_name') ? ' is-invalid' : '' }}"
                                                     value="{{ old('last_name') }}" autofocus>
@@ -65,7 +74,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Mobile Number <span
-                                                        class='required-star'>(Min:11,Max:11)*</span></label>
+                                                        class='required-star text-danger'>(Min:11,Max:11)*</span></label>
                                                 <input type="text" name="phone"
                                                     class="form-control {{ $errors->has('phone') ? ' is-invalid' : '' }}"
                                                     value="{{ old('phone') }}" autofocus>
@@ -91,7 +100,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Address <span class='required-star'>*</span></label>
+                                                <label>Address <span class=' required-star text-danger'>*</span></label>
                                                 <textarea name="address"
                                                     class="form-control {{ $errors->has('address') ? ' is-invalid' : '' }}" autofocus>{{ old('address') }}</textarea>
                                             </div>
@@ -106,7 +115,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>E-Mail <span class='required-star'>*</span></label>
+                                                <label>E-Mail <span class=' required-star text-danger'>*</span></label>
                                                 <input type="email" name="email"
                                                     class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}"
                                                     value="{{ old('email') }}" autofocus>
@@ -114,7 +123,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Password <span class='required-star'>*</span></label>
+                                                <label>Password <span class=' required-star text-danger'>*</span></label>
                                                 <input type="password" name="password" id="myPassword"
                                                     class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}"
                                                     value="{{ old('password') }}" autofocus>
@@ -128,7 +137,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Select Division <span class='required-star'>*</span></label>
+                                                <label>Select Division <span class=' required-star text-danger'>*</span></label>
                                                 <select name="division_id" id="division_id" onchange="getDistrict();"
                                                     class="form-control select2">
                                                     <option selected disabled>Select Division</option>
@@ -141,7 +150,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Select District <span class='required-star'>*</span></label>
+                                                <label>Select District <span class=' required-star text-danger'>*</span></label>
                                                 <select name="district_id" id="district_id" onchange="getUpazila()"
                                                     class="form-control">
                                                     <option selected disabled>Select District</option>
@@ -150,7 +159,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Select Upazila / Thana <span class='required-star'>*</span></label>
+                                                <label>Select Upazila / Thana <span class=' required-star text-danger'>*</span></label>
                                                 <select name="upazilla_id" id="upazilla_id" class="form-control">
                                                     <option selected disabled>Select Upazila / Thana</option>
                                                 </select>

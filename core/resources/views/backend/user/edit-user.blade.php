@@ -40,6 +40,20 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
+                                                <label>Select Role <span class=' required-star text-danger'>*</span></label>
+                                                <select name="role_id" id="" class="form-control select2">
+                                                    @if ($user->role_id == 1)
+                                                        <option value="1">Doctor</option>
+                                                        <option value="2">Volunteer</option>
+                                                    @elseif ($user->role_id == 2)
+                                                        <option value="2">Volunteer</option>
+                                                        <option value="1">Doctor</option>
+                                                    @endif
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
                                                 <label>First Name <span class='required-star'>*</span></label>
                                                 <input type="text" name="first_name" class="form-control {{ $errors->has('first_name') ? ' is-invalid' : '' }}" value="{{ $user->first_name }}" autofocus>
                                                 <input type="hidden" name="id" value="{{ $user->id }}">

@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/contact_us.css') }}">
     <!--=== Header Css ===-->
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/header.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/header_dropdown.css') }}">
     <!--=== Footer Css ===-->
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/footer.css') }}">
     <!--=== Responsive Css ===-->

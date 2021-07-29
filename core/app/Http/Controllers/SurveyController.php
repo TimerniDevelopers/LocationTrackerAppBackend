@@ -200,7 +200,11 @@ class SurveyController extends Controller
         }
 
         try {
-            $list = UserQuestion::where('user_id', Auth::guard('web')->user()->id)->get();
+            if(Auth::guard('web')->user()->role_id == 1){
+                $list = UserQuestion::orderBy('id', 'desc')->get();
+            } elseif (Auth::guard('web')->user()->role_id ==2){
+                $list = UserQuestion::where('user_id', Auth::guard('web')->user()->id)->orderBy('id', 'desc')->get();
+            }
             return DataTables::of($list)
                 ->editColumn('date', function ($list) {
                     $temp = explode(' ', $list->created_at);
@@ -213,7 +217,7 @@ class SurveyController extends Controller
                 ->addColumn('action', function ($list) {
                     return '<a style="padding:2px;font-size:15px;" href="'.route('user.view.collected.data',['id'=>$list->id,'user_id'=>$list->user_id]).'" class="btn btn-primary text-white"> <span class="fas fa-eye"></span> Show Data </a>';
                 })
-                
+
                 ->addIndexColumn()
                 ->rawColumns(['status', 'date', 'time', 'action'])
                 ->make(true);

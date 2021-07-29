@@ -1,0 +1,909 @@
+/*------------------------------------------------------------------
+Last change:    24/04/21 [fixed Float bug, vf]
+
+-------------------------------------------------------------------*/
+
+
+/*------------------------------------------------------------------
+[Table of contents]
+
+  01. Theme Default Css
+  02. hero-area CSS
+  03. covid-area CSS
+  04. about-area CSS
+  05. vaccin-area CSS
+  06. qr-code-area CSS
+  07. travel-freely-area CSS
+  08. consultant-area CSS
+  09. health-area CSS
+  10. location-area CSS
+  11. newsletter CSS
+
+  -------------------------------------------------------------------*/
+
+/*
+/*------------------------------------------------------------------
+[Covid-area contents]
+
+  12. covid-banner Css
+  13. covid-area CSS
+  14. about-area CSS
+  15. vaccin-area CSS
+  16. qr-code-area CSS
+  17. travel-freely-area CSS
+  18. consultant-area CSS
+  19. health-area CSS
+  10. location-area CSS
+
+  -------------------------------------------------------------------*/
+
+/*
+
+
+
+
+
+
+/* Font Face */
+
+@font-face {
+    font-family: 'calibri-regular';
+    src: url('../fonts/calibri-regular.ttf');
+}
+
+@font-face {
+    font-family: 'calibri-bold';
+    src: url('../fonts/calibri-bold.ttf');
+}
+
+@font-face {
+    font-family: 'calibri-bold-italic';
+    src: url('../fonts/calibri-bold-italic.ttf');
+}
+@font-face {
+    font-family: 'calibri-bold-italic';
+    src: url('../fonts/calibri-italic.ttf');
+}
+
+
+/*
+==========================================
+   01. Theme Default CSS
+==========================================
+*/
+
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+}
+body {
+  width: 100%;
+  height: 100%;
+  font-size: 18px;
+  line-height: 1.5;
+  font-family: 'calibri-regular';
+  color: #2D3735;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+ 
+  margin-bottom:0;
+}
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+}
+input,
+select,
+textarea {
+  outline: none;
+  border: none;
+}
+a,
+i,
+button,
+img,
+input,
+span,
+*:before,
+*:after {
+  -webkit-transition: all 0.3s ease 0s;
+  -ms-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  border: none;
+}
+.btn:focus {
+  outline: none !important;
+  box-shadow: none;
+}
+button:focus {
+  outline: none;
+}
+*:focus {
+  outline: none;
+}
+.form-control:focus {
+  border: none;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+a:focus {
+  color: inherit;
+  outline: medium none;
+  transform: scale(1);
+  text-decoration: none;
+}
+a,
+a:hover {
+  text-decoration: none;
+}
+ul {
+  list-style: outside none none;
+  margin: 0;
+  padding: 0;
+}
+img {
+  max-width: 100%;
+}
+p {
+  font-weight: normal;
+  margin-bottom: 0;
+  font-size: 18px;
+  line-height: 1.5;
+  font-family: 'calibri-regular';
+}
+.custom-btn{
+  display: inline-block;
+  padding: 10px 25px;
+  color: #fff;
+  background: #2e318e;
+  text-align: center;
+  outline: none;
+  margin-top: 1.4rem;
+  font-size: 18px;
+  border: none;
+  transition: .3s;
+  border-radius: 5px;
+}
+.underline {
+  text-decoration: underline;
+}
+.content-top-space {
+  margin-top: 45px;
+}
+
+.box_shadow {
+  border-radius: 5px;
+  box-shadow: 0px 0px 8px 1px #0404040d;
+  background: #fff;
+}
+.pt-top-100{
+  padding-top: 100px;
+}
+.pb-top-100{
+  padding-bottom: 100px;
+}
+.content-padding-t{
+  padding-top: 65px;
+}
+.content-padding-b {
+  padding-bottom: 6px;
+}
+.section-padding{
+  padding: 60px 0px;
+}
+.section-heading h1{
+  font-size: 40px;
+  font-family: 'calibri-bold';
+  padding-bottom: 20px;
+}
+.sub-heading{
+  text-align: center;
+}
+.red-color{
+  color: #ED4024;
+}
+.common-color {
+  color: #070a7c;
+}
+.font-size-40{
+  font-size: 35px;
+  font-family: 'calibri-regular';
+}
+.ptr-15{
+  padding-top: 8rem;
+}
+
+.before-srarting-img li,
+.consultant-content li
+{
+  font-size: 18px;
+  font-family: 'calibri-regular';
+  line-height: 1.5;
+  margin: 15px 0px;
+}
+.before-srarting-img> ul >li
+{
+  position: relative;
+  padding-left: 40px;
+  /*margin: 15px 0px;*/
+}
+.before-srarting-img> ul >li:before {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  left: 0;
+  top: 3px;
+  text-align: center;
+} 
+
+.before-srarting-img .before-srarting-subheading li{
+  margin-top: 10px;
+}
+
+.font-25{
+  font-size: 25px;
+  font-family: 'calibri-regular';
+}
+
+.search-content {
+    width: 100%;
+}
+.search-input .custom-btn{
+  margin-top: 0px;
+}
+.search-input input{
+    position: relative;
+    height: 50px;
+}
+.custom-btn.register-btn:hover {
+    color: #fff;
+}
+.see-more-btn{
+    border: 1px solid #008D6A;
+    padding: 8px 25px;
+    border-radius: 25px;
+    color: #008D6A;
+}
+.see-more-btn:hover {
+    background: #008D6A;
+    color: #fff;
+}
+
+/*
+==========================================
+ 02. hero-area CSS
+==========================================
+*/
+.hero-carousel{
+  position: relative;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-grid{
+  display: grid;
+  grid-gap: 2%;
+  grid-template-columns:40% 58%;
+}
+.hero-img{
+  display: flex;
+  align-items: center;
+}
+.hero-carousel .owl-nav button {
+  position: absolute;
+  top: 40%;
+  width: 50px;
+  height: 50px;
+
+}
+
+.hero-carousel.owl-carousel .owl-nav button.owl-next:hover,
+.hero-carousel.owl-carousel .owl-nav button.owl-prev:hover {
+  background: #008D6A;
+  color: inherit;
+  font: inherit;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+
+}
+.hero-carousel.owl-carousel .owl-nav button.owl-next:hover i, 
+.hero-carousel.owl-carousel .owl-nav button.owl-prev:hover i{
+  color: #fff;
+}
+.hero-carousel .owl-prev {
+  left: -80px;
+}
+.hero-carousel .owl-next {
+  right: -80px;
+}
+
+.hero-carousel .owl-dots {
+  position: relative;
+  margin-top: 40px;
+  display: block;
+  text-align: center;
+}
+
+.hero-carousel.owl-carousel.owl-theme .owl-dots .owl-dot.active span, 
+.hero-carousel.owl-carousel.owl-theme .owl-dots .owl-dot:hover span {
+  background: #008D6A;
+  width: 15px;
+}
+.hero-carousel.owl-carousel.owl-theme .owl-dots .owl-dot span {
+  width: 10px;
+  height: 10px;
+  margin: 5px 5px;
+  background:transparent;
+  border:1px solid #008D6A;
+  display: block;
+  -webkit-backface-visibility: visible;
+  transition: opacity .2s ease;
+  border-radius: 50px;
+}
+.hero-carousel.owl-carousel.owl-theme .owl-dots .owl-dot span:hover {
+  border: 3px solid #008D6A;
+  background: transparent;
+}
+.hero-carousel.owl-carousel.owl-theme i{
+  font-size: 25px;
+  color: #008D6A;
+}
+.custom-btn.register-btn {
+  border-radius: 25px;
+}
+
+/*
+==========================================
+  03. covid-area CSS
+
+==========================================
+*/
+.sub-heading p>a{
+  text-decoration: underline;
+}
+.cases {
+  background-color: #21593b2e;
+  padding: 20px;
+}
+.cases-heading{
+  background-color: #313184;
+  padding: 10px 0px;
+ 
+}
+
+.cases-heading h3 {
+  color: white;
+}
+.cases-heading h3{
+  font-size: 30px;
+  font-family: 'calibri-regular';
+  padding: 10px 0px;
+}
+
+.cases h3 {
+  font-size: 30px;
+  font-family: 'calibri-bold';
+  color: #044422;
+}
+
+.cases-m-content h3 {
+  color: #a71d1d;
+}
+.cases-f-content .condition h3{
+  color: #0080FF;
+}
+.cases-f-content .discharged h3{
+  color: #02CE24;
+}
+.cases-f-content {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 20px;
+}
+.cases-wrapper{
+  margin: 15px 0px;
+}
+
+
+/*
+==========================================
+  04. about-area CSS
+
+==========================================
+*/
+.about-wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.system-content {
+    padding: 10px 8px;
+    border: 1px solid #008D6A;
+    text-align: center;
+}
+.arrow-img{
+  margin:0px 10px;
+  text-align: center;
+}
+.arrow-img img{
+  width: 30px;
+  max-width:45px;
+}
+.about-system {
+    display: flex;
+    align-items: center;
+}
+.system-content a{
+  color:#2D3735; 
+}
+
+
+/*
+==========================================
+  05. vaccin-area CSS
+==========================================
+*/
+
+
+.vaccin-area .before-srarting-img> ul >li:before{
+  content: url(../img/events-icon.png);
+} 
+
+
+/*
+==========================================
+  06. qr-code-area CSS
+==========================================
+*/
+
+.qr-code-area .before-srarting-img> ul >li:before {
+  content: url(../img/qrcode-icon.png);
+} 
+
+
+/*
+==========================================
+  07. travel-freely-area CSS
+==========================================
+*/
+.travel-freely-area .before-srarting-img> ul >li:before {
+  content: url(../img/airplane-icon.png);
+  top: -3px;
+} 
+.before-srarting-img> ul >li {
+    padding-left: 50px;
+
+}
+/*
+==========================================
+  08. consultant-area CSS
+==========================================
+*/
+
+/*
+==========================================
+  09. health-area CSS
+
+==========================================
+*/
+
+/*
+==========================================
+  10. location-area CSS
+==========================================
+*/
+.location-search,
+.subscribe-area{
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  max-width: 90%;
+  margin:0 auto;
+}
+
+.search-content {
+    width: 100%;
+}
+.search-content .custom-btn{
+  margin-top: 0px;
+}
+.search-input {
+    position: relative;
+    height: 50px;
+}
+
+
+/*
+==========================================
+  11. socail  CSS
+==========================================
+*/
+
+.social-wrapper {
+  box-shadow: 0 0 25px rgba(234, 230, 230, 0.3);
+  padding: 20px;
+  border: 1px solid #C7E1DB;
+}
+.social-share {
+  display: flex;
+  justify-content: space-between;
+  background: #F0EEEE;
+  margin-top: 25px;
+  padding: 5px 10px;
+  margin-bottom: 15px;
+}
+.social-share a{
+  color: #333;
+}
+
+.social-icon img{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border:1px solid #ddd;
+}
+
+.social-information a {
+  color: #333;
+  font-size: 15px;
+}
+
+.social-information{
+  position: relative;
+}
+
+.socail-sub-information{
+  padding:10px 0px;
+}
+
+
+/*
+==========================================
+  12. covid-area CSS
+==========================================
+*/
+.covid-banner{
+  position: relative;
+  padding-bottom: 60px;
+}
+.covid-tika img{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 35%;
+
+}
+
+.count .cases h3 span{
+    font-size: 30px;
+    font-family: 'calibri-bold';
+}
+
+/*
+==========================================
+  13. alert-area CSS
+==========================================
+*/
+.covid-alert-heading h3 {
+    font-size: 30px;
+    font-family: 'calibri-bold';
+}
+.alert-content a {
+    display: flex;
+    align-items: center;
+    margin:20px 0px;
+}
+.alert-content .zone-area{
+  margin-right: 15px;
+}
+.zone-area {
+    position: relative;
+
+}
+.zone-area img{
+    max-width: 110px;
+    height: 60px;
+}
+
+.zone-area::before {
+    position: absolute;
+    content: "";
+    width: 110px;
+    height: 60px;
+    opacity: 0.8;
+}
+.zone-area.safe-zone::before {
+    background: #8AEF93;
+}
+.zone-area.risk-zone::before {
+    background: #64C2C3;
+}
+
+
+.zone-area.risk-zone::before {
+    background: #64C2C3;
+}
+
+
+.zone-area.avoid-zone::before {
+    background: #F7D18C;
+}
+
+.zone-area.red-zone::before {
+    background: #F87F7F;
+}
+
+.covid-map-img img{
+ width: 100%;
+}
+
+
+
+/*
+==========================================
+  14. vaccination-point CSS
+==========================================
+*/
+.vaccination-search .input-group.search-input {
+    width: 50%;
+    margin: 0 auto;
+}
+
+/*
+==========================================
+  15. donation-point CSS
+==========================================
+*/
+.donation-btn{
+    border: 1px solid #008D6A;
+    padding: 8px 25px;
+    border-radius: 25px;
+    color: #008D6A;
+}
+.donation-btn:hover{
+    background: #008D6A;
+    color: #fff;
+}
+
+.covid-patient .social-wrapper{
+  margin-bottom: 20px;
+}
+
+/*
+==========================================
+  16. socail  CSS
+==========================================
+*/
+.covid-19-facebook-title i {
+     font-size: 22px; 
+     color: #008D6A; 
+     margin-right: 15px; 
+     font-weight: 700; 
+}
+
+/*
+==========================================
+   chart  CSS
+==========================================
+*/
+  .chart-area{
+    position: relative;
+    margin-bottom: 30px;
+  }
+  #chart {
+
+    margin: 30px auto 0;
+    display: block;
+    position: relative;
+  }
+  #chart #numbers {
+    width: 50px; 
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    float: left;
+  }
+  #chart #numbers li {
+    text-align: right;
+    padding-right: 1em;
+    list-style: none;
+    height: 29px;
+    border-bottom: 1px solid #444;
+    position: relative;
+    bottom: 19px;
+  }
+  #chart #numbers li:last-child {
+    height: 30px;
+  }
+
+  #chart   #numbers li span {
+    color: #000;
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+  }
+
+
+  #chart #bars {
+    display: inline-block;
+    background: rgba(0,0,0,0.2);
+    width: 460px;
+    height: 300px;
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 0 0 1px #444;
+    position: absolute;
+  }
+  #chart #bars  li {
+    display: table-cell;
+    width: 80px;
+    height: 300px;
+    margin: 0;
+    text-align: center;
+    position: relative;
+  }
+  #chart .bar {
+    display: block;
+    width: 40px;
+    margin-left: 15px;
+    background: #49E;
+    position: absolute;
+    bottom: 0;
+  }
+  #chart .bar:hover {
+    background: #5AE;
+    cursor: pointer;
+  }
+  #chart .bar:before {
+    color: white;
+    content: attr(data-percentage) '%';
+    position:relative;
+    bottom: 20px;
+  }
+  .chart-content i{
+    margin-left: 10px;
+  }
+  .chart-content .fa-chart-bar {
+    color: rosybrown;
+
+  }
+  .chart-content .fa-chart-line {
+    color: salmon;
+  }
+  .chart-content .fa-calendar {
+    color: turquoise;
+    padding-left: 7px;
+  }
+  .chart-content .selector{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+  }
+  .chart-content  .calender {
+    margin-right: 16px;
+  }
+
+
+  #chart  span {
+    color: #000;
+    width: 100%;
+    position: absolute;
+    bottom: -4em;
+    left: 0;
+    text-align: center;
+  }
+
+
+
+  /*Seeting-area*/
+  .setting-grid{
+    display: grid;
+    grid-gap: 2%;
+    grid-template-columns: 30% 68%;
+    padding-bottom: 20px;
+
+
+
+  }
+  .setting{
+    position: relative;
+  }
+  .setting-hero{
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid #0000005c;
+  }
+  .setting-left-content{
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0px;
+
+  }
+  .d-setting-flex{
+    display:flex;
+    align-items: center;
+    padding: 10px 15px;
+    transition: .3s;
+
+  }
+
+  .d-setting-flex:hover{
+    background: #2e3192;
+    border-radius: 5px;
+    color: #fff;
+  }
+  .d-setting-flex i:hover{
+    color: #fff;
+  }
+  .d-setting-flex i{
+    padding-right: 15px;
+    line-height: 1.5;
+    width: 35px;
+  }
+  .box-shadow-left {
+      box-shadow: rgb(0 0 0 / 13%) 0px 1.6px 7px 0px, rgb(0 0 0 / 11%) 0px 0.3px 0.9px 0px;
+  }  
+/*    .setting-left{
+    height: 100vh;
+    overflow-y: scroll;
+  } 
+  #scrollbar::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: #ddd;
+  }
+
+  #scrollbar::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  #scrollbar::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }*/
+ ul.setting-right-content li a:hover {
+    background: rgb(245, 246, 247);
+    text-decoration: none;
+}
+ul.setting-right-content li a {
+    display: grid;
+    grid-template-columns: 1.5fr 3.5fr .5fr;
+    grid-column-gap: 15px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 15px;
+}
+ul.setting-right-content li{
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0px;
+}
+ul.setting-right-content li a strong{
+  color:#222223; 
+}
+ul.setting-right-content li a h3 {
+    font-size: 20px;
+    color: #1c1e21;
+}
+ul.setting-right-content li a .edit i {
+    visibility: hidden;
+    transition:all 0.3s ease 0s;
+}
+
+.app-img{
+  padding: 15px;
+}

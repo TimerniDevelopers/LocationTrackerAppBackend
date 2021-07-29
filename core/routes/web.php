@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'IndexController@index')->name('index');
+Route::get('/cookie/policy', 'IndexController@cookiePolicy')->name('cookie.policy');
+
+Route::get('/dco/{name}', 'IndexOrganizationController@organization')->name('organization');
 Route::get('/contact', 'IndexController@contact')->name('contact');
 Route::get('/about', 'IndexController@about')->name('about');
 Route::post('/save/subscribe', 'IndexController@saveSubscribe')->name('save.subscribe');
@@ -35,8 +38,8 @@ Route::group(['prefix' => 'user'], function (){
         Route::get('/start/survey', 'SurveyController@startSurvey')->name('start.survey');
         Route::post('/submit/survey', 'SurveyController@submitSurvey')->name('submit.survey');
 
-        Route::get('/collected/data', 'SurveyController@userCollectedData')->name('user.collected.data'); 
-        Route::post('/get-collected-data', 'SurveyController@getCollectedData')->name('get.collected.data'); 
+        Route::get('/collected/data', 'SurveyController@userCollectedData')->name('user.collected.data');
+        Route::post('/get-collected-data', 'SurveyController@getCollectedData')->name('get.collected.data');
         Route::get('/view/collected/data/{id}/{user_id}', 'SurveyController@userViewCollectedData')->name('user.view.collected.data');
 
         //message
@@ -122,6 +125,10 @@ Route::group(['prefix' => 'admin'], function (){
         Route::post('/delete/contact', 'AdminController@deleteContact')->name('delete.contact');
         Route::get('/request/demo', 'AdminController@requestDemoList')->name('request.demo');
         Route::post('/delete/request/demo', 'AdminController@deleteRequestDemo')->name('delete.request.demo');
+
+        /* Cookie Policy */
+        Route::get('/add/cookie/policy', 'SettingController@addCookiePolicy')->name('add.cookie.policy');
+        Route::post('/update/cookie/policy', 'SettingController@updateCookiePolicy')->name('update.cookie.policy');
 
 
         // answer

@@ -25,7 +25,7 @@
         <div class="user-panel mt-3 pb-3 mb-3 d-flex" style="border: none">
         </div>
         <!-- Sidebar Menu -->
-        <nav class="mt-2">
+        <nav class="mt-2" style="min-height: 130vh;">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
@@ -193,15 +193,6 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item has-treeview">
-                    <a href="{{ route('subscriber.list') }}" class="nav-link hover-color  @if(request()->path() == 'admin/subscriber/list') bg-success @endif">
-                        <i class="nav-icon fas fa-home icon-color" style="color: green"></i><p>Subscriber List</p>
-                    </a>
-                </li>
-
-                <li class="nav-item has-treeview">
-                    <a href="{{ route('contact.list') }}" class="nav-link @if(request()->path() == 'admin/contact/list') bg-info @endif">
-                        <i class="nav-icon fas fa-home icon-color" style="color: green"></i><p>Contact List</p>
                 <li class="nav-item has-treeview
                         {{ ((Request::is('admin/contact/list')) ? 'menu-open' : '') }}
                         {{ ((Request::is('admin/request/demo')) ? 'menu-open' : '') }}
@@ -224,6 +215,39 @@
                             <a href="{{ route('request.demo') }}" class="nav-link hover-color @if(request()->path() == 'admin/request/demo') bg-success @endif">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Request Demo</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item has-treeview">
+                    <a href="{{ route('subscriber.list') }}" class="nav-link hover-color  @if(request()->path() == 'admin/subscriber/list') bg-success @endif">
+                        <i class="nav-icon fas fa-users icon-color" style="color: green"></i><p>Subscriber List</p>
+                    </a>
+                </li>
+
+                <li class="nav-item has-treeview
+                        {{ ((Request::is('admin/add/privacy/policy')) ? 'menu-open' : '') }}
+                        {{ ((Request::is('admin/add/cookie/policy')) ? 'menu-open' : '') }}
+                    ">
+                    <a href="#" class="nav-link hover-color">
+                        <i class="nav-icon fas fa-tools" style="color: green"></i>
+                        <p>
+                            Settings
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        {{-- <li class="nav-item">
+                            <a href="{{ route('add.privacy.policy') }}" class="nav-link hover-color @if(request()->path() == 'admin/add/privacy/policy') bg-success @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Privacy Policty</p>
+                            </a>
+                        </li> --}}
+                        <li class="nav-item">
+                            <a href="{{ route('add.cookie.policy') }}" class="nav-link hover-color @if(request()->path() == 'admin/add/cookie/policy') bg-success @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Cookie Policy</p>
                             </a>
                         </li>
                     </ul>
