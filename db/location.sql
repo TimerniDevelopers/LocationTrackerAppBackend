@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 27, 2021 at 08:12 AM
+-- Generation Time: Jul 31, 2021 at 08:07 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.20
 
@@ -72,6 +72,26 @@ CREATE TABLE `contacts` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cookie_policies`
+--
+
+CREATE TABLE `cookie_policies` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `cookie_policies`
+--
+
+INSERT INTO `cookie_policies` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(1, '<p>We use cookies and similar methods to recognize visitors and remember their preferences. We also use them to measure ad campaign effectiveness, target ads, and analyze site traffic.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;\r\n<p>To learn more about these methods, including how to disable them, view our Cookie Policy. Starting on July 20, 2020, we will show you ads we think are relevant to your interests, based on the kinds of content you access in our Services. You can object. For more info, see our privacy policy.</p>\r\n</p>\r\n\r\n<p>&nbsp;\r\n<p>By tapping &#39;accept,&#39; you consent to the use of these methods by us and third parties. You can always change your tracker preferences by visiting our Cookie Policy.</p>\r\n</p>', '2021-07-29 12:25:50', '2021-07-29 14:22:01');
 
 -- --------------------------------------------------------
 
@@ -493,7 +513,12 @@ INSERT INTO `login_histories` (`id`, `user_id`, `login`, `logout`, `created_at`,
 (5, 18, '2021-07-25 09:12:32', '2021-07-25 09:22:38', '2021-07-25 09:12:32', '2021-07-25 09:22:38'),
 (6, 18, '2021-07-26 06:48:40', NULL, '2021-07-26 06:48:40', '2021-07-26 06:48:40'),
 (7, 18, '2021-07-26 07:16:48', '2021-07-26 12:22:30', '2021-07-26 07:16:48', '2021-07-26 12:22:30'),
-(8, 18, '2021-07-27 06:00:44', '2021-07-27 06:01:22', '2021-07-27 06:00:44', '2021-07-27 06:01:22');
+(8, 18, '2021-07-27 06:00:44', '2021-07-27 06:01:22', '2021-07-27 06:00:44', '2021-07-27 06:01:22'),
+(9, 18, '2021-07-27 07:51:35', NULL, '2021-07-27 07:51:35', '2021-07-27 07:51:35'),
+(10, 18, '2021-07-29 09:20:41', NULL, '2021-07-29 09:20:41', '2021-07-29 09:20:41'),
+(11, 18, '2021-07-29 09:53:34', '2021-07-29 10:53:35', '2021-07-29 09:53:34', '2021-07-29 10:53:35'),
+(12, 26, '2021-07-29 10:53:45', '2021-07-29 10:57:42', '2021-07-29 10:53:45', '2021-07-29 10:57:42'),
+(13, 18, '2021-07-29 10:57:55', '2021-07-29 13:48:30', '2021-07-29 10:57:55', '2021-07-29 13:48:30');
 
 -- --------------------------------------------------------
 
@@ -524,7 +549,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (23, '2021_07_13_162041_create_request_demos_table', 7),
 (24, '2021_07_14_154206_create_notifications_table', 8),
 (25, '2021_07_24_204641_create_patients_table', 8),
-(26, '2021_07_24_224420_create_login_histories_table', 9);
+(26, '2021_07_24_224420_create_login_histories_table', 9),
+(27, '2021_07_29_180653_create_cookie_policies_table', 10);
 
 -- --------------------------------------------------------
 
@@ -578,7 +604,14 @@ CREATE TABLE `patients` (
 
 INSERT INTO `patients` (`id`, `unique_id`, `name`, `phone`, `nid`, `f_name`, `blood_group`, `occupation`, `upazila_id`, `created_at`, `updated_at`) VALUES
 (1, 2021072411102401, 'Pabel', '01621355849', '123456789', 'Demo', 'O+', 'Web Developer', NULL, '2021-07-24 17:10:24', '2021-07-24 17:10:24'),
-(2, 2021072504593901, 'Pabel2', '01621355842', '4646465', NULL, NULL, NULL, NULL, '2021-07-25 10:59:39', '2021-07-25 10:59:39');
+(2, 2021072504593901, 'Pabel2', '01621355842', '4646465', NULL, NULL, NULL, NULL, '2021-07-25 10:59:39', '2021-07-25 10:59:39'),
+(3, 2021072704545501, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-07-27 10:54:55', '2021-07-27 10:54:55'),
+(4, 2021072704562301, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-07-27 10:56:23', '2021-07-27 10:56:23'),
+(5, 2021072704565901, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-07-27 10:56:59', '2021-07-27 10:56:59'),
+(6, 2021072704572901, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-07-27 10:57:29', '2021-07-27 10:57:29'),
+(7, 2021072704575101, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-07-27 10:57:51', '2021-07-27 10:57:51'),
+(8, 2021072704580201, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-07-27 10:58:03', '2021-07-27 10:58:03'),
+(9, 2021072705005401, 'Real Madrid Jursey New', '01823710688', NULL, NULL, NULL, NULL, NULL, '2021-07-27 11:00:54', '2021-07-27 11:00:54');
 
 -- --------------------------------------------------------
 
@@ -653,7 +686,103 @@ INSERT INTO `question_answer` (`id`, `user_question_id`, `question_id`, `questio
 (21, 3, 9, 'null', NULL, NULL),
 (22, 3, 10, NULL, NULL, NULL),
 (23, 3, 11, NULL, NULL, NULL),
-(24, 3, 12, 'asd', NULL, NULL);
+(24, 3, 12, 'asd', NULL, NULL),
+(25, 4, 2, NULL, NULL, NULL),
+(26, 4, 5, NULL, NULL, NULL),
+(27, 4, 7, NULL, NULL, NULL),
+(28, 4, 8, 'null', NULL, NULL),
+(29, 4, 9, 'null', NULL, NULL),
+(30, 4, 10, NULL, NULL, NULL),
+(31, 4, 11, NULL, NULL, NULL),
+(32, 4, 12, NULL, NULL, NULL),
+(33, 5, 2, NULL, NULL, NULL),
+(34, 5, 5, NULL, NULL, NULL),
+(35, 5, 7, NULL, NULL, NULL),
+(36, 5, 8, 'null', NULL, NULL),
+(37, 5, 9, 'null', NULL, NULL),
+(38, 5, 10, NULL, NULL, NULL),
+(39, 5, 11, NULL, NULL, NULL),
+(40, 5, 12, NULL, NULL, NULL),
+(41, 6, 2, NULL, NULL, NULL),
+(42, 6, 5, NULL, NULL, NULL),
+(43, 6, 7, NULL, NULL, NULL),
+(44, 6, 8, 'null', NULL, NULL),
+(45, 6, 9, 'null', NULL, NULL),
+(46, 6, 10, NULL, NULL, NULL),
+(47, 6, 11, NULL, NULL, NULL),
+(48, 6, 12, NULL, NULL, NULL),
+(49, 7, 2, NULL, NULL, NULL),
+(50, 7, 5, NULL, NULL, NULL),
+(51, 7, 7, NULL, NULL, NULL),
+(52, 7, 8, 'null', NULL, NULL),
+(53, 7, 9, 'null', NULL, NULL),
+(54, 7, 10, NULL, NULL, NULL),
+(55, 7, 11, NULL, NULL, NULL),
+(56, 7, 12, NULL, NULL, NULL),
+(57, 8, 2, NULL, NULL, NULL),
+(58, 8, 5, NULL, NULL, NULL),
+(59, 8, 7, NULL, NULL, NULL),
+(60, 8, 8, 'null', NULL, NULL),
+(61, 8, 9, 'null', NULL, NULL),
+(62, 8, 10, NULL, NULL, NULL),
+(63, 8, 11, NULL, NULL, NULL),
+(64, 8, 12, NULL, NULL, NULL),
+(65, 9, 2, NULL, NULL, NULL),
+(66, 9, 5, NULL, NULL, NULL),
+(67, 9, 7, NULL, NULL, NULL),
+(68, 9, 8, 'null', NULL, NULL),
+(69, 9, 9, 'null', NULL, NULL),
+(70, 9, 10, NULL, NULL, NULL),
+(71, 9, 11, NULL, NULL, NULL),
+(72, 9, 12, NULL, NULL, NULL),
+(73, 10, 2, NULL, NULL, NULL),
+(74, 10, 5, NULL, NULL, NULL),
+(75, 10, 7, NULL, NULL, NULL),
+(76, 10, 8, 'null', NULL, NULL),
+(77, 10, 9, 'null', NULL, NULL),
+(78, 10, 10, NULL, NULL, NULL),
+(79, 10, 11, NULL, NULL, NULL),
+(80, 10, 12, NULL, NULL, NULL),
+(81, 11, 2, NULL, NULL, NULL),
+(82, 11, 5, NULL, NULL, NULL),
+(83, 11, 7, NULL, NULL, NULL),
+(84, 11, 8, 'null', NULL, NULL),
+(85, 11, 9, 'null', NULL, NULL),
+(86, 11, 10, NULL, NULL, NULL),
+(87, 11, 11, NULL, NULL, NULL),
+(88, 11, 12, NULL, NULL, NULL),
+(89, 12, 2, NULL, NULL, NULL),
+(90, 12, 5, NULL, NULL, NULL),
+(91, 12, 7, NULL, NULL, NULL),
+(92, 12, 8, 'null', NULL, NULL),
+(93, 12, 9, 'null', NULL, NULL),
+(94, 12, 10, NULL, NULL, NULL),
+(95, 12, 11, NULL, NULL, NULL),
+(96, 12, 12, NULL, NULL, NULL),
+(97, 13, 2, NULL, NULL, NULL),
+(98, 13, 5, NULL, NULL, NULL),
+(99, 13, 7, NULL, NULL, NULL),
+(100, 13, 8, 'null', NULL, NULL),
+(101, 13, 9, 'null', NULL, NULL),
+(102, 13, 10, NULL, NULL, NULL),
+(103, 13, 11, NULL, NULL, NULL),
+(104, 13, 12, NULL, NULL, NULL),
+(105, 14, 2, NULL, NULL, NULL),
+(106, 14, 5, NULL, NULL, NULL),
+(107, 14, 7, NULL, NULL, NULL),
+(108, 14, 8, 'null', NULL, NULL),
+(109, 14, 9, 'null', NULL, NULL),
+(110, 14, 10, NULL, NULL, NULL),
+(111, 14, 11, NULL, NULL, NULL),
+(112, 14, 12, NULL, NULL, NULL),
+(113, 15, 2, NULL, NULL, NULL),
+(114, 15, 5, NULL, NULL, NULL),
+(115, 15, 7, NULL, NULL, NULL),
+(116, 15, 8, 'null', NULL, NULL),
+(117, 15, 9, 'null', NULL, NULL),
+(118, 15, 10, NULL, NULL, NULL),
+(119, 15, 11, NULL, NULL, NULL),
+(120, 15, 12, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -664,6 +793,7 @@ INSERT INTO `question_answer` (`id`, `user_question_id`, `question_id`, `questio
 CREATE TABLE `question_categories` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=active, 0=inactive',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -673,10 +803,10 @@ CREATE TABLE `question_categories` (
 -- Dumping data for table `question_categories`
 --
 
-INSERT INTO `question_categories` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
-(2, 'Medical Sector', 1, '2021-07-12 07:28:40', '2021-07-12 07:28:40'),
-(3, 'Food Sector', 1, '2021-07-12 07:28:43', '2021-07-12 07:28:43'),
-(4, 'General Sector', 1, '2021-07-12 07:29:02', '2021-07-12 07:29:02');
+INSERT INTO `question_categories` (`id`, `name`, `slug`, `status`, `created_at`, `updated_at`) VALUES
+(2, 'Medical Sector', 'Medcal-Sector', 1, '2021-07-12 07:28:40', '2021-07-12 07:28:40'),
+(3, 'Food Sector', 'Food-Sector', 1, '2021-07-12 07:28:43', '2021-07-12 07:28:43'),
+(4, 'General Sector', 'General-Sector', 1, '2021-07-12 07:29:02', '2021-07-12 07:29:02');
 
 -- --------------------------------------------------------
 
@@ -5813,6 +5943,7 @@ INSERT INTO `upazilas` (`id`, `district_id`, `name`, `bn_name`, `url`) VALUES
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `category_id` int(11) DEFAULT NULL,
+  `role_id` int(11) NOT NULL DEFAULT 1 COMMENT '1=doctor, 2=volunteer',
   `first_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `last_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `phone` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -5836,30 +5967,30 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `category_id`, `first_name`, `last_name`, `phone`, `profession`, `gender`, `district_id`, `upazilla_id`, `union_id`, `address`, `image`, `email`, `email_verified_at`, `password`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 2, 'Bashar', 'Ali', '01711735809', 'Student', '1', NULL, 1, NULL, 'Mirpur 10', 'assets/backend/images/user/DAeySuLeZRluJsxYERlo7ROlvdIPtmmM5MR6f223.png', 'Mirpur', NULL, '$2y$10$X7xv7NdaZJmgRGhuJ4vjH.92522KMKqtH0UiPb0/nMwDL47stfceG', 1, NULL, '2021-05-30 18:26:05', '2021-06-22 19:36:50'),
-(2, 3, 'Jamal', 'Bhuiyan', '01914378154', 'Doctor', 'Male', NULL, 1, NULL, 'jb@g.com', NULL, 'Mohakhali', NULL, '$2y$10$24ob0JcmgJfWtxEtje..VOdhK5pNZHz1xX0LaSUriGRhBXEkIbzTS', 1, NULL, '2021-05-30 19:40:25', '2021-05-30 19:40:25'),
-(3, 4, 'Kamal', 'Hossain', '01711735818', 'Doctor', 'Male', NULL, 1, NULL, 'ae@gmail.com', NULL, 'Kamalapur', NULL, '$2y$10$3eqcV9y.XTsevlfqp.4k1.k1vmM3RvVkp8XqLu8OgK7GK0PgDTtKK', 1, NULL, '2021-05-30 19:45:57', '2021-05-30 19:45:57'),
-(4, 2, 'Naredra', 'Modi', '01685986023', 'Politician', 'Male', NULL, 1, NULL, 'n.mo@g.com', NULL, 'Chattogram', NULL, '$2y$10$pKX5uQyJmYPXqykNQIat8eIhvGi264lPXCcsIh6jVPIYgOd56YBWq', 1, NULL, '2021-05-30 22:41:56', '2021-05-30 22:41:56'),
-(5, 3, 'Kamran', 'Akmal', '01914388155', 'Cricketer', 'Male', NULL, 1, NULL, 'kmak@g.com', NULL, 'Pakistan', NULL, '$2y$10$Gq1/XHZjO7e/VlQ8THWSYePGZ5ha.ZRtmpAXGwSM0MEhqJI3MwKTG', 1, NULL, '2021-05-31 22:12:57', '2021-05-31 22:12:57'),
-(6, 4, 'Akkas', 'Ali', '01833103261', 'Tailor', 'Male', NULL, 1, NULL, 'akali@g.com', NULL, 'Banani', NULL, '$2y$10$8DeYt3dCCcxLljbSo0mvYOKR4MKzGjrYJ9T/gPVwcHnEQrxCehGCu', 1, NULL, '2021-06-05 20:37:11', '2021-06-05 20:37:11'),
-(7, 2, 'Edin', 'Cavani', '01924278156', 'Footballer', 'Male', NULL, 1, NULL, 'cavani@g.com', NULL, 'Uruguay', NULL, '$2y$10$9rx1a21r9wIptkbjGpUrvee6uRDshlhCLLR2DnxgAf9P0pn1bh/B.', 1, NULL, '2021-06-05 20:56:45', '2021-06-05 20:56:45'),
-(8, 3, 'Moeen', 'Ali', '01711746898', 'Crickrter', 'Male', NULL, 1, NULL, 'moeen@gmail.com', NULL, 'Jamalpur', NULL, '$2y$10$n9eND1nr7AkeFv/rMZuF0eDCTUtq1.thWm1I1pP11qwiiFcNmTjv.', 1, NULL, '2021-06-05 21:20:31', '2021-06-05 21:20:31'),
-(9, 4, 'Morshed', 'Ali', '01314378154', 'Developer', 'Male', NULL, 1, NULL, 'Banasree', NULL, 'morshed.ali@g.com', NULL, '$2y$10$1.SKgCjjJBTscG53gvrSb.UGcc4wCZTEwI9euiUYsc1C9s2.GVOqm', 1, NULL, '2021-06-05 21:31:05', '2021-06-05 21:31:05'),
-(10, 2, 'Sergio', 'Ramos', '01511535808', 'Footballer', 'Male', NULL, 1, NULL, 'Madrid', NULL, 'sergio@g.com', NULL, '$2y$10$T9wXimy.F2Uf0YK/i8.mauxAWhaZgLTdHtHwP7hJOu1FVi8aAy2XC', 1, NULL, '2021-06-05 22:05:55', '2021-06-05 22:05:55'),
-(11, 3, 'Olajide', 'Olatunji', '01411435808', 'Teacher', 'Male', NULL, 1, NULL, 'Mirpur', 'assets/backend/images/user/WVy4QgMcZzZPe6vaUyRedCRXiIx5iiwqLEbuQbfs.jpg', 'jj@g.com', NULL, '$2y$10$6r0LpAgc/bcg0VATTqtobe7acCpZ.Ayfy2VzYBddeZk0akBYf49d6', 1, NULL, '2021-06-06 15:09:03', '2021-06-27 18:52:47'),
-(12, 4, 'Brad', 'Pitt', '01911935808', 'Actor', 'Male', NULL, 1, NULL, 'Khulna', NULL, 'brad.pi@g.com', NULL, '$2y$10$dUdH12GTXGan1pMwsmh7COyOhnzPQDpNn2qyuseAIlp3OSotzARyO', 1, NULL, '2021-06-06 15:17:57', '2021-06-06 15:17:57'),
-(13, 2, 'Samiul', 'Baskir', '01411435812', 'Designer', 'Male', NULL, 1, NULL, 'Banasree', NULL, 'sam@g.com', NULL, '$2y$10$zdnrOIUgqE432IdH21n8huzIQTom90PqP5Dpw61CC32uQtwIaMWlm', 1, NULL, '2021-06-06 15:22:11', '2021-06-06 15:22:11'),
-(14, 3, 'Alexander', 'Arnold', '01841209267', 'Footballer', 'Male', NULL, 1, NULL, 'Bandarban', NULL, 'alex@g.com', NULL, '$2y$10$djbeTUayUHAB.7B0uZpJCeCfD5zvsddnZfqmUCBTn4/6VWwuUmvOu', 1, NULL, '2021-06-06 17:25:12', '2021-06-06 17:25:12'),
-(15, 4, 'Jamal', 'Bhuiyan', '01843902165', 'Footballer', 'Male', NULL, 1, NULL, 'Feni', NULL, 'jamalb@g.com', NULL, '$2y$10$tpa3179UKBOcshyXSPYMTuCoCHLC8AlZp6mpG9r8wAbQ55nInkse.', 1, NULL, '2021-06-07 17:15:12', '2021-06-07 17:15:12'),
-(16, 2, 'Lal', 'Mia', '01547362514', 'Developer', 'Male', NULL, 1, NULL, 'Banani', NULL, 'lalmia@g.com', NULL, '$2y$10$zhPyB2moZnQ0LCWzmoiyju8.Ezkw3BvNZ5Z6q8ou6kT/raXbL162i', 1, NULL, '2021-06-13 11:52:54', '2021-06-13 11:52:54'),
-(17, 3, 'Randvu', 'Sah', '01711738898', 'Student', 'Male', NULL, 1, NULL, 'Mirpur', NULL, 'ru@g.com', NULL, '$2y$10$2ga1BD7Vc4TJHzQuYxKHOebmvORrG8glekpDxufzhrkm2iCSSZm06', 1, NULL, '2021-06-13 16:54:36', '2021-06-13 16:54:36'),
-(18, 4, 'Trinath', 'Saha', '01751867845', 'sales representative', '3', 1, 1, NULL, 'rampura', 'assets/backend/images/user/sGbVJttVXwFggb56VmLOxdGSPt1xUA7rBInv0uTW.png', 'tri@gmail.com', NULL, '$2y$12$Ak2/xdEo0U7JDzbMq4rzXOREfNNmkfHclCP9.MH4uMTmTXELCX.GO', 1, NULL, '2021-06-13 17:24:07', '2021-07-17 11:49:38'),
-(19, 2, 'Radowan', 'Bhuiyam', '01558967635', 'Software Engineer', 'Male', NULL, 1, NULL, 'rampura', NULL, 'radowan@gmail.com', NULL, '$2y$10$2NZ.czmgJTc3BLtaYql07uOC3c5pLoVLSYv7hF/hTNfpu3.YDDBXa', 1, NULL, '2021-06-13 17:35:24', '2021-06-13 17:35:24'),
-(20, 3, 'kksad', 'adada', '01314358087', 'Saifbaf', 'Female', NULL, 1, NULL, 'Mohakhali', NULL, 'lpl@g.com', NULL, '$2y$10$57fwVrYgQC62wjQ2s/htU.kttjT0E.5R0fFWbv86hzMCvyhuzmpwG', 1, NULL, '2021-06-13 17:41:19', '2021-06-13 17:41:19'),
-(21, 4, 'Tom', 'Jerry', '01711736989', 'Developer', 'Male', NULL, 1, NULL, 'Mohakhali', 'assets/backend/images/user/E0sPQ0q0bzBFnFNDdHm7bNszesFAD0GcFApPmnic.jpg', 'tomjerry@g.com', NULL, '$2y$10$bErD2UqHXGqM3QOH92IIV.CQVXkvrvpqDqPyJIn6VTmgf0B0ikIIy', 1, NULL, '2021-06-13 18:18:17', '2021-06-27 21:13:33'),
-(22, 2, 'Nahid', 'Shuvo', '01745425825', 'Manager', 'Male', NULL, 1, NULL, 'Dhaka', NULL, 'nahid.shuvo.official@gmail.com', NULL, '$2y$10$Q/JIB8FSetXRFtXmUPCL4OpYvztBO3TGyiXUyJgVmuDwheVeop.ke', 1, NULL, '2021-06-13 19:12:18', '2021-06-13 19:12:18'),
-(23, 2, 'Pabel', 'Mahmud', '01621355849', 'Web Developer', '1', 5, 44, NULL, 'Mohammadpur', 'assets/backend/images/user/12YeXj7CtPZUrySncs1uzpCgE1joIWlsxvGgnf9l.png', 'pabel@gmail.com', NULL, '$2y$10$FsZAFACP1XX7upqhVpPLReC15cy.GPuLggMGK66dJ6NLVyapzRFNu', 1, NULL, '2021-07-14 10:14:24', '2021-07-14 10:17:45');
+INSERT INTO `users` (`id`, `category_id`, `role_id`, `first_name`, `last_name`, `phone`, `profession`, `gender`, `district_id`, `upazilla_id`, `union_id`, `address`, `image`, `email`, `email_verified_at`, `password`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 2, 1, 'Bashar', 'Ali', '01711735809', 'Student', '1', NULL, 1, NULL, 'Mirpur 10', 'assets/backend/images/user/DAeySuLeZRluJsxYERlo7ROlvdIPtmmM5MR6f223.png', 'Mirpur', NULL, '$2y$10$X7xv7NdaZJmgRGhuJ4vjH.92522KMKqtH0UiPb0/nMwDL47stfceG', 1, NULL, '2021-05-30 18:26:05', '2021-06-22 19:36:50'),
+(2, 3, 1, 'Jamal', 'Bhuiyan', '01914378154', 'Doctor', 'Male', NULL, 1, NULL, 'jb@g.com', NULL, 'Mohakhali', NULL, '$2y$10$24ob0JcmgJfWtxEtje..VOdhK5pNZHz1xX0LaSUriGRhBXEkIbzTS', 1, NULL, '2021-05-30 19:40:25', '2021-05-30 19:40:25'),
+(3, 4, 1, 'Kamal', 'Hossain', '01711735818', 'Doctor', 'Male', NULL, 1, NULL, 'ae@gmail.com', NULL, 'Kamalapur', NULL, '$2y$10$3eqcV9y.XTsevlfqp.4k1.k1vmM3RvVkp8XqLu8OgK7GK0PgDTtKK', 1, NULL, '2021-05-30 19:45:57', '2021-05-30 19:45:57'),
+(4, 2, 1, 'Naredra', 'Modi', '01685986023', 'Politician', 'Male', NULL, 1, NULL, 'n.mo@g.com', NULL, 'Chattogram', NULL, '$2y$10$pKX5uQyJmYPXqykNQIat8eIhvGi264lPXCcsIh6jVPIYgOd56YBWq', 1, NULL, '2021-05-30 22:41:56', '2021-05-30 22:41:56'),
+(5, 3, 1, 'Kamran', 'Akmal', '01914388155', 'Cricketer', 'Male', NULL, 1, NULL, 'kmak@g.com', NULL, 'Pakistan', NULL, '$2y$10$Gq1/XHZjO7e/VlQ8THWSYePGZ5ha.ZRtmpAXGwSM0MEhqJI3MwKTG', 1, NULL, '2021-05-31 22:12:57', '2021-05-31 22:12:57'),
+(6, 4, 1, 'Akkas', 'Ali', '01833103261', 'Tailor', 'Male', NULL, 1, NULL, 'akali@g.com', NULL, 'Banani', NULL, '$2y$10$8DeYt3dCCcxLljbSo0mvYOKR4MKzGjrYJ9T/gPVwcHnEQrxCehGCu', 1, NULL, '2021-06-05 20:37:11', '2021-06-05 20:37:11'),
+(7, 2, 1, 'Edin', 'Cavani', '01924278156', 'Footballer', 'Male', NULL, 1, NULL, 'cavani@g.com', NULL, 'Uruguay', NULL, '$2y$10$9rx1a21r9wIptkbjGpUrvee6uRDshlhCLLR2DnxgAf9P0pn1bh/B.', 1, NULL, '2021-06-05 20:56:45', '2021-06-05 20:56:45'),
+(8, 3, 1, 'Moeen', 'Ali', '01711746898', 'Crickrter', 'Male', NULL, 1, NULL, 'moeen@gmail.com', NULL, 'Jamalpur', NULL, '$2y$10$n9eND1nr7AkeFv/rMZuF0eDCTUtq1.thWm1I1pP11qwiiFcNmTjv.', 1, NULL, '2021-06-05 21:20:31', '2021-06-05 21:20:31'),
+(9, 4, 1, 'Morshed', 'Ali', '01314378154', 'Developer', 'Male', NULL, 1, NULL, 'Banasree', NULL, 'morshed.ali@g.com', NULL, '$2y$10$1.SKgCjjJBTscG53gvrSb.UGcc4wCZTEwI9euiUYsc1C9s2.GVOqm', 1, NULL, '2021-06-05 21:31:05', '2021-06-05 21:31:05'),
+(10, 2, 1, 'Sergio', 'Ramos', '01511535808', 'Footballer', 'Male', NULL, 1, NULL, 'Madrid', NULL, 'sergio@g.com', NULL, '$2y$10$T9wXimy.F2Uf0YK/i8.mauxAWhaZgLTdHtHwP7hJOu1FVi8aAy2XC', 1, NULL, '2021-06-05 22:05:55', '2021-06-05 22:05:55'),
+(11, 3, 1, 'Olajide', 'Olatunji', '01411435808', 'Teacher', 'Male', NULL, 1, NULL, 'Mirpur', 'assets/backend/images/user/WVy4QgMcZzZPe6vaUyRedCRXiIx5iiwqLEbuQbfs.jpg', 'jj@g.com', NULL, '$2y$10$6r0LpAgc/bcg0VATTqtobe7acCpZ.Ayfy2VzYBddeZk0akBYf49d6', 1, NULL, '2021-06-06 15:09:03', '2021-06-27 18:52:47'),
+(12, 4, 1, 'Brad', 'Pitt', '01911935808', 'Actor', 'Male', NULL, 1, NULL, 'Khulna', NULL, 'brad.pi@g.com', NULL, '$2y$10$dUdH12GTXGan1pMwsmh7COyOhnzPQDpNn2qyuseAIlp3OSotzARyO', 1, NULL, '2021-06-06 15:17:57', '2021-06-06 15:17:57'),
+(13, 2, 1, 'Samiul', 'Baskir', '01411435812', 'Designer', 'Male', NULL, 1, NULL, 'Banasree', NULL, 'sam@g.com', NULL, '$2y$10$zdnrOIUgqE432IdH21n8huzIQTom90PqP5Dpw61CC32uQtwIaMWlm', 1, NULL, '2021-06-06 15:22:11', '2021-06-06 15:22:11'),
+(14, 3, 1, 'Alexander', 'Arnold', '01841209267', 'Footballer', 'Male', NULL, 1, NULL, 'Bandarban', NULL, 'alex@g.com', NULL, '$2y$10$djbeTUayUHAB.7B0uZpJCeCfD5zvsddnZfqmUCBTn4/6VWwuUmvOu', 1, NULL, '2021-06-06 17:25:12', '2021-06-06 17:25:12'),
+(15, 4, 1, 'Jamal', 'Bhuiyan', '01843902165', 'Footballer', 'Male', NULL, 1, NULL, 'Feni', NULL, 'jamalb@g.com', NULL, '$2y$10$tpa3179UKBOcshyXSPYMTuCoCHLC8AlZp6mpG9r8wAbQ55nInkse.', 1, NULL, '2021-06-07 17:15:12', '2021-06-07 17:15:12'),
+(16, 2, 1, 'Lal', 'Mia', '01547362514', 'Developer', 'Male', NULL, 1, NULL, 'Banani', NULL, 'lalmia@g.com', NULL, '$2y$10$zhPyB2moZnQ0LCWzmoiyju8.Ezkw3BvNZ5Z6q8ou6kT/raXbL162i', 1, NULL, '2021-06-13 11:52:54', '2021-06-13 11:52:54'),
+(17, 3, 1, 'Randvu', 'Sah', '01711738898', 'Student', 'Male', NULL, 1, NULL, 'Mirpur', NULL, 'ru@g.com', NULL, '$2y$10$2ga1BD7Vc4TJHzQuYxKHOebmvORrG8glekpDxufzhrkm2iCSSZm06', 1, NULL, '2021-06-13 16:54:36', '2021-06-13 16:54:36'),
+(18, 4, 1, 'Trinath', 'Saha', '01751867845', 'sales representative', '3', 1, 1, NULL, 'rampura', 'assets/backend/images/user/sGbVJttVXwFggb56VmLOxdGSPt1xUA7rBInv0uTW.png', 'tri@gmail.com', NULL, '$2y$12$Ak2/xdEo0U7JDzbMq4rzXOREfNNmkfHclCP9.MH4uMTmTXELCX.GO', 1, NULL, '2021-06-13 17:24:07', '2021-07-17 11:49:38'),
+(19, 2, 1, 'Radowan', 'Bhuiyam', '01558967635', 'Software Engineer', 'Male', NULL, 1, NULL, 'rampura', NULL, 'radowan@gmail.com', NULL, '$2y$10$2NZ.czmgJTc3BLtaYql07uOC3c5pLoVLSYv7hF/hTNfpu3.YDDBXa', 1, NULL, '2021-06-13 17:35:24', '2021-06-13 17:35:24'),
+(20, 3, 1, 'kksad', 'adada', '01314358087', 'Saifbaf', 'Female', NULL, 1, NULL, 'Mohakhali', NULL, 'lpl@g.com', NULL, '$2y$10$57fwVrYgQC62wjQ2s/htU.kttjT0E.5R0fFWbv86hzMCvyhuzmpwG', 1, NULL, '2021-06-13 17:41:19', '2021-06-13 17:41:19'),
+(21, 4, 1, 'Tom', 'Jerry', '01711736989', 'Developer', 'Male', NULL, 1, NULL, 'Mohakhali', 'assets/backend/images/user/E0sPQ0q0bzBFnFNDdHm7bNszesFAD0GcFApPmnic.jpg', 'tomjerry@g.com', NULL, '$2y$10$bErD2UqHXGqM3QOH92IIV.CQVXkvrvpqDqPyJIn6VTmgf0B0ikIIy', 1, NULL, '2021-06-13 18:18:17', '2021-06-27 21:13:33'),
+(22, 2, 1, 'Nahid', 'Shuvo', '01745425825', 'Manager', 'Male', NULL, 1, NULL, 'Dhaka', NULL, 'nahid.shuvo.official@gmail.com', NULL, '$2y$10$Q/JIB8FSetXRFtXmUPCL4OpYvztBO3TGyiXUyJgVmuDwheVeop.ke', 1, NULL, '2021-06-13 19:12:18', '2021-06-13 19:12:18'),
+(23, 2, 1, 'Pabel', 'Mahmud', '01621355849', 'Web Developer', '1', 5, 44, NULL, 'Mohammadpur', 'assets/backend/images/user/12YeXj7CtPZUrySncs1uzpCgE1joIWlsxvGgnf9l.png', 'pabel@gmail.com', NULL, '$2y$10$FsZAFACP1XX7upqhVpPLReC15cy.GPuLggMGK66dJ6NLVyapzRFNu', 1, NULL, '2021-07-14 10:14:24', '2021-07-14 10:17:45');
 
 -- --------------------------------------------------------
 
@@ -5886,7 +6017,19 @@ CREATE TABLE `user_questions` (
 INSERT INTO `user_questions` (`id`, `user_id`, `unique_id`, `name`, `phone`, `latitude`, `longitude`, `created_at`, `updated_at`) VALUES
 (1, 18, 2021072411102401, 'Pabel', '01621355849', '22.809681', '91.094582', '2021-07-24 17:10:24', '2021-07-24 17:10:24'),
 (2, 18, 2021072504593901, 'Pabel', '01621355842', '23.7263', '90.4318', '2021-07-25 10:59:39', '2021-07-25 10:59:39'),
-(3, 18, 2021072504593901, 'Pabel', '01621355842', '23.7263', '90.4318', '2021-07-26 10:37:22', '2021-07-26 10:37:22');
+(3, 18, 2021072504593901, 'Pabel', '01621355842', '23.7263', '90.4318', '2021-07-26 10:37:22', '2021-07-26 10:37:22'),
+(4, 18, 2021072704545501, NULL, NULL, '23.7263', '90.4318', '2021-07-27 10:54:55', '2021-07-27 10:54:55'),
+(5, 18, 2021072704562301, NULL, NULL, '23.7263', '90.4318', '2021-07-27 10:56:23', '2021-07-27 10:56:23'),
+(6, 18, 2021072704565901, NULL, NULL, '23.7263', '90.4318', '2021-07-27 10:56:59', '2021-07-27 10:56:59'),
+(7, 18, 2021072704572901, NULL, NULL, '23.7263', '90.4318', '2021-07-27 10:57:29', '2021-07-27 10:57:29'),
+(8, 18, 2021072704575101, NULL, NULL, '23.7263', '90.4318', '2021-07-27 10:57:51', '2021-07-27 10:57:51'),
+(9, 18, 2021072704580201, NULL, NULL, '23.7263', '90.4318', '2021-07-27 10:58:02', '2021-07-27 10:58:02'),
+(10, 18, 2021072705005401, 'Real Madrid Jursey New', '01823710688', '23.7263', '90.4318', '2021-07-27 11:00:54', '2021-07-27 11:00:54'),
+(11, 18, 2021072705005401, 'Real Madrid Jursey New', '01823710688', '23.7263', '90.4318', '2021-07-27 11:02:41', '2021-07-27 11:02:41'),
+(12, 18, 2021072705005401, 'Real Madrid Jursey New', '01823710688', '23.7263', '90.4318', '2021-07-27 11:03:51', '2021-07-27 11:03:51'),
+(13, 18, 2021072705005401, 'Real Madrid Jursey New', '01823710688', '23.7263', '90.4318', '2021-07-27 11:05:43', '2021-07-27 11:05:43'),
+(14, 18, 2021072705005401, 'Real Madrid Jursey New', '01823710688', '23.7263', '90.4318', '2021-07-27 11:06:29', '2021-07-27 11:06:29'),
+(15, 18, 2021072705005401, 'Real Madrid Jursey New', '01823710688', '23.7263', '90.4318', '2021-07-27 11:07:07', '2021-07-27 11:07:07');
 
 --
 -- Indexes for dumped tables
@@ -5903,6 +6046,12 @@ ALTER TABLE `admins`
 -- Indexes for table `contacts`
 --
 ALTER TABLE `contacts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `cookie_policies`
+--
+ALTER TABLE `cookie_policies`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -6041,6 +6190,12 @@ ALTER TABLE `contacts`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `cookie_policies`
+--
+ALTER TABLE `cookie_policies`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `countries`
 --
 ALTER TABLE `countries`
@@ -6068,13 +6223,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `login_histories`
 --
 ALTER TABLE `login_histories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `notifications`
@@ -6086,7 +6241,7 @@ ALTER TABLE `notifications`
 -- AUTO_INCREMENT for table `patients`
 --
 ALTER TABLE `patients`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `questions`
@@ -6098,13 +6253,13 @@ ALTER TABLE `questions`
 -- AUTO_INCREMENT for table `question_answer`
 --
 ALTER TABLE `question_answer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
 
 --
 -- AUTO_INCREMENT for table `question_categories`
 --
 ALTER TABLE `question_categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `question_options`
@@ -6140,13 +6295,13 @@ ALTER TABLE `upazilas`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `user_questions`
 --
 ALTER TABLE `user_questions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables
