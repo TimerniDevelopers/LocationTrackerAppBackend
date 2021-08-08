@@ -258,7 +258,7 @@
                     <h2 class="common-color content-padding-b" data-aos="zoom-in">
                         <p class="font-weight-bold font-size-40"> A pilot study to treat and understand covid patients through telemedicine. </p>
                         <p class="font-size-40"> Supported By </p>
-                        
+
                     </h2>
                 </div>
                 <div class="row justify-content-center pt-5">
