@@ -35,16 +35,19 @@
     <!--=== Responsive Css ===-->
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/responsive.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/backend/css/toastr.css') }}">
-    
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VQQJ84F98Q"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-VQQJ84F98Q');
-</script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VQQJ84F98Q"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-VQQJ84F98Q');
+    </script>
 
 </head>
 
@@ -69,8 +72,8 @@
     <!-- Cookie -->
     @include('cookieConsent::index')
     <?php
-        $cookie_id = session()->getId();
-        setcookie($cookie_id, 'DcoTrack', 1440);
+    $cookie_id = session()->getId();
+    setcookie($cookie_id, 'DcoTrack', 1440);
     ?>
     <!--=== All Plugin ===-->
     <!--============= Jquery-3.6.0 =============-->
@@ -113,22 +116,24 @@
     $("#home").hide(1000);
 });
   </script> --}}
-  <style>
-      .js-cookie-consent{
-          position: absolute;
-          padding: 8px;
-          text-align: center;
-          width: 100%;
-          z-index: 9999;
-          background-color: aquamarine;
-          border-color: solid 1px white;
-      }
-      .js-cookie-consent button{
-          padding: 5px;
-          background-color: beige;
-          border-radius: 5px;
-      }
-  </style>
+    <style>
+        .js-cookie-consent {
+            position: absolute;
+            padding: 8px;
+            text-align: center;
+            width: 100%;
+            z-index: 9999;
+            background-color: aquamarine;
+            border-color: solid 1px white;
+        }
+
+        .js-cookie-consent button {
+            padding: 5px;
+            background-color: beige;
+            border-radius: 5px;
+        }
+
+    </style>
 
 </body>
 
