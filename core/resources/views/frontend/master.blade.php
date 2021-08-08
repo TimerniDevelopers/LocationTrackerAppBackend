@@ -29,11 +29,22 @@
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/contact_us.css') }}">
     <!--=== Header Css ===-->
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/header.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/header_dropdown.css') }}">
     <!--=== Footer Css ===-->
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/footer.css') }}">
     <!--=== Responsive Css ===-->
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/responsive.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/backend/css/toastr.css') }}">
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VQQJ84F98Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-VQQJ84F98Q');
+</script>
 
 </head>
 

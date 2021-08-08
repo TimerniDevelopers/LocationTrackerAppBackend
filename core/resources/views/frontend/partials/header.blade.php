@@ -13,6 +13,10 @@
                 <i class="fas fa-times"></i>
             </button>
 
+            <?php
+                $organizations = App\Models\QuestionCategory::where('status', 1)->orderBy('name', 'asc')->get();
+            ?>
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="main-nav ml-auto">
                     <ul class="navbar-nav">
@@ -26,8 +30,13 @@
                             <a class="nav-link" href="{{ route('contact') }}">Contact</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#collaborator">Collaborator</a>
-                        </li>
+                            <a href="#" class="nav-link">Organization <span class="fa fa-caret-down"></span></a>
+                            <ul class="submenu">
+                                @foreach ($organizations as $organization)
+                                <li><a href="{{ route('organization',['name'=>str_replace(str_split('/:*?"<>| '), '-', $organization->name)]) }}">{{ $organization->name }}</a></li>
+                            @endforeach
+                            </ul>
+                         </li>
                         <li class="nav-item d-flex align-items-center justify-content-center">
                             <a class="nav-link custom-btn log-in-btn" href="{{ route('user.login') }}">Login</a>
                         </li>

@@ -18,10 +18,13 @@
                 <a class="navbar-brand" href="{{ route('admin.dashboard') }}">
                     <img src="{{ asset('assets/admin/img/logo-top.png') }}" alt="our logo">
                 </a>
-                <form action="">
+                <form action="javascript:void(0);">
                     <input type="text" placeholder="Search.." name="search">
                     <button type="submit"><i class="fa fa-search"></i></button>
                 </form>
+                <a class="navbar-brand" href="{{ route('user.dashboard') }}">
+                    <img src="{{ asset('assets/frontend/img/Dcotrack 3D Logo 3840x2160.png') }}" alt="Organization" style="max-height: 59px;">
+                </a>
             </div>
         </li>
     </ul>

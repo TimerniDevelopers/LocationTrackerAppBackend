@@ -4,6 +4,10 @@
     Admin Dashboard
 @endsection
 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/style.css') }}">
+@endsection
+
 @section('content')
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -40,6 +44,8 @@
                             </div>
                         </div>
 
+                        
+
                         @if(Auth::guard('admin')->user()->user_role == 10)
                             <div class="piechartResponsive" id="piechart2" ></div>
                             @include('backend.questionAnswer.admin-analytics')
@@ -60,6 +66,8 @@
                             <div class="piechartResponsive" id="piechart" ></div>
                             @include('backend.questionAnswer.manager-analytics')
                         @endif
+
+                       
                     </div>
                 </div>
         </section>

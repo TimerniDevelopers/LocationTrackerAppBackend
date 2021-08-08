@@ -149,6 +149,7 @@ class UserController extends Controller
         }
         User::create([
             'category_id' => $request->category_id,
+            'role_id' => $request->role_id ?? 1,
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'phone' => $request->phone,
@@ -247,6 +248,7 @@ class UserController extends Controller
             $user->image = $location;
         }
         $user->category_id = $request->category_id;
+        $user->role_id = $request->role_id;
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
         $user->phone = $request->phone;

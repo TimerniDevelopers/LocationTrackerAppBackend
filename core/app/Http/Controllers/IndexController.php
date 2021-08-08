@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use App\Models\CookiePolicy;
+use App\Models\QuestionCategory;
 use App\Models\RequestDemo;
 use App\Models\Subscribe;
 use Illuminate\Http\Request;
@@ -20,6 +22,10 @@ class IndexController extends Controller
     }
     public function about(){
         return view('frontend.about.about');
+    }
+    public function cookiePolicy(){
+        $cookie = CookiePolicy::first();
+        return view('frontend.setting.cookie-policy', compact('cookie'));
     }
 
     /* Subscibe */

@@ -193,56 +193,61 @@
             </div>
         </section>
         <!-- end app section -->
-
+        <style>
+            .support-logo-height {
+    max-height: 60px;
+    min-height: 50px;
+}
+        </style>
         <!-- Do Something Foundation section -->
-        <section class="qr-code-area content-padding-t" id="collaborator">
+        <section class="vaccin-area content-padding-t" id="Vaccin">
             <div class="container">
                 <div class="sub-heading">
-                    <h2 class="common-color content-padding-b" data-aos="zoom-in">
-                        <p class="font-weight-bold font-size-40"> CoviTel </p>
-                        <p style="font-size: 30px"> Telemedicine Service Covid-19 Support. </p>
+                <h2 class="common-color content-padding-b" data-aos="zoom-in">
+                        <p class="font-weight-bold font-size-40"> HELP </p>
+                        <p style="font-size: 30px"> Healthcare Emergency Helpline. </p>
                         <p class="common-color content-padding-b" style="font-size: 30px" data-aos="zoom-in">
-                            24/7 Helpline: <a href="tel:01860439636">01860439636</a> , <a href="tel:01683153475">01683153475</a> , <a href="tel:01742880304">01742880304</a>
+                            24/7 Helpline: <a href="tel:01842669431">01842669431</a> , <a href="tel:01842669430">01842669430</a> , <a href="tel:01842669432">01842669432</a>
                         </p>
                     </h2>
                 </div>
-                <div class="row justify-content-center">
-                    <div class="col-lg-10 col-md-12">
-                        <div class="row">
-                            <div class="col-md-6 d-flex align-items-center sm-margin-b" data-aos="fade-up"
-                                data-aos-delay="100">
-                                <div class="before-srarting-img">
-                                    <ul>
+                <br>
+                <div class="row pt-5">
+                    <div class="col-md-6 d-flex align-items-center sm-margin-b" data-aos="fade-right" data-aos-delay="100">
+                        <div class="before-srarting-img">
+                        <ul>
                                         <li>
-                                            Basic health education and training.
+                                            Emergency Hot line.
                                         </li>
                                         <li>
-                                            To achieve universal primary education.
+                                            Dial 24/7 for your any medical emergency.
                                         </li>
                                         <li>
-                                            Quality sanitation.
+                                            Phone number.
                                         </li>
                                         <li>
-                                            Clean water and sanitation.
+                                            Download our application or.
                                         </li>
                                         <li>
-                                            Good health and well being.
+                                            Browse our website to register.
                                         </li>
                                         <li>
-                                            Zero figure of street children
+                                            Call and wait for available doctors.
                                         </li>
                                         <li>
-                                            Good nutrition to mother and children.
+                                            Send us a message with your medical emergency.
+                                        </li>
+                                        <li>
+                                            Get your treatment plan.
                                         </li>
                                     </ul>
-                                </div>
-                            </div>
-                            <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
-                                <div class="rcord-img qrcode-img">
-                                    <img src="{{ asset('assets/frontend/img/do something.gif') }}"
-                                        alt="qrcode" loading="lazy">
-                                </div>
-                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="rcord-img">
+                            <img src="{{ asset('assets/frontend/img/help green.gif') }}" alt="recod"
+                            {{-- <img src="{{ asset('assets/frontend/img/record.gif') }}" alt="recod" --}}
+                                loading="lazy">
                         </div>
                     </div>
                 </div>
@@ -258,16 +263,31 @@
                 </div>
                 <div class="row justify-content-center pt-5">
                     <div class="row text-center">
-                        <div class="col-md-4">
-                            <img class="h-50" src="{{ asset('assets/frontend/img/dsf.png') }}" alt="">
+                        <div class="col-md-3 mb-4 m-auto">
+                            <a href="http://www.dsf-org.com" target="_blank">
+                                <img class="support-logo-height" src="https://worldhealthaid.org/assets/frontend/img/dsf.png" alt="">
+                            </a>
                         </div>
-                        <div class="col-md-4">
-                            <img class="h-50" src="{{ asset('assets/frontend/img/imgpsh_fullsize_anim__10_-removebg-preview.png') }}" alt="">
+                        <div class="col-md-2 mb-4 m-auto">
+                            <a href="https://timerni.com" target="_blank">
+                                <img class="support-logo-height" src="https://worldhealthaid.org/assets/frontend/img/Asset 6@4x.png" alt="">
+                            </a>
                         </div>
-                        <div class="col-md-4">
-                            <img class="h-50" src="{{ asset('assets/frontend/img/care and shine logo.png') }}" alt="">
+                        <div class="col-md-3 mb-4 m-auto">
+                            <a href="https://timeaid.org" target="_blank">
+                                <img class="support-logo-height" src="https://worldhealthaid.org/assets/frontend/img/Asset 3@4x.png" alt="">
+                            </a>
                         </div>
-                        
+                        <div class="col-md-2 mb-4 m-auto">
+                            <a href="javascript:void(0);">
+                                <img src="https://worldhealthaid.org/assets/frontend/img/eso_logo.png" alt="">
+                            </a>
+                        </div>
+                        <div class="col-md-2 mb-4 m-auto">
+                            <a href="javascript:void(0);">
+                                <img src="https://worldhealthaid.org/assets/frontend/img/adri_logo.png" alt="">
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

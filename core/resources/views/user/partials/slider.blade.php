@@ -29,7 +29,7 @@
 <style>
     .video-play{
         width: 100%!important;
-        height: 150px;
+        /* height: 150px; */
     }
     .single_research_card i {
         background: #fff;

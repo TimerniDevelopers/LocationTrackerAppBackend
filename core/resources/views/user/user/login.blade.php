@@ -57,12 +57,12 @@
                                         <div class="">
                                             <input type="checkbox" required name="terms"
                                                 onchange="this.setCustomValidity(validity.valueMissing ? 'Please indicate that you accept the Terms and Conditions' : '');"
-                                                id="field_terms">
+                                                id="field_terms" checked>
                                             <label for="terms" class="termscondition">
                                                 I agree with the <a href="https://timerni.com/policy" target="_blank"
                                                     title="You may read our terms and conditions by clicking on this link">terms
                                                     and conditions, </a> and
-                                                <a href="javascript:void(0);">
+                                                <a href="{{ route('cookie.policy') }}">
                                                     Cookie Policy
                                                 </a>
                                             </label>

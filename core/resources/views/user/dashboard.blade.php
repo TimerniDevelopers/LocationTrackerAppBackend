@@ -5,6 +5,7 @@
 @endsection
 
 @section('css')
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/user_profile/css/magnific-popup.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/user_profile/css/user_manual.css') }}">
 @endsection
@@ -67,9 +68,19 @@
         </section>
         <!-- /.content -->
 
+        <div class="sub-heading mb-4">
+            <h2 class="common-color content-padding-b" data-aos="zoom-in">
+                <p class="font-weight-bold font-size-40" style="margin: 0"> CoviTel </p>
+                <p style="font-size: 30px;margin: 0"> Telemedicine Service Covid-19 Support. </p>
+                <p class="common-color" style="font-size: 30px;margin: 0" data-aos="zoom-in">
+                    24/7 Helpline: <a href="tel:01860439636">01860439636</a> , <a href="tel:01683153475">01683153475</a> , <a href="tel:01742880304">01742880304</a>
+                </p>
+            </h2>
+        </div>
+
         <div class="container mb-5">
             <div class="row">
-                <div class="col-md-8 col-lg-8 mb-2 chart-area content-padding-t" id="Chart_Area">
+                <div class="col-md-8 col-lg-8 mb-2 chart-area" id="Chart_Area">
                     <div class="chart-content">
                         <div class="text-center">
                             <h3>Daily new cases</h3>
@@ -145,7 +156,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <h2 class="pt-3 text-center mb-3">User Manual</h1>
+                    <h2 class="text-center mb-3">User Manual</h1>
                         <div class="accordion " id="accordionExample">
                             <div class="card">
                                 <div class="card-header" id="headingOne">
@@ -215,5 +226,45 @@
                 }
 
             </style>
+        </div>
+
+        <div class="container pt-5">
+            <div class="sub-heading">
+                <h2 class="common-color content-padding-b" data-aos="zoom-in">
+                    <p class="font-weight-bold" style="font-size: 30px;margin: 0"> A pilot study to treat and understand covid patients through telemedicine. </p>
+                    <p style="font-size: 30px;margin: 0"> Supported By </p>
+
+                </h2>
+            </div>
+            <div class="row justify-content-center pt-5">
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <a href="http://www.dsf-org.com/" target="_blank">
+                            <img class="h-50" src="{{ asset('assets/frontend/img/dsf.png') }}" alt="">
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <img class="h-50" src="{{ asset('assets/frontend/img/imgpsh_fullsize_anim__10_-removebg-preview.png') }}" alt="">
+                    </div>
+                    <div class="col-md-4">
+                        <img class="h-50" src="{{ asset('assets/frontend/img/care and shine logo.png') }}" alt="">
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4">
+                        <a href="https://timeaid.org/" target="_blank">
+                            <img class="h-50" src="{{ asset('assets/frontend/img/Asset 6@4x.png') }}" alt="">
+                        </a>
+
+                    </div>
+                    <div class="col-md-4">
+                        <a href="https://timerni.com/" target="_blank">
+                            <img class="" src="{{ asset('assets/frontend/img/Asset 3@4x.png') }}" alt="">
+                        </a>
+
+                    </div>
+                    <div class="col-md-2"></div>
+
+                </div>
+            </div>
         </div>
     @endsection

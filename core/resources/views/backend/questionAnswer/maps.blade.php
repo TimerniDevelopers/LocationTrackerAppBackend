@@ -61,7 +61,7 @@
       async
     ></script> -->
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiOoqYhqTnxaW2JjAz0qdo8M3mc-lf_TY&callback=initMap&libraries=&v=weekly"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXmeNn40DuvyNee5MVs1JvGFD1dHQWsGg&callback=initMap&libraries=&v=weekly"
       async
     ></script>
     <script>
