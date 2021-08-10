@@ -46,7 +46,7 @@ class AreaController extends Controller
 
     /* Unique ID List */
     public function uniqueIDList(){
-        $lists = DB::table('patients')->select('unique_id')->get();
+        $lists = DB::table('patients')->select('unique_id', 'name', 'phone')->get();
         return response()->json($lists);
     }
     public function uniqueID($id){
