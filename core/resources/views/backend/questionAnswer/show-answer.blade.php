@@ -68,10 +68,7 @@
                                         <thead>
                                             <tr>
                                                 <th style="font-family: Kalpurush">#</th>
-                                                <th style="font-family: Kalpurush">User/Volunteer Name</th>
-                                                <th style="font-family: Kalpurush">Patient ID</th>
-                                                <th style="font-family: Kalpurush">Patient Name</th>
-                                                <th style="font-family: Kalpurush">Phone</th>
+                                                <th style="font-family: Kalpurush">Survey By</th>
                                                 <th style="font-family: Kalpurush">Date</th>
                                                 <th style="font-family: Kalpurush">Time</th>
                                                 <th style="font-family: Kalpurush">Action</th>
@@ -79,7 +76,7 @@
                                         </thead>
 
                                         <tbody>
-                                            
+
                                         </tbody>
 
                                     </table>
@@ -133,10 +130,7 @@
                },
                columns: [
                    {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-                   {data: 'user_name', name: 'user_name'},
-                   {data: 'unique_id', name: 'unique_id'},
-                   {data: 'name', name: 'name'},
-                   {data: 'phone', name: 'phone'},
+                   {data: 'userName', name: 'userName'},
                    {data: 'date', name: 'date'},
                    {data: 'time', name: 'time'},
                    {data: 'action', name: 'action', orderable: false, searchable: false},

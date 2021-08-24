@@ -32,7 +32,7 @@ class QuestionController extends Controller
     }
     public function manageQuestionCategory()
     {
-        
+
         // $categories = QuestionCategory::orderBy('id', 'desc')->get();
 
 
@@ -127,7 +127,7 @@ class QuestionController extends Controller
                 ->editColumn('name', function ($list) {
                     $questionCount = Question::where('category_id', $list->id)->where('status', 1)->count();
                     return '<td>'.$list->name.' ('. $questionCount.' Questions)</td>';
-                    
+
                 })
                 ->editColumn('status', function ($list) {
                     return CommonFunction::getStatus($list->status);
@@ -165,7 +165,7 @@ class QuestionController extends Controller
             return DataTables::of($list)
                 ->editColumn('category_name', function ($list) {
                     return '<td>'.$list->categoryName->name.'</td>';
-                    
+
                 })
                 ->editColumn('type', function ($list) {
                     if($list->type == 1){
@@ -241,7 +241,7 @@ class QuestionController extends Controller
         $categories = QuestionCategory::where('status', 1)->get();
         return view('backend.questionAnswer.show-answer', compact('categories'));
     }
-    
+
     public function getAnswerAll(Request $request)
     {
         if (!$request->ajax()) {
@@ -251,10 +251,10 @@ class QuestionController extends Controller
         try {
             $list = UserQuestion::orderBy('id', 'desc')->get();
             return DataTables::of($list)
-                ->editColumn('user_name', function ($list) {
+                ->editColumn('userName', function ($list) {
                     if($list->user_id)
                     {
-                        return $list->userName->first_name;
+                        return $list->userName->first_name. ' '. $list->userName->last_name;
                     }else{
 
                     }
@@ -270,9 +270,9 @@ class QuestionController extends Controller
                 ->addColumn('action', function ($list) {
                     return '<a style="padding:2px;font-size:15px;" href="'.route('show.maps', ['id' => $list->id]).'" class="btn btn-primary text-white"> <span class="fas fa-map"></span> Show Map </a> <a style="padding:2px;font-size:15px;" href="'.route('view_answer', ['id' => $list->id, 'user_id' => $list->user_id]).'" class="btn btn-primary text-white"> <span class="fas fa-eye"></span> Show Data </a>';
                 })
-                
+
                 ->addIndexColumn()
-                ->rawColumns(['status', 'user_name', 'date', 'time', 'action'])
+                ->rawColumns(['userName', 'date', 'time', 'action'])
                 ->make(true);
         } catch (\Exception $e) {
             // Session::flash('error', CommonFunction::showErrorPublic($e->getMessage()) . '[UC-1001]');
