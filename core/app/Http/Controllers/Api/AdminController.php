@@ -99,6 +99,7 @@ class AdminController extends Controller
             ]);
             $user = new User();
             $user->category_id = $request->category_id;
+            $user->role_id = $request->role_id;
             $user->first_name = $request->first_name;
             $user->last_name = $request->last_name;
             $user->phone = $request->phone;
