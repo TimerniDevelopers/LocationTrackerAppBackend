@@ -70,6 +70,9 @@ Route::group(['prefix' => 'admin'], function (){
         Route::get('/get-upazila', 'ManagerController@getUpazila'); //ajax request
         Route::get('/get-answer', 'QuestionController@getAnswer'); //ajax request
 
+       
+
+
         /*Question Category*/
         Route::get('/add/question/category', 'QuestionController@addQuestionCategory')->name('add.question.category');
         Route::post('/save/question/category', 'QuestionController@saveQuestionCategory')->name('save.question.category');
@@ -78,6 +81,8 @@ Route::group(['prefix' => 'admin'], function (){
         Route::get('/edit/question/category/{id}', 'QuestionController@editQuestionCategory')->name('edit.question.category');
         Route::post('/update/question/category', 'QuestionController@updateQuestionCategory')->name('update.question.category');
         Route::post('/delete/question/category', 'QuestionController@deleteQuestionCategory')->name('delete.question.category');
+         //save position
+         Route::post('/save/position', 'QuestionController@SavePosition')->name('save.position');
         /*Question*/
         Route::get('/add/question', 'QuestionController@addQuestion')->name('add.question');
         Route::post('/save/question', 'QuestionController@saveQuestion')->name('save.question');

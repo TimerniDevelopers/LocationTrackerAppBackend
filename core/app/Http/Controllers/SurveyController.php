@@ -50,7 +50,7 @@ class SurveyController extends Controller
     public function startSurvey()
     {
         $user_category_id = Auth::guard('web')->user()->category_id;
-        $inputQuestions = Question::where('category_id', $user_category_id)->where('status', 1)->get();
+        $inputQuestions = Question::where('category_id', $user_category_id)->where('status', 1)->orderBy('position', 'asc')->get();
         $divisions = DB::table('divisions')->get();
         $uniques = Patient::orderBy('id', 'desc')->get();
         return view('user.survey.start-survey', compact('inputQuestions', 'divisions', 'uniques'));
@@ -112,7 +112,7 @@ class SurveyController extends Controller
         try {
             if (Auth::guard('web')->user()->role_id == 1) {
                 $list = UserQuestion::orderBy('id', 'desc')->get();
-            } elseif (Auth::guard('web')->user()->role_id == 2) {
+            } else {
                 $list = UserQuestion::where('user_id', Auth::guard('web')->user()->id)->orderBy('id', 'desc')->get();
             }
             return DataTables::of($list)
