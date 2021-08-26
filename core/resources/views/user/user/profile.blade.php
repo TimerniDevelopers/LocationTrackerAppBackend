@@ -199,6 +199,8 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
+                                                <button style="margin-left: 20px;" href="javascript:void(0);" data-toggle="modal" data-target="#ProfileUpdateModal" type="submit">Edit Profile</button>
                                             </div>
                                         </div>
                                     </div>
@@ -213,6 +215,79 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="ProfileUpdateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabelLogout">Profile Update!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" action="{{ route('user.profile_update')}}">
+                @csrf
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>First Name </label>
+                        <input type="text" name="first_name"
+                            class="form-control"
+                            value="{{ $user_profile->first_name }}" autofocus required>
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name </label>
+                        <input type="text" name="last_name"
+                            class="form-control"
+                            value="{{ $user_profile->last_name }}" autofocus required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone </label>
+                        <input type="text" name="phone"
+                            class="form-control"
+                            value="{{ $user_profile->phone }}" autofocus required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Gender </label>
+                        <select name="gender" class="form-control" required>
+                            <option disabled>Select Gender</option>
+                            <option @if($user_profile->gender == 1) selected @endif value="1">Male</option>
+                            <option @if($user_profile->gender == 2) selected @endif value="2">Female</option>
+                            <option @if($user_profile->gender == 3) selected @endif value="3">Others</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Address </label>
+                        <textarea type="text" name="address"
+                            class="form-control"
+                            value="{{ $user_profile->address }}" autofocus required>{{ $user_profile->address }}
+                        </textarea>
+                    </div>
+
+                    
+
+                    <div class="form-group">
+                        <label>Image </label>
+                        <input type="file" name="image"
+                            class="form-control"
+                            value="" autofocus>
+
+                        <img src="{{ asset($user_profile->image) }}" style="height: 150px; width: 160px;"/>
+                    </div>
+                    <input type="hidden" name="id" value="{{ $user_profile->id }}"/>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">
+                        Update
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 @endsection
 
 @section('js')

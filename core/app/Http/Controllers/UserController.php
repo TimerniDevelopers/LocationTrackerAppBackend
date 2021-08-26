@@ -94,7 +94,37 @@ class UserController extends Controller
     /*Profile*/
     public function profile(){
         $user_profile = User::where('id', Auth::guard('web')->user()->id)->first();
-        return view('user.user.profile', compact('user_profile'));
+        $divisions = DB::table('divisions')->get();
+        $districts = DB::table('districts')->get();
+        $upazilas = DB::table('upazilas')->get();
+        return view('user.user.profile', compact('user_profile', 'divisions', 'districts', 'upazilas'));
+    }
+
+    public function profileUpdate(Request $request){
+        $user = User::find($request->id);
+        $this->validate($request,[
+            'first_name' => 'required',
+            'address' => 'required',
+            
+        ]);
+        if($request->hasFile('image')){
+            @unlink($user->image);
+            $image = $request->file('image');
+            $filename = $image->hashName();
+            $location = 'assets/backend/images/user/'.$filename;
+            Image::make($image)->resize(400,400, function ($constraint){
+                $constraint->aspectRatio();
+            })->save($location);
+            $user->image = $location;
+        }
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->phone = $request->phone;
+        $user->profession = $request->profession;
+        $user->gender = $request->gender;
+        $user->address = $request->address;
+        $user->save();
+        return back()->withSuccess('Update Successfully');
     }
 
     //Change Password

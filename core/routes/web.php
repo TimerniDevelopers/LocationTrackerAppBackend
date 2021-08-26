@@ -26,6 +26,7 @@ Route::group(['prefix' => 'user'], function (){
         Route::get('/logout', 'UserController@userLogout')->name('user.logout');
 
         Route::get('/profile', 'UserController@profile')->name('user.profile');
+        Route::post('/profile/update', 'UserController@profileUpdate')->name('user.profile_update');
 
         Route::get('/change/password', 'UserController@changePassword')->name('user.change.password');
         Route::post('/submit/change/password', 'UserController@submitChangePassword')->name('user.submit.change.password');
