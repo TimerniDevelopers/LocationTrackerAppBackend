@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 31, 2021 at 08:07 AM
+-- Generation Time: Aug 23, 2021 at 05:02 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.20
 
@@ -5932,7 +5932,59 @@ INSERT INTO `upazilas` (`id`, `district_id`, `name`, `bn_name`, `url`) VALUES
 (488, 64, 'Kalmakanda', 'কলমাকান্দা', 'kalmakanda.netrokona.gov.bd'),
 (489, 64, 'Mohongonj', 'মোহনগঞ্জ', 'mohongonj.netrokona.gov.bd'),
 (490, 64, 'Purbadhala', 'পূর্বধলা', 'purbadhala.netrokona.gov.bd'),
-(491, 64, 'Netrokona Sadar', 'নেত্রকোণা সদর', 'netrokonasadar.netrokona.gov.bd');
+(491, 64, 'Netrokona Sadar', 'নেত্রকোণা সদর', 'netrokonasadar.netrokona.gov.bd'),
+(492, 47, 'Adabor', '', ''),
+(493, 47, 'Badda', '', ''),
+(494, 47, 'BANGSHAL', '', ''),
+(495, 47, 'BIMAN BANDAR', '', ''),
+(496, 47, 'BANANI', '', ''),
+(497, 47, 'CANTONMENT', '', ''),
+(498, 47, 'CHAK BAZAR', '', ''),
+(499, 47, 'DAKSHINKHAN', '', ''),
+(500, 47, 'DARUS SALAM', '', ''),
+(501, 47, 'DEMRA', '', ''),
+(502, 47, 'DHAMRAI', '', ''),
+(503, 47, 'DHANMONDI', '', ''),
+(504, 47, 'DOHAR', '', ''),
+(505, 47, 'BHASAN TEK', '', ''),
+(506, 47, 'BHATARA', '', ''),
+(507, 47, 'GENDARIA', '', ''),
+(508, 47, 'GULSHAN', '', ''),
+(509, 47, 'HAZARIBAGH', '', ''),
+(510, 47, 'JATRABARI', '', ''),
+(511, 47, 'KAFRUL', '', ''),
+(512, 47, 'KADAMTALI', '', ''),
+(513, 47, 'KALABAGAN', '', ''),
+(514, 47, 'KAMRANGIR CHAR', '', ''),
+(515, 47, 'KHILGAON', '', ''),
+(516, 47, 'KHILKHET', '', ''),
+(517, 47, 'KOTWALI', '', ''),
+(518, 47, 'LALBAGH', '', ''),
+(519, 47, 'MIRPUR', '', ''),
+(520, 47, 'MOHAMMADPUR', '', ''),
+(521, 47, 'MOTIJHEEL', '', ''),
+(522, 47, 'MUGDA PARA', '', ''),
+(523, 47, 'NEW MARKET', '', ''),
+(524, 47, 'PALLABI', '', ''),
+(525, 47, 'PALTAN', '', ''),
+(526, 47, 'RAMNA', '', ''),
+(527, 47, 'RAMPURA', '', ''),
+(528, 47, 'SABUJBAGH', '', ''),
+(529, 47, 'RUPNAGAR', '', ''),
+(530, 47, 'SAVAR', '', ''),
+(531, 47, 'SHAHJAHANPUR', '', ''),
+(532, 47, 'SHAH ALI', '', ''),
+(533, 47, 'SHAHBAGH', '', ''),
+(534, 47, 'SHYAMPUR', '', ''),
+(535, 47, 'SHER-E-BANGLA NAGAR', '', ''),
+(536, 47, 'SUTRAPUR', '', ''),
+(537, 47, 'TEJGAON', '', ''),
+(538, 47, 'TEJGAON IND. AREA', '', ''),
+(539, 47, 'TURAG', '', ''),
+(540, 47, 'UTTARA  PASCHIM', '', ''),
+(541, 47, 'UTTARA  PURBA', '', ''),
+(542, 47, 'UTTAR KHAN', '', ''),
+(543, 47, 'WARI', '', '');
 
 -- --------------------------------------------------------
 
@@ -6289,7 +6341,7 @@ ALTER TABLE `unions`
 -- AUTO_INCREMENT for table `upazilas`
 --
 ALTER TABLE `upazilas`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=492;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=544;
 
 --
 -- AUTO_INCREMENT for table `users`
