@@ -38,7 +38,8 @@ class ManagerController extends Controller
     public function addManager(){
         $title = 'Manager Register';
         $divisions = DB::table('divisions')->get();
-        return view('backend.manager.add-manager', compact('title', 'divisions'));
+        $organizations = DB::table('question_categories')->get();
+        return view('backend.manager.add-manager', compact('title', 'divisions', 'organizations'));
     }
     public function saveManager(Request $request){
         $this->validate($request,[
@@ -59,6 +60,7 @@ class ManagerController extends Controller
         }
         Admin::create([
             'user_role' => 2,
+            'category_id' => $request->organization_id,
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'phone' => $request->phone,
@@ -68,7 +70,7 @@ class ManagerController extends Controller
             'upazilla_id' => $request->upazilla_id,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'status' => 1
+            'status' => $request->status_id,
         ]);
         $reciever = $request->email;
         $name = $request->first_name;
@@ -94,7 +96,8 @@ class ManagerController extends Controller
         try {
             $list = DB::table('admins')
                     ->join('upazilas', 'admins.upazilla_id', '=', 'upazilas.id')
-                    ->select('admins.*', 'upazilas.name')
+                    ->join('question_categories', 'admins.category_id', '=', 'question_categories.id')
+                    ->select('admins.*', 'upazilas.name', 'question_categories.name as organization_name')
                     ->where('admins.user_role', 2)
                     ->orderBy('admins.id', 'desc')
                     ->get();
@@ -123,7 +126,8 @@ class ManagerController extends Controller
         $divisions = DB::table('divisions')->get();
         $districts = DB::table('districts')->get();
         $upazilas = DB::table('upazilas')->get();
-        return view('backend.manager.edit-manager', compact('manager', 'divisions', 'districts', 'upazilas'));
+        $organizations = DB::table('question_categories')->get();
+        return view('backend.manager.edit-manager', compact('manager', 'divisions', 'districts', 'upazilas', 'organizations'));
     }
     public function updateManager(Request $request){
         $manager = Admin::find($request->id);
@@ -144,6 +148,7 @@ class ManagerController extends Controller
             })->save($location.$filename);
             $manager->image = $location.$filename;
         }
+        $manager->category_id = $request->organization_id;
         $manager->first_name = $request->first_name;
         $manager->last_name = $request->last_name;
         $manager->phone = $request->phone;
@@ -151,6 +156,7 @@ class ManagerController extends Controller
         $manager->address = $request->address;
         $manager->upazilla_id = $request->upazilla_id;
         $manager->email = $request->email;
+        $manager->status = $request->status_id;
         $manager->save();
         return back()->withSuccess('Update Successfully');
     }

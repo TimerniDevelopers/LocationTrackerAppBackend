@@ -23,7 +23,7 @@
                     <button type="submit"><i class="fa fa-search"></i></button>
                 </form>
                 <a class="navbar-brand" href="{{ route('user.dashboard') }}">
-                    <img src="{{ asset('assets/frontend/img/dsf.png') }}" alt="Organization" style="max-height: 50px">
+                    <img src="{{ asset('assets/frontend/img/Dcotrack 3D Logo 3840x2160.png') }}" alt="Organization" style="max-height: 59px;">
                 </a>
             </div>
         </li>
@@ -37,7 +37,7 @@
 
                 <span class="ml-2 d-none d-lg-inline text-black-50 small pr-2" style="font-size: 18px">{{ Auth::guard('web')->user()->first_name }}</span>
                 @if (Auth::guard('web')->user()->image)
-                <img class="img-profile rounded-circle" style="height: 40px;width: 40px;border-radius: 50%" src="{{ asset(Auth::guard('web')->user()->image) }}" alt="Image">
+                    <img class="img-profile rounded-circle" style="height: 40px;width: 40px;border-radius: 50%" src="{{ asset(Auth::guard('web')->user()->image) }}" alt="Image">
                 @else
                 <img class="img-profile rounded-circle" style="height: 40px;width: 40px;border-radius: 50%" src="https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png">
                 @endif

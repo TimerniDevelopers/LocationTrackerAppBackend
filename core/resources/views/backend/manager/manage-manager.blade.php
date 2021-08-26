@@ -48,6 +48,7 @@
                                     <thead>
                                     <tr>
                                         <th style="font-family: Kalpurush">#</th>
+                                        <th style="font-family: Kalpurush">Organization Name</th>
                                         <th style="font-family: Kalpurush">Name</th>
                                         <th style="font-family: Kalpurush">Mobile Number</th>
                                         <th style="font-family: Kalpurush">Email</th>
@@ -88,6 +89,7 @@
                },
                columns: [
                    {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                   {data: 'organization_name', name: 'organization_name'},
                    {data: 'first_name', name: 'first_name'},
                    {data: 'name', name: 'phone'},
                    {data: 'email', name: 'email'},

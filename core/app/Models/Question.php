@@ -58,4 +58,15 @@ class Question extends Model
             $question->delete();
         }
     }
+
+    public static function UpdatePosition($request)
+    {
+        $position = Question::find($request->id);
+        if($position != null)
+        {
+            $position->position = $request->position_number;
+            $position->save();
+        }
+        
+    }
 }

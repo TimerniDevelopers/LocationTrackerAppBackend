@@ -50,6 +50,7 @@
                                         <th style="font-family: Kalpurush">Type</th>
                                         <th style="font-family: Kalpurush">Question</th>
                                         <th style="font-family: Kalpurush">Status</th>
+                                        <th style="font-family: Kalpurush">Position</th>
                                         <th style="font-family: Kalpurush">Action</th>
                                     </tr>
                                     </thead>
@@ -64,9 +65,67 @@
             </div>
         </section>
     </div>
+
+    <div class="modal fade" id="PositionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout"
+     aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabelLogout">Position!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="POST" action="{{ route('save.position') }}">
+                    @csrf
+                    <div class="modal-body">
+                        <input class="form-control" id="position" name="position_number" type="text" value="" required />
+                        <input class="form-control" id="id" name="id" type="hidden" value="" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="PositionModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout"
+     aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabelLogout">Position!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="POST" action="{{ route('save.position') }}">
+                    @csrf
+                    <div class="modal-body">
+                        <input class="form-control" id="position" name="position_number" type="text" value="Zakir" required />
+                        <input class="form-control" id="id" name="id" type="hidden" value="" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">
+                            Swap Position
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('js')
+<script type="text/javascript">
+    @if (count($errors) > 0)
+        $('#PositionModal2').modal('show');
+    @endif
+    </script>
 <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 <input type="hidden" name="category_id" value="<?php echo $id; ?>">
 <script src="{{ asset('assets/sweetalert2/sweetalert2.all.min.js') }}"></script>
@@ -91,6 +150,7 @@
                    {data: 'type', name: 'type'},
                    {data: 'name', name: 'name'},
                    {data: 'status', name: 'status'},
+                   {data: 'position', name: 'position'},
                    {data: 'action', name: 'action', orderable: false, searchable: false},
                ],
                "aaSorting": []
@@ -133,6 +193,15 @@
                 }
             })
         }
+
+        function showMyModalSetTitle(i , p)
+        {
+            document.getElementById("position").value = p
+            document.getElementById("id").value = i
+            $('#PositionModal').modal('show');
+        }
+
+        
 </script>
 
 @endsection

@@ -50,8 +50,12 @@
                                             <div class="form-group">
                                                 <label>Select Role <span class='required-star text-danger'>*</span></label>
                                                 <select name="role_id" id="" class="form-control select2">
-                                                    <option value="1">Doctor</option>
+                                                    <option selected disabled value="">Select User Role</option>
+                                                    <option value="1">Researcher</option>
                                                     <option value="2">Volunteer</option>
+                                                    <option value="3">Fieldworker</option>
+                                                    <option value="4">Salesman</option>
+                                                    <option value="5">Data Collector</option>
                                                 </select>
                                             </div>
                                         </div>

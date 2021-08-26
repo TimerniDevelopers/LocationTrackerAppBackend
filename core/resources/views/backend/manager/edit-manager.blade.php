@@ -29,6 +29,17 @@
                                     <div class="row" id="included_all_description">
                                         <div class="col-md-6">
                                             <div class="form-group">
+                                                <label>Organization Name <span class='required-star'>*</span></label>
+                                                <select name="organization_id" id="organization_id" class="form-control select2">
+                                                    <option disabled>Select Organization</option>
+                                                    @foreach ($organizations as $organization)
+                                                        <option @if($organization->id == $manager->category_id) selected @endif value="{{ $organization->id }}">{{ $organization->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
                                                 <label>Name <span class='required-star'>*</span></label>
                                                 <input type="text" name="first_name" class="form-control {{ $errors->has('first_name') ? ' is-invalid' : '' }}" value="{{ $manager->first_name }}" autofocus>
                                                 <input type="hidden" name="id" value="{{ $manager->id }}">
@@ -103,6 +114,16 @@
                                                     @foreach($upazilas as $upazila)
                                                         <option value="{{ $upazila->id }}">{{ $upazila->name }}</option>
                                                     @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Status<span class='required-star'></span></label>
+                                                <select name="status_id" id="status_id" class="form-control select2">
+                                                    <option @if($manager->status == 1) selected @endif value="1">Active</option>
+                                                    <option @if($manager->status == 0) selected @endif value="0">Inactive</option>
                                                 </select>
                                             </div>
                                         </div>
