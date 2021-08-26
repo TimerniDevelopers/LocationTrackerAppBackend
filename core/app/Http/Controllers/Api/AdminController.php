@@ -98,6 +98,17 @@ class AdminController extends Controller
                 'phone' => 'required',
             ]);
             $user = new User();
+
+            if($request->image != ''){
+                $location = 'assets/backend/images/user/';
+                $image = $request->photo;
+                $imgdata = base64_decode($image);
+                $imageName = uniqid(16);
+                $PostId2 = $imageName. '_1' . '.jpg';
+                $imagepath = $location. '/'. $PostId2;
+                file_put_contents($imagepath, $imgdata);
+                $user->image = $PostId2;
+            }
             $user->category_id = $request->category_id;
             $user->role_id = $request->role_id;
             $user->first_name = $request->first_name;

@@ -5,7 +5,7 @@
               <div class="footer-img">
                 <a href="{{ route('index') }}">
 
-                  <img src="{{ asset('assets/frontend/img/dcotrak.png') }}" alt="logo">
+                  <img src="{{ asset('assets/frontend/img/Dcotrack 3D Logo 3840x2160.png') }}" alt="logo">
                 </a>
               </div>
             </div>
