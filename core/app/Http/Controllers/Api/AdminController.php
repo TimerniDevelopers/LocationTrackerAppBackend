@@ -92,9 +92,9 @@ class AdminController extends Controller
         }
         else {
             $this->validate($request, [
-                'category_id' => 'required',
+                'organization_id' => 'required',
                 'first_name' => 'required',
-                'email' => 'required|unique:users',
+                'email' => 'required',
                 'password' => 'required',
                 'phone' => 'required',
             ]);
@@ -102,7 +102,7 @@ class AdminController extends Controller
 
             if($request->image != ''){
                 $location = 'assets/backend/images/user/';
-                $image = $request->photo;
+                $image = $request->image;
                 $imgdata = base64_decode($image);
                 $imageName = uniqid(16);
                 $PostId2 = $imageName. '_1' . '.jpg';
@@ -124,9 +124,10 @@ class AdminController extends Controller
             $user->email = $request->email;
             $user->password = bcrypt($request->password);
             $user->status = 1;
-            $res = $this->userRepo->insert($user);
-            return response()->json([$user], $res->code);
-            // return response()->json($user);
+            $user->save();
+            return response()->json($user);
+            // $res = $this->userRepo->insert($user);
+            // return response()->json([$user], $res->code);
 
 //            return new AdminResource($user);
         }
@@ -174,5 +175,5 @@ class AdminController extends Controller
         }
     }
 
-    
+
 }
