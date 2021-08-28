@@ -91,9 +91,9 @@ class AdminController extends Controller
         }
         else {
             $this->validate($request, [
-                'category_id' => 'required',
+                'organization_id' => 'required',
                 'first_name' => 'required',
-                'email' => 'required|unique:users',
+                'email' => 'required',
                 'password' => 'required',
                 'phone' => 'required',
             ]);
@@ -101,7 +101,7 @@ class AdminController extends Controller
 
             if($request->image != ''){
                 $location = 'assets/backend/images/user/';
-                $image = $request->photo;
+                $image = $request->image;
                 $imgdata = base64_decode($image);
                 $imageName = uniqid(16);
                 $PostId2 = $imageName. '_1' . '.jpg';
@@ -109,7 +109,7 @@ class AdminController extends Controller
                 file_put_contents($imagepath, $imgdata);
                 $user->image = $PostId2;
             }
-            $user->category_id = $request->category_id;
+            $user->category_id = $request->organization_id;
             $user->role_id = $request->role_id;
             $user->first_name = $request->first_name;
             $user->last_name = $request->last_name;
