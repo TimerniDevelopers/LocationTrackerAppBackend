@@ -56,4 +56,9 @@ Route::group(['prefix' => 'location'], function () {
 
     Route::post('notification', 'Api\NotificationController@submitNotification');
     Route::get('message', 'Api\NotificationController@GetNotification');
+
+    Route::get('role', 'Api\RoleController@GetRole');
+    Route::get('organization', 'Api\OrganizationController@GetOrganization');
+
+    
 });
