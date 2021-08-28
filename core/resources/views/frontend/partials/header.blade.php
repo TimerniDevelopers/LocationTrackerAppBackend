@@ -2,10 +2,10 @@
     <nav class="navbar navbar-expand-md">
         <div class="container">
             <a href="{{ route('index') }}" class="nav-top-log nav-logo">
-                <img src="{{ asset('assets/frontend/img/dcotrak.png') }}" alt="logo">
+                <img src="{{ asset('assets/frontend/img/Dcotrack 3D Logo 3840x2160.png') }}" alt="logo">
             </a>
             <a href="{{ route('index') }}" class="fixed-logo nav-logo">
-                <img src="{{ asset('assets/frontend/img/dcotrak.png') }}" alt="logo">
+                <img src="{{ asset('assets/frontend/img/Dcotrack 3D Logo 3840x2160.png') }}" alt="logo">
             </a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
