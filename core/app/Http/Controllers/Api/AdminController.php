@@ -110,7 +110,7 @@ class AdminController extends Controller
                 file_put_contents($imagepath, $imgdata);
                 $user->image = $PostId2;
             }
-            $user->category_id = $request->organization_id;
+            $user->category_id = $request->category_id;
             $user->role_id = $request->role_id;
             $user->first_name = $request->first_name;
             $user->last_name = $request->last_name;
@@ -124,9 +124,10 @@ class AdminController extends Controller
             $user->email = $request->email;
             $user->password = bcrypt($request->password);
             $user->status = 1;
-            $res = $this->userRepo->insert($user);
-            return response()->json([$user], $res->code);
-            // return response()->json($user);
+            $user->save();
+            return response()->json($user);
+            // $res = $this->userRepo->insert($user);
+            // return response()->json([$user], $res->code);
 
 //            return new AdminResource($user);
         }
@@ -174,5 +175,5 @@ class AdminController extends Controller
         }
     }
 
-    
+
 }

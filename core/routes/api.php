@@ -60,5 +60,5 @@ Route::group(['prefix' => 'location'], function () {
     Route::get('role', 'Api\RoleController@GetRole');
     Route::get('organization', 'Api\OrganizationController@GetOrganization');
 
-    
+
 });
