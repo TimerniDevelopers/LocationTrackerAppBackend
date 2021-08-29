@@ -83,6 +83,11 @@ return [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
+
+        'api' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin\User::class,
+        ],
     ],
 
     /*
