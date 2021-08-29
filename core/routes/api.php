@@ -59,6 +59,10 @@ Route::group(['prefix' => 'location'], function () {
 
     Route::get('role', 'Api\RoleController@GetRole');
     Route::get('organization', 'Api\OrganizationController@GetOrganization');
+    // own collected data
+    Route::get('collected_data_user', 'Api\AdminController@GetCollectedData');
+
+    Route::get('question_id/{survey_id}', 'Api\AdminController@GetAnswer');
 
 
 });

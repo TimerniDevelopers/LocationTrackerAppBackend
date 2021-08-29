@@ -7,6 +7,7 @@ use App\Http\Resources\AdminResource;
 use App\Models\Admin\Admin;
 use App\Models\role;
 use App\Models\User;
+use App\Models\UserQuestion;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -14,6 +15,8 @@ use App\Repositories\userRepositories;
 use stdClass;
 use Exception;
 use Hash;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Image;
 
 class AdminController extends Controller
@@ -171,6 +174,49 @@ class AdminController extends Controller
         } else {
             return 'Current Password Not Match';
         }
+    }
+
+    public function GetCollectedData()
+    {
+        try{
+            $user_id = Auth::guard('api')->user()->id;
+            $questions_user_answer = DB::table('user_questions')->where('user_id', $user_id)->get();
+            return response()->json($questions_user_answer);
+        }catch (\Exception $e) {
+            return response()->json([
+                "error" => "Something Error"
+            ], 400);
+        }
+
+    }
+
+
+    public function GetAnswer($id)
+    {
+        try{
+            $user_id = Auth::guard('api')->user()->id;
+            $user_category = User::where('id', $user_id)->select('category_id')->first();
+            $questions = DB::table('questions')->where('category_id', $user_category->category_id)->get();
+
+            $data = [];
+            foreach($questions as $key=>$question){
+                $answer = DB::table('question_answer')
+                ->where('user_question_id', $id)
+                ->first();
+                $data[$key]['id'] = $question->id;
+                $data[$key]['type'] = $question->type;
+                $data[$key]['question_name'] = $question->name;
+                $data[$key]['position'] = $question->position;
+                $data[$key]['answer'] = $answer;
+            }
+
+            return response()->json($data);
+        }catch (\Exception $e) {
+            return response()->json([
+                "error" => "Something Error"
+            ], 400);
+        }
+
     }
 
 
