@@ -15,9 +15,10 @@ use DB;
 
 class QuestionController extends Controller
 {
-    public function questionList($user_id)
+    public function questionList()
     {
         try {
+            $user_id = Auth::guard()->user()->id;
             $user = User::findorFail($user_id);
             $questions = Question::where('category_id', $user->category_id)->where('status', 1)->with('options:question_id,option')->get();
             return response()->json($questions);
@@ -29,8 +30,9 @@ class QuestionController extends Controller
     public function questionSubmit(Request $request)
     {
         try{
+            $user_id = Auth::guard()->user()->id;
             $userQuestionID = UserQuestion::create([
-                'user_id' => $request->user_id,
+                'user_id' => $user_id,
                 'latitude' => $request->latitude,
                 'longitude' => $request->longitude,
             ]);
