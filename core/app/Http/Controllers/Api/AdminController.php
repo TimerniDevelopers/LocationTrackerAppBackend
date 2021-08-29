@@ -194,6 +194,7 @@ class AdminController extends Controller
     public function GetAnswer($id)
     {
         try{
+            
             $user_id = Auth::guard('api')->user()->id;
             $user_category = User::where('id', $user_id)->select('category_id')->first();
             $questions = DB::table('questions')->where('category_id', $user_category->category_id)->get();
