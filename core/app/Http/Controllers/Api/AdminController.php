@@ -129,9 +129,7 @@ class AdminController extends Controller
                 $user->save();
                 DB::commit();
 
-                return response()->json([
-                    "success" => "Your registration has been successful"
-                ], 200);
+                return response()->json("Your registration has been successful");
                 
                 // $res = $this->userRepo->insert($user);
                 // return response()->json([$user], $res->code);
