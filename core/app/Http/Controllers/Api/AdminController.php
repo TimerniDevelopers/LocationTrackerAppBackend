@@ -14,6 +14,7 @@ use App\Repositories\userRepositories;
 use stdClass;
 use Exception;
 use Hash;
+use Illuminate\Support\Facades\DB;
 use Image;
 
 class AdminController extends Controller
@@ -82,55 +83,65 @@ class AdminController extends Controller
 
     public function userRegistration(Request $request)
     {
-        $check = User::where('email', $request->email)->first();
-        $check2 = User::where('phone', $request->phone)->first();
-        if ($check) {
-            return 'Email Existed';
-        }
-        elseif ($check2) {
-            return 'Phone Existed';
-        }
-        else {
-            $this->validate($request, [
-                'organization_id' => 'required',
-                'first_name' => 'required',
-                'email' => 'required',
-                'password' => 'required',
-                'phone' => 'required',
-            ]);
-            $user = new User();
-
-            if($request->image != ''){
-                $location = 'assets/backend/images/user/';
-                $image = $request->image;
-                $imgdata = base64_decode($image);
-                $imageName = uniqid(16);
-                $PostId2 = $imageName. '_1' . '.jpg';
-                $imagepath = $location. '/'. $PostId2;
-                file_put_contents($imagepath, $imgdata);
-                $user->image = $PostId2;
+        try{
+            $check = User::where('email', $request->email)->first();
+            $check2 = User::where('phone', $request->phone)->first();
+            if ($check) {
+                return response()->json('Email Already Existed');
             }
-            $user->category_id = $request->category_id;
-            $user->role_id = $request->role_id;
-            $user->first_name = $request->first_name;
-            $user->last_name = $request->last_name;
-            $user->phone = $request->phone;
-            $user->profession = $request->profession;
-            $user->gender = $request->gender;
-            $user->district_id = $request->district_id;
-            $user->upazilla_id = $request->upazilla_id;
-            $user->union_id = $request->union_id;
-            $user->address = $request->address;
-            $user->email = $request->email;
-            $user->password = bcrypt($request->password);
-            $user->status = 1;
-            $user->save();
-            return response()->json($user);
-            // $res = $this->userRepo->insert($user);
-            // return response()->json([$user], $res->code);
+            elseif ($check2) {
+                return response()->json('Phone Already Existed');
+            }
+            else {
+                // $this->validate($request, [
+                //     'organization_id' => 'required',
+                //     'first_name' => 'required',
+                //     'email' => 'required',
+                //     'password' => 'required',
+                //     'phone' => 'required',
+                // ]);
+                $user = new User();
 
-//            return new AdminResource($user);
+                if($request->image != ''){
+                    $location = 'assets/backend/images/user/';
+                    $image = $request->image;
+                    $imgdata = base64_decode($image);
+                    $imageName = uniqid(16);
+                    $PostId2 = $imageName. '_1' . '.jpg';
+                    $imagepath = $location. '/'. $PostId2;
+                    file_put_contents($imagepath, $imgdata);
+                    $user->image = $PostId2;
+                }
+                $user->category_id = $request->category_id;
+                $user->role_id = $request->role_id;
+                $user->first_name = $request->first_name;
+                $user->last_name = $request->last_name;
+                $user->phone = $request->phone;
+                $user->profession = $request->profession;
+                $user->gender = $request->gender;
+                $user->district_id = $request->district_id;
+                $user->upazilla_id = $request->upazilla_id;
+                $user->union_id = $request->union_id;
+                $user->address = $request->address;
+                $user->email = $request->email;
+                $user->password = bcrypt($request->password);
+                $user->status = 1;
+                $user->save();
+                DB::commit();
+
+                return response()->json("Your registration has been successful");
+                
+                // $res = $this->userRepo->insert($user);
+                // return response()->json([$user], $res->code);
+
+    //            return new AdminResource($user);
+                }
+        }catch (\Exception $e) {
+            return response()->json([
+                "error" => "Something Error"
+            ], 400);
         }
+        
     }
 
     // Update Profile

@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Services\PayUService\Exception;
 use Carbon\Carbon;
 use DB;
+use Illuminate\Support\Facades\Auth;
 
 class QuestionController extends Controller
 {
