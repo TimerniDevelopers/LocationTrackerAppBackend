@@ -11,7 +11,7 @@ use Validator;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Facades\Auth;
+use Auth;
 
 class UserController extends Controller
 {

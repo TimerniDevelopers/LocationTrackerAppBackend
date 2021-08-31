@@ -20,7 +20,7 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="container-fluid mt-2 mb-3">
-                        <form action="{{ route('submit.survey') }}" method="POST">
+                        <form action="{{ route('submit.survey') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row mb-3">
                                 <input type="hidden" name="question_length" value="{{ $inputQuestions->count() }}">
@@ -104,6 +104,15 @@
                                         </div>
                                     @endif
                                 @endforeach
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Image/Audio/Video <span class='required-star'></span></label>
+                                        <input id="file-input" type="file" name="images[]" class="form-control {{ $errors->has('image') ? ' is-invalid' : '' }}" value="{{ old('document') }}" multiple autofocus>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div id="preview"></div>
+                                </div>
                             </div>
                             <div class="form-group m-auto">
                                 <div class="col-sm-4">
@@ -116,4 +125,41 @@
             </div>
         </section>
     </div>
+@endsection
+@section('js')
+<script>
+function previewImages() {
+
+    var preview = document.querySelector('#preview');
+    
+    if (this.files) {
+      [].forEach.call(this.files, readAndPreview);
+    }
+  
+    function readAndPreview(file) {
+  
+      // Make sure `file.name` matches our extensions criteria
+      if (!/\.(jpe?g|png|gif)$/i.test(file.name)) {
+        return alert(file.name + " is not an image");
+      } // else...
+      
+      var reader = new FileReader();
+      
+      reader.addEventListener("load", function() {
+        var image = new Image();
+        image.height = 100;
+        image.width = 100;
+        image.title  = file.name;
+        image.src    = this.result;
+        preview.appendChild(image);
+      });
+      
+      reader.readAsDataURL(file);
+      
+    }
+  
+  }
+  
+  document.querySelector('#file-input').addEventListener("change", previewImages);
+  </script>
 @endsection
