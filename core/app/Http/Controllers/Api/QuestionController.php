@@ -31,7 +31,7 @@ class QuestionController extends Controller
     public function questionSubmit(Request $request)
     {
         try{
-            $user_id = Auth::guard()->user()->id;
+            $user_id = Auth::guard('api')->user()->id;
 
             $images_array = [];
             if($request->hasFile('images')){
