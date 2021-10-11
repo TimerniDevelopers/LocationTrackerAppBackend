@@ -33,8 +33,9 @@ class QuestionController extends Controller
     {
         try{
             $user_id = Auth::guard('api')->user()->id;
-             $images_array = [];
-            if($request->images != []){
+
+            $images_array = [];
+            if($request->hasFile('images')){
                 foreach($request->images as $key => $i){
                     $location = 'assets/backend/images/user/';
                     $image = $request->images[$key];
