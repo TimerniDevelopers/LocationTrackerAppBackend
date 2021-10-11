@@ -281,12 +281,21 @@ class QuestionController extends Controller
                     $temp = explode(' ', $list->created_at);
                     return date('h:i A', strtotime($temp[1]));
                 })
+                ->editColumn('image', function ($list) {
+                    $data = json_decode($list->document);
+                    $image = '';
+                    foreach($data as $key => $d){
+                        $image .= '<a href="'. asset($d) .'" target="_blank"><img src="'. asset($d) .'" alt="survey image" style="height: 30px; width: 30px;"/></a>&nbsp;';
+                    }
+                    return $image;
+                    
+                })
                 ->addColumn('action', function ($list) {
                     return '<a style="padding:2px;font-size:15px;" href="'.route('show.maps', ['id' => $list->id]).'" class="btn btn-primary text-white"> <span class="fas fa-map"></span> Show Map </a> <a style="padding:2px;font-size:15px;" href="'.route('view_answer', ['id' => $list->id, 'user_id' => $list->user_id]).'" class="btn btn-primary text-white"> <span class="fas fa-eye"></span> Show Data </a>';
                 })
 
                 ->addIndexColumn()
-                ->rawColumns(['userName', 'date', 'time', 'action'])
+                ->rawColumns(['userName', 'date', 'time', 'image','action'])
                 ->make(true);
         } catch (\Exception $e) {
             // Session::flash('error', CommonFunction::showErrorPublic($e->getMessage()) . '[UC-1001]');

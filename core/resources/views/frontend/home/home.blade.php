@@ -264,11 +264,6 @@
                 <div class="row justify-content-center pt-5">
                     <div class="row text-center">
                         <div class="col-md-3 mb-4 m-auto">
-                            <a href="http://www.dsf-org.com" target="_blank">
-                                <img class="support-logo-height" src="https://worldhealthaid.org/assets/frontend/img/dsf.png" alt="">
-                            </a>
-                        </div>
-                        <div class="col-md-2 mb-4 m-auto">
                             <a href="https://timerni.com" target="_blank">
                                 <img class="support-logo-height" src="https://worldhealthaid.org/assets/frontend/img/Asset 6@4x.png" alt="">
                             </a>
@@ -278,12 +273,12 @@
                                 <img class="support-logo-height" src="https://worldhealthaid.org/assets/frontend/img/Asset 3@4x.png" alt="">
                             </a>
                         </div>
-                        <div class="col-md-2 mb-4 m-auto">
+                        <div class="col-md-3 mb-4 m-auto">
                             <a href="javascript:void(0);">
                                 <img src="https://worldhealthaid.org/assets/frontend/img/eso_logo.png" alt="">
                             </a>
                         </div>
-                        <div class="col-md-2 mb-4 m-auto">
+                        <div class="col-md-3 mb-4 m-auto">
                             <a href="javascript:void(0);">
                                 <img src="https://worldhealthaid.org/assets/frontend/img/adri_logo.png" alt="">
                             </a>

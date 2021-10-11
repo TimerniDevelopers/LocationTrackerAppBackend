@@ -71,6 +71,7 @@
                                                 <th style="font-family: Kalpurush">Survey By</th>
                                                 <th style="font-family: Kalpurush">Date</th>
                                                 <th style="font-family: Kalpurush">Time</th>
+                                                <th style="font-family: Kalpurush">Image</th>
                                                 <th style="font-family: Kalpurush">Action</th>
                                             </tr>
                                         </thead>
@@ -133,6 +134,7 @@
                    {data: 'userName', name: 'userName'},
                    {data: 'date', name: 'date'},
                    {data: 'time', name: 'time'},
+                   {data: 'image', name: 'image'},
                    {data: 'action', name: 'action', orderable: false, searchable: false},
                ],
                "aaSorting": []

@@ -24,7 +24,7 @@ class User extends Authenticatable implements JWTSubject
 //    ];
     protected $guarded = [];
 
-    public function categoryName(){
+     public function categoryName(){
         return $this->belongsTo(QuestionCategory::class, 'category_id', 'id');
     }
     public function upazilaName(){

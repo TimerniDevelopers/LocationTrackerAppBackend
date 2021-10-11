@@ -40,7 +40,7 @@
 
 
 
-                                <table id="table_id" class="table table-striped">
+                                <table id="list" class="table dt-responsive table-bordered table-striped nowrap">
                                     <thead>
                                         <tr>
                                             @foreach ($questions as $key => $question)

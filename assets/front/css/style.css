@@ -1,0 +1,525 @@
+/*------------------------------------------------------------------
+Last change:    24/04/21 [fixed Float bug, vf]
+
+-------------------------------------------------------------------*/
+
+
+/*------------------------------------------------------------------
+[Table of contents]
+
+  01. Theme Default Css
+  02. hero-area CSS
+  03. covid-area CSS
+  04. about-area CSS
+  05. vaccin-area CSS
+  06. qr-code-area CSS
+  07. travel-freely-area CSS
+  08. consultant-area CSS
+  09. health-area CSS
+  10. location-area CSS
+
+  -------------------------------------------------------------------*/
+
+/*
+/* Font Face */
+
+@font-face {
+  font-family: 'calibri-regular';
+  src: url('../fonts/calibri-regular.ttf');
+}
+
+@font-face {
+  font-family: 'calibri-bold';
+  src: url('../fonts/calibri-bold.ttf');
+}
+
+@font-face {
+  font-family: 'calibri-bold-italic';
+  src: url('../fonts/calibri-bold-italic.ttf');
+}
+@font-face {
+  font-family: 'calibri-bold-italic';
+  src: url('../fonts/calibri-italic.ttf');
+}
+
+
+/*
+==========================================
+ 01. Theme Default CSS
+==========================================
+*/
+
+html {
+scroll-behavior: smooth;
+height: 100%;
+}
+body {
+width: 100%;
+height: 100%;
+font-size: 18px;
+line-height: 1.5;
+font-family: 'calibri-regular';
+color: #2D3735;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+
+margin-bottom:0;
+}
+* {
+margin: 0;
+padding: 0;
+outline: none;
+box-sizing: border-box;
+}
+input,
+select,
+textarea {
+outline: none;
+border: none;
+}
+a,
+i,
+button,
+img,
+input,
+span,
+*:before,
+*:after {
+-webkit-transition: all 0.3s ease 0s;
+-ms-transition: all 0.3s ease 0s;
+transition: all 0.3s ease 0s;
+border: none;
+}
+.btn:focus {
+outline: none !important;
+box-shadow: none;
+}
+button:focus {
+outline: none;
+}
+*:focus {
+outline: none;
+}
+.form-control:focus {
+border: none;
+outline: none;
+-webkit-box-shadow: none;
+box-shadow: none;
+}
+a:focus {
+color: inherit;
+outline: medium none;
+transform: scale(1);
+text-decoration: none;
+}
+a,
+a:hover {
+text-decoration: none;
+}
+ul {
+list-style: outside none none;
+margin: 0;
+padding: 0;
+}
+img {
+max-width: 100%;
+}
+p {
+font-weight: normal;
+margin-bottom: 0;
+font-size: 18px;
+line-height: 1.5;
+font-family: 'calibri-regular';
+}
+.custom-btn{
+display: inline-block;
+padding: 10px 25px;
+color: #fff;
+background:#008D6A;
+text-align: center;
+outline: none;
+margin-top: 1.4rem;
+font-size: 18px;
+border: none;
+transition: .3s;
+border-radius: 5px;
+}
+.underline {
+text-decoration: underline;
+}
+.content-top-space {
+margin-top: 45px;
+}
+
+.box_shadow {
+border-radius: 5px;
+box-shadow: 0px 0px 8px 1px #0404040d;
+background: #fff;
+}
+.pt-top-100{
+padding-top: 100px;
+}
+.pb-top-100{
+padding-bottom: 100px;
+}
+.content-padding-t{
+padding-top: 60px;
+}
+.content-padding-b{
+padding-bottom: 60px;
+}
+.section-padding{
+padding: 60px 0px;
+}
+.section-heading h1{
+font-size: 40px;
+font-family: 'calibri-bold';
+padding-bottom: 20px;
+}
+.sub-heading{
+text-align: center;
+}
+.red-color{
+color: #ED4024;
+}
+.common-color{
+color: #008D6A;
+}
+.font-size-40{
+font-size: 35px;
+font-family: 'calibri-regular';
+}
+.ptr-15{
+padding-top: 8rem;
+}
+
+.before-srarting-img li,
+.consultant-content li
+{
+font-size: 18px;
+font-family: 'calibri-regular';
+line-height: 1.5;
+margin: 15px 0px;
+}
+.before-srarting-img> ul >li
+{
+position: relative;
+padding-left: 40px;
+/*margin: 15px 0px;*/
+}
+.before-srarting-img> ul >li:before {
+position: absolute;
+width: 30px;
+height: 30px;
+left: 0;
+top: 3px;
+text-align: center;
+} 
+
+.before-srarting-img .before-srarting-subheading li{
+margin-top: 10px;
+}
+
+.font-25{
+font-size: 25px;
+font-family: 'calibri-regular';
+}
+
+.search-content {
+  width: 100%;
+}
+.search-input .custom-btn{
+margin-top: 0px;
+}
+.search-input input{
+  position: relative;
+  height: 50px;
+}
+
+/*
+==========================================
+02. hero-area CSS
+==========================================
+*/
+.hero-carousel{
+position: relative;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-grid{
+display: grid;
+grid-gap: 2%;
+grid-template-columns:40% 58%;
+}
+.hero-img{
+display: flex;
+align-items: center;
+}
+.hero-carousel .owl-nav button {
+position: absolute;
+top: 40%;
+width: 50px;
+height: 50px;
+
+}
+
+.hero-carousel.owl-carousel .owl-nav button.owl-next:hover,
+.hero-carousel.owl-carousel .owl-nav button.owl-prev:hover {
+background: #008D6A;
+color: inherit;
+font: inherit;
+width: 50px;
+height: 50px;
+border-radius: 50px;
+
+}
+.hero-carousel.owl-carousel .owl-nav button.owl-next:hover i, 
+.hero-carousel.owl-carousel .owl-nav button.owl-prev:hover i{
+color: #fff;
+}
+.hero-carousel .owl-prev {
+left: -80px;
+}
+.hero-carousel .owl-next {
+right: -80px;
+}
+
+.hero-carousel .owl-dots {
+position: relative;
+margin-top: 40px;
+display: block;
+text-align: center;
+}
+
+.hero-carousel.owl-carousel.owl-theme .owl-dots .owl-dot.active span, 
+.hero-carousel.owl-carousel.owl-theme .owl-dots .owl-dot:hover span {
+background: #008D6A;
+width: 15px;
+}
+.hero-carousel.owl-carousel.owl-theme .owl-dots .owl-dot span {
+width: 10px;
+height: 10px;
+margin: 5px 5px;
+background:transparent;
+border:1px solid #008D6A;
+display: block;
+-webkit-backface-visibility: visible;
+transition: opacity .2s ease;
+border-radius: 50px;
+}
+.hero-carousel.owl-carousel.owl-theme .owl-dots .owl-dot span:hover {
+border: 3px solid #008D6A;
+background: transparent;
+}
+.hero-carousel.owl-carousel.owl-theme i{
+font-size: 25px;
+color: #008D6A;
+}
+.custom-btn.register-btn {
+border-radius: 25px;
+}
+
+/*
+==========================================
+03. covid-area CSS
+
+==========================================
+*/
+.sub-heading p>a{
+text-decoration: underline;
+}
+.cases{
+background-color: #F1FFF3;
+padding: 20px;
+}
+.cases-heading{
+background-color: #8EF3FF;
+
+}
+.cases-heading h3{
+font-size: 30px;
+font-family: 'calibri-regular';
+padding: 10px 0px;
+}
+
+.cases h3{
+font-size: 30px;
+font-family: 'calibri-bold';
+}
+.cases-f-content .condition h3{
+color: #0080FF;
+}
+.cases-f-content .discharged h3{
+color: #02CE24;
+}
+.cases-f-content {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 20px;
+}
+.cases-wrapper{
+margin: 15px 0px;
+}
+
+
+/*
+==========================================
+04. about-area CSS
+
+==========================================
+*/
+.about-wrapper{
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.system-content {
+  padding: 10px 8px;
+  border: 1px solid #008D6A;
+  text-align: center;
+}
+.arrow-img{
+margin:0px 10px;
+text-align: center;
+}
+.arrow-img img{
+width: 30px;
+max-width:45px;
+}
+.about-system {
+  display: flex;
+  align-items: center;
+}
+.system-content a{
+color:#2D3735; 
+}
+
+
+/*
+==========================================
+05. vaccin-area CSS
+==========================================
+*/
+
+
+.vaccin-area .before-srarting-img> ul >li:before{
+content: url(../img/events-icon.png);
+} 
+
+
+/*
+==========================================
+06. qr-code-area CSS
+==========================================
+*/
+
+.qr-code-area .before-srarting-img> ul >li:before {
+content: url(../img/qrcode-icon.png);
+} 
+
+
+/*
+==========================================
+07. travel-freely-area CSS
+==========================================
+*/
+.travel-freely-area .before-srarting-img> ul >li:before {
+content: url(../img/airplane-icon.png);
+top: -3px;
+} 
+.before-srarting-img> ul >li {
+  padding-left: 50px;
+
+}
+/*
+==========================================
+08. consultant-area CSS
+==========================================
+*/
+
+/*
+==========================================
+09. health-area CSS
+
+==========================================
+*/
+
+/*
+==========================================
+10. location-area CSS
+==========================================
+*/
+.location-search,
+.subscribe-area{
+position: relative;
+display: flex;
+align-items: center;
+height: 100%;
+max-width: 90%;
+margin:0 auto;
+}
+
+.search-content {
+  width: 100%;
+}
+.search-content .custom-btn{
+margin-top: 0px;
+}
+.search-input {
+  position: relative;
+  height: 50px;
+}
+
+
+/*
+==========================================
+11. location-area CSS
+==========================================
+*/
+
+.social-wrapper {
+box-shadow: 0 0 25px rgba(234, 230, 230, 0.3);
+padding: 20px;
+border: 1px solid #C7E1DB;
+}
+.social-share {
+display: flex;
+justify-content: space-between;
+background: #F0EEEE;
+margin-top: 25px;
+padding: 5px 10px;
+margin-bottom: 15px;
+}
+.social-share a{
+color: #333;
+}
+
+.social-icon img{
+width: 50px;
+height: 50px;
+border-radius: 50%;
+border:1px solid #ddd;
+}
+
+.social-information a {
+color: #333;
+font-size: 15px;
+}
+
+.social-information{
+position: relative;
+}
+
+.socail-sub-information{
+padding:10px 0px;
+}

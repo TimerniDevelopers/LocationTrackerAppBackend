@@ -27,4 +27,8 @@ class QuestionCategory extends Model
         $category->status = $request->status;
         $category->save();
     }
+    
+    public function questionCategory(){
+        return $this->hasMany(User::class, 'category_id', 'id');
+    }
 }

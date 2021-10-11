@@ -11,7 +11,7 @@ class NotificationController extends Controller
 {
     public function submitNotification(Request $request)
     {
-        $user_id = Auth::guard()->user()->id;
+        $user_id = Auth::guard('api')->user()->id;
         
         // Notification::saveNotificationDataAjax($request, $user_id);
 
@@ -28,7 +28,7 @@ class NotificationController extends Controller
     public function GetNotification()
     {
         try{
-            $user_id = Auth::guard()->user()->id;
+            $user_id = Auth::guard('api')->user()->id;
             $messages = Notification::where('user_id', $user_id)->with('user')->get();
 
             return response()->json($messages);

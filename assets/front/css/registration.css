@@ -1,0 +1,161 @@
+@media screen and (min-width: 992px) {
+    #tikarboi_container {
+      margin-top: 12vh;
+    }
+    header.apnic-header #glyph.header-glyph,
+    .apnic-header #glyph.header-glyph {
+      display: block;
+      position: absolute;
+      top: -4px;
+      right: 0;
+      z-index: -1;
+      background-image: url(../img/logo.png);
+      width: 150px;
+      height: 120px;
+    }
+  }
+  @media screen and (max-width: 778px) {
+      #tikarboi_content_wrapper {
+          padding: 0 10px!important;
+      }
+  }
+  .login-container {
+    display: flex;
+    align-items: center;
+  }
+  #tikarboi_content_wrapper {
+    width: 100%;
+    padding: 0 35px;
+    font-family:'Roboto';
+  }
+  
+  .service-info {
+    margin-top: 50px;
+  }
+  .tikarboi-login-content {
+    background-color: white;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 30px 15px;
+    border: none;
+    box-shadow: 0 2px 3px 1px rgb(0 0 0 / 10%);
+  }
+  .tikarboi-login-content header.tikarboi-header {
+    display: block !important;
+  }
+  header.tikarboi-header {
+    width: 100%;
+    display: block !important;
+  }
+  .header-title {
+    display: flex;
+    align-items: center;
+  }
+  .header-title h2 {
+    font-size: 2rem;
+    color: #008d6a;
+    margin-left: 3px;
+  }
+  .glyph-wrapper {
+    padding: 0;
+    overflow: hidden;
+    height: 85px;
+    width: 150px;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+  }
+  header.tikarboi-header .container .glyph-wrapper #glyph.header-glyph {
+    display: block !important;
+    background-image: url(../img/logo.png);
+    width: 150px !important;
+    height: 150px !important;
+  }
+  .login-glyph {
+    z-index: 2 !important;
+    transform: scale(0.6);
+    position: relative !important;
+  }
+  .form-group {
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  .has-float-label {
+    display: block;
+    position: relative;
+  }
+  .tikarboi-form .form-control {
+    height: auto;
+  }
+  .has-float-label input,
+  .has-float-label select,
+  .has-float-label textarea {
+    margin-bottom: 2px;
+    border: 0;
+    border-bottom: 2px solid #008d6a;
+    border-radius: 0;
+    padding-top: 16px;
+    padding-top: 1rem;
+    font-size: inherit;
+  }
+  .has-float-label input:placeholder-shown:not(:focus) + *,
+  .has-float-label select:placeholder-shown:not(:focus) + *,
+  .has-float-label textarea:placeholder-shown:not(:focus) + * {
+    font-size: 16px;
+    font-size: 1rem;
+    top: 16px;
+    top: 1rem;
+    color: #666;
+    opacity: 0;
+  }
+  
+  .has-float-label label,
+  .has-float-label span {
+    position: absolute;
+    top: -5px;
+    left: 0;
+    opacity: 1;
+    cursor: text;
+    font-size: 0.75rem;
+    color: #008d6a;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+  }
+  .tikarboi-form .form-control:focus {
+    border-bottom: 2px solid #008d6a !important;
+    box-shadow: none;
+  }
+  .has-float-label input:focus,
+  .has-float-label select:focus,
+  .has-float-label textarea:focus {
+    outline: none;
+  }
+  .btn-primary:hover,
+  .btn-primary {
+    color: #fff;
+    background-color: #008d6a;
+    border-color: #008d6a;
+  }
+  a {
+    color: #008d6a;
+  }
+  /* Sabrina */
+  .header-logo {
+    margin-left: 8%;
+  }
+  .header-logo-image-resize {
+    height: 35px;
+    width: 94px;
+  }
+  .has-float-label i{
+    opacity: 1!important;
+    position: absolute;
+    right: 3%;
+    top: 48%!important;
+  }
+  #service-list-ol {
+    margin: 5%;
+    list-style: circle;
+  }
+  /* Sabrina */
+  

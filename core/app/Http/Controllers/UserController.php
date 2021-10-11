@@ -215,15 +215,16 @@ class UserController extends Controller
             return 'Sorry! this is a request without proper way.';
         }
 
-        try {
+        // try {
             $list = User::orderBy('id', 'desc')->get();
             return DataTables::of($list)
                 ->editColumn('category_id', function ($list) {
+                    
                     if($list->category_id)
-                    {
+                    {   
                         return '<td>'.$list->categoryName->name.'</td>';
                     }else{
-
+                        return '<td>Null</td>';
                     }
                 })
                 ->editColumn('name', function ($list) {
@@ -231,7 +232,12 @@ class UserController extends Controller
 
                 })
                 ->editColumn('area', function ($list) {
-                    return '<td>'.$list->upazilaName->name.', '.$list->upazilaName->districtName->name.'</td>';
+                    if($list->upazilla_id)
+                    {   
+                        return '<td>'.$list->upazilaName->name.', '.$list->upazilaName->districtName->name.'</td>';
+                    }else{
+                        return '<td>Null</td>';
+                    }
 
                 })
                 ->editColumn('status', function ($list) {
@@ -244,10 +250,10 @@ class UserController extends Controller
                 ->addIndexColumn()
                 ->rawColumns(['status', 'category_id', 'name', 'area','action'])
                 ->make(true);
-        } catch (\Exception $e) {
-            // Session::flash('error', CommonFunction::showErrorPublic($e->getMessage()) . '[UC-1001]');
-            return Redirect::back();
-        }
+        // } catch (\Exception $e) {
+        //     // Session::flash('error', CommonFunction::showErrorPublic($e->getMessage()) . '[UC-1001]');
+        //     return Redirect::back();
+        // }
     }
     public function editUser($id){
         $user = User::findorFail($id);

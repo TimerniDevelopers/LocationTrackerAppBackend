@@ -12,7 +12,6 @@ use Carbon\Carbon;
 use DB;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Redirect;
-use Image;
 
 class SurveyController extends Controller
 {
@@ -60,7 +59,7 @@ class SurveyController extends Controller
     {
         $ip = $request->ip; // the IP address to query
         $query = @unserialize(file_get_contents('http://ip-api.com/php/' . $ip));
-        $images_array = [];
+         $images_array = [];
         if($request->hasFile('images')){
             foreach($request->images as $key => $i){
                 $image = $request->file('images')[$key];
@@ -73,9 +72,6 @@ class SurveyController extends Controller
             }
             
         }
-
-       
-
         $userQuestionId = UserQuestion::create([
             'user_id' => Auth::guard('web')->user()->id,
             'latitude' => $query['lat'] ? $query['lat'] : 23.810331,
@@ -108,9 +104,6 @@ class SurveyController extends Controller
                 $ans['others'] = $request->$others;
             }
             $ans['user_question_id'] = $user_question_id;
-
-           
-
             DB::table('question_answer')->insert($ans);
         }
         return back()->withSuccess('Survey Submitted Successful');

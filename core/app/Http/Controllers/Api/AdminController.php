@@ -192,7 +192,7 @@ class AdminController extends Controller
     {
         try{
             $user_id = Auth::guard('api')->user()->id;
-            $questions_user_answer = DB::table('user_questions')->where('user_id', $user_id)->get();
+            $questions_user_answer = DB::table('user_questions')->where('user_id', $user_id)->orderBy('id', 'desc')->take(200)->get();
             return response()->json($questions_user_answer);
         }catch (\Exception $e) {
             return response()->json([
@@ -215,6 +215,7 @@ class AdminController extends Controller
             foreach($questions as $key=>$question){
                 $answer = DB::table('question_answer')
                 ->where('user_question_id', $id)
+                ->where('question_id', $question->id)
                 ->first();
                 $data[$key]['id'] = $question->id;
                 $data[$key]['type'] = $question->type;

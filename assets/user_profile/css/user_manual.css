@@ -1,0 +1,428 @@
+.pop_up_item .videos-icon i {
+    background: #000;
+    color: #fff;
+    height: 30px;
+    text-align: center;
+    width: 30px;
+    /* border-radius: 100%; */
+    font-size: 15px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pop_up_item .videos-icon {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.pop_up_item .videos-icon p span {
+    padding-left: 20px;
+    color: #a435f0;
+}
+
+.pop_up_item .videos-icon p {
+    align-items: center;
+}
+
+/* .accordion {
+border: 1px solid #002247;
+} */
+
+.accordion h3 {
+    background-color: #f3e9eb;
+    color: #222;
+    font-size: 16px;
+    text-align: center;
+    margin: 0;
+    padding: 10px;
+}
+
+.accordion .card-header {
+    padding: 0;
+}
+
+.accordion .card-header button {
+    text-align: left;
+    display: block;
+    width: 100%;
+    font-size: 18px;
+    color: #000000;
+    position: relative;
+}
+
+.accordion .card-header button.collapsed::after {
+    position: absolute;
+    width: 2px;
+    height: 12px;
+    content: '';
+    background-color: #000;
+    right: 12px;
+    top: 54%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.accordion .card-header button::before {
+    position: absolute;
+    width: 12px;
+    height: 2px;
+    content: '';
+    background-color: #000;
+    right: 7px;
+    top: 50%;
+}
+
+.accordion .card-header button:hover {
+    text-decoration: none;
+}
+
+.accordion .card-header button i {
+    float: right;
+    margin-top: 3px;
+}
+
+.accordion .card-body {
+    padding: 15px;
+    font-size: 16px;
+}
+
+.accordion .card-body table {
+    margin: 0;
+}
+
+.accordion .card-body table a {
+    color: #000;
+}
+
+.accordion .card-body table span {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.accordion ul.occasion_list a {
+    padding: 5px 15px;
+    color: #222;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.accordion ul.occasion_list a:hover {
+    color: #002247;
+}
+
+/*
+==========================================
+chart  CSS
+==========================================
+*/
+.chart-area {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+#chart {
+    margin: 30px auto 0;
+    display: block;
+    position: relative;
+}
+
+#chart #numbers {
+    width: 50px;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    float: left;
+}
+
+#chart #numbers li {
+    text-align: right;
+    padding-right: 1em;
+    list-style: none;
+    height: 29px;
+    border-bottom: 1px solid #444;
+    position: relative;
+    bottom: 19px;
+}
+
+#chart #numbers li:last-child {
+    height: 30px;
+}
+
+#chart #numbers li span {
+    color: #000;
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+}
+
+#chart #bars {
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.2);
+    width: 560px;
+    height: 300px;
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 0 0 1px #444;
+    position: absolute;
+}
+
+#chart #bars li {
+    display: table-cell;
+    width: 80px;
+    height: 300px;
+    margin: 0;
+    text-align: center;
+    position: relative;
+}
+
+#chart .bar {
+    display: block;
+    width: 40px;
+    margin-left: 15px;
+    background: #49e;
+    position: absolute;
+    bottom: 0;
+}
+
+#chart .bar:hover {
+    background: #5ae;
+    cursor: pointer;
+}
+
+#chart .bar:before {
+    color: white;
+    content: attr(data-percentage) "%";
+    position: relative;
+    bottom: 20px;
+}
+
+.chart-content i {
+    margin-left: 10px;
+}
+
+.chart-content .fa-chart-bar {
+    color: rosybrown;
+}
+
+.chart-content .fa-chart-line {
+    color: salmon;
+}
+
+.chart-content .fa-calendar {
+    color: turquoise;
+    padding-left: 7px;
+}
+
+.chart-content .selector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.chart-content .calender {
+    margin-right: 16px;
+}
+
+#chart span {
+    color: #000;
+    width: 100%;
+    position: absolute;
+    bottom: -4em;
+    left: 0;
+    text-align: center;
+}
+
+.pop_up_item .videos-icon:last-child {
+    margin-bottom: 0px;
+}
+
+
+@media only screen and (max-width: 1199px) {
+    .covid-tika img{
+        width: 45%;
+
+    }
+    .chart-area #chart .bar {
+        display: block;
+        width: 30px;
+    }
+    .chart-area #chart #bars {
+        width: 90%;
+    }
+    .bar-group {
+        float: left;
+        height: 100%;
+        margin: 0 7px;
+        position: relative;
+        width: 10%;
+    }
+}
+@media only screen and (max-width: 991px) {
+    .section-padding {
+        padding: 45px 0px;
+    }
+    .content-padding-b {
+        padding-bottom: 45px;
+    }
+
+    .about-wrapper {
+
+        width: 100%;
+    }
+    .hero-carousel.owl-carousel.owl-theme i {
+        font-size: 20px;
+        color: #008D6A;
+    }
+    .hero-carousel.owl-carousel .owl-nav button.owl-next:hover,
+    .hero-carousel.owl-carousel .owl-nav button.owl-prev:hover,
+    .hero-carousel .owl-nav button  {
+        width: 30px;
+        height: 30px;
+    }
+    .hero-carousel .owl-prev {
+        left: -40px;
+    }
+    .hero-carousel .owl-next {
+        right: -40px;
+    }
+    .hero-grid {
+        grid-template-columns: 58% 40%;
+    }
+    .font-size-40 {
+        font-size: 30px;
+    }
+    .sm-margin-b{
+        margin-bottom: 15px;
+    }
+    .covid-banner {
+        padding-bottom: 0px;
+    }
+    .alert-content.aos-init.aos-animate {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 0px;
+        text-align: center;
+        align-items: center;
+        width: 100%;
+    }
+    .alert-content a {
+        margin: 20px 0px;
+        width: 48%;
+    }
+    #chart span {
+        color: #000;
+        width: 100%;
+        position: absolute;
+        bottom: -2em;
+        left: 0;
+        text-align: center;
+    }
+    #chart .bar:before {
+        font-size: 13px;
+    }
+}
+@media only screen and (max-width: 767px) {
+    .hero-grid {
+        grid-template-columns:1fr;
+    }
+    .hero-carousel .owl-nav {
+        display: none;
+    }
+    .hero-carousel .hero-img img{
+        display: none;
+    }
+    .hero-content h1 {
+        text-align: center;
+    }
+    .about-wrapper,.about-system{
+        display: block;
+    }
+    .arrow-img img {
+        padding: 5px;
+        margin: 10px;
+        transform: rotate(90deg);
+    }
+
+    .cases-wrapper {
+        margin: 15px 30px;
+    }
+    .cases h3 {
+        font-size: 24px;
+    }
+    .font-size-40 {
+        font-size: 30px;
+    }
+    .before-srarting-img li,
+    .consultant-content li {
+        font-size: 16px;
+    }
+
+    .vaccination-search .input-group.search-input {
+        width: 100%;
+        margin: 0 auto;
+    }
+    .covid-tika {
+        display: none;
+    }
+    .covid-alert-area .covid-alert-heading {
+        text-align: center;
+    }
+    .alert-content a {
+
+        margin: 20px 0px;
+        flex-direction: column;
+        width: 48%;
+    }
+    .alert-content .zone-area {
+        margin-right: 0px;
+
+    }
+    .alert-content h3{
+        margin-top: 15px;
+    }
+    #chart #bars li {
+        width: 36px;
+        height: 300px;
+    }
+    .chart-area #chart .bar {
+        display: block;
+        width: 22px;
+    }
+    ul#bars span {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 580px) {
+    .section-heading h1 {
+        font-size: 30px;
+    }
+    .system-content {
+        width: 80%;
+        margin: 0 auto;
+    }
+    .cases-wrapper {
+        margin: 15px 0px;
+    }
+    .font-size-40 {
+        font-size: 25px;
+    }
+    #chart #bars li {
+        width: 30px;
+        height: 300px;
+    }
+    .chart-area #chart #bars {
+        width: 75%;
+    }
+}

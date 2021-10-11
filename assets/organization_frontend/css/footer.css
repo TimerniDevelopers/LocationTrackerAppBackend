@@ -1,0 +1,54 @@
+/*
+==========================================
+  Footer CS
+==========================================
+*/
+
+#footer-area{
+  background: #E3F1E3;
+  padding-top: 30px;
+  padding-bottom: 15px;
+}
+.foter-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.foter-content ul li {
+  margin: 3px 0px;
+  
+}
+.foter-content ul li a{
+  color: #2D3735;
+  font-family: 'calibri-regular';
+  font-size: 20px;
+  
+}
+
+@media only screen and (max-width: 767px) {
+ .footer-img img {
+      max-width: 75%;
+      margin-bottom: 20px;
+  }
+  .sm-center{
+    justify-content: center;
+  }
+  .foter-content ul li a{
+    font-size: 18px;
+
+  }
+}
+
+@media only screen and (max-width: 380px) {
+ .footer-img img {
+      max-width: 60%;
+  }
+  .foter-content {
+      flex-direction: column;
+  }
+  .sm-center{
+    justify-content: left;
+  }
+}
+
+
