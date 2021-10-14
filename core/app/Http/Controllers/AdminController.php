@@ -96,6 +96,7 @@ class AdminController extends Controller
         $title = 'Admin Register';
         return view('backend.admin.register', compact('title'));
     }
+    
     public function adminSaveRegister(Request $request){
         $this->validate($request,[
             'email' => 'required|unique:admins',

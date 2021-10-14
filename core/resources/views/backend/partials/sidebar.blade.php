@@ -252,6 +252,48 @@
                         </li>
                     </ul>
                 </li>
+
+                <li class="nav-item has-treeview
+                        {{ ((Request::is('admin/vehicle_manage')) ? 'menu-open' : '') }}
+                        {{ ((Request::is('admin/assign-vehicle')) ? 'menu-open' : '') }}
+                        {{-- {{ ((Request::is('admin/add/cookie/policy')) ? 'menu-open' : '') }} --}}
+                    ">
+                    <a href="#" class="nav-link hover-color">
+                        <i class="nav-icon fas fa-motorcycle" style="color: green"></i>
+                        <p>
+                            Manage Convinance
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        {{-- <li class="nav-item">
+                            <a href="{{ route('add.privacy.policy') }}" class="nav-link hover-color @if(request()->path() == 'admin/add/privacy/policy') bg-success @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Privacy Policty</p>
+                            </a>
+                        </li> --}}
+                        <li class="nav-item">
+                            <a href="{{ route('vehicle.manage') }}" class="nav-link hover-color  @if(request()->path() == 'admin/vehicle_manage') bg-success @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add Vehicle</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('assign.vehicle') }}" class="nav-link hover-color  @if(request()->path() == 'admin/assign-vehicle') bg-success @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Assign Vehicle</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('amount.calclution') }}" class="nav-link hover-color  @if(request()->path() == 'admin/amount-calclution') bg-success @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Amount calculation</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 {{-- <li class="nav-item has-treeview">
                     <a href="{{ route('notify.all') }}" class="nav-link @if(request()->path() == 'admin/subscriber/list') bg-info @endif">
                         <i class="nav-icon fas fa-home icon-color" style="color: green"></i><p>Notify List</p>

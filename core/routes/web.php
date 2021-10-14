@@ -155,5 +155,26 @@ Route::group(['prefix' => 'admin'], function (){
 
         Route::post('message/user2', 'MessageController@message2User')->name('message2.user');
         Route::get('unseenmessage', 'MessageController@unSeenMessage')->name('unseenmessage');
+
+        // convinance manage
+        Route::get('vehicle_manage', 'ConvinanceController@manage_vehicle')->name('vehicle.manage');
+        Route::post('save_vehicle', 'ConvinanceController@save_vehicle')->name('save.vehicle');
+        Route::post('get-vehicle', 'ConvinanceController@get_vehicle'); // ajax get
+        Route::get('edit-vehicle/{id}', 'ConvinanceController@edit_vehicle')->name('edit.vehicle');
+        Route::post('update-vehicle', 'ConvinanceController@update_vehicle')->name('update.vehicle');
+        Route::post('/delete/vehicle', 'ConvinanceController@deleteVehicle'); //ajax request
+
+        // assign vehicle
+        Route::get('assign-vehicle', 'ConvinanceController@assign_vehicle')->name('assign.vehicle');
+        Route::post('save-assign-vehicle', 'ConvinanceController@save_assign_vehicle')->name('save.assign.vehicle');
+        Route::post('get-assign-vehicle', 'ConvinanceController@get_assign_vehicle'); // ajax get
+        Route::get('edit-assign-vehicle/{id}', 'ConvinanceController@edit_assign_vehicle')->name('edit.assign.vehicle');
+        Route::post('update-assign-vehicle', 'ConvinanceController@update_assign_vehicle')->name('update.assign.vehicle');
+        Route::post('/delete-assign-vehicle', 'ConvinanceController@delete_assign_vehicle'); //ajax request
+
+        // amount calclution
+        Route::get('amount-calclution', 'ConvinanceController@amount_calclution')->name('amount.calclution');
+        Route::post('get-user-track', 'ConvinanceController@get_user_track'); // ajax get
+
     });
 });

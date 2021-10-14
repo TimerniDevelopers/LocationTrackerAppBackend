@@ -24,7 +24,10 @@
     <link rel="stylesheet" href="{{ asset('assets/common/owl-carousel/css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/backend/css/toastr.css') }}">
     <link href="{{ asset('assets/backend/css/select2.min.css') }}" rel="stylesheet" />
+    @livewireStyles
+    @livewireScripts
     @yield('css')
+    
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 
@@ -192,5 +195,6 @@
         }
     }
 </script>
+
 </body>
 </html>
